@@ -31,6 +31,11 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	}
 
+
+
+
+
+	
 	btn.addEventListener('click', function () {
 		const isOpen = btn.classList.toggle('open');
 		navList.classList.toggle('open');
@@ -86,17 +91,35 @@ document.addEventListener('DOMContentLoaded', function () {
 				feedbackEl.classList.add('error');
 				return;
 			}
-			// Simulate sending (replace with real API integration)
+
 			feedbackEl.textContent = 'Sending...';
-			feedbackEl.classList.remove('error');
-			setTimeout(() => {
-				feedbackEl.classList.remove('error');
-				feedbackEl.classList.add('success');
-				feedbackEl.textContent = 'Thanks — I will get back to you shortly.';
-				contactForm.reset();
-			}, 900);
+			feedbackEl.classList.remove('error', 'success');
+
+			fetch(form.action, {
+				method: 'POST',
+				body: new FormData(form),
+				headers: { 'Accept': 'application/json' }
+			})
+				.then((response) => {
+					if (response.ok) {
+						feedbackEl.classList.add('success');
+						feedbackEl.textContent = 'Thanks — I will get back to you shortly.';
+						contactForm.reset();
+					} else {
+						feedbackEl.classList.add('error');
+						feedbackEl.textContent = 'Something went wrong. Please try again or email me directly.';
+					}
+				})
+				.catch(() => {
+					feedbackEl.classList.add('error');
+					feedbackEl.textContent = 'Something went wrong. Please try again or email me directly.';
+				});
 		});
 	}
+
+	// Footer copyright year
+	const copyrightYear = document.getElementById('copyrightYear');
+	if (copyrightYear) copyrightYear.textContent = new Date().getFullYear();
 
 	// Back to top button
 	const backToTopBtn = document.getElementById('backToTop');
@@ -151,4 +174,64 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// Tech stack section scroll animation
 	document.querySelectorAll('.tech-badge').forEach(el => observer.observe(el));
+
+	// Panorama layout: arrow scroll, dot nav, edge state
+	const initPanorama = (trackId, dotsId, itemSelector) => {
+		const track = document.getElementById(trackId);
+		const dotsWrap = document.getElementById(dotsId);
+		if (!track || !dotsWrap) return;
+
+		const panorama = track.parentElement;
+		const prevBtn = panorama.querySelector('.panorama-prev');
+		const nextBtn = panorama.querySelector('.panorama-next');
+		if (!prevBtn || !nextBtn) return;
+
+		const cards = Array.from(track.querySelectorAll(itemSelector));
+
+		cards.forEach((card, i) => {
+			const dot = document.createElement('button');
+			dot.type = 'button';
+			dot.className = 'panorama-dot';
+			dot.setAttribute('aria-label', `Go to item ${i + 1}`);
+			dot.addEventListener('click', () => {
+				card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+			});
+			dotsWrap.appendChild(dot);
+		});
+		const dots = Array.from(dotsWrap.children);
+
+		const setActiveDot = (index) => {
+			dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+		};
+
+		const cardObserver = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					setActiveDot(cards.indexOf(entry.target));
+				}
+			});
+		}, { root: track, threshold: 0.6 });
+		cards.forEach(card => cardObserver.observe(card));
+
+		const updateArrowState = () => {
+			const maxScroll = track.scrollWidth - track.clientWidth - 1;
+			prevBtn.disabled = track.scrollLeft <= 0;
+			nextBtn.disabled = track.scrollLeft >= maxScroll;
+		};
+		updateArrowState();
+		track.addEventListener('scroll', updateArrowState, { passive: true });
+		window.addEventListener('resize', updateArrowState);
+
+		const scrollByCard = (direction) => {
+			const card = cards[0];
+			const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || 26);
+			const amount = (card.getBoundingClientRect().width + gap) * direction;
+			track.scrollBy({ left: amount, behavior: 'smooth' });
+		};
+		prevBtn.addEventListener('click', () => scrollByCard(-1));
+		nextBtn.addEventListener('click', () => scrollByCard(1));
+	};
+
+	initPanorama('projectsTrack', 'panoramaDots', '.project-card');
+	initPanorama('testimonialsTrack', 'testimonialsDots', '.testimonial-card');
 });
