@@ -114,6 +114,11 @@ body[data-theme="light"] .bg-glow-3 {
 	body::before,
 	body::after {
 		filter: blur(40px);
+		opacity: .5;
+	}
+
+	.bg-glow-3 {
+		opacity: .25;
 	}
 }
 
@@ -1099,6 +1104,9 @@ main > section {
 	.projects-panorama { padding: 0 48px; }
 	.project-card { width: min(560px, 80vw); grid-template-columns: 1fr; grid-template-rows: auto auto; padding: 24px; gap: 20px; }
 	.project-screenshot { min-height: 240px; height: auto; }
+	.project-screenshot::after {
+		background: linear-gradient(180deg, rgba(9,18,36,0.45) 0%, rgba(9,18,36,0.4) 45%, rgba(9,18,36,0.72) 100%);
+	}
 	.panorama-arrow { width: 46px; height: 46px; }
 	.panorama-arrow svg { width: 18px; height: 18px; }
 }
