@@ -294,29 +294,16 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	});
 
-	// Living background: pointer + scroll reactive glow, floating section momentum
+	// Floating section momentum
 	if (!reduceMotion) {
-		const docEl = document.documentElement;
 		const momentumSections = Array.from(document.querySelectorAll('main > section'));
-
-		let targetMX = 0, targetMY = 0, mx = 0, my = 0;
-		window.addEventListener('pointermove', (e) => {
-			targetMX = (e.clientX / window.innerWidth - 0.5) * 2;
-			targetMY = (e.clientY / window.innerHeight - 0.5) * 2;
-		}, { passive: true });
 
 		let targetScroll = window.scrollY;
 		let smoothScroll = targetScroll;
 		window.addEventListener('scroll', () => { targetScroll = window.scrollY; }, { passive: true });
 
 		const tick = () => {
-			mx += (targetMX - mx) * 0.06;
-			my += (targetMY - my) * 0.06;
 			smoothScroll += (targetScroll - smoothScroll) * 0.08;
-			const scrollDrift = targetScroll - smoothScroll;
-
-			docEl.style.setProperty('--bg-x', (mx * 26 + scrollDrift * 0.06).toFixed(2) + 'px');
-			docEl.style.setProperty('--bg-y', (my * 22).toFixed(2) + 'px');
 
 			momentumSections.forEach((el, i) => {
 				const rect = el.getBoundingClientRect();
