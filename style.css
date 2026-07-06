@@ -318,9 +318,6 @@ main > section {
 
 .nav-toggle {
 	display: none;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
 	background: none;
 	border: 0;
 	padding: 8px;
@@ -921,6 +918,15 @@ main > section {
 
 .project-screenshot:has(img)::before {
 	display: none;
+}
+
+.project-screenshot::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, rgba(9,18,36,0.16) 0%, rgba(9,18,36,0.12) 40%, rgba(9,18,36,0.68) 100%);
+	pointer-events: none;
+	z-index: 2;
 }
 
 .project-screenshot img {
