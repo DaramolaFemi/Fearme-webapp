@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	document.querySelectorAll('.tech-badge').forEach(el => observer.observe(el));
 
 	// Panorama layout: arrow scroll, dot nav, edge state
-	const initPanorama = (trackId, dotsId, itemSelector) => {
+	const initPanorama = (trackId, dotsId, itemSelector, options = {}) => {
 		const track = document.getElementById(trackId);
 		const dotsWrap = document.getElementById(dotsId);
 		if (!track || !dotsWrap) return;
@@ -230,8 +230,103 @@ document.addEventListener('DOMContentLoaded', function () {
 		};
 		prevBtn.addEventListener('click', () => scrollByCard(-1));
 		nextBtn.addEventListener('click', () => scrollByCard(1));
+
+		// 3D coverflow tilt: cards rotate away from center as they scroll past
+		if (options.tilt && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+			const updateTilt = () => {
+				if (window.innerWidth <= 860) {
+					cards.forEach((card) => {
+						card.style.setProperty('--tilt', '0deg');
+						card.style.setProperty('--depth', '1');
+					});
+					return;
+				}
+				const trackRect = track.getBoundingClientRect();
+				const trackCenter = trackRect.left + trackRect.width / 2;
+				cards.forEach((card) => {
+					const cardRect = card.getBoundingClientRect();
+					const cardCenter = cardRect.left + cardRect.width / 2;
+					const delta = Math.max(-1, Math.min(1, (cardCenter - trackCenter) / (trackRect.width / 2)));
+					card.style.setProperty('--tilt', (delta * -12).toFixed(2) + 'deg');
+					card.style.setProperty('--depth', (1 - Math.abs(delta) * 0.08).toFixed(3));
+				});
+			};
+			updateTilt();
+			track.addEventListener('scroll', updateTilt, { passive: true });
+			window.addEventListener('resize', updateTilt);
+		}
 	};
 
-	initPanorama('projectsTrack', 'panoramaDots', '.project-card');
+	initPanorama('projectsTrack', 'panoramaDots', '.project-card', { tilt: true });
 	initPanorama('testimonialsTrack', 'testimonialsDots', '.testimonial-card');
+
+	// Hero title assembles word-by-word
+	const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	const heroH1 = document.querySelector('.hero h1');
+	if (heroH1 && !reduceMotion) {
+		const words = heroH1.textContent.trim().split(/\s+/);
+		heroH1.innerHTML = words
+			.map((word, i) => `<span class="hero-word" style="animation-delay:${(0.15 + i * 0.09).toFixed(2)}s">${word}</span>`)
+			.join(' ');
+	}
+
+	// Assemble-in reveals for structural blocks (separate from the card/testimonial fade-in-up above)
+	const assembleGroups = [
+		{ selector: '.about-intro, .contact-card, .footer-brand', cls: 'assemble-left' },
+		{ selector: '.about-stats, .contact-info, .footer-info', cls: 'assemble-right' },
+		{ selector: '.section-header, .tech-header, .footer-actions', cls: 'assemble-up' },
+		{ selector: '.stat-card', cls: 'assemble-scale' },
+	];
+	const assembleObserver = new IntersectionObserver((entries) => {
+		entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+				const cls = entry.target.dataset.assembleClass;
+				if (cls) entry.target.classList.add(cls);
+				assembleObserver.unobserve(entry.target);
+			}
+		});
+	}, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
+
+	assembleGroups.forEach(({ selector, cls }) => {
+		document.querySelectorAll(selector).forEach((el) => {
+			el.dataset.assembleClass = cls;
+			assembleObserver.observe(el);
+		});
+	});
+
+	// Living background: pointer + scroll reactive glow, floating section momentum
+	if (!reduceMotion) {
+		const docEl = document.documentElement;
+		const momentumSections = Array.from(document.querySelectorAll('main > section'));
+
+		let targetMX = 0, targetMY = 0, mx = 0, my = 0;
+		window.addEventListener('pointermove', (e) => {
+			targetMX = (e.clientX / window.innerWidth - 0.5) * 2;
+			targetMY = (e.clientY / window.innerHeight - 0.5) * 2;
+		}, { passive: true });
+
+		let targetScroll = window.scrollY;
+		let smoothScroll = targetScroll;
+		window.addEventListener('scroll', () => { targetScroll = window.scrollY; }, { passive: true });
+
+		const tick = () => {
+			mx += (targetMX - mx) * 0.06;
+			my += (targetMY - my) * 0.06;
+			smoothScroll += (targetScroll - smoothScroll) * 0.08;
+			const scrollDrift = targetScroll - smoothScroll;
+
+			docEl.style.setProperty('--bg-x', (mx * 26 + scrollDrift * 0.06).toFixed(2) + 'px');
+			docEl.style.setProperty('--bg-y', (my * 22).toFixed(2) + 'px');
+
+			momentumSections.forEach((el, i) => {
+				const rect = el.getBoundingClientRect();
+				const center = rect.top + rect.height / 2 - window.innerHeight / 2;
+				const depth = 0.02 + (i % 3) * 0.008;
+				el.style.setProperty('--parallax', (-center * depth).toFixed(2) + 'px');
+			});
+
+			requestAnimationFrame(tick);
+		};
+		requestAnimationFrame(tick);
+	}
 });
