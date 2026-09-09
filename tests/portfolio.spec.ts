@@ -37,7 +37,7 @@ test("project filters and mobile keyboard menu", async ({ page }) => {
   await expect(page.locator("article")).toHaveCount(1);
   await expect(page.getByRole("heading", { name: /Bouldwood/ })).toBeVisible();
   await page.getByRole("button", { name: "All work" }).click();
-  await expect(page.locator("article")).toHaveCount(4);
+  await expect(page.locator("article")).toHaveCount(5);
   await page.getByRole("button", { name: "Menu" }).click();
   await expect(page.getByRole("navigation")).toBeVisible();
   await page.keyboard.press("Escape");

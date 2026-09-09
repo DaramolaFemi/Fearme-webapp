@@ -1115,7 +1115,7 @@ textarea::placeholder {
   aspect-ratio: 1.8;
 }
 .project.cedius .project-visual {
-  aspect-ratio: 1.94;
+  aspect-ratio: 1.78;
 }
 .project.cedius .project-visual img {
   height: auto;
@@ -1521,6 +1521,17 @@ button:focus-visible .direction-arrow {
   grid-column: 2 / 4;
   margin-top: 2px;
 }
+@media (min-width: 1181px) {
+  .documentation-index {
+    max-width: 1240px;
+    margin-inline: auto;
+  }
+  .documentation-entry {
+    grid-template-columns:
+      46px minmax(300px, 0.9fr) minmax(320px, 1.05fr)
+      minmax(154px, 0.45fr);
+  }
+}
 .poetry {
   padding-top: 70px;
 }
@@ -1691,5 +1702,13 @@ button:focus-visible .direction-arrow {
   .direction-arrow,
   .project-open .direction-arrow {
     display: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .documentation-cta .direction-arrow {
+    display: inline-block !important;
+    width: 14px;
+    height: 14px;
   }
 }
