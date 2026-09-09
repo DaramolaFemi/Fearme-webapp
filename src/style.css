@@ -380,8 +380,19 @@ h2 {
 }
 .tags span {
   font-size: 10px;
-  border: 1px solid var(--line);
-  padding: 6px 9px;
+  line-height: 1.4;
+  color: var(--ink);
+  border: 1px solid rgba(36, 39, 32, 0.22);
+  background: rgba(36, 39, 32, 0.04);
+  border-radius: 999px;
+  padding: 7px 10px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+:root[data-theme="dark"] .tags span {
+  border-color: rgba(244, 237, 243, 0.25);
+  background: rgba(244, 237, 243, 0.05);
+  color: var(--ink);
 }
 .weather-art {
   height: 100%;
@@ -594,16 +605,25 @@ textarea::placeholder {
   color: var(--muted);
 }
 .button {
-  background: var(--ink);
-  color: var(--paper);
-  border: 0;
-  padding: 16px 24px;
-  display: flex;
-  gap: 34px;
+  background: rgba(36, 39, 32, 0.04);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   font-size: 12px;
+  min-height: 42px;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 .button:hover {
-  background: var(--accent);
+  background: rgba(36, 39, 32, 0.08);
+  border-color: rgba(36, 39, 32, 0.32);
 }
 .form-status {
   font-size: 12px;
@@ -1134,16 +1154,14 @@ textarea::placeholder {
 
 /* SVG arrows stay consistent on desktop and are omitted from touch layouts. */
 .direction-arrow {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   display: inline-block;
   vertical-align: middle;
   flex: 0 0 auto;
-}
-
-.project-open .direction-arrow {
-  width: 24px;
-  height: 24px;
+  color: #ff4d4d;
+  transform-origin: center;
+  transition: transform 0.2s ease;
 }
 .reading-progress {
   position: fixed;
@@ -1215,18 +1233,9 @@ textarea::placeholder {
 }
 
 /* A single project action, with a quiet curved arrow on desktop. */
-.direction-arrow {
-  color: var(--accent);
-  width: 19px;
-  height: 19px;
-}
-.arrow-down {
-  width: 15px;
-  height: 15px;
-}
 .text-link {
   align-items: center;
-  gap: 14px;
+  gap: 8px;
   line-height: 1.5;
 }
 .hero-rule > span:last-child {
@@ -1234,34 +1243,39 @@ textarea::placeholder {
   align-items: center;
   gap: 8px;
 }
-.hero-rule .arrow-down {
-  width: 12px;
-  height: 12px;
-}
 .project-open {
-  display: grid;
-  width: 54px;
-  height: 54px;
-  background: #f8f4ec;
-  border: 1px solid #e4ddd1;
-  border-radius: 50%;
-  color: #b63b2a;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 44px;
+  height: 42px;
+  padding: 0 12px;
+  background: rgba(248, 244, 236, 0.96);
+  border: 1px solid rgba(36, 39, 32, 0.14);
+  border-radius: 999px;
+  color: var(--accent);
+  box-shadow: 0 10px 18px rgba(24, 24, 18, 0.06);
 }
 .project-open .direction-arrow {
-  color: #b63b2a;
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
 }
 .project-visual:hover .project-open,
 :root[data-theme="dark"] .project-visual:hover .project-open {
-  background: #fffaf4;
+  background: rgba(255, 250, 244, 0.98);
   transform: none;
 }
-.project-open:hover .direction-arrow {
-  transform: translate(2px, -2px);
+@media (hover: hover) and (pointer: fine) {
+  .direction-arrow:hover,
+  a:hover .direction-arrow,
+  button:hover .direction-arrow {
+    transform: scale(1.05);
+  }
 }
-.project-open .direction-arrow {
-  transition: transform 0.25s ease;
+a:focus-visible .direction-arrow,
+button:focus-visible .direction-arrow {
+  transform: scale(1.05);
 }
 .project-cta-label {
   display: none;
@@ -1306,13 +1320,15 @@ textarea::placeholder {
 }
 @media (max-width: 1023px), (pointer: coarse) {
   .project-open {
-    width: 52px;
-    height: 52px;
-    font-size: 12px;
+    min-width: 80px;
+    height: 36px;
+    padding: 0 12px;
+    font-size: 11px;
     font-weight: 500;
+    box-shadow: 0 8px 14px rgba(24, 24, 18, 0.06);
   }
   .project-cta-label {
-    display: block;
+    display: inline-block;
   }
 }
 @media (max-width: 800px) {
@@ -1342,7 +1358,20 @@ textarea::placeholder {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .project-open .direction-arrow {
+  .direction-arrow {
     transition: none;
   }
+}
+
+/* Shared label spacing preserves optical alignment across link contexts. */
+.arrow-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav .resume,
+.email-link,
+.button {
+  align-items: center;
+  gap: 8px;
 }

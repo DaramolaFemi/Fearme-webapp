@@ -146,7 +146,9 @@ export default function App() {
             >
               Latest work / Bouldwood
               <br />
-              Step inside the showroom <Arrow />
+              <span className="arrow-label">
+                Step inside the showroom <Arrow />
+              </span>
             </a>
           </div>
           <div className="hero-rule">
