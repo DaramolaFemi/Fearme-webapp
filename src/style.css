@@ -1355,6 +1355,43 @@ button:focus-visible .direction-arrow {
     display: inline-block;
   }
 }
+@media (max-width: 600px) {
+  .project-visual {
+    overflow: hidden;
+  }
+  .project-open {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-width: 0;
+    height: auto;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+    color: #ff4d4d;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .project-open .direction-arrow {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+  }
+  .project-cta-label {
+    display: inline-block;
+    white-space: nowrap;
+  }
+}
 @media (max-width: 800px) {
   .footer {
     grid-template-columns: 1fr 1fr;
