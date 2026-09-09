@@ -1196,9 +1196,11 @@ textarea::placeholder {
   }
 }
 @media (max-width: 1023px), (pointer: coarse) {
-  .direction-arrow,
   .reading-progress {
     display: none !important;
+  }
+  .project-open .direction-arrow {
+    display: inline-block !important;
   }
   .contact input,
   .contact textarea {
