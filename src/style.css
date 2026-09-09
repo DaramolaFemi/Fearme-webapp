@@ -349,11 +349,14 @@ h2 {
   font-weight: 500;
   letter-spacing: -1px;
 }
-.project-heading h3 > span {
+.project-heading h3 > .project-number {
   font-size: 11px;
   letter-spacing: 0;
   margin-right: 14px;
   color: var(--muted);
+}
+.project-name-mobile {
+  display: none;
 }
 .project-heading > span {
   font-size: 10px;
@@ -1123,10 +1126,10 @@ textarea::placeholder {
   position: absolute;
   top: 0;
   left: 0;
-  transform: translateY(-8%);
+  transform: translateY(0);
 }
 .project.cedius .project-visual:hover img {
-  transform: translateY(-8%) scale(1.025);
+  transform: scale(1.025);
 }
 .project-open {
   color: var(--ink);
@@ -1142,6 +1145,12 @@ textarea::placeholder {
   height: 34px;
 }
 @media (max-width: 600px) {
+  .project-name-mobile {
+    display: inline;
+  }
+  .project-name-desktop {
+    display: none;
+  }
   .header-controls {
     margin-left: auto;
     gap: 12px;

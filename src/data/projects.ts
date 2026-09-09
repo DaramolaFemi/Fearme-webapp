@@ -28,6 +28,7 @@ export const projects = [
   {
     id: "03",
     name: "Harmattan 9ja Skies",
+    mobileName: "Harmattan",
     subtitle: "The skies, closer to home.",
     category: "Web applications",
     type: "Weather application",
@@ -60,7 +61,7 @@ export const projects = [
     description:
       "A premium barbershop experience brought online, with a refined visual system that guides clients from discovery to booking a chair.",
     href: "https://gleets.vercel.app/",
-    image: "/Images/gleets.jpg",
+    image: "/Images/gleets-ui.png",
     theme: "gleet",
     tags: ["Next.js", "Booking experience", "Premium UI"],
   },

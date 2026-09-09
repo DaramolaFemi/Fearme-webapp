@@ -243,8 +243,15 @@ export default function App() {
                   </div>
                   <div className="project-heading">
                     <h3>
-                      <span>{project.id}</span>
-                      {project.name}
+                      <span className="project-number">{project.id}</span>
+                      <span className="project-name-desktop">
+                        {project.name}
+                      </span>
+                      {project.mobileName && (
+                        <span className="project-name-mobile">
+                          {project.mobileName}
+                        </span>
+                      )}
                     </h3>
                     <span>{project.type}</span>
                   </div>
@@ -369,6 +376,13 @@ export default function App() {
             rel="noopener noreferrer"
           >
             X
+          </a>
+          <a
+            href="https://medium.com/@daramola772"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Medium
           </a>
         </div>
         <a href="#top">Back to top</a>
