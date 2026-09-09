@@ -21,6 +21,7 @@ export const projects = [
     description:
       "Customers, invoices, expenses, and financial insights in one workspace. Built for small businesses, with team roles and access controls that give each person the right view of the work.",
     href: "",
+    cta: "Request Access",
     image: "/Images/cedius.png",
     theme: "cedius",
     tags: ["Next.js", "React", "Prisma", "PostgreSQL"],
