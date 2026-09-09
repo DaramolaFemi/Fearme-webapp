@@ -1,0 +1,54 @@
+export const projects = [
+  {
+    id: "01",
+    name: "Bouldwood",
+    subtitle: "A slower kind of shopping.",
+    category: "Websites",
+    type: "Furniture showroom",
+    description:
+      "An editorial furniture storefront, from the first room to the final selection. Product discovery, thoughtful filters, and a persistent shopping bag bring the showroom into the browser.",
+    href: "https://bouldwood-showroom.vercel.app/",
+    image: "/Images/bouldwood.png",
+    theme: "bouldwood",
+    tags: ["React", "TypeScript", "E-commerce demo"],
+  },
+  {
+    id: "02",
+    name: "Cedius",
+    subtitle: "Less chasing numbers. More building a business.",
+    category: "Web applications",
+    type: "Business management SaaS",
+    description:
+      "Customers, invoices, expenses, and financial insights in one workspace. Built for small businesses, with team roles and access controls that give each person the right view of the work.",
+    href: "",
+    image: "/Images/cedius.png",
+    theme: "cedius",
+    tags: ["Next.js", "React", "Prisma", "PostgreSQL"],
+  },
+  {
+    id: "03",
+    name: "Harmattan",
+    subtitle: "The skies, closer to home.",
+    category: "Web applications",
+    type: "Weather application",
+    description:
+      "A weather app rooted in Nigerian conditions. Forecasts meet ambient sound and a little play, making the weather something you can feel.",
+    href: "https://harmattan-skies-over-naija-weather.vercel.app/",
+    theme: "weather",
+    tags: ["Weather", "Sound design", "Responsive UI"],
+  },
+  {
+    id: "04",
+    name: "Neon",
+    subtitle: "Built for one more round.",
+    category: "Web applications",
+    type: "Browser game",
+    description:
+      "An interactive browser game where timing and feedback carry the experience. A small space to explore the playful side of software.",
+    href: "https://neo-game-omega.vercel.app/",
+    image: "/Images/screenshot4.jpeg",
+    theme: "neon",
+    tags: ["Game development", "Interaction design"],
+  },
+];
+export const filters = ["All work", "Web applications", "Websites"];
