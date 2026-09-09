@@ -37,7 +37,18 @@ export default function DocumentationSection() {
                 >
                   {entry.status}
                 </span>
-                <span className="documentation-cta">Coming soon</span>
+                {entry.href ? (
+                  <a
+                    className="documentation-cta"
+                    href={entry.href}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Read documentation ↗
+                  </a>
+                ) : (
+                  <span className="documentation-cta">Coming soon</span>
+                )}
               </div>
               <div className="documentation-tags tags">
                 {entry.tags.map((tag) => (

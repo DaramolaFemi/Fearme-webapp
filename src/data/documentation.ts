@@ -2,9 +2,10 @@ export type DocumentationEntry = {
   id: string;
   title: string;
   category: string;
-  status: "In progress" | "Planned";
+  status: "Published" | "In progress" | "Planned";
   description: string;
   tags: string[];
+  href?: string;
 };
 
 export const documentation: DocumentationEntry[] = [
@@ -12,10 +13,11 @@ export const documentation: DocumentationEntry[] = [
     id: "01",
     title: "Cedius Developer Documentation",
     category: "REST API / Developer Documentation",
-    status: "In progress",
+    status: "Published",
     description:
       "Developer documentation for a business-management platform covering authentication, resources, workflows, webhooks, errors, and API integration.",
     tags: ["REST API", "Authentication", "Webhooks", "API Reference"],
+    href: "https://daramolafemi.github.io/cedius-developer-docs/",
   },
   {
     id: "02",

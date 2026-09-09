@@ -67,7 +67,7 @@ export default function App() {
             href="/Images/CV.pdf"
             download="Daramola-Femi-CV.pdf"
           >
-            Download résumé (PDF) <Arrow direction="down" />
+            Download résumé (PDF)
           </a>
         </nav>
         <div className="header-controls">
@@ -132,7 +132,7 @@ export default function App() {
                 it understood.
               </p>
               <a href="#work" className="text-link">
-                Explore my work <Arrow direction="down" />
+                Explore my work
               </a>
             </div>
             <div className="orbit" aria-hidden="true">

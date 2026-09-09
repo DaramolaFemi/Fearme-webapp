@@ -51,5 +51,18 @@ export const projects = [
     theme: "neon",
     tags: ["Game development", "Interaction design"],
   },
+  {
+    id: "05",
+    name: "Gleet",
+    subtitle: "More than a cut. A standard.",
+    category: "Web applications",
+    type: "Barbershop web app",
+    description:
+      "A premium barbershop experience brought online, with a refined visual system that guides clients from discovery to booking a chair.",
+    href: "https://gleets.vercel.app/",
+    image: "/Images/gleets.png",
+    theme: "gleet",
+    tags: ["Next.js", "Booking experience", "Premium UI"],
+  },
 ];
 export const filters = ["All work", "Web applications", "Websites"];
