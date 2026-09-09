@@ -5,6 +5,8 @@ import Logo from "./components/Logo";
 import ThemeToggle from "./components/ThemeToggle";
 import { projects, filters } from "./data/projects";
 import Contact from "./components/Contact";
+import DocumentationSection from "./components/DocumentationSection";
+import PoetrySection from "./components/PoetrySection";
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import Lenis from "lenis";
@@ -51,6 +53,8 @@ export default function App() {
         >
           {[
             ["Work", "#work"],
+            ["Documentation", "#documentation"],
+            ["Poetry", "#poetry"],
             ["About", "#about"],
             ["Contact", "#contact"],
           ].map(([label, href]) => (
@@ -152,7 +156,7 @@ export default function App() {
             </a>
           </div>
           <div className="hero-rule">
-            <span>Engineering / Interfaces / Documentation</span>
+            <span>Engineering / Documentation / Poetry</span>
             <span>
               Scroll to discover <Arrow direction="down" />
             </span>
@@ -260,9 +264,10 @@ export default function App() {
               ))}
           </div>
         </section>
+        <DocumentationSection />
         <section id="about" className="about section-pad">
           <div className="section-kicker">
-            <span>02 / The person behind the work</span>
+            <span>03 / The person behind the work</span>
             <span>Craft, with a point of view</span>
           </div>
           <div className="about-grid">
@@ -329,6 +334,7 @@ export default function App() {
             ))}
           </div>
         </section>
+        <PoetrySection />
         <div className="interlude" aria-hidden="true">
           <span>Make it work.</span>
           <em>Make it matter.</em>

@@ -278,3 +278,41 @@ test("navigation is quiet and each project has exactly one CTA", async ({
     ),
   ).toBe(true);
 });
+
+test("documentation and poetry extend the editorial portfolio", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const navigation = page.getByRole("navigation");
+  for (const section of [
+    "Work",
+    "Documentation",
+    "Poetry",
+    "About",
+    "Contact",
+  ]) {
+    await expect(
+      navigation.getByRole("link", { name: section, exact: true }),
+    ).toHaveAttribute("href", `#${section.toLowerCase()}`);
+  }
+
+  await expect(page.locator("#documentation")).toContainText(
+    "Cedius Developer Documentation",
+  );
+  await expect(page.locator("#documentation li")).toHaveCount(3);
+  await expect(page.locator("#documentation a")).toHaveCount(0);
+  await expect(page.locator("#poetry li")).toHaveCount(6);
+  await expect(page.locator("#poetry a")).toHaveCount(0);
+  await expect(page.locator("#poetry")).toContainText("The Boy That Writes");
+
+  const numberedKickers = await page
+    .locator(".section-kicker > span:first-child")
+    .allTextContents();
+  expect(numberedKickers).toEqual([
+    "01 / Selected work",
+    "02 / Documentation",
+    "03 / The person behind the work",
+    "04 / Selected poetry",
+    "05 / A conversation",
+  ]);
+});

@@ -45,7 +45,7 @@ export default function Contact() {
   return (
     <section id="contact" className="contact section-pad">
       <div className="section-kicker">
-        <span>03 / A conversation</span>
+        <span>05 / A conversation</span>
         <span>Good work starts here</span>
       </div>
       <div className="contact-grid">
