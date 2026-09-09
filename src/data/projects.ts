@@ -35,6 +35,7 @@ export const projects = [
       "A weather app rooted in Nigerian conditions. Forecasts meet ambient sound and a little play, making the weather something you can feel.",
     href: "https://harmattan-skies-over-naija-weather.vercel.app/",
     theme: "weather",
+    image: "/Images/harmattan-desktop.png",
     tags: ["Weather", "Sound design", "Responsive UI"],
   },
   {

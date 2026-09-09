@@ -564,7 +564,9 @@ textarea {
   background: transparent;
   padding: 15px 0;
   color: var(--ink);
-  font-size: 13px;
+  font-size: 16px;
+  line-height: 1.5;
+  scroll-margin-block: 100px;
   border-radius: 0;
 }
 textarea {
@@ -649,17 +651,23 @@ textarea::placeholder {
 }
 @media (prefers-reduced-motion: no-preference) {
   .orbit-ring {
-    animation: orbit-drift 14s ease-in-out infinite alternate;
+    animation: orbit-drift 10s ease-in-out infinite alternate;
   }
   .ring-two {
-    animation-delay: -5s;
+    animation-delay: -3.5s;
+    animation-duration: 12.5s;
+    animation-direction: alternate-reverse;
   }
   .ring-three {
-    animation-delay: -9s;
+    animation-delay: -7s;
+    animation-duration: 15s;
   }
   @keyframes orbit-drift {
+    from {
+      rotate: -12deg;
+    }
     to {
-      rotate: 35deg;
+      rotate: 58deg;
     }
   }
 }
@@ -977,14 +985,15 @@ textarea::placeholder {
 /* The same ink-and-paper identity, adapted for evening reading. */
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --paper: #1c1e1b;
-  --ink: #f0eee5;
-  --muted: #b9baae;
-  --line: #45483f;
-  --accent: #f18d72;
-  --panel: #252822;
-  --field-line: #737769;
-  --placeholder: #a7aa9d;
+  --paper: #201c27;
+  --ink: #f4edf3;
+  --muted: #bfb2c5;
+  --line: #4c4057;
+  --accent: #e8a0bd;
+  --panel: #2b2433;
+  --field-line: #88758f;
+  --placeholder: #b9a9c1;
+  --band: #73364f;
 }
 .logo {
   width: 136px;
@@ -1084,7 +1093,7 @@ textarea::placeholder {
   background: var(--panel);
 }
 :root[data-theme="dark"] .button:hover {
-  color: #1c1e1b;
+  color: #201c27;
 }
 .footer .logo {
   width: 112px;
@@ -1120,6 +1129,220 @@ textarea::placeholder {
 
 .project-status {
   display: inline-block;
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  text-decoration: none;
+}
+
+/* SVG arrows stay consistent on desktop and are omitted from touch layouts. */
+.direction-arrow {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  flex: 0 0 auto;
+}
+
+.project-open .direction-arrow {
+  width: 24px;
+  height: 24px;
+}
+.reading-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  height: 3px;
+  background: var(--accent);
+  transform-origin: left;
+  z-index: 100;
+  pointer-events: none;
+}
+.project.weather .project-visual {
+  background: #0a2018;
+}
+.project.weather .project-visual img {
+  object-fit: contain;
+  padding: 18px;
+}
+.contact label {
+  line-height: 1.6;
+  scroll-margin-block: 80px;
+}
+.contact input:focus-visible,
+.contact textarea:focus-visible {
+  outline-offset: 3px;
+}
+@media (min-width: 1024px) and (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .project-visual img {
+    transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .project-visual:hover img {
+    transform: scale(1.045);
+  }
+}
+@media (max-width: 1023px), (pointer: coarse) {
+  .direction-arrow,
+  .reading-progress {
+    display: none !important;
+  }
+  .contact input,
+  .contact textarea {
+    font-size: 16px;
+  }
+  .contact label {
+    font-size: 13px;
+  }
+  .contact input,
+  .contact textarea {
+    scroll-margin-top: 90px;
+    scroll-margin-bottom: 24px;
+  }
+  .contact {
+    overflow-anchor: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reading-progress {
+    display: none;
+  }
+}
+
+.hero-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+.hero-line > span {
+  display: block;
+}
+
+/* A single project action, with a quiet curved arrow on desktop. */
+.direction-arrow {
+  color: var(--accent);
+  width: 19px;
+  height: 19px;
+}
+.arrow-down {
+  width: 15px;
+  height: 15px;
+}
+.text-link {
+  align-items: center;
+  gap: 14px;
+  line-height: 1.5;
+}
+.hero-rule > span:last-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero-rule .arrow-down {
+  width: 12px;
+  height: 12px;
+}
+.project-open {
+  display: grid;
+  width: 54px;
+  height: 54px;
+  background: #f8f4ec;
+  border: 1px solid #e4ddd1;
+  border-radius: 50%;
+  color: #b63b2a;
+}
+.project-open .direction-arrow {
+  color: #b63b2a;
+  width: 24px;
+  height: 24px;
+}
+.project-visual:hover .project-open,
+:root[data-theme="dark"] .project-visual:hover .project-open {
+  background: #fffaf4;
+  transform: none;
+}
+.project-open:hover .direction-arrow {
+  transform: translate(2px, -2px);
+}
+.project-open .direction-arrow {
+  transition: transform 0.25s ease;
+}
+.project-cta-label {
+  display: none;
+}
+.project-status {
+  display: block;
+  text-decoration: none;
+}
+.project.weather .project-visual {
+  aspect-ratio: 1.78;
+}
+.project.weather .project-visual img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  padding: 0;
+  object-fit: initial;
+  transform: translateY(-9.8%);
+}
+.project.weather .project-visual:hover img {
+  transform: translateY(-9.8%);
+}
+.footer {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  gap: 24px;
+  padding: 36px 0;
+  font-size: 13px;
+}
+.footer-copyright {
+  font-size: 15px;
+  line-height: 1.6;
+  text-align: center;
+}
+.footer-socials {
+  flex-wrap: wrap;
+}
+.footer > a:last-child {
+  white-space: nowrap;
+}
+@media (max-width: 1023px), (pointer: coarse) {
+  .project-open {
+    width: 52px;
+    height: 52px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .project-cta-label {
+    display: block;
+  }
+}
+@media (max-width: 800px) {
+  .footer {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "brand top" "copyright copyright" "social social";
+    gap: 20px;
+  }
+  .footer .wordmark {
+    grid-area: brand;
+    justify-self: start;
+  }
+  .footer > a:last-child {
+    grid-area: top;
+    justify-self: end;
+    align-self: center;
+  }
+  .footer .footer-copyright {
+    grid-area: copyright;
+    text-align: center;
+    font-size: 15px;
+  }
+  .footer .footer-socials {
+    grid-area: social;
+    justify-content: center;
+    gap: 30px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-open .direction-arrow {
+    transition: none;
+  }
 }

@@ -21,7 +21,7 @@ The root directory is the application. The unused nested Vite starter and obsole
 
 ## Content
 
-Edit projects in `src/data/projects.ts`. Harmattan uses an explicitly labelled illustration because the original screenshot was already deleted in the working tree. Replace it with a current screenshot when available. Both résumé links serve the supplied two-page PDF from `public/Images/CV.pdf`. Generic testimonials, unverified numerical claims, and projects without live links have been removed from the public presentation.
+Edit projects in `src/data/projects.ts`. Harmattan uses the original desktop screenshot supplied in the project archive, without a colour filter. Browser chrome is hidden by the image container. Both résumé links serve the supplied two-page PDF from `public/Images/CV.pdf`. Generic testimonials, unverified numerical claims, and projects without live links have been removed from the public presentation.
 
 Motion handles the hero entrance; CSS handles the orbital mark and hover details; Lenis adds desktop wheel smoothing. Reduced-motion preferences disable nonessential animation. Mobile keeps native scrolling. Additional animation engines would duplicate this functionality.
 
@@ -42,3 +42,5 @@ Repository history is attributed to Daramola Femi using the existing GitHub iden
 The custom F mark and vector Femi lettering live in `src/components/Logo.tsx`; `public/favicon.svg` uses the same mark. The header switch follows the system theme on the first visit and stores an explicit choice locally. `public/theme.js` applies the preference before the first paint under the existing CSP. Storage restrictions do not prevent toggling.
 
 Bouldwood is the lead project and links to its live HTTPS site. Cedius replaces LexDesigns, uses the supplied screenshot, and is labelled not yet hosted. Its walkthrough link leads to contact. Project filter counts are derived from the project data.
+
+Desktop arrows are curved SVGs and are hidden on touch devices and screens narrower than 1024px. Each project has one circular link, with a text label on mobile. Main navigation and footer links do not use arrows. Form controls use 16px text to avoid iOS focus zoom; native browser zoom remains available. Dark mode uses plum, rose, and ivory, separate from Bouldwood’s green palette. Scroll reveals use Motion, while Lenis runs only on wide screens with a fine pointer and no reduced-motion preference. The contact form does not sit inside a transformed reveal container.

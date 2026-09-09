@@ -200,3 +200,81 @@ test("resume is the PDF and every internal link resolves", async ({
     /[—–✳]|[\u{1F300}-\u{1FAFF}]/u,
   );
 });
+
+test("touch layouts hide arrows and fields keep readable sizing on focus", async ({
+  browser,
+}) => {
+  const context = await browser.newContext({
+    viewport: { width: 390, height: 844 },
+    isMobile: true,
+    hasTouch: true,
+  });
+  const page = await context.newPage();
+  await page.goto("/");
+  for (const arrow of await page.locator(".direction-arrow").all())
+    await expect(arrow).toBeHidden();
+  for (const field of await page
+    .locator('input:not([name="_gotcha"]), textarea')
+    .all()) {
+    expect(
+      await field.evaluate((element) =>
+        parseFloat(getComputedStyle(element).fontSize),
+      ),
+    ).toBeGreaterThanOrEqual(16);
+    await field.focus();
+    await expect(field).toBeFocused();
+    expect(await page.evaluate(() => window.visualViewport?.scale ?? 1)).toBe(
+      1,
+    );
+  }
+  await expect(page.locator(".contact-grid")).toHaveCSS("transform", "none");
+  await expect(page.locator(".weather img")).toHaveAttribute(
+    "src",
+    "/Images/harmattan-desktop.png",
+  );
+  await context.close();
+});
+test("desktop arrows are vectors and reduced motion stays static", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  await expect(page.locator(".resume svg.direction-arrow")).toBeVisible();
+  await expect(page.locator(".reading-progress")).toBeHidden();
+  await expect(page.locator("h1")).toBeVisible();
+});
+
+test("navigation is quiet and each project has exactly one CTA", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/");
+  await expect(page.locator("#navigation .direction-arrow")).toHaveCount(1);
+  await expect(page.locator(".footer .direction-arrow")).toHaveCount(0);
+  for (const project of await page.locator("article.project").all()) {
+    await expect(project.locator("a")).toHaveCount(1);
+    await expect(project.locator("a")).toHaveClass("project-open");
+  }
+  await expect(page.locator(".weather img")).toHaveAttribute(
+    "src",
+    "/Images/harmattan-desktop.png",
+  );
+  await page.setViewportSize({ width: 390, height: 844 });
+  for (const project of await page.locator("article.project").all()) {
+    await project.scrollIntoViewIfNeeded();
+    await expect(project.locator("a.project-open")).toBeVisible();
+    await expect(project.locator(".project-cta-label")).toBeVisible();
+    await expect(project.locator(".direction-arrow")).toBeHidden();
+  }
+  const footer = page.locator(".footer-copyright");
+  await footer.scrollIntoViewIfNeeded();
+  expect(
+    await footer.evaluate((el) => parseFloat(getComputedStyle(el).fontSize)),
+  ).toBeGreaterThanOrEqual(15);
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBe(true);
+});

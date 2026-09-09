@@ -1,3 +1,5 @@
+import ScrollReveal, { ReadingProgress } from "./components/ScrollReveal";
+import { useDesktopMotion } from "./hooks/useDesktopMotion";
 import Arrow from "./components/Arrow";
 import Logo from "./components/Logo";
 import ThemeToggle from "./components/ThemeToggle";
@@ -11,16 +13,17 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [filter, setFilter] = useState("All work");
   const reduced = useReducedMotion();
+  const desktopMotion = useDesktopMotion();
   const menuButton = useRef<HTMLButtonElement>(null);
   useEffect(() => {
-    if (reduced || !window.matchMedia("(pointer: fine)").matches) return;
+    if (!desktopMotion) return;
     const lenis = new Lenis({
       autoRaf: true,
       anchors: { offset: -90 },
-      duration: 0.9,
+      duration: 1.05,
     });
     return () => lenis.destroy();
-  }, [reduced]);
+  }, [desktopMotion]);
   useEffect(() => {
     function close(event: KeyboardEvent) {
       if (event.key === "Escape" && menuOpen) {
@@ -33,6 +36,7 @@ export default function App() {
   }, [menuOpen]);
   return (
     <>
+      <ReadingProgress />
       <a className="skip-link" href="#main">
         Skip to content
       </a>
@@ -52,7 +56,6 @@ export default function App() {
           ].map(([label, href]) => (
             <a key={href} href={href} onClick={() => setMenuOpen(false)}>
               {label}
-              <Arrow />
             </a>
           ))}
           <a
@@ -60,7 +63,7 @@ export default function App() {
             href="/Images/CV.pdf"
             download="Daramola-Femi-CV.pdf"
           >
-            Download résumé (PDF) <span aria-hidden="true">↓</span>
+            Download résumé (PDF) <Arrow direction="down" />
           </a>
         </nav>
         <div className="header-controls">
@@ -85,14 +88,35 @@ export default function App() {
             <span>Based in Nigeria · Working everywhere</span>
           </div>
           <motion.div
-            initial={reduced ? false : { opacity: 0, y: 24 }}
+            initial={
+              reduced ? false : { opacity: 0, y: desktopMotion ? 24 : 0 }
+            }
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.85 }}
           >
             <h1>
-              Code with <em>intent.</em>
-              <br />
-              Words with <em>weight.</em>
+              <span className="hero-line">
+                <motion.span
+                  initial={desktopMotion ? { y: "110%" } : false}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  Code with <em>intent.</em>
+                </motion.span>
+              </span>
+              <span className="hero-line">
+                <motion.span
+                  initial={desktopMotion ? { y: "110%" } : false}
+                  animate={{ y: 0 }}
+                  transition={{
+                    duration: 1,
+                    delay: 0.14,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                >
+                  Words with <em>weight.</em>
+                </motion.span>
+              </span>
             </h1>
           </motion.div>
           <div className="hero-bottom">
@@ -104,7 +128,7 @@ export default function App() {
                 it understood.
               </p>
               <a href="#work" className="text-link">
-                Explore my work <span aria-hidden="true">↓</span>
+                Explore my work <Arrow direction="down" />
               </a>
             </div>
             <div className="orbit" aria-hidden="true">
@@ -128,7 +152,7 @@ export default function App() {
           <div className="hero-rule">
             <span>Engineering / Interfaces / Documentation</span>
             <span>
-              Scroll to discover <span aria-hidden="true">↓</span>
+              Scroll to discover <Arrow direction="down" />
             </span>
           </div>
         </section>
@@ -137,7 +161,7 @@ export default function App() {
             <span>01 / Selected work</span>
             <span>Ideas, made tangible</span>
           </div>
-          <div className="section-heading">
+          <ScrollReveal className="section-heading">
             <h2>
               A few things
               <br />
@@ -148,7 +172,7 @@ export default function App() {
               <br />
               The same care in the details.
             </p>
-          </div>
+          </ScrollReveal>
           <div className="filters" role="group" aria-label="Filter projects">
             {filters.map((item) => (
               <button
@@ -176,56 +200,41 @@ export default function App() {
                   className={`project ${project.theme}`}
                   id={`project-${project.theme}`}
                   key={project.id}
-                  initial={false}
-                  whileInView={{ y: 0 }}
-                  whileHover={reduced ? undefined : { y: -3 }}
-                  transition={{ type: "spring", stiffness: 200, damping: 24 }}
-                  viewport={{ once: true }}
+                  initial={
+                    reduced ? false : { opacity: 0, y: desktopMotion ? 48 : 0 }
+                  }
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: desktopMotion ? 0.9 : 0.35,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  viewport={{ once: true, amount: 0.08 }}
                 >
-                  <a
-                    className="project-visual"
-                    href={project.href || "#contact"}
-                    target={project.href ? "_blank" : undefined}
-                    rel="noopener noreferrer"
-                    aria-label={
-                      project.href
-                        ? `Visit ${project.name} (opens in a new tab)`
-                        : `Request a walkthrough of ${project.name}`
-                    }
-                  >
-                    {project.image ? (
-                      <img
-                        src={project.image}
-                        alt={`${project.name} interface`}
-                        loading={project.id === "01" ? "eager" : "lazy"}
-                        width={1200}
-                        height={800}
-                      />
-                    ) : (
-                      <div className="weather-art">
-                        <span className="weather-location">LAGOS, NIGERIA</span>
-                        <div className="sun" />
-                        <span className="weather-degree">
-                          29<span>°</span>
-                        </span>
-                        <div className="weather-caption">
-                          <span>
-                            A little sun.
-                            <br />A slower afternoon.
-                          </span>
-                          <span>
-                            Harmattan
-                            <br />
-                            The 9ja Skies
-                          </span>
-                        </div>
-                        <span className="art-note">Project illustration</span>
-                      </div>
-                    )}
-                    <span className="project-open">
+                  <div className="project-visual">
+                    <img
+                      src={project.image}
+                      alt={`${project.name} desktop interface`}
+                      loading={project.id === "01" ? "eager" : "lazy"}
+                      width={1200}
+                      height={800}
+                    />
+                    <a
+                      className="project-open"
+                      href={project.href || "#contact"}
+                      target={project.href ? "_blank" : undefined}
+                      rel="noopener noreferrer"
+                      aria-label={
+                        project.href
+                          ? `Visit ${project.name} (opens in a new tab)`
+                          : `Request a walkthrough of ${project.name}`
+                      }
+                    >
                       <Arrow />
-                    </span>
-                  </a>
+                      <span className="project-cta-label" aria-hidden="true">
+                        {project.href ? "View" : "Ask"}
+                      </span>
+                    </a>
+                  </div>
                   <div className="project-heading">
                     <h3>
                       <span>{project.id}</span>
@@ -233,17 +242,11 @@ export default function App() {
                     </h3>
                     <span>{project.type}</span>
                   </div>
-                  <a
-                    className="project-status"
-                    href={project.href || "#contact"}
-                    target={project.href ? "_blank" : undefined}
-                    rel="noopener noreferrer"
-                  >
+                  <p className="project-status">
                     {project.href
-                      ? "View live project"
-                      : "Request a walkthrough (not yet hosted)"}{" "}
-                    <Arrow />
-                  </a>
+                      ? "Live project"
+                      : "In development, not yet hosted"}
+                  </p>
                   <h4>{project.subtitle}</h4>
                   <p>{project.description}</p>
                   <div className="tags">
@@ -270,7 +273,7 @@ export default function App() {
                 Daramola Femi<span>Software engineer. Technical writer.</span>
               </div>
             </div>
-            <div className="about-copy">
+            <ScrollReveal className="about-copy" delay={0.12}>
               <p className="lead">
                 I care about what happens on both sides of an interface: the
                 system that makes it work, and the person trying to use it.
@@ -290,9 +293,9 @@ export default function App() {
                 href="/Images/CV.pdf"
                 download="Daramola-Femi-CV.pdf"
               >
-                A closer look at my experience <span aria-hidden="true">↓</span>
+                A closer look at my experience <Arrow direction="down" />
               </a>
-            </div>
+            </ScrollReveal>
           </div>
           <div className="capabilities">
             {[
@@ -315,12 +318,12 @@ export default function App() {
                 tools: "JavaScript / Solidity / Interaction design",
               },
             ].map((item) => (
-              <div key={item.n}>
+              <ScrollReveal key={item.n} delay={Number(item.n) * 0.08}>
                 <span className="small-label">{item.n}</span>
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
                 <span className="tool-list">{item.tools}</span>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </section>
@@ -334,33 +337,33 @@ export default function App() {
         <a className="wordmark" href="#top" aria-label="Femi: back to top">
           <Logo />
         </a>
-        <span>© {new Date().getFullYear()} Daramola Femi</span>
-        <div>
+        <span className="footer-copyright">
+          © {new Date().getFullYear()} Daramola Femi
+        </span>
+        <div className="footer-socials">
           <a
             href="https://github.com/DaramolaFemi"
             target="_blank"
             rel="noopener noreferrer"
           >
-            GitHub <Arrow />
+            GitHub
           </a>
           <a
             href="https://www.linkedin.com/in/femi-daramola-1218591a3/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            LinkedIn <Arrow />
+            LinkedIn
           </a>
           <a
             href="https://x.com/darams410"
             target="_blank"
             rel="noopener noreferrer"
           >
-            X <Arrow />
+            X
           </a>
         </div>
-        <a href="#top">
-          Back to top <span aria-hidden="true">↑</span>
-        </a>
+        <a href="#top">Back to top</a>
       </footer>
     </>
   );

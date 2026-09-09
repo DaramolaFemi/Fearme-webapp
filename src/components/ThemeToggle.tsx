@@ -8,7 +8,7 @@ export default function ThemeToggle() {
     document.documentElement.dataset.theme = theme;
     document
       .querySelector('meta[name="theme-color"]')
-      ?.setAttribute("content", theme === "dark" ? "#1c1e1b" : "#f3f0e8");
+      ?.setAttribute("content", theme === "dark" ? "#201c27" : "#f3f0e8");
   }, [theme]);
   useEffect(() => {
     const media = matchMedia("(prefers-color-scheme: dark)");
