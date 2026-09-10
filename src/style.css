@@ -1207,7 +1207,13 @@ textarea::placeholder {
     aspect-ratio: 1.94;
   }
   .project.gleet .project-visual {
-    aspect-ratio: 390 / 844;
+    aspect-ratio: 1.3;
+    background: #141712;
+  }
+  .project.gleet .project-visual img {
+    object-fit: contain;
+    object-position: center;
+    transform: none;
   }
 }
 
