@@ -217,13 +217,21 @@ export default function App() {
                   viewport={{ once: true, amount: 0.08 }}
                 >
                   <div className="project-visual">
-                    <img
-                      src={project.image}
-                      alt={`${project.name} desktop interface`}
-                      loading={project.id === "01" ? "eager" : "lazy"}
-                      width={1200}
-                      height={800}
-                    />
+                    <picture>
+                      {project.mobileImage && (
+                        <source
+                          media="(max-width: 600px)"
+                          srcSet={project.mobileImage}
+                        />
+                      )}
+                      <img
+                        src={project.image}
+                        alt={`${project.name} interface`}
+                        loading={project.id === "01" ? "eager" : "lazy"}
+                        width={1200}
+                        height={800}
+                      />
+                    </picture>
                     <a
                       className="project-open"
                       href={project.href || "#contact"}

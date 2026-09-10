@@ -21,7 +21,7 @@ export const projects = [
     description:
       "Customers, invoices, expenses, and financial insights in one workspace. Built for small businesses, with team roles and access controls that give each person the right view of the work.",
     href: "",
-    image: "/Images/cedius.png",
+    image: "/Images/cedius1.jpeg",
     theme: "cedius",
     tags: ["Next.js", "React", "Prisma", "PostgreSQL"],
   },
@@ -62,6 +62,7 @@ export const projects = [
       "A premium barbershop experience brought online, with a refined visual system that guides clients from discovery to booking a chair.",
     href: "https://gleets.vercel.app/",
     image: "/Images/gleets-ui.png",
+    mobileImage: "/Images/gleets-mobile.png",
     theme: "gleet",
     tags: ["Next.js", "Booking experience", "Premium UI"],
   },

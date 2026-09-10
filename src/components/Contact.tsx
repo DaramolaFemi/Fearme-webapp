@@ -60,7 +60,7 @@ export default function Contact() {
             idea you keep coming back to. I’d like to hear it.
           </p>
           <a className="email-link" href="mailto:daramola772@gmail.com">
-            daramola772@gmail.com <Arrow />
+            daramola772@gmail.com
           </a>
         </div>
         <form onSubmit={submit} aria-label="Contact Femi">
