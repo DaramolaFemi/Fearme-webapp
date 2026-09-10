@@ -15,7 +15,7 @@ export const documentation: DocumentationEntry[] = [
     category: "REST API / Developer Documentation",
     status: "Published",
     description:
-      "Developer documentation for a business-management platform covering authentication, resources, workflows, webhooks, errors, and API integration.",
+      "Developer documentation for a business-management platform covering authentication, resources, workflows, webhooks, errors, API conventions, integration behavior, and the practical patterns developers need to move through the system with clarity.",
     tags: ["REST API", "Authentication", "Webhooks", "API Reference"],
     href: "https://daramolafemi.github.io/cedius-developer-docs/",
   },
@@ -23,10 +23,11 @@ export const documentation: DocumentationEntry[] = [
     id: "02",
     title: "ERC-20 Escrow Smart Contract Documentation",
     category: "Web3 / Smart Contract Documentation",
-    status: "Planned",
+    status: "Published",
     description:
-      "Developer documentation for an ERC-20 escrow system covering contract architecture, escrow lifecycle, client and freelancer roles, token funding, platform fees, refunds, withdrawals, events, custom errors, and integration behavior.",
+      "Developer documentation for an ERC-20 escrow system covering contract architecture, escrow lifecycle, client and freelancer roles, token funding, platform fees, refunds, withdrawals, events, custom errors, frontend integration, and germane security considerations.",
     tags: ["Solidity", "Ethereum", "ERC-20", "Escrow", "Smart Contracts"],
+    href: "https://daramolafemi.github.io/erc20-escrow-smart-contract-docs/",
   },
   {
     id: "03",
