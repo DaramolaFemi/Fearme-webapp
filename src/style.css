@@ -1156,8 +1156,8 @@ textarea::placeholder {
   aspect-ratio: 1.78;
 }
 .project.cedius .project-visual img {
-  height: auto;
-  object-fit: initial;
+  height: 100%;
+  object-fit: cover;
   position: absolute;
   top: 0;
   left: 0;
@@ -1204,7 +1204,13 @@ textarea::placeholder {
     aspect-ratio: 1.6;
   }
   .project.cedius .project-visual {
-    aspect-ratio: 1.94;
+    aspect-ratio: 1.3;
+    background: #101c2e;
+  }
+  .project.cedius .project-visual img {
+    object-fit: contain;
+    object-position: center;
+    transform: none;
   }
   .project.gleet .project-visual {
     aspect-ratio: 1.3;

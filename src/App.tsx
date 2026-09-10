@@ -255,11 +255,9 @@ export default function App() {
                       <span className="project-name-desktop">
                         {project.name}
                       </span>
-                      {project.mobileName && (
-                        <span className="project-name-mobile">
-                          {project.mobileName}
-                        </span>
-                      )}
+                      <span className="project-name-mobile">
+                        {project.mobileName || project.name}
+                      </span>
                     </h3>
                     <span>{project.type}</span>
                   </div>
