@@ -535,6 +535,7 @@ h2 {
   color: var(--band-text);
   font-size: clamp(24px, 5.3vw, 88px);
   letter-spacing: -0.04em;
+  overflow: hidden;
 }
 .asterisk {
   font-size: 1.3em;
@@ -609,6 +610,9 @@ textarea::placeholder {
   font-size: 10px;
   line-height: 1.6;
   color: var(--muted);
+}
+.form-bottom .button:disabled {
+  opacity: 1;
 }
 .button {
   background: rgba(36, 39, 32, 0.04);
@@ -688,12 +692,26 @@ textarea::placeholder {
     animation-delay: -7s;
     animation-duration: 15s;
   }
+  .interlude span {
+    animation: interlude-drift 5.5s ease-in-out infinite alternate;
+  }
+  .interlude em {
+    animation: interlude-drift 5.5s ease-in-out infinite alternate-reverse;
+  }
   @keyframes orbit-drift {
     from {
       rotate: -12deg;
     }
     to {
       rotate: 58deg;
+    }
+  }
+  @keyframes interlude-drift {
+    from {
+      transform: translateX(-16px);
+    }
+    to {
+      transform: translateX(16px);
     }
   }
 }

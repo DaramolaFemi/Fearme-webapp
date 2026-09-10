@@ -21,12 +21,12 @@ export const documentation: DocumentationEntry[] = [
   },
   {
     id: "02",
-    title: "VaultX Smart Contract Documentation",
+    title: "ERC-20 Escrow Smart Contract Documentation",
     category: "Web3 / Smart Contract Documentation",
     status: "Planned",
     description:
-      "Technical documentation for a Web3 product covering contract architecture, staking, governance, wallet interaction, methods, events, and frontend integration.",
-    tags: ["Solidity", "Ethereum", "Smart Contracts", "Web3"],
+      "Developer documentation for an ERC-20 escrow system covering contract architecture, escrow lifecycle, client and freelancer roles, token funding, platform fees, refunds, withdrawals, events, custom errors, and integration behavior.",
+    tags: ["Solidity", "Ethereum", "ERC-20", "Escrow", "Smart Contracts"],
   },
   {
     id: "03",
