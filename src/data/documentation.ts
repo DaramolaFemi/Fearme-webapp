@@ -33,9 +33,10 @@ export const documentation: DocumentationEntry[] = [
     id: "03",
     title: "Harmattan Developer & Product Guide",
     category: "Application Documentation",
-    status: "Planned",
+    status: "Published",
     description:
-      "Developer and product documentation for Harmattan, covering API integration, architecture, weather data, permissions, product behavior, and troubleshooting.",
-    tags: ["Weather API", "Integration", "Product Guide", "Troubleshooting"],
+      "Developer and product documentation for Harmattan — The 9ja Skies, covering application architecture, Open-Meteo integration, weather-code interpretation, Nigerian city data, local state and persistence, product behaviour, ambient audio, accessibility, troubleshooting, the 9jaRun companion experience, and the practical design decisions that shape a distinctly local weather product.",
+    tags: ["Weather API", "Open-Meteo", "Product Guide", "JavaScript", "Troubleshooting"],
+    href: "https://daramolafemi.github.io/harmattan-developer-product-guide/",
   },
 ];
