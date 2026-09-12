@@ -9,11 +9,17 @@ import "@fontsource/instrument-serif/latin-400-italic.css";
 import "lenis/dist/lenis.css";
 import "./style.css";
 import App from "./App";
+import PoemPage from "./components/PoemPage";
+import { poems } from "./data/poetry";
+
+const pathname = window.location.pathname.replace(/\/+$/, "");
+const isPoetry = pathname === "/poetry" || pathname.startsWith("/poetry/");
+const poem = poems.find((entry) => pathname === `/poetry/${entry.slug}`);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <MotionConfig reducedMotion="user">
-      <App />
+      {isPoetry ? <PoemPage poem={poem} /> : <App />}
     </MotionConfig>
   </React.StrictMode>,
 );

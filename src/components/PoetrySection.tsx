@@ -12,10 +12,11 @@ export default function PoetrySection() {
       <div className="poetry-intro">
         <ScrollReveal>
           <h2>
-            Somewhere between
+            Against the logic of code
             <br />
-            code and the graveyard,
-            <br />I <em>still write.</em>
+            and the silence of the grave,
+            <br />
+            <em>I bleed ink.</em>
           </h2>
         </ScrollReveal>
         <ScrollReveal className="poetry-copy" delay={0.1}>
@@ -32,7 +33,13 @@ export default function PoetrySection() {
             <li key={poem.id}>
               <span>{poem.id}</span>
               <h3>{poem.title}</h3>
-              <span className="poetry-status">Coming soon</span>
+              <a
+                className="poetry-status"
+                href={`/poetry/${poem.slug}`}
+                aria-label={`Read ${poem.title}`}
+              >
+                {poem.year} · Read poem ↗
+              </a>
             </li>
           ))}
         </ol>

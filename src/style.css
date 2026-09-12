@@ -1773,3 +1773,121 @@ button:focus-visible .direction-arrow {
     height: 14px;
   }
 }
+
+/* Reading pages extend the selected poetry typography and divider system. */
+.poem-header {
+  gap: 24px;
+}
+.poem-back {
+  margin-left: auto;
+  font-size: 12px;
+}
+.poem-page {
+  max-width: 748px;
+  margin: 0 auto;
+  padding: 72px 24px 64px;
+}
+.poem-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+.poem-page h1 {
+  font-family: "Instrument Serif", serif;
+  font-size: clamp(46px, 6vw, 80px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin: 28px 0 56px;
+  overflow-wrap: anywhere;
+}
+.poem-body {
+  font-family: "Instrument Serif", serif;
+  font-size: clamp(20px, 1.6vw, 26px);
+  line-height: 1.65;
+  overflow-wrap: break-word;
+}
+.poem-body p {
+  white-space: pre-wrap;
+  margin: 0 0 1.5em;
+}
+.poem-signature {
+  margin-top: 48px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.poem-publication {
+  color: var(--muted);
+  margin-top: 12px;
+}
+.poem-publication a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.poem-navigation {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  border-top: 1px solid var(--line);
+  margin-top: 56px;
+  padding-top: 24px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.poem-navigation span {
+  color: var(--muted);
+}
+.poem-navigation a:hover,
+.poem-back:hover,
+.poetry-status:hover {
+  color: var(--accent);
+}
+.form-status:empty {
+  margin: 0;
+}
+.form-status.success {
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  background: var(--panel);
+  padding: 20px;
+  font-size: 14px;
+}
+.form-status.success strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+}
+.form-status.success p {
+  margin: 8px 0 0;
+}
+.form-bottom .button:disabled {
+  cursor: default;
+}
+@media (max-width: 600px) {
+  .poem-header {
+    height: auto;
+    min-height: 94px;
+    padding-block: 20px;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .poem-header .poem-back {
+    order: 3;
+    width: 100%;
+    margin: 0;
+  }
+  .poem-header .theme-toggle {
+    margin-left: auto;
+  }
+  .poem-page {
+    padding-top: 44px;
+  }
+  .poem-navigation {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

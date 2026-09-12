@@ -1,0 +1,26 @@
+const stanzas: string[] = [
+  "Tell me,\nwhat kind of woman makes a graveyard feel like home?\nHow do you make a shattered mirror hold a flawless image?",
+  "Tell them\nhow you fed my flaws to the gaunt hounds of my past,\nhow you stitched our souls together,\nanointed the seam with light,\nthen knotted it with a curse\neven eternity cannot unknot.",
+  "Long before your arrival,\nI bled the dead into the stone,\na vault where echoes wore\nthe names of those who came before.",
+  "Some ghosts were vile—\ndeceit with bloodless hands,\ndark desire stitched into a cheap dress,\ndrunkenness breathing through borrowed lips,\nlove with a curse beneath its tongue.",
+  "I buried their remnants\nwith hands split by betrayal, fingers tarred by trust,\nthen sealed each grave.\nEven mercy dared not knock.",
+  "Then came you,\nambling through my cursed halls.\nYou woke something unbidden,\na pulse I thought dead.",
+  "And I, abandoned by heaven, discarded by hell,\ntore myself from the heresy\nthis world branded into my blood.",
+  "You didn't mend me;\nyou unmade the ruin\nand rewrote it.",
+  "I dreamed of us.",
+  "Not the staged tragedy of Romeo and Juliet,\nnor Bonnie and Clyde with sirens at their heels.",
+  "Ours is quieter, more dangerous:\na love that leaves no evidence,\nno legend left to lie about us.",
+  "I want to watch you\nbecome a sanctuary for what comes after us—\nnot born, but summoned;\nour light, our dream.",
+  "When age has thinned us to breath,\nI want us counting the hollow knocks beneath each other's ribs,\nyour gaze buried in mine,\nour hands sealed in a covenant\ndeath must break itself to enter.",
+  "When death slips in without knocking,\nbury me in my wedding suit—\npressed clean, the shirt starched,\na corpse dressed for a life ahead.",
+  "My Maker must be waiting\nto see the relic still burning in my chest,\nthe one that carries your name:\nAnike.",
+  "Beneath the grass,\nwhere soil presses its weight into me\nand insects crawl into the hollows of my flesh,\nfeasting, they will taste you—",
+  "the wine of your mouth,\nthe litany in your gaze.",
+  "The light you left in me will make them pause,\nwondering at a love decay could not finish,\nthat death could not wash clean,\nthat haunts the grave like a pulse.",
+  "They will wonder what you look like,\nAnike mi.",
+  "When I die, write me a love poem.\nTuck it into my breast pocket\nlike a secret meant to follow me.",
+  "I will carry it through the silence of my grave,\nread it to my mother\nin the world that waits beyond,\nand tell her\nI found in you the home\nthis world never gave me.",
+  "I will wait for you\nwhere time is buried\nand silence snores.",
+];
+
+export default stanzas;

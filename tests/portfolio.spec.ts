@@ -68,12 +68,35 @@ test("contact handles success and failure without sending messages", async ({
   }
   await fill();
   await expect(page.getByRole("status")).toContainText(
-    "Your note is on its way",
+    "Message sent to Daramola Femi.",
   );
   await expect(page.getByLabel("Your name", { exact: true })).toHaveValue("");
+  await expect(page.getByRole("status")).toContainText(
+    "Thank you. I’ve received your note and will get back to you soon.",
+  );
+  await expect(page.getByRole("status")).toHaveAttribute("aria-live", "polite");
+  await expect(page.getByRole("status")).toBeFocused();
+  await expect(
+    page.getByRole("button", { name: "Message sent", exact: true }),
+  ).toBeDisabled();
+  await expect(page.getByLabel("Email address", { exact: true })).toHaveValue(
+    "",
+  );
+  await expect(page.getByLabel("A little about your project")).toHaveValue("");
   fail = true;
   await fill();
-  await expect(page.getByRole("status")).toContainText("could not be sent");
+  await expect(page.getByRole("alert")).toHaveText(
+    "Your message could not be sent. Please try again or email me directly.",
+  );
+  await expect(
+    page.getByText("Message sent to Daramola Femi.", { exact: true }),
+  ).toHaveCount(0);
+  await expect(page.getByLabel("Email address", { exact: true })).toHaveValue(
+    "test@example.com",
+  );
+  await expect(page.getByLabel("A little about your project")).toHaveValue(
+    "A test project enquiry for validation.",
+  );
   await expect(page.getByLabel("Your name", { exact: true })).toHaveValue(
     "Test Visitor",
   );
@@ -301,9 +324,6 @@ test("documentation and poetry extend the editorial portfolio", async ({
   );
   await expect(page.locator("#documentation li")).toHaveCount(3);
   await expect(page.locator("#documentation a")).toHaveCount(0);
-  await expect(page.locator("#poetry li")).toHaveCount(6);
-  await expect(page.locator("#poetry a")).toHaveCount(0);
-  await expect(page.locator("#poetry")).toContainText("The Boy That Writes");
 
   const numberedKickers = await page
     .locator(".section-kicker > span:first-child")
@@ -315,4 +335,108 @@ test("documentation and poetry extend the editorial portfolio", async ({
     "04 / Selected poetry",
     "05 / A conversation",
   ]);
+});
+
+for (const width of [320, 390, 1440]) {
+  test(`poem reading, themes, and direct refresh at ${width}px`, async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.emulateMedia({ reducedMotion: "reduce", colorScheme: "light" });
+    await page.goto("/poetry/the-boy-who-writes");
+    await page.reload();
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+      "The Boy Who Writes",
+    );
+    await expect(page).toHaveTitle("The Boy Who Writes — Daramola Femi");
+    await expect(page.locator('meta[name="description"]')).toHaveAttribute(
+      "content",
+      "The Boy Who Writes, a poem by Daramola Femi.",
+    );
+    await expect(page.locator("main")).toContainText(
+      "I buried a boy beneath my keyboard",
+    );
+    await expect(page.locator("main")).toContainText("Daramola Femi, 2026");
+    await expect(
+      page.getByRole("link", { name: "First published on GitHub, 2026." }),
+    ).toHaveAttribute("href", "https://github.com/DaramolaFemi/Poetry");
+    await expect(
+      page.getByRole("link", { name: "Back to selected poetry" }),
+    ).toHaveAttribute("href", "/#poetry");
+    await expect(page.getByRole("link", { name: /Previous poem/ })).toHaveCount(
+      0,
+    );
+    expect(await page.locator(".poem-body p").first().textContent()).toBe(
+      "I buried a boy beneath my keyboard,\nbut every night he returns smelling of moonlight.",
+    );
+    for (const theme of ["light", "dark"]) {
+      if (theme === "dark") await page.getByRole("switch").click();
+      expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+      expect(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth <= innerWidth,
+        ),
+      ).toBe(true);
+    }
+    await page.getByRole("link", { name: "Next poem →" }).focus();
+    await page.keyboard.press("Enter");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+      "Bones and Flowers",
+    );
+    await page.goto("/poetry/a-graveyard-for-lovers");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+      "A Graveyard for Lovers",
+    );
+    await expect(page.locator(".poem-body")).toContainText("Anike.");
+    await expect(page.locator(".poem-body")).toContainText("Anike mi.");
+    await expect(page.locator(".poem-body p").last()).toHaveText(
+      "I will wait for you\nwhere time is buried\nand silence snores.",
+    );
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBe(true);
+  });
+}
+
+test("poem metadata, final navigation, and missing poem", async ({ page }) => {
+  await page.goto("/poetry/he-took-the-one-i-wed");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    "He Took the One I Wed",
+  );
+  await expect(page.locator(".poem-meta")).toContainText("Dirge");
+  await expect(page.locator("main")).toContainText(
+    "First published in WSA Magazine, November 2020.",
+  );
+  await page.goto("/poetry/a-minutes-silence");
+  await expect(page.getByRole("link", { name: /Next poem/ })).toHaveCount(0);
+  await page.goto("/poetry/missing");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    "Poem not found",
+  );
+  await page.getByRole("link", { name: "Back to selected poetry" }).click();
+  await expect(page).toHaveTitle(
+    "Daramola Femi: Software Engineer & Technical Writer",
+  );
+  await expect(page.locator("#poetry")).toBeVisible();
+});
+
+test("seven published poems link to reading pages", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator("#poetry li")).toHaveCount(7);
+  await expect(page.locator("#poetry a")).toHaveCount(7);
+  await expect(page.locator("#poetry h3")).toHaveText([
+    "The Boy Who Writes",
+    "Bones and Flowers",
+    "Dreams",
+    "He Took the One I Wed",
+    "Good Mo(u)rning.",
+    "A Graveyard for Lovers",
+    "A Minute's Silence",
+  ]);
+  for (const link of await page.locator("#poetry a").all()) {
+    await expect(link).toHaveAttribute("href", /^\/poetry\//);
+    await expect(link).not.toHaveAttribute("target", "_blank");
+  }
 });

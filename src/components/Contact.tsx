@@ -3,13 +3,25 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 
 export default function Contact() {
   const [status, setStatus] = useState<
-    "idle" | "sending" | "success" | "error"
+    "idle" | "sending" | "success" | "error" | "invalid"
   >("idle");
+  const successRegion = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (status !== "success") return;
+    const region = successRegion.current;
+    region?.focus({ preventScroll: true });
+    if (region && window.matchMedia("(max-width: 600px)").matches) {
+      const bounds = region.getBoundingClientRect();
+      if (bounds.bottom > window.innerHeight || bounds.top < 0) {
+        region.scrollIntoView({ block: "nearest", behavior: "instant" });
+      }
+    }
+  }, [status]);
   const controller = useRef<AbortController | null>(null);
   useEffect(() => () => controller.current?.abort(), []);
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (controller.current) return;
+    if (controller.current || status === "success") return;
     const form = event.currentTarget;
     const data = new FormData(form);
     if (String(data.get("_gotcha") || "")) return;
@@ -18,7 +30,7 @@ export default function Contact() {
         (key) => !String(data.get(key) || "").trim(),
       )
     ) {
-      setStatus("error");
+      setStatus("invalid");
       return;
     }
     const abort = new AbortController();
@@ -63,7 +75,13 @@ export default function Contact() {
             daramola772@gmail.com
           </a>
         </div>
-        <form onSubmit={submit} aria-label="Contact Femi">
+        <form
+          onSubmit={submit}
+          onInput={() => {
+            if (status === "success" || status === "invalid") setStatus("idle");
+          }}
+          aria-label="Contact Femi"
+        >
           <div className="form-row">
             <label>
               Your name
@@ -110,17 +128,43 @@ export default function Contact() {
               <br />
               Your details are used to reply.
             </span>
-            <button className="button" disabled={status === "sending"}>
-              {status === "sending" ? "Sending…" : "Send a note"} <Arrow />
+            <button
+              className="button"
+              disabled={status === "sending" || status === "success"}
+            >
+              {status === "sending"
+                ? "Sending…"
+                : status === "success"
+                  ? "Message sent"
+                  : "Send a note"}{" "}
+              <Arrow />
             </button>
           </div>
-          <p className={`form-status ${status}`} role="status">
-            {status === "success"
-              ? "Your note is on its way. Thank you. I’ll be in touch."
-              : status === "error"
-                ? "Your note could not be sent. Please try again or email me directly."
-                : ""}
-          </p>
+          <div
+            ref={successRegion}
+            className={`form-status ${status === "success" ? "success" : ""}`}
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+            tabIndex={-1}
+          >
+            {status === "success" && (
+              <>
+                <strong>Message sent to Daramola Femi.</strong>
+                <p>
+                  Thank you. I’ve received your note and will get back to you
+                  soon.
+                </p>
+              </>
+            )}
+          </div>
+          {(status === "error" || status === "invalid") && (
+            <p className="form-status error" role="alert">
+              {status === "invalid"
+                ? "Please complete your name, email address, and message."
+                : "Your message could not be sent. Please try again or email me directly."}
+            </p>
+          )}
         </form>
       </div>
     </section>
