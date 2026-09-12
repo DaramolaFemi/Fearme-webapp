@@ -1,15 +1,13 @@
 import ScrollReveal, { ReadingProgress } from "./components/ScrollReveal";
 import { useDesktopMotion } from "./hooks/useDesktopMotion";
-import Arrow from "./components/Arrow";
 import Logo from "./components/Logo";
 import ThemeToggle from "./components/ThemeToggle";
 import { projects, filters } from "./data/projects";
 import Contact from "./components/Contact";
 import DocumentationSection from "./components/DocumentationSection";
 import PoetrySection from "./components/PoetrySection";
-import { useEffect, useRef, useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
-import Lenis from "lenis";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { MotionConfig, motion, useReducedMotion } from "motion/react";
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -17,15 +15,23 @@ export default function App() {
   const reduced = useReducedMotion();
   const desktopMotion = useDesktopMotion();
   const menuButton = useRef<HTMLButtonElement>(null);
-  useEffect(() => {
-    if (!desktopMotion) return;
-    const lenis = new Lenis({
-      autoRaf: true,
-      anchors: { offset: -90 },
-      duration: 1.05,
+  useLayoutEffect(() => {
+    let cancelled = false;
+    function landOnSection() {
+      const target = document.getElementById(window.location.hash.slice(1));
+      target?.scrollIntoView({ block: "start", behavior: "instant" });
+    }
+    landOnSection();
+    // Font metrics can change section positions after the first render.
+    void document.fonts.ready.then(() => {
+      if (!cancelled) landOnSection();
     });
-    return () => lenis.destroy();
-  }, [desktopMotion]);
+    window.addEventListener("hashchange", landOnSection);
+    return () => {
+      cancelled = true;
+      window.removeEventListener("hashchange", landOnSection);
+    };
+  }, []);
   useEffect(() => {
     function close(event: KeyboardEvent) {
       if (event.key === "Escape" && menuOpen) {
@@ -37,7 +43,7 @@ export default function App() {
     return () => window.removeEventListener("keydown", close);
   }, [menuOpen]);
   return (
-    <>
+    <MotionConfig reducedMotion="user">
       <ReadingProgress />
       <a className="skip-link" href="#main">
         Skip to content
@@ -92,16 +98,14 @@ export default function App() {
             <span>Based in Nigeria · Working everywhere</span>
           </div>
           <motion.div
-            initial={
-              reduced ? false : { opacity: 0, y: desktopMotion ? 24 : 0 }
-            }
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.85 }}
           >
             <h1>
               <span className="hero-line">
                 <motion.span
-                  initial={desktopMotion ? { y: "110%" } : false}
+                  initial={false}
                   animate={{ y: 0 }}
                   transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
                 >
@@ -110,7 +114,7 @@ export default function App() {
               </span>
               <span className="hero-line">
                 <motion.span
-                  initial={desktopMotion ? { y: "110%" } : false}
+                  initial={false}
                   animate={{ y: 0 }}
                   transition={{
                     duration: 1,
@@ -150,16 +154,12 @@ export default function App() {
             >
               Latest work / Bouldwood
               <br />
-              <span className="arrow-label">
-                Step inside the showroom <Arrow />
-              </span>
+              <span className="arrow-label">Step inside the showroom</span>
             </a>
           </div>
           <div className="hero-rule">
             <span>Engineering / Documentation / Poetry</span>
-            <span>
-              Scroll to discover <Arrow direction="down" />
-            </span>
+            <span>Scroll to discover</span>
           </div>
         </section>
         <section id="work" className="work section-pad">
@@ -207,17 +207,26 @@ export default function App() {
                   id={`project-${project.theme}`}
                   key={project.id}
                   initial={
-                    reduced ? false : { opacity: 0, y: desktopMotion ? 48 : 0 }
+                    reduced || !desktopMotion ? false : { opacity: 1, y: 16 }
                   }
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{
-                    duration: desktopMotion ? 0.9 : 0.35,
+                    duration: desktopMotion ? 0.25 : 0,
                     ease: [0.22, 1, 0.36, 1],
                   }}
                   viewport={{ once: true, amount: 0.08 }}
                 >
                   <div className="project-visual">
                     <picture>
+                      <source
+                        type="image/webp"
+                        srcSet={project.imageSrcSet}
+                        sizes={
+                          project.id === "01"
+                            ? "90vw"
+                            : "(max-width: 900px) 90vw, 45vw"
+                        }
+                      />
                       {project.mobileImage && (
                         <source
                           media="(max-width: 600px)"
@@ -227,7 +236,8 @@ export default function App() {
                       <img
                         src={project.image}
                         alt={`${project.name} interface`}
-                        loading={project.id === "01" ? "eager" : "lazy"}
+                        loading="lazy"
+                        decoding="async"
                         width={1200}
                         height={800}
                       />
@@ -243,9 +253,10 @@ export default function App() {
                           : `Request a walkthrough of ${project.name}`
                       }
                     >
-                      <Arrow />
                       <span className="project-cta-label" aria-hidden="true">
-                        {project.href ? "View" : "Ask"}
+                        {project.href
+                          ? "View project"
+                          : "Request a walkthrough"}
                       </span>
                     </a>
                   </div>
@@ -313,7 +324,7 @@ export default function App() {
                 href="/Images/CV.pdf"
                 download="Daramola-Femi-CV.pdf"
               >
-                A closer look at my experience <Arrow direction="down" />
+                A closer look at my experience
               </a>
             </ScrollReveal>
           </div>
@@ -393,6 +404,6 @@ export default function App() {
         </div>
         <a href="#top">Back to top</a>
       </footer>
-    </>
+    </MotionConfig>
   );
 }

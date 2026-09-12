@@ -21,8 +21,8 @@ export default function PoetrySection() {
         </ScrollReveal>
         <ScrollReveal className="poetry-copy" delay={0.1}>
           <p>
-            Poetry on grief, memory, fear, inheritance, love, and the things
-            that refuse to stay buried.
+            Seven poems, written between 2019 and 2026. A boy who writes, a
+            husband in mourning, and lovers who ask more of death than silence.
           </p>
         </ScrollReveal>
       </div>
@@ -38,7 +38,8 @@ export default function PoetrySection() {
                 href={`/poetry/${poem.slug}`}
                 aria-label={`Read ${poem.title}`}
               >
-                {poem.year} · Read poem ↗
+                <span className="poetry-year">{poem.year}</span>
+                <span className="reading-action">Read poem</span>
               </a>
             </li>
           ))}

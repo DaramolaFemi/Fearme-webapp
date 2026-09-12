@@ -1,4 +1,3 @@
-import Arrow from "./Arrow";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 
 export default function Contact() {
@@ -137,7 +136,6 @@ export default function Contact() {
                 : status === "success"
                   ? "Message sent"
                   : "Send a note"}{" "}
-              <Arrow />
             </button>
           </div>
           <div

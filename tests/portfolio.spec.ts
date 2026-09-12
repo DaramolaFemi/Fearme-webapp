@@ -257,13 +257,26 @@ test("touch layouts hide arrows and fields keep readable sizing on focus", async
   );
   await context.close();
 });
-test("desktop arrows are vectors and reduced motion stays static", async ({
+test("desktop actions use text and reduced motion stays static", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
-  await expect(page.locator(".resume svg.direction-arrow")).toBeVisible();
+  await expect(page.locator(".direction-arrow")).toHaveCount(0);
+  await expect(page.locator(".project-cta-label").first()).toBeVisible();
+  expect(
+    await page
+      .locator(".project-open")
+      .first()
+      .evaluate((el) => el.getBoundingClientRect().width),
+  ).toBeGreaterThan(90);
+  expect(
+    await page
+      .locator(".project-cta-label")
+      .first()
+      .evaluate((el) => el.getBoundingClientRect().height),
+  ).toBeLessThan(24);
   await expect(page.locator(".reading-progress")).toBeHidden();
   await expect(page.locator("h1")).toBeVisible();
 });
@@ -273,7 +286,7 @@ test("navigation is quiet and each project has exactly one CTA", async ({
 }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/");
-  await expect(page.locator("#navigation .direction-arrow")).toHaveCount(1);
+  await expect(page.locator("#navigation .direction-arrow")).toHaveCount(0);
   await expect(page.locator(".footer .direction-arrow")).toHaveCount(0);
   for (const project of await page.locator("article.project").all()) {
     await expect(project.locator("a")).toHaveCount(1);
@@ -323,7 +336,7 @@ test("documentation and poetry extend the editorial portfolio", async ({
     "Cedius Developer Documentation",
   );
   await expect(page.locator("#documentation li")).toHaveCount(3);
-  await expect(page.locator("#documentation a")).toHaveCount(0);
+  await expect(page.locator("#documentation a")).toHaveCount(3);
 
   const numberedKickers = await page
     .locator(".section-kicker > span:first-child")
@@ -378,7 +391,7 @@ for (const width of [320, 390, 1440]) {
         ),
       ).toBe(true);
     }
-    await page.getByRole("link", { name: "Next poem →" }).focus();
+    await page.getByRole("link", { name: "Next poem" }).focus();
     await page.keyboard.press("Enter");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(
       "Bones and Flowers",
@@ -439,4 +452,51 @@ test("seven published poems link to reading pages", async ({ page }) => {
     await expect(link).toHaveAttribute("href", /^\/poetry\//);
     await expect(link).not.toHaveAttribute("target", "_blank");
   }
+});
+
+for (const width of [390, 1440]) {
+  test(`return links land at poetry at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.emulateMedia({ reducedMotion: "no-preference" });
+    for (const name of ["Selected poetry", "Back to selected poetry"]) {
+      await page.goto("/poetry/the-boy-who-writes");
+      await page.getByRole("link", { name, exact: true }).click();
+      await expect(page).toHaveURL(/\/#poetry$/);
+      await page.evaluate(() => document.fonts.ready);
+      await expect
+        .poll(() =>
+          page
+            .locator("#poetry")
+            .evaluate((el) => Math.round(el.getBoundingClientRect().top)),
+        )
+        .toBeGreaterThanOrEqual(0);
+      await expect
+        .poll(() =>
+          page
+            .locator("#poetry")
+            .evaluate((el) => Math.round(el.getBoundingClientRect().top)),
+        )
+        .toBeLessThanOrEqual(100);
+      await expect(page.locator("#poetry h2")).toBeInViewport();
+      const link = page.locator("#poetry a").first();
+      await expect(link).toContainText("Read poem");
+      expect(
+        await link.evaluate((el) => el.getBoundingClientRect().height),
+      ).toBeGreaterThanOrEqual(44);
+      await expect(page.locator(".direction-arrow")).toHaveCount(0);
+    }
+  });
+}
+
+test("a failed page download offers recovery", async ({ page }) => {
+  await page.route("**/assets/App-*.js", (route) => route.abort());
+  await page.goto("/");
+  await expect(
+    page.getByRole("heading", { name: "This page could not load." }),
+  ).toBeVisible();
+  await page.unroute("**/assets/App-*.js");
+  await page.getByRole("button", { name: "Reload page" }).click();
+  await expect(page.getByRole("heading", { level: 1 })).toContainText(
+    "Code with intent.",
+  );
 });
