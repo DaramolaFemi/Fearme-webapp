@@ -1,3 +1,4 @@
+import Arrow from "./components/Arrow";
 import ScrollReveal, { ReadingProgress } from "./components/ScrollReveal";
 import { useDesktopMotion } from "./hooks/useDesktopMotion";
 import Logo from "./components/Logo";
@@ -73,7 +74,7 @@ export default function App() {
             href="/Images/CV.pdf"
             download="Daramola-Femi-CV.pdf"
           >
-            Download résumé (PDF)
+            Download résumé (PDF) <Arrow direction="down" />
           </a>
         </nav>
         <div className="header-controls">
@@ -98,14 +99,16 @@ export default function App() {
             <span>Based in Nigeria · Working everywhere</span>
           </div>
           <motion.div
-            initial={false}
+            initial={
+              reduced ? false : { opacity: 0, y: desktopMotion ? 24 : 10 }
+            }
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.85 }}
           >
             <h1>
               <span className="hero-line">
                 <motion.span
-                  initial={false}
+                  initial={reduced ? false : { y: "110%" }}
                   animate={{ y: 0 }}
                   transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
                 >
@@ -114,7 +117,7 @@ export default function App() {
               </span>
               <span className="hero-line">
                 <motion.span
-                  initial={false}
+                  initial={reduced ? false : { y: "110%" }}
                   animate={{ y: 0 }}
                   transition={{
                     duration: 1,
@@ -136,7 +139,7 @@ export default function App() {
                 it understood.
               </p>
               <a href="#work" className="text-link">
-                Explore my work
+                Explore my work <Arrow />
               </a>
             </div>
             <div className="orbit" aria-hidden="true">
@@ -154,12 +157,16 @@ export default function App() {
             >
               Latest work / Bouldwood
               <br />
-              <span className="arrow-label">Step inside the showroom</span>
+              <span className="arrow-label">
+                Step inside the showroom <Arrow />
+              </span>
             </a>
           </div>
           <div className="hero-rule">
             <span>Engineering / Documentation / Poetry</span>
-            <span>Scroll to discover</span>
+            <span>
+              Scroll to discover <Arrow direction="down" />
+            </span>
           </div>
         </section>
         <section id="work" className="work section-pad">
@@ -207,11 +214,11 @@ export default function App() {
                   id={`project-${project.theme}`}
                   key={project.id}
                   initial={
-                    reduced || !desktopMotion ? false : { opacity: 1, y: 16 }
+                    reduced ? false : { opacity: 0, y: desktopMotion ? 48 : 20 }
                   }
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{
-                    duration: desktopMotion ? 0.25 : 0,
+                    duration: desktopMotion ? 0.8 : 0.5,
                     ease: [0.22, 1, 0.36, 1],
                   }}
                   viewport={{ once: true, amount: 0.08 }}
@@ -253,6 +260,7 @@ export default function App() {
                           : `Request a walkthrough of ${project.name}`
                       }
                     >
+                      <Arrow />
                       <span className="project-cta-label" aria-hidden="true">
                         {project.href
                           ? "View project"
@@ -324,7 +332,7 @@ export default function App() {
                 href="/Images/CV.pdf"
                 download="Daramola-Femi-CV.pdf"
               >
-                A closer look at my experience
+                A closer look at my experience <Arrow direction="down" />
               </a>
             </ScrollReveal>
           </div>

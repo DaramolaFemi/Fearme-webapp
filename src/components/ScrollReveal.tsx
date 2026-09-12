@@ -15,12 +15,12 @@ export default function ScrollReveal({
   return (
     <motion.div
       className={className}
-      initial={reduced || !desktop ? false : { opacity: 1, y: 12 }}
+      initial={reduced ? false : { opacity: 0, y: desktop ? 36 : 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.12 }}
       transition={{
-        duration: desktop ? 0.25 : 0,
-        delay: desktop ? Math.min(delay, 0.05) : 0,
+        duration: desktop ? 0.8 : 0.5,
+        delay: Math.min(delay, 0.16),
         ease: [0.22, 1, 0.36, 1],
       }}
     >

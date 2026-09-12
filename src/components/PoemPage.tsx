@@ -1,3 +1,4 @@
+import Arrow from "./Arrow";
 import { useEffect } from "react";
 import { poems, type Poem } from "../data/poetry";
 import Logo from "./Logo";
@@ -31,7 +32,7 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
           <Logo />
         </a>
         <a className="poem-back" href="/#poetry">
-          Selected poetry
+          <Arrow direction="left" /> Selected poetry
         </a>
         <ThemeToggle />
       </header>
@@ -66,7 +67,7 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
             <nav className="poem-navigation" aria-label="Poem navigation">
               {previous ? (
                 <a href={`/poetry/${previous.slug}`} rel="prev">
-                  Previous poem
+                  <Arrow direction="left" /> Previous poem
                 </a>
               ) : (
                 <span aria-disabled="true">Previous poem</span>
@@ -74,7 +75,7 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
               <a href="/#poetry">Back to selected poetry</a>
               {next ? (
                 <a href={`/poetry/${next.slug}`} rel="next">
-                  Next poem
+                  Next poem <Arrow direction="right" />
                 </a>
               ) : (
                 <span aria-disabled="true">Next poem</span>

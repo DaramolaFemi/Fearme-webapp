@@ -224,7 +224,7 @@ test("resume is the PDF and every internal link resolves", async ({
   );
 });
 
-test("touch layouts hide arrows and fields keep readable sizing on focus", async ({
+test("touch layouts use SVG arrows and fields keep readable sizing on focus", async ({
   browser,
 }) => {
   const context = await browser.newContext({
@@ -234,8 +234,12 @@ test("touch layouts hide arrows and fields keep readable sizing on focus", async
   });
   const page = await context.newPage();
   await page.goto("/");
-  for (const arrow of await page.locator(".direction-arrow").all())
-    await expect(arrow).toBeHidden();
+  for (const arrow of await page
+    .locator(
+      ".project-open .direction-arrow, .documentation-cta .direction-arrow, .reading-action .direction-arrow, .form-bottom .direction-arrow",
+    )
+    .all())
+    await expect(arrow).toBeVisible();
   for (const field of await page
     .locator('input:not([name="_gotcha"]), textarea')
     .all()) {
@@ -257,13 +261,15 @@ test("touch layouts hide arrows and fields keep readable sizing on focus", async
   );
   await context.close();
 });
-test("desktop actions use text and reduced motion stays static", async ({
+test("desktop actions use SVG arrows and reduced motion stays static", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
-  await expect(page.locator(".direction-arrow")).toHaveCount(0);
+  await expect(
+    page.locator(".reading-action svg.direction-arrow").first(),
+  ).toBeVisible();
   await expect(page.locator(".project-cta-label").first()).toBeVisible();
   expect(
     await page
@@ -286,7 +292,7 @@ test("navigation is quiet and each project has exactly one CTA", async ({
 }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/");
-  await expect(page.locator("#navigation .direction-arrow")).toHaveCount(0);
+  await expect(page.locator("#navigation .direction-arrow")).toHaveCount(1);
   await expect(page.locator(".footer .direction-arrow")).toHaveCount(0);
   for (const project of await page.locator("article.project").all()) {
     await expect(project.locator("a")).toHaveCount(1);
@@ -301,7 +307,7 @@ test("navigation is quiet and each project has exactly one CTA", async ({
     await project.scrollIntoViewIfNeeded();
     await expect(project.locator("a.project-open")).toBeVisible();
     await expect(project.locator(".project-cta-label")).toBeVisible();
-    await expect(project.locator(".direction-arrow")).toBeHidden();
+    await expect(project.locator("svg.direction-arrow")).toBeVisible();
   }
   const footer = page.locator(".footer-copyright");
   await footer.scrollIntoViewIfNeeded();
@@ -483,7 +489,9 @@ for (const width of [390, 1440]) {
       expect(
         await link.evaluate((el) => el.getBoundingClientRect().height),
       ).toBeGreaterThanOrEqual(44);
-      await expect(page.locator(".direction-arrow")).toHaveCount(0);
+      await expect(
+        page.locator(".reading-action svg.direction-arrow").first(),
+      ).toBeVisible();
     }
   });
 }
@@ -499,4 +507,23 @@ test("a failed page download offers recovery", async ({ page }) => {
   await expect(page.getByRole("heading", { level: 1 })).toContainText(
     "Code with intent.",
   );
+});
+
+test("reading actions share the same SVG on desktop and mobile", async ({
+  page,
+}) => {
+  let desktopPath = "";
+  for (const width of [1440, 390]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/#poetry");
+    const action = page.locator("#poetry a").first();
+    await action.scrollIntoViewIfNeeded();
+    await expect(action.locator("svg.direction-arrow")).toBeVisible();
+    const path = await action.locator("svg path").getAttribute("d");
+    if (width === 1440) desktopPath = path!;
+    else expect(path).toBe(desktopPath);
+    expect(await action.innerText()).not.toMatch(
+      /[↗←→]|[\u{1F300}-\u{1FAFF}]/u,
+    );
+  }
 });

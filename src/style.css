@@ -1961,3 +1961,59 @@ a.documentation-cta {
   background: var(--paper);
   color: var(--ink);
 }
+
+/* The same vector artwork accompanies actions on every screen size. */
+.direction-arrow.direction-arrow {
+  display: inline-block !important;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  vertical-align: middle;
+}
+.reading-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.poem-back,
+.poem-navigation a,
+a.documentation-cta {
+  gap: 8px;
+}
+
+/* Native transitions preserve ordinary links, browser history, and anchors. */
+@view-transition {
+  navigation: auto;
+}
+::view-transition-old(root) {
+  animation: page-depart 220ms ease both;
+}
+::view-transition-new(root) {
+  animation: page-arrive 380ms ease both;
+}
+#main {
+  animation: page-arrive 500ms ease both;
+}
+@keyframes page-arrive {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes page-depart {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #main,
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}

@@ -1,3 +1,4 @@
+import Arrow from "./Arrow";
 import ScrollReveal from "./ScrollReveal";
 import { documentation } from "../data/documentation";
 
@@ -44,7 +45,7 @@ export default function DocumentationSection() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Read documentation
+                    Read documentation <Arrow />
                   </a>
                 ) : (
                   <span className="documentation-cta">Coming soon</span>

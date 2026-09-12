@@ -1,3 +1,4 @@
+import Arrow from "./Arrow";
 import ScrollReveal from "./ScrollReveal";
 import { poems } from "../data/poetry";
 
@@ -39,7 +40,9 @@ export default function PoetrySection() {
                 aria-label={`Read ${poem.title}`}
               >
                 <span className="poetry-year">{poem.year}</span>
-                <span className="reading-action">Read poem</span>
+                <span className="reading-action">
+                  Read poem <Arrow />
+                </span>
               </a>
             </li>
           ))}
