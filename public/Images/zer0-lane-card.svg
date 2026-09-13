@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 960" role="img" aria-labelledby="title desc">
+  <title id="title">Zer0 Lane interface</title>
+  <desc id="desc">Desktop view of the Zer0 Lane endless night-driving game.</desc>
+  <defs>
+    <linearGradient id="road" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0a1114"/><stop offset=".5" stop-color="#0d1518"/><stop offset="1" stop-color="#0a1114"/></linearGradient>
+    <linearGradient id="veil" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#081014" stop-opacity=".74"/><stop offset=".5" stop-color="#081014" stop-opacity=".22"/><stop offset="1" stop-color="#081014" stop-opacity=".74"/></linearGradient>
+    <style>
+      .sans{font-family:Arial,Helvetica,sans-serif}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}.txt{fill:#e4e9e5}.muted{fill:#929d9e}.cyan{fill:#8ceee0}.line{stroke:#2b3235}.tiny{font-size:12px;letter-spacing:3px}.micro{font-size:10px;letter-spacing:2px}.thin{font-weight:400}.bold{font-weight:700}.heavy{font-weight:800}
+    </style>
+  </defs>
+  <rect width="1440" height="960" fill="#101416"/>
+  <line x1="0" y1="87.5" x2="1440" y2="87.5" class="line"/>
+  <path d="M72 31h29l-2 7-20 14h17l-2 7H66l2-7 20-14H70z" fill="#8ceee0"/>
+  <text x="116" y="51" class="sans txt bold" font-size="18" letter-spacing="2">ZER0 LANE</text><text x="241" y="51" class="mono muted" font-size="12">/ 02</text>
+  <circle cx="1152" cy="43" r="3" fill="#8ceee0"/><text x="1170" y="47" class="mono txt micro">AFTER HOURS ARCADE</text>
+  <text x="1328" y="47" class="mono muted" font-size="10">ON</text><path d="M1301 39h7l8-6v20l-8-6h-7zM1320 37q8 6 0 12" fill="none" stroke="#929d9e" stroke-width="2"/>
+  <text x="132" y="138" class="mono muted tiny">ENDLESS ROAD. ONE MORE RUN.</text>
+  <text x="132" y="205" class="sans txt bold" font-size="56" letter-spacing="-3">Find your line<tspan fill="#8ceee0">.</tspan></text>
+  <text x="1080" y="185" class="sans muted" font-size="13">No finish line. No second chances.</text><text x="1080" y="208" class="sans muted" font-size="13">Just you, the road, and your next move.</text>
+  <rect x="132" y="249" width="866" height="621" fill="#111719" stroke="#364043"/><rect x="132" y="249" width="866" height="49" fill="#111719" stroke="#2b3235"/>
+  <circle cx="155" cy="274" r="3" fill="#8ceee0"/><text x="166" y="278" class="mono cyan micro">NIGHT RUN</text><text x="506" y="278" class="mono muted" font-size="9" letter-spacing="2">SECTOR 01 / THE UNDERPASS</text>
+  <path d="M952 266v16M961 266v16" stroke="#929d9e" stroke-width="2"/>
+  <rect x="133" y="298" width="864" height="531" fill="url(#road)"/>
+  <g opacity=".16" stroke="#8ceee0"><line x1="565" y1="298" x2="565" y2="829"/><line x1="132" y1="696" x2="998" y2="696"/><line x1="132" y1="568" x2="998" y2="568"/><line x1="132" y1="440" x2="998" y2="440"/></g>
+  <text x="159" y="338" class="mono muted micro">SCORE</text><text x="159" y="372" class="mono muted" font-size="26" letter-spacing="5">000000</text><text x="919" y="338" class="mono muted micro">DISTANCE</text><text x="943" y="372" class="mono muted" font-size="26">0</text><text x="964" y="372" class="mono muted" font-size="10">m</text>
+  <rect x="133" y="298" width="864" height="531" fill="url(#veil)"/>
+  <text x="487" y="378" class="mono cyan micro">THE STREETS ARE YOURS</text>
+  <text x="387" y="462" class="sans txt heavy" font-size="80" font-style="italic" letter-spacing="-3">OWN THE</text><text x="439" y="538" class="sans heavy" fill="#8ceee0" font-size="80" font-style="italic" letter-spacing="-3">NIGHT.</text>
+  <text x="490" y="584" class="sans" fill="#a9b6b3" font-size="13">Find a gap. Hold your nerve.</text><text x="490" y="606" class="sans" fill="#a9b6b3" font-size="13">See how far you can take it.</text>
+  <rect x="452" y="632" width="226" height="54" fill="#8ceee0"/><text x="475" y="664" class="sans heavy" fill="#132826" font-size="12" letter-spacing="1">LET’S DRIVE</text><path d="M638 659h17m-7-7 7 7-7 7" fill="none" stroke="#132826" stroke-width="2"/>
+  <text x="505" y="716" class="sans" fill="#bac7c3" font-size="11">Warm up in practice</text><path d="M621 717l7-7m-5 0h5v5" fill="none" stroke="#bac7c3" stroke-width="1"/><text x="482" y="758" class="mono" fill="#687d79" font-size="9" letter-spacing="1">ARROW KEYS OR TOUCH CONTROLS</text>
+  <text x="159" y="800" class="mono txt" font-size="29">0</text><text x="182" y="800" class="mono muted" font-size="9">KM/H</text><text x="849" y="794" class="mono muted" font-size="9" letter-spacing="1">BOOST</text><rect x="890" y="787" width="80" height="5" fill="#293a39"/><rect x="890" y="787" width="80" height="5" fill="#8ceee0"/>
+  <line x1="132" y1="829" x2="998" y2="829" class="line"/><circle cx="155" cy="850" r="3" fill="#8ceee0"/><text x="166" y="854" class="mono muted" font-size="8" letter-spacing="1">READY WHEN YOU ARE</text><text x="805" y="854" class="mono muted" font-size="8" letter-spacing="1">EST. 2025 / BUILT FOR THE FLOW</text>
+  <rect x="1026" y="249" width="282" height="146" fill="#161b1e" stroke="#2b3235"/><text x="1050" y="283" class="mono muted tiny">YOUR PERSONAL BEST</text><text x="1050" y="334" class="mono txt" font-size="38">000000</text><path d="M1260 312h14v10c0 10-14 10-14 0zM1260 315h-7v6q0 8 9 8M1274 315h7v6q0 8-9 8M1267 332v11M1259 344h16" fill="none" stroke="#8ceee0" stroke-width="1.5"/><text x="1050" y="368" class="sans muted" font-size="10">Set the bar. Then raise it.</text><text x="1268" y="368" class="mono muted" font-size="9">PTS</text>
+  <text x="1026" y="429" class="mono muted tiny">KNOW YOUR CONTROLS</text>
+  <g class="sans txt"><rect x="1026" y="456" width="32" height="32" fill="#1b2225" stroke="#3b4548"/><rect x="1062" y="456" width="32" height="32" fill="#1b2225" stroke="#3b4548"/><text x="1037" y="478" font-size="15">←</text><text x="1073" y="478" font-size="15">→</text><text x="1110" y="466" font-size="12">Steer</text><text x="1110" y="487" class="muted" font-size="10">Pick your line. Hold to move.</text>
+  <rect x="1026" y="513" width="32" height="32" fill="#1b2225" stroke="#3b4548"/><text x="1037" y="535" font-size="15">↑</text><text x="1110" y="523" font-size="12">Boost</text><text x="1110" y="544" class="muted" font-size="10">More speed. Less room for error.</text>
+  <rect x="1026" y="570" width="32" height="32" fill="#1b2225" stroke="#3b4548"/><text x="1037" y="592" font-size="15">↓</text><text x="1110" y="580" font-size="12">Brake</text><text x="1110" y="601" class="muted" font-size="10">Slow it down. Find a way through.</text></g>
+  <text x="1026" y="635" class="mono muted" font-size="9">WASD works too. Space to boost.</text><line x1="1026" y1="661" x2="1308" y2="661" class="line"/><text x="1026" y="698" class="mono cyan" font-size="10">01 —</text><text x="1067" y="698" class="sans" fill="#71847e" font-size="11">It’s not about going fast.</text><text x="1067" y="718" class="sans" fill="#71847e" font-size="11">It’s about knowing when.</text>
+</svg>
