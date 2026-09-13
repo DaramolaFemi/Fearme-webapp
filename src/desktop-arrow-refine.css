@@ -1,0 +1,15 @@
+/* Desktop-only cleanup for secondary navigation arrows.
+   Keep mobile/tablet behavior unchanged. */
+@media (min-width: 1024px) {
+  .nav .resume .direction-arrow,
+  .hero-intro .text-link .direction-arrow,
+  .featured-shortcut .direction-arrow {
+    display: none !important;
+  }
+
+  .nav .resume,
+  .hero-intro .text-link,
+  .featured-shortcut .arrow-label {
+    gap: 0;
+  }
+}
