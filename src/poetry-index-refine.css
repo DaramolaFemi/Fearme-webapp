@@ -1,0 +1,92 @@
+/* Poetry index refinement: preserve the editorial list while making each row the action. */
+.poetry-index > li {
+  display: block;
+  padding: 0;
+}
+
+.poetry-row {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr) 24px;
+  align-items: center;
+  gap: 30px;
+  min-height: 94px;
+  padding: 24px 0 26px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.poetry-number {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
+
+.poetry-row h3 {
+  margin: 0;
+  transition: transform 0.2s ease;
+}
+
+.poetry-row-arrow {
+  display: inline-flex;
+  justify-self: end;
+  align-items: center;
+  color: var(--accent);
+  transition: transform 0.2s ease;
+}
+
+.poetry-row .direction-arrow.direction-arrow {
+  display: inline-block !important;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+}
+
+.poetry-row:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 6px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .poetry-row:hover .poetry-row-arrow {
+    transform: translateX(4px);
+  }
+
+  .poetry-row:hover h3 {
+    transform: translateX(2px);
+  }
+}
+
+@media (max-width: 900px) {
+  .poetry-row {
+    grid-template-columns: 36px minmax(0, 1fr) 20px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .poetry-row {
+    grid-template-columns: 28px minmax(0, 1fr) 18px;
+    gap: 12px;
+    min-height: 88px;
+    padding: 25px 0 27px;
+  }
+
+  .poetry-row h3 {
+    font-size: 27px;
+  }
+
+  .poetry-row .direction-arrow.direction-arrow {
+    display: inline-block !important;
+    width: 16px;
+    height: 16px;
+    flex-basis: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .poetry-row h3,
+  .poetry-row-arrow {
+    transition: none;
+  }
+}
