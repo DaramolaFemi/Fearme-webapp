@@ -1,0 +1,27 @@
+/*
+ * Desktop/tablet project CTA refinement.
+ * Keep the existing wording and interaction, but reduce the visual weight so
+ * the project artwork remains the focal point.
+ */
+@media (min-width: 601px) {
+  .project-open {
+    width: auto;
+    min-width: 0;
+    height: 32px;
+    padding: 0 10px;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 500;
+    box-shadow: 0 6px 12px rgba(24, 24, 18, 0.05);
+  }
+
+  .project-open .direction-arrow {
+    width: 15px;
+    height: 15px;
+  }
+
+  .project-cta-label {
+    font-size: 10px;
+    line-height: 1;
+  }
+}
