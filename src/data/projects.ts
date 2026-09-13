@@ -47,16 +47,14 @@ export const projects = [
   },
   {
     id: "04",
-    name: "Neon",
-    subtitle: "Built for one more round.",
+    name: "Zer0 Lane",
+    subtitle: "Find your line.",
     category: "Web applications",
     type: "Browser game",
     description:
-      "An interactive browser game where timing and feedback carry the experience. A small space to explore the playful side of software.",
-    href: "https://neo-game-omega.vercel.app/",
-    image: "/Images/screenshot4.jpeg",
-    imageSrcSet:
-      "/Images/optimized/screenshot4-720-135a75d112.webp 720w, /Images/optimized/screenshot4-1440-6a8b796193.webp 1440w",
+      "An endless night-driving game built around steering, boost management, close passes, and chasing a personal best.",
+    href: "https://daramolafemi.github.io/Zer0-Lane/",
+    image: "/Images/zer0-lane-card.svg",
     theme: "neon",
     tags: ["Game development", "Interaction design"],
   },
