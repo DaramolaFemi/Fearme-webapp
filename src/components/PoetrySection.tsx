@@ -32,16 +32,15 @@ export default function PoetrySection() {
         <ol className="poetry-index">
           {poems.map((poem) => (
             <li key={poem.id}>
-              <span>{poem.id}</span>
-              <h3>{poem.title}</h3>
               <a
-                className="poetry-status"
+                className="poetry-row"
                 href={`/poetry/${poem.slug}`}
                 aria-label={`Read ${poem.title}`}
               >
-                <span className="poetry-year">{poem.year}</span>
-                <span className="reading-action">
-                  Read poem <Arrow />
+                <span className="poetry-number">{poem.id}</span>
+                <h3>{poem.title}</h3>
+                <span className="poetry-row-arrow">
+                  <Arrow direction="right" />
                 </span>
               </a>
             </li>
