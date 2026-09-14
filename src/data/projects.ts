@@ -53,7 +53,7 @@ export const projects = [
     type: "Browser game",
     description:
       "An endless night-driving game built around steering, boost management, close passes, and chasing a personal best.",
-    href: "https://daramolafemi.github.io/Zer0-Lane/",
+    href: "https://neo-game-omega.vercel.app/",
     image: "/Images/zer0-lane-card.svg",
     theme: "neon",
     tags: ["Game development", "Interaction design"],
