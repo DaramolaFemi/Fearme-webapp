@@ -262,9 +262,7 @@ export default function App() {
                     >
                       <Arrow />
                       <span className="project-cta-label" aria-hidden="true">
-                        {project.href
-                          ? "View project"
-                          : "Request"}
+                        {project.href ? "View" : "Request"}
                       </span>
                     </a>
                   </div>
