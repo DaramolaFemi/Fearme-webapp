@@ -55,6 +55,7 @@ export const projects = [
       "An endless night-driving game built around steering, boost management, close passes, and chasing a personal best.",
     href: "https://neo-game-omega.vercel.app/",
     image: "/Images/zer0-lane-redesign.png",
+    preview: "/Video/zer0-lane-gameplay.mp4",
     imageSrcSet:
       "/Images/optimized/zer0-lane-redesign-720-c95ba87b1e.webp 720w, /Images/optimized/zer0-lane-redesign-1440-d96a355bfc.webp 1440w",
     theme: "neon",

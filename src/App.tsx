@@ -1,6 +1,7 @@
 import Arrow from "./components/Arrow";
 import ScrollReveal, { ReadingProgress } from "./components/ScrollReveal";
 import { useDesktopMotion } from "./hooks/useDesktopMotion";
+import GameplayPreview from "./components/GameplayPreview";
 import Logo from "./components/Logo";
 import ThemeToggle from "./components/ThemeToggle";
 import { projects, filters } from "./data/projects";
@@ -242,6 +243,12 @@ export default function App() {
                         height={800}
                       />
                     </picture>
+                    {project.preview && (
+                      <GameplayPreview
+                        src={project.preview}
+                        poster={project.image}
+                      />
+                    )}
                     <a
                       className="project-open"
                       href={project.href || "#contact"}

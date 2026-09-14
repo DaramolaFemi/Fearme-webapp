@@ -1,0 +1,27 @@
+.project.neon .gameplay-preview {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.project.neon .gameplay-preview.is-playing {
+  opacity: 1;
+}
+
+/* Keep the poster and recording aligned when the preview starts. */
+.project.neon .project-visual img,
+.project.neon .project-visual:hover img {
+  transform: none;
+}
+
+@media (max-width: 600px) {
+  .project.neon .gameplay-preview {
+    object-fit: contain;
+    object-position: center;
+  }
+}
