@@ -1,15 +1,20 @@
-/* Desktop-only cleanup for secondary navigation arrows.
-   Keep mobile/tablet behavior unchanged. */
-@media (min-width: 1024px) {
-  .nav .resume .direction-arrow,
-  .hero-intro .text-link .direction-arrow,
-  .featured-shortcut .direction-arrow {
+/* Use the same text-only actions on tablet and desktop. */
+@media (min-width: 601px) {
+  .nav .resume .direction-arrow.direction-arrow,
+  .hero-intro .text-link .direction-arrow.direction-arrow,
+  .featured-shortcut .direction-arrow.direction-arrow,
+  .project-open .direction-arrow.direction-arrow,
+  a.documentation-cta .direction-arrow.direction-arrow,
+  .contact .form-bottom .button .direction-arrow.direction-arrow {
     display: none !important;
   }
 
   .nav .resume,
   .hero-intro .text-link,
-  .featured-shortcut .arrow-label {
+  .featured-shortcut .arrow-label,
+  .project-open,
+  a.documentation-cta,
+  .contact .form-bottom .button {
     gap: 0;
   }
 }
