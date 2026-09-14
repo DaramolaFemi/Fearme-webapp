@@ -62,18 +62,17 @@ export const projects = [
   },
   {
     id: "05",
-    name: "Gleet",
+    name: "Gleez",
     subtitle: "More than a cut. A standard.",
     category: "Web applications",
     type: "Barbershop landing page",
     description:
       "A premium barbershop experience brought online, with a refined visual system that guides clients from discovery to booking a chair.",
     href: "https://gleets.vercel.app/",
-    image: "/Images/gleets-ui.png",
+    image: "/Images/gleez-ui.png",
     imageSrcSet:
-      "/Images/optimized/gleets-ui-720-f3dfe9b884.webp 720w, /Images/optimized/gleets-ui-1440-0a1a89cfae.webp 1440w",
-    mobileImage: "/Images/gleets-ui.png",
-    theme: "gleet",
+      "/Images/optimized/gleez-ui-720.jpg 720w, /Images/optimized/gleez-ui-1440.jpg 1440w",
+    theme: "gleez",
     tags: ["Next.js", "Booking experience", "Premium UI"],
   },
 ];

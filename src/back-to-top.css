@@ -50,6 +50,12 @@
   }
 }
 
+@media (min-width: 1024px) {
+  .back-to-top {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .back-to-top {
     transition: none;

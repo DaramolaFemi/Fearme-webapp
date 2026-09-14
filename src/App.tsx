@@ -226,7 +226,6 @@ export default function App() {
                   <div className="project-visual">
                     <picture>
                       <source
-                        type="image/webp"
                         srcSet={project.imageSrcSet}
                         sizes={
                           project.id === "01"
@@ -234,12 +233,6 @@ export default function App() {
                             : "(max-width: 900px) 90vw, 45vw"
                         }
                       />
-                      {project.mobileImage && (
-                        <source
-                          media="(max-width: 600px)"
-                          srcSet={project.mobileImage}
-                        />
-                      )}
                       <img
                         src={project.image}
                         alt={`${project.name} interface`}

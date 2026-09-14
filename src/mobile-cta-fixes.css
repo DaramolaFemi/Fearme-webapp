@@ -4,8 +4,7 @@
  * lighter mobile treatment for poetry and project actions.
  */
 @media (max-width: 600px) {
-  /* Mobile uses text-first actions. The documentation CTA intentionally keeps
-     the shared SVG arrow; other Arrow-component instances stay hidden. */
+  /* Mobile uses text-first actions. */
   .direction-arrow.direction-arrow,
   .project-open .direction-arrow.direction-arrow,
   .reading-action .direction-arrow.direction-arrow {
@@ -13,10 +12,39 @@
   }
 
   a.documentation-cta .direction-arrow.direction-arrow {
-    display: inline-block !important;
-    width: 14px;
-    height: 14px;
-    flex: 0 0 14px;
+    display: none !important;
+  }
+
+  a.documentation-cta {
+    gap: 0;
+    text-decoration-color: #ff4d4d;
+  }
+
+  .project.project .project-visual {
+    aspect-ratio: 1.3;
+  }
+
+  .project.neon .project-visual {
+    background: #100c1c;
+  }
+
+  .project.bouldwood .project-visual {
+    background: #f2f1eb;
+  }
+
+  .project.bouldwood .project-visual img,
+  .project.neon .project-visual img {
+    object-fit: contain;
+    object-position: center;
+    transform: none;
+  }
+
+  /* Preserve the weather dashboard while keeping browser chrome out of view. */
+  .project.weather .project-visual img,
+  .project.weather .project-visual:hover img {
+    top: 50%;
+    transform: translateY(-54.9%);
+    clip-path: inset(9.8% 0 0);
   }
 
   /* Return "Read poem" to the quiet editorial text-link treatment. */
