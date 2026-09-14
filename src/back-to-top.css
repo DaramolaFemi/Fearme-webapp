@@ -46,16 +46,7 @@
 
 @media (max-width: 600px) {
   .back-to-top {
-    width: 44px;
-    height: 44px;
-    right: 16px;
-    bottom: calc(18px + env(safe-area-inset-bottom));
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
-  }
-
-  .back-to-top .direction-arrow {
-    width: 17px;
-    height: 17px;
+    display: none;
   }
 }
 
