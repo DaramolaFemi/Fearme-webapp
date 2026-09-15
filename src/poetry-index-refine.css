@@ -47,6 +47,64 @@
   outline-offset: 6px;
 }
 
+.poetry-index > li.poetry-collapsible {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-6px);
+  visibility: hidden;
+  pointer-events: none;
+  border-bottom-color: transparent;
+  transition:
+    max-height 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.22s ease,
+    transform 0.3s ease,
+    border-color 0.2s ease,
+    visibility 0s linear 0.38s;
+}
+
+.poetry-index > li.poetry-collapsible--open {
+  max-height: 180px;
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+  border-bottom-color: var(--line);
+  transition:
+    max-height 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.22s ease,
+    transform 0.3s ease,
+    border-color 0.2s ease,
+    visibility 0s linear;
+}
+
+.poetry-archive-toggle {
+  width: 100%;
+  margin-top: 16px;
+  padding: 10px 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  font-size: 11px;
+  line-height: 1.5;
+  text-transform: uppercase;
+  letter-spacing: 1.15px;
+  text-align: left;
+  transition: color 0.2s ease;
+}
+
+.poetry-archive-count {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .poetry-row:hover .poetry-row-arrow {
     transform: translateX(4px);
@@ -54,6 +112,11 @@
 
   .poetry-row:hover h3 {
     transform: translateX(2px);
+  }
+
+  .poetry-archive-toggle:hover,
+  .poetry-archive-toggle:hover .poetry-archive-count {
+    color: var(--accent);
   }
 }
 
@@ -82,11 +145,31 @@
     height: 16px;
     flex-basis: 16px;
   }
+
+  .poetry-archive-toggle {
+    margin-top: 14px;
+    padding: 10px 0 4px;
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  .poetry-archive-count {
+    font-size: 9px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .poetry-row h3,
-  .poetry-row-arrow {
+  .poetry-row-arrow,
+  .poetry-index > li.poetry-collapsible,
+  .poetry-index > li.poetry-collapsible--open,
+  .poetry-archive-toggle,
+  .poetry-archive-count {
     transition: none;
+  }
+
+  .poetry-index > li.poetry-collapsible,
+  .poetry-index > li.poetry-collapsible--open {
+    transform: none;
   }
 }
