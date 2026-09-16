@@ -1,0 +1,138 @@
+/* Desktop/non-mobile identity pass.
+   Carries the approved mobile identity system to wider viewports without changing
+   layout, spacing, motion, media behavior, CTA geometry, or dark-theme colors. */
+
+@media (min-width: 601px) {
+  body {
+    font-family: "IBM Plex Sans", sans-serif;
+  }
+
+  /* Literary voice stays distinct from the engineering/interface voice. */
+  em,
+  .about-signature,
+  .poetry-index h3,
+  .poem-page h1,
+  .poem-body {
+    font-family: "Literata", serif;
+  }
+
+  .about-signature > span {
+    font-family: "IBM Plex Sans", sans-serif;
+  }
+
+  /* Mono remains reserved for genuinely technical documentation microcopy. */
+  .documentation-number,
+  .documentation-title > p {
+    font-family: "IBM Plex Mono", monospace;
+  }
+
+  /* Keep large type expressive without the previous crushed tracking. */
+  h1 {
+    letter-spacing: -0.035em;
+  }
+
+  h1 em {
+    letter-spacing: -0.018em;
+  }
+
+  h2 {
+    letter-spacing: -0.025em;
+  }
+
+  .project-heading h3,
+  .about-copy .lead,
+  .capabilities h3,
+  .documentation-title h3 {
+    letter-spacing: -0.012em;
+  }
+
+  .interlude {
+    letter-spacing: -0.02em;
+  }
+
+  .poetry-index h3,
+  .poem-page h1 {
+    letter-spacing: -0.01em;
+  }
+
+  /* Sentence case replaces wide all-caps as the default metadata treatment. */
+  .hero-meta,
+  .hero-rule,
+  .section-kicker,
+  .small-label,
+  .project-heading > span,
+  .project-status,
+  .documentation-number,
+  .documentation-title > p,
+  .documentation-status,
+  .documentation-cta,
+  .poetry-status,
+  .poetry-archive-toggle {
+    text-transform: none;
+    letter-spacing: 0.02em;
+  }
+
+  .orbit-caption {
+    text-transform: none;
+    letter-spacing: 0.05em;
+  }
+
+  /* Static metadata reads as text rather than a repeated pill system. */
+  .project > .tags,
+  .documentation-tags.tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0;
+    row-gap: 7px;
+  }
+
+  .project > .tags span,
+  .documentation-tags.tags span {
+    display: inline-flex;
+    align-items: baseline;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    padding: 0 !important;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+
+  .project > .tags span:not(:last-child)::after,
+  .documentation-tags.tags span:not(:last-child)::after {
+    content: "·";
+    margin: 0 8px;
+    color: var(--line);
+    font-weight: 400;
+  }
+
+  /* Cooler light palette; dark theme remains exactly on its existing color system. */
+  :root:not([data-theme="dark"]) {
+    --paper: #f5f6f2;
+    --ink: #222621;
+    --muted: #636961;
+    --line: #cbd0c8;
+    --panel: #e9ede7;
+    --field-line: #aab1a7;
+    --placeholder: #737a71;
+    --band-text: #f5f6f2;
+  }
+
+  :root:not([data-theme="dark"]) ::selection {
+    background: #e5a087;
+    color: #222621;
+  }
+
+  :root:not([data-theme="dark"]) a.documentation-cta {
+    color: var(--ink);
+    text-decoration-color: rgba(34, 38, 33, 0.68);
+  }
+
+  :root:not([data-theme="dark"]) a.documentation-cta:hover,
+  :root:not([data-theme="dark"]) a.documentation-cta:focus-visible {
+    text-decoration-color: var(--accent);
+  }
+}
