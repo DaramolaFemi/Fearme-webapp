@@ -23,4 +23,15 @@
     border-color: rgba(34, 38, 33, 0.2);
     background: rgba(34, 38, 33, 0.035);
   }
+
+  /* Keep the documentation action legible on the cooler light surface. */
+  :root:not([data-theme="dark"]) a.documentation-cta {
+    color: var(--ink);
+    text-decoration-color: rgba(34, 38, 33, 0.68);
+  }
+
+  :root:not([data-theme="dark"]) a.documentation-cta:hover,
+  :root:not([data-theme="dark"]) a.documentation-cta:focus-visible {
+    text-decoration-color: var(--accent);
+  }
 }
