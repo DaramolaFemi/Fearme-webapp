@@ -1,6 +1,6 @@
-/* Mobile identity pass 1
-   Typography, tracking, and casing only.
-   Layout, motion, media, spacing, palette, and interaction behavior are intentionally untouched. */
+/* Mobile identity pass 1.1
+   Typography, tracking, casing, and small display-scale corrections only.
+   Layout, motion, media, spacing architecture, palette, and interaction behavior remain untouched. */
 
 @media (max-width: 600px) {
   body {
@@ -20,16 +20,15 @@
     font-family: "IBM Plex Sans", sans-serif;
   }
 
-  /* Technical microcopy gets a restrained engineering voice. */
-  .hero-rule,
-  .section-kicker,
-  .project-status,
+  /* Keep mono reserved for genuinely technical microcopy. */
+  .documentation-number,
   .documentation-title > p {
     font-family: "IBM Plex Mono", monospace;
   }
 
   /* Let the typefaces keep their natural character instead of relying on crushed tracking. */
   h1 {
+    font-size: clamp(38px, 10vw, 42px);
     letter-spacing: -0.026em;
   }
 
@@ -38,6 +37,7 @@
   }
 
   h2 {
+    font-size: 39px;
     letter-spacing: -0.018em;
   }
 
@@ -52,7 +52,12 @@
     letter-spacing: -0.015em;
   }
 
-  .poetry-index h3,
+  .poetry-index h3 {
+    font-size: 25px;
+    line-height: 1.12;
+    letter-spacing: -0.008em;
+  }
+
   .poem-page h1 {
     letter-spacing: -0.008em;
   }
