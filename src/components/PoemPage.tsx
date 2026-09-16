@@ -1,4 +1,3 @@
-import Arrow from "./Arrow";
 import { useEffect } from "react";
 import { poems, type Poem } from "../data/poetry";
 import Logo from "./Logo";
@@ -19,9 +18,11 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
       description?.setAttribute("content", previousDescription);
     };
   }, [poem]);
+
   const index = poems.findIndex((entry) => entry.slug === poem?.slug);
   const previous = poems[index - 1];
   const next = poems[index + 1];
+
   return (
     <>
       <a className="skip-link" href="#main">
@@ -32,7 +33,7 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
           <Logo />
         </a>
         <a className="poem-back" href="/#poetry">
-          <Arrow direction="left" /> Selected poetry
+          Selected poetry
         </a>
         <ThemeToggle />
       </header>
@@ -67,7 +68,7 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
             <nav className="poem-navigation" aria-label="Poem navigation">
               {previous ? (
                 <a href={`/poetry/${previous.slug}`} rel="prev">
-                  <Arrow direction="left" /> Previous poem
+                  Previous poem
                 </a>
               ) : (
                 <span aria-disabled="true">Previous poem</span>
@@ -75,7 +76,7 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
               <a href="/#poetry">Back to selected poetry</a>
               {next ? (
                 <a href={`/poetry/${next.slug}`} rel="next">
-                  Next poem <Arrow direction="right" />
+                  Next poem
                 </a>
               ) : (
                 <span aria-disabled="true">Next poem</span>
