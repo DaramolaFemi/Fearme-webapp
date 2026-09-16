@@ -1,0 +1,33 @@
+/* Mobile identity pass 3
+   Static project/documentation tags only.
+   Interactive filters, CTA controls, layout, motion, media, typography, and palettes are intentionally untouched. */
+
+@media (max-width: 600px) {
+  .project > .tags,
+  .documentation-tags {
+    gap: 0;
+    row-gap: 6px;
+    align-items: baseline;
+  }
+
+  .project > .tags span,
+  .documentation-tags span {
+    display: inline-flex;
+    align-items: center;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    padding: 0;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+
+  .project > .tags span:not(:last-child)::after,
+  .documentation-tags span:not(:last-child)::after {
+    content: "·";
+    margin: 0 8px;
+    color: var(--line);
+    font-weight: 400;
+  }
+}
