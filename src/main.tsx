@@ -20,6 +20,7 @@ import "./desktop-arrow-refine.css";
 import "./back-to-top.css";
 import "./mobile-identity-pass-1.css";
 import "./mobile-identity-pass-2.css";
+import "./mobile-identity-pass-3.css";
 import SitePage from "./components/SitePage";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
