@@ -1,0 +1,26 @@
+/* Mobile identity pass 2
+   Light-theme palette refinement only.
+   Dark mode, typography, layout, motion, media, spacing, and interactions are intentionally untouched. */
+
+@media (max-width: 600px) {
+  :root:not([data-theme="dark"]) {
+    --paper: #f5f6f2;
+    --ink: #222621;
+    --muted: #636961;
+    --line: #cbd0c8;
+    --panel: #e9ede7;
+    --field-line: #aab1a7;
+    --placeholder: #737a71;
+    --band-text: #f5f6f2;
+  }
+
+  :root:not([data-theme="dark"]) ::selection {
+    background: #e5a087;
+    color: #222621;
+  }
+
+  :root:not([data-theme="dark"]) .tags span {
+    border-color: rgba(34, 38, 33, 0.2);
+    background: rgba(34, 38, 33, 0.035);
+  }
+}
