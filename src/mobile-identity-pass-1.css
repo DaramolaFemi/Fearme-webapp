@@ -4,41 +4,31 @@
 
 @media (max-width: 600px) {
   body {
-    font-family:
-      "Avenir Next",
-      Avenir,
-      "Segoe UI",
-      Helvetica,
-      Arial,
-      sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
   }
 
-  /* Literary voice without the current Instrument Serif look. */
+  /* Literary voice: distinct from the interface sans without changing structure. */
   em,
   .about-signature,
   .poetry-index h3,
   .poem-page h1,
   .poem-body {
-    font-family:
-      "Iowan Old Style",
-      "Palatino Linotype",
-      Palatino,
-      "Book Antiqua",
-      Georgia,
-      serif;
+    font-family: "Literata", serif;
   }
 
   .about-signature > span {
-    font-family:
-      "Avenir Next",
-      Avenir,
-      "Segoe UI",
-      Helvetica,
-      Arial,
-      sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
   }
 
-  /* Let the display faces keep their natural character instead of relying on crushed tracking. */
+  /* Technical microcopy gets a restrained engineering voice. */
+  .hero-rule,
+  .section-kicker,
+  .project-status,
+  .documentation-title > p {
+    font-family: "IBM Plex Mono", monospace;
+  }
+
+  /* Let the typefaces keep their natural character instead of relying on crushed tracking. */
   h1 {
     letter-spacing: -0.026em;
   }
