@@ -1,0 +1,81 @@
+/* Mobile identity pass 1
+   Typography, tracking, and casing only.
+   Layout, motion, media, spacing, palette, and interaction behavior are intentionally untouched. */
+
+@media (max-width: 600px) {
+  body {
+    font-family: "IBM Plex Sans", sans-serif;
+  }
+
+  /* Literary voice: distinct from the interface sans without changing structure. */
+  em,
+  .about-signature,
+  .poetry-index h3,
+  .poem-page h1,
+  .poem-body {
+    font-family: "Literata", serif;
+  }
+
+  .about-signature > span {
+    font-family: "IBM Plex Sans", sans-serif;
+  }
+
+  /* Technical microcopy gets a restrained engineering voice. */
+  .hero-rule,
+  .section-kicker,
+  .project-status,
+  .documentation-title > p {
+    font-family: "IBM Plex Mono", monospace;
+  }
+
+  /* Let the typefaces keep their natural character instead of relying on crushed tracking. */
+  h1 {
+    letter-spacing: -0.026em;
+  }
+
+  h1 em {
+    letter-spacing: -0.012em;
+  }
+
+  h2 {
+    letter-spacing: -0.018em;
+  }
+
+  .project-heading h3,
+  .about-copy .lead,
+  .capabilities h3,
+  .documentation-title h3 {
+    letter-spacing: -0.01em;
+  }
+
+  .interlude {
+    letter-spacing: -0.015em;
+  }
+
+  .poetry-index h3,
+  .poem-page h1 {
+    letter-spacing: -0.008em;
+  }
+
+  /* Keep metadata quiet, but stop using wide all-caps as the default editorial signal. */
+  .hero-meta,
+  .hero-rule,
+  .section-kicker,
+  .small-label,
+  .project-heading > span,
+  .project-status,
+  .documentation-number,
+  .documentation-title > p,
+  .documentation-status,
+  .documentation-cta,
+  .poetry-status,
+  .poetry-archive-toggle {
+    text-transform: none;
+    letter-spacing: 0.015em;
+  }
+
+  .orbit-caption {
+    text-transform: none;
+    letter-spacing: 0.04em;
+  }
+}

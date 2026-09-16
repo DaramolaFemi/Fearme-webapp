@@ -5,12 +5,20 @@ import "@fontsource/dm-sans/latin-500.css";
 import "@fontsource/dm-sans/latin-600.css";
 import "@fontsource/instrument-serif/latin-400.css";
 import "@fontsource/instrument-serif/latin-400-italic.css";
+import "@fontsource/ibm-plex-sans/latin-400.css";
+import "@fontsource/ibm-plex-sans/latin-500.css";
+import "@fontsource/ibm-plex-sans/latin-600.css";
+import "@fontsource/ibm-plex-mono/latin-400.css";
+import "@fontsource/ibm-plex-mono/latin-500.css";
+import "@fontsource/literata/latin-400.css";
+import "@fontsource/literata/latin-400-italic.css";
 import "./style.css";
 import "./mobile-cta-fixes.css";
 import "./poetry-index-refine.css";
 import "./desktop-project-cta-refine.css";
 import "./desktop-arrow-refine.css";
 import "./back-to-top.css";
+import "./mobile-identity-pass-1.css";
 import SitePage from "./components/SitePage";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
