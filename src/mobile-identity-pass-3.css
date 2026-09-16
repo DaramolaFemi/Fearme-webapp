@@ -3,15 +3,13 @@
    Interactive filters, CTA controls, layout, motion, media, typography, and palettes are intentionally untouched. */
 
 @media (max-width: 600px) {
-  .project > .tags,
-  .documentation-tags {
+  .project > .tags {
     gap: 0;
     row-gap: 6px;
     align-items: baseline;
   }
 
-  .project > .tags span,
-  .documentation-tags span {
+  .project > .tags span {
     display: inline-flex;
     align-items: center;
     border: 0;
@@ -23,10 +21,40 @@
     letter-spacing: 0.01em;
   }
 
-  .project > .tags span:not(:last-child)::after,
-  .documentation-tags span:not(:last-child)::after {
+  .project > .tags span:not(:last-child)::after {
     content: "·";
     margin: 0 8px;
+    color: var(--line);
+    font-weight: 400;
+  }
+
+  /* Documentation metadata should read as one baseline, not a row of mini cards. */
+  .documentation-tags.tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0;
+    row-gap: 5px;
+  }
+
+  .documentation-tags.tags span {
+    display: inline-flex;
+    align-items: baseline;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    padding: 0 !important;
+    color: var(--muted);
+    font-size: 9px;
+    line-height: 1.35;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+
+  .documentation-tags.tags span:not(:last-child)::after {
+    content: "·";
+    margin: 0 6px;
     color: var(--line);
     font-weight: 400;
   }
