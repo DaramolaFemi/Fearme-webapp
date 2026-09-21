@@ -70,9 +70,9 @@ export const projects = [
     description:
       "A premium barbershop experience brought online, with a refined visual system that guides clients from discovery to booking a chair.",
     href: "https://gleets.vercel.app/",
-    image: "/Images/gleez-current-desktop.svg",
-    mobileImage: "/Images/gleez-current-mobile.svg",
-    imageSrcSet: "/Images/gleez-current-desktop.svg 1440w",
+    image: "/Images/gleez-live-2026-v2-desktop.svg",
+    mobileImage: "/Images/gleez-live-2026-v2-mobile.svg",
+    imageSrcSet: "/Images/gleez-live-2026-v2-desktop.svg 1440w",
     theme: "gleez",
     tags: ["Next.js", "Booking experience", "Premium UI"],
   },
