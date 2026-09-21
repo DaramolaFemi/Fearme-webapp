@@ -232,6 +232,12 @@ export default function App() {
                 >
                   <div className="project-visual">
                     <picture>
+                      {"mobileImage" in project && project.mobileImage && (
+                        <source
+                          media="(max-width: 600px)"
+                          srcSet={project.mobileImage}
+                        />
+                      )}
                       <source
                         srcSet={project.imageSrcSet}
                         sizes={

@@ -13,10 +13,23 @@
   opacity: 1;
 }
 
-/* Keep the poster and recording aligned when the preview starts. */
+/* Keep the poster and recording aligned while giving the game card the same desktop hover life as the other projects. */
 .project.neon .project-visual img,
-.project.neon .project-visual:hover img {
+.project.neon .gameplay-preview {
   transform: none;
+}
+
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .project.neon .project-visual img,
+  .project.neon .gameplay-preview {
+    transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+    transform-origin: center;
+  }
+
+  .project.neon .project-visual:hover img,
+  .project.neon .project-visual:hover .gameplay-preview {
+    transform: scale(1.045);
+  }
 }
 
 @media (max-width: 600px) {
