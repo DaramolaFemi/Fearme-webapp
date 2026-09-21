@@ -113,7 +113,10 @@ export default function App() {
                   animate={{ y: 0 }}
                   transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  Code with <em>intent.</em>
+                  Code with{" "}
+                  <em className="hero-emphasis hero-emphasis-intent">
+                    intent.
+                  </em>
                 </motion.span>
               </span>
               <span className="hero-line">
@@ -126,7 +129,10 @@ export default function App() {
                     ease: [0.22, 1, 0.36, 1],
                   }}
                 >
-                  Words with <em>weight.</em>
+                  Words with{" "}
+                  <em className="hero-emphasis hero-emphasis-weight">
+                    weight.
+                  </em>
                 </motion.span>
               </span>
             </h1>
@@ -165,8 +171,8 @@ export default function App() {
           </div>
           <div className="hero-rule">
             <span>Engineering / Documentation / Poetry</span>
-            <span>
-              Scroll to discover <Arrow direction="down" />
+            <span className="hero-signature">
+              An engineer’s archive, with a poet inside.
             </span>
           </div>
         </section>

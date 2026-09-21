@@ -243,6 +243,52 @@ h2 {
   color: var(--muted);
   font-size: 10px;
 }
+.hero-signature {
+  text-align: right;
+}
+.hero-emphasis {
+  display: inline-block;
+  transform-origin: 50% 75%;
+  will-change: transform;
+}
+.hero-emphasis-intent {
+  animation: intent-mark 7s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+.hero-emphasis-weight {
+  animation: weight-mark 8s cubic-bezier(0.22, 1, 0.36, 1) 0.9s infinite;
+}
+@keyframes intent-mark {
+  0%,
+  72%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  79% {
+    transform: translateY(-0.045em) rotate(-0.7deg);
+  }
+  86% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+@keyframes weight-mark {
+  0%,
+  74%,
+  100% {
+    transform: translateY(0) scaleX(1);
+  }
+  81% {
+    transform: translateY(0.055em) scaleX(1.012);
+  }
+  88% {
+    transform: translateY(0) scaleX(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-emphasis-intent,
+  .hero-emphasis-weight {
+    animation: none;
+  }
+}
 .work {
   padding-top: 95px;
 }
