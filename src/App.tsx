@@ -304,12 +304,9 @@ export default function App() {
                           <span className="project-cta-label-mobile">
                             {project.href ? "View" : "Request"}
                           </span>
-                        </span>
-                        <span
-                          className="project-cta-label project-cta-label-desktop"
-                          aria-hidden="true"
-                        >
-                          {project.href ? "View" : "Request"}
+                          <span className="project-cta-label-circle-desktop">
+                            {project.href ? "View" : "ASK"}
+                          </span>
                         </span>
                       </a>
                     </div>
