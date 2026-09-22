@@ -548,3 +548,63 @@
     font-size: 8px;
   }
 }
+
+
+/* Desktop-only alignment and CTA correction.
+   Mobile/tablet rules remain unchanged. */
+.project-cta-label-circle-desktop {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .work .section-heading {
+    width: 100%;
+    max-width: none;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+    align-items: end;
+    column-gap: clamp(56px, 8vw, 140px);
+  }
+
+  .work .section-heading > p {
+    width: 100%;
+    max-width: 380px;
+    justify-self: end;
+    text-align: left;
+    padding-bottom: 8px;
+  }
+
+  .project-open {
+    gap: 0;
+  }
+
+  .project-open-icon {
+    position: relative;
+    display: inline-grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+  }
+
+  .project-open-icon .direction-arrow {
+    display: none !important;
+  }
+
+  .project-cta-label-circle-desktop {
+    display: block;
+    max-width: 100%;
+    padding: 0;
+    color: var(--ink);
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .project:hover .project-cta-label-circle-desktop,
+  .project-open:hover .project-cta-label-circle-desktop {
+    color: #fff;
+  }
+}
