@@ -416,3 +416,58 @@
     transform: none;
   }
 }
+
+
+/* Surgical follow-up: keep mobile actions inside the existing circles and
+   let the full-width Bouldwood preview show its complete source image on desktop. */
+@media (min-width: 901px) {
+  .project.bouldwood .project-visual {
+    aspect-ratio: auto;
+  }
+
+  .project.bouldwood .project-visual img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: top center;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-open {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    padding: 0;
+    border: 1px solid color-mix(in srgb, var(--accent) 65%, var(--line));
+    border-radius: 50%;
+    display: inline-grid;
+    place-items: center;
+  }
+
+  .project-open-icon {
+    display: none;
+  }
+
+  .project-cta-label {
+    display: block;
+    padding: 0;
+    border: 0;
+    font-size: 9px;
+    line-height: 1;
+    text-align: center;
+  }
+
+  .project-open[href="#contact"] {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+  }
+
+  .project-open[href="#contact"] .project-cta-label {
+    font-size: 8px;
+  }
+}
