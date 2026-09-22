@@ -19,11 +19,11 @@ export default function PoetrySection() {
       <div className="poetry-intro">
         <ScrollReveal>
           <h2>
-            Against the logic of code
+            Where logic ends
             <br />
-            and the silence of the grave,
+            and silence begins,
             <br />
-            <em>I bleed ink.</em>
+            <em>I write.</em>
           </h2>
         </ScrollReveal>
         <ScrollReveal className="poetry-copy" delay={0.1}>
