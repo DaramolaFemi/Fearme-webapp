@@ -301,8 +301,14 @@ export default function App() {
                       >
                         <span className="project-open-icon" aria-hidden="true">
                           <Arrow />
+                          <span className="project-cta-label-mobile">
+                            {project.href ? "View" : "Request"}
+                          </span>
                         </span>
-                        <span className="project-cta-label" aria-hidden="true">
+                        <span
+                          className="project-cta-label project-cta-label-desktop"
+                          aria-hidden="true"
+                        >
                           {project.href ? "View" : "Request"}
                         </span>
                       </a>
