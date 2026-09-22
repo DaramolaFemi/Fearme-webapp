@@ -481,3 +481,70 @@
     display: none !important;
   }
 }
+
+
+/* Mobile CTA final: the word itself lives inside the circle.
+   The anchor stays static so the existing ::before stretched hit area keeps
+   the full card clickable on mobile. */
+.project-cta-label-mobile {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .project-open {
+    position: static;
+    width: auto;
+    height: auto;
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    box-shadow: none;
+  }
+
+  .project-open-icon {
+    display: inline-grid !important;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    border: 1px solid color-mix(in srgb, var(--accent) 65%, var(--line));
+    border-radius: 50%;
+    background: transparent;
+  }
+
+  .project-open-icon .direction-arrow {
+    display: none !important;
+  }
+
+  .project-cta-label-mobile {
+    display: block;
+    max-width: 100%;
+    padding: 0;
+    color: var(--ink);
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .project-cta-label-desktop {
+    display: none !important;
+  }
+
+  .project-open[href="#contact"] .project-open-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .project-open[href="#contact"] .project-cta-label-mobile {
+    font-size: 8px;
+  }
+}
