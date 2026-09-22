@@ -261,46 +261,52 @@ export default function App() {
                         poster={project.image}
                       />
                     )}
-                    <a
-                      className="project-open"
-                      href={project.href || "#contact"}
-                      target={project.href ? "_blank" : undefined}
-                      rel="noopener noreferrer"
-                      aria-label={
-                        project.href
-                          ? `Visit ${project.name} (opens in a new tab)`
-                          : `Request a walkthrough of ${project.name}`
-                      }
-                    >
-                      <Arrow />
-                      <span className="project-cta-label" aria-hidden="true">
-                        {project.href ? "View" : "Request"}
-                      </span>
-                    </a>
                   </div>
-                  <div className="project-heading">
-                    <h3>
-                      <span className="project-number">{project.id}</span>
-                      <span className="project-name-desktop">
-                        {project.name}
-                      </span>
-                      <span className="project-name-mobile">
-                        {project.mobileName || project.name}
-                      </span>
-                    </h3>
-                    <span>{project.type}</span>
-                  </div>
-                  <p className="project-status">
-                    {project.href
-                      ? "Live project"
-                      : "In development, not yet hosted"}
-                  </p>
-                  <h4>{project.subtitle}</h4>
-                  <p>{project.description}</p>
-                  <div className="tags">
-                    {project.tags.map((tag) => (
-                      <span key={tag}>{tag}</span>
-                    ))}
+                  <div className="project-card-body">
+                    <div className="project-heading">
+                      <h3>
+                        <span className="project-number">{project.id}</span>
+                        <span className="project-name-desktop">
+                          {project.name}
+                        </span>
+                        <span className="project-name-mobile">
+                          {project.mobileName || project.name}
+                        </span>
+                      </h3>
+                      <span>{project.type}</span>
+                    </div>
+                    <p className="project-status">
+                      {project.href
+                        ? "Live project"
+                        : "In development, not yet hosted"}
+                    </p>
+                    <h4>{project.subtitle}</h4>
+                    <p>{project.description}</p>
+                    <div className="project-card-footer">
+                      <div className="tags">
+                        {project.tags.map((tag) => (
+                          <span key={tag}>{tag}</span>
+                        ))}
+                      </div>
+                      <a
+                        className="project-open"
+                        href={project.href || "#contact"}
+                        target={project.href ? "_blank" : undefined}
+                        rel="noopener noreferrer"
+                        aria-label={
+                          project.href
+                            ? `Visit ${project.name} (opens in a new tab)`
+                            : `Request a walkthrough of ${project.name}`
+                        }
+                      >
+                        <span className="project-open-icon" aria-hidden="true">
+                          <Arrow />
+                        </span>
+                        <span className="project-cta-label" aria-hidden="true">
+                          {project.href ? "View" : "Request"}
+                        </span>
+                      </a>
+                    </div>
                   </div>
                 </motion.article>
               ))}

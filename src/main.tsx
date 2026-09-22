@@ -22,6 +22,7 @@ import "./mobile-identity-pass-1.css";
 import "./mobile-identity-pass-2.css";
 import "./mobile-identity-pass-3.css";
 import "./desktop-identity-pass.css";
+import "./project-cards-editorial.css";
 import SitePage from "./components/SitePage";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

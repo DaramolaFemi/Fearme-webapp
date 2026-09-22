@@ -1,0 +1,418 @@
+/* Selected work card redesign
+   Mirrors the approved editorial mockup while keeping the existing project copy,
+   media, filtering, themes, and project order intact. */
+
+.work .section-heading {
+  max-width: 1180px;
+}
+
+.work .filters {
+  align-items: center;
+  gap: 0;
+  margin: 0 0 34px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.work .filters button {
+  position: relative;
+  border: 0;
+  border-radius: 0;
+  padding: 14px 18px 14px 0;
+  margin-right: 18px;
+  background: transparent;
+  color: var(--muted);
+  gap: 9px;
+  transition:
+    color 220ms ease,
+    transform 220ms ease;
+}
+
+.work .filters button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.work .filters button:hover {
+  color: var(--ink);
+  transform: translateY(-1px);
+}
+
+.work .filters button[aria-pressed="true"] {
+  color: var(--ink);
+  background: transparent;
+  border-color: transparent;
+}
+
+.work .filters button[aria-pressed="true"]::after {
+  width: calc(100% - 18px);
+}
+
+.project-grid {
+  gap: 20px;
+  align-items: stretch;
+}
+
+.project {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper);
+  box-shadow: 0 1px 0 rgba(34, 38, 33, 0.03);
+  transition:
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 320ms ease,
+    box-shadow 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project:first-child {
+  grid-column: 1 / -1;
+}
+
+.project-visual {
+  flex: none;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--panel);
+}
+
+.project:not(:first-child) .project-visual {
+  aspect-ratio: 1.78;
+}
+
+.project:first-child .project-visual {
+  aspect-ratio: 2.35;
+}
+
+.project-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 20px 22px 22px;
+}
+
+.project-heading {
+  align-items: baseline;
+  margin: 0 0 13px;
+  gap: 22px;
+}
+
+.project-heading h3 {
+  display: flex;
+  align-items: baseline;
+  min-width: 0;
+  font-family: "Literata", serif;
+  font-size: clamp(24px, 2vw, 31px);
+  font-weight: 400;
+  line-height: 1.06;
+  letter-spacing: -0.018em;
+}
+
+.project-heading h3 > .project-number {
+  flex: 0 0 auto;
+  margin-right: 15px;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.project-heading > span {
+  flex: 0 0 auto;
+  font-size: 9px;
+  line-height: 1.4;
+  text-align: right;
+}
+
+.project-status {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.project h4 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.project-card-body > p:not(.project-status) {
+  max-width: 680px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.72;
+}
+
+.project:first-child .project-card-body > p:not(.project-status) {
+  max-width: 820px;
+}
+
+.project-card-footer {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 22px;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.project-card-footer .tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  row-gap: 7px;
+}
+
+.project-card-footer .tags span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  border: 1px solid var(--line) !important;
+  border-radius: 999px !important;
+  padding: 5px 9px !important;
+  background: var(--panel) !important;
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.project-card-footer .tags span::after {
+  content: none !important;
+}
+
+.project-open {
+  position: static;
+  inset: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 0 0 auto;
+  width: auto;
+  min-width: 0;
+  height: auto;
+  min-height: 44px;
+  padding: 0;
+  gap: 12px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transition: color 220ms ease;
+}
+
+.project-open-icon {
+  display: inline-grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--accent) 65%, var(--line));
+  border-radius: 50%;
+  background: transparent;
+  transition:
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 260ms ease,
+    border-color 260ms ease;
+}
+
+.project-open .direction-arrow {
+  display: inline-block !important;
+  width: 16px;
+  height: 16px;
+  color: var(--ink);
+  transition:
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 220ms ease;
+}
+
+.project-cta-label {
+  display: inline-block;
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--line);
+}
+
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+  .project:hover {
+    transform: translateY(-5px);
+    border-color: color-mix(in srgb, var(--accent) 62%, var(--line));
+    box-shadow: 0 22px 50px rgba(34, 38, 33, 0.09);
+  }
+
+  .project:hover .project-open-icon {
+    transform: translateX(3px);
+    border-color: var(--accent);
+    background: var(--accent);
+  }
+
+  .project:hover .project-open .direction-arrow {
+    transform: translateX(2px);
+    color: var(--paper);
+  }
+
+  .project-open:hover .project-cta-label {
+    border-color: var(--accent);
+  }
+}
+
+:root[data-theme="dark"] .project {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.025);
+}
+
+:root[data-theme="dark"] .project-card-footer .tags span {
+  background: rgba(244, 237, 243, 0.035) !important;
+}
+
+@media (max-width: 900px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .project:first-child {
+    grid-column: auto;
+  }
+
+  .project:first-child .project-visual,
+  .project:not(:first-child) .project-visual {
+    aspect-ratio: 1.6;
+  }
+
+  .project.cedius .project-visual,
+  .project.gleez .project-visual {
+    aspect-ratio: 1.45;
+  }
+}
+
+@media (max-width: 600px) {
+  .work .filters {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+    margin-bottom: 22px;
+  }
+
+  .work .filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .work .filters button {
+    flex: 0 0 auto;
+    margin-right: 14px;
+    padding: 12px 14px 12px 0;
+    font-size: 10px;
+  }
+
+  .project {
+    border-radius: 8px;
+  }
+
+  .project-card-body {
+    padding: 16px 16px 18px;
+  }
+
+  .project-heading {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 14px;
+    margin-top: 0;
+  }
+
+  .project-heading h3 {
+    font-size: 23px;
+  }
+
+  .project-heading > span {
+    margin-left: auto;
+    font-size: 8px;
+  }
+
+  .project-status {
+    margin-bottom: 14px;
+    font-size: 9px;
+  }
+
+  .project-card-body > p:not(.project-status) {
+    font-size: 11px;
+    line-height: 1.7;
+  }
+
+  .project-card-footer {
+    align-items: center;
+    gap: 16px;
+    padding-top: 17px;
+  }
+
+  .project-card-footer .tags {
+    gap: 5px;
+  }
+
+  .project-card-footer .tags span {
+    min-height: 24px;
+    padding: 4px 7px !important;
+    font-size: 8px;
+  }
+
+  .project-open {
+    right: auto;
+    bottom: auto;
+    min-width: 0;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    color: var(--ink);
+    box-shadow: none;
+  }
+
+  .project-open-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .project-cta-label {
+    display: none;
+  }
+
+  .project.bouldwood .project-visual,
+  .project.cedius .project-visual,
+  .project.gleez .project-visual,
+  .project.weather .project-visual,
+  .project.neon .project-visual {
+    aspect-ratio: 1.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project,
+  .project-open-icon,
+  .project-open .direction-arrow,
+  .work .filters button,
+  .work .filters button::after {
+    transition: none !important;
+  }
+
+  .project:hover {
+    transform: none;
+  }
+}
