@@ -471,3 +471,13 @@
     font-size: 8px;
   }
 }
+
+
+/* The mobile CTA already renders its real label in the circle.
+   Disable the older generated duplicate while keeping its stretched hit area. */
+@media (max-width: 600px) {
+  .project-cta-label::after {
+    content: none !important;
+    display: none !important;
+  }
+}
