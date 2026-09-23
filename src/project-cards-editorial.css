@@ -6,6 +6,10 @@
   max-width: 1180px;
 }
 
+.work {
+  padding-bottom: 40px;
+}
+
 .work .filters {
   align-items: center;
   gap: 0;
@@ -474,10 +478,6 @@
   .project.weather .project-visual,
   .project.neon .project-visual {
     aspect-ratio: 1.45;
-  }
-
-  .project.tentio .project-visual img {
-    object-position: left top;
   }
 
   .project-lab {
