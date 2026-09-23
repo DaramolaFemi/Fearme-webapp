@@ -4,16 +4,114 @@ import { useDesktopMotion } from "./hooks/useDesktopMotion";
 import GameplayPreview from "./components/GameplayPreview";
 import Logo from "./components/Logo";
 import ThemeToggle from "./components/ThemeToggle";
-import { projects, filters } from "./data/projects";
+import {
+  featuredProjects,
+  filters,
+  projectLabProjects,
+  type Project,
+} from "./data/projects";
 import Contact from "./components/Contact";
 import DocumentationSection from "./components/DocumentationSection";
 import PoetrySection from "./components/PoetrySection";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { MotionConfig, motion, useReducedMotion } from "motion/react";
 
+type ProjectCardProps = {
+  project: Project;
+  reduced: boolean | null;
+  desktopMotion: boolean;
+};
+
+function ProjectCard({ project, reduced, desktopMotion }: ProjectCardProps) {
+  return (
+    <motion.article
+      className={`project ${project.theme}`}
+      id={`project-${project.theme}`}
+      initial={reduced ? false : { opacity: 0, y: desktopMotion ? 48 : 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: desktopMotion ? 0.8 : 0.5,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      viewport={{ once: true, amount: 0.08 }}
+    >
+      <div className="project-visual">
+        <picture>
+          {project.mobileImage && (
+            <source media="(max-width: 600px)" srcSet={project.mobileImage} />
+          )}
+          <source
+            srcSet={project.imageSrcSet}
+            sizes={
+              project.id === "01" ? "90vw" : "(max-width: 900px) 90vw, 45vw"
+            }
+          />
+          <img
+            src={project.image}
+            alt={`${project.name} interface`}
+            loading="lazy"
+            decoding="async"
+            width={1200}
+            height={800}
+          />
+        </picture>
+        {project.preview && (
+          <GameplayPreview src={project.preview} poster={project.image} />
+        )}
+      </div>
+      <div className="project-card-body">
+        <div className="project-heading">
+          <h3>
+            <span className="project-number">{project.id}</span>
+            <span className="project-name-desktop">{project.name}</span>
+            <span className="project-name-mobile">
+              {project.mobileName || project.name}
+            </span>
+          </h3>
+          <span>{project.type}</span>
+        </div>
+        <p className="project-status">
+          {project.href ? "Live project" : "In development, not yet hosted"}
+        </p>
+        <h4>{project.subtitle}</h4>
+        <p>{project.description}</p>
+        <div className="project-card-footer">
+          <div className="tags">
+            {project.tags.map((tag) => (
+              <span key={tag}>{tag}</span>
+            ))}
+          </div>
+          <a
+            className="project-open"
+            href={project.href || "#contact"}
+            target={project.href ? "_blank" : undefined}
+            rel="noopener noreferrer"
+            aria-label={
+              project.href
+                ? `Visit ${project.name} (opens in a new tab)`
+                : `Request a walkthrough of ${project.name}`
+            }
+          >
+            <span className="project-open-icon" aria-hidden="true">
+              <Arrow />
+              <span className="project-cta-label-mobile">
+                {project.href ? "View" : "Request"}
+              </span>
+              <span className="project-cta-label-circle-desktop">
+                {project.href ? "View" : "ASK"}
+              </span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </motion.article>
+  );
+}
+
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [filter, setFilter] = useState("All work");
+  const [projectLabOpen, setProjectLabOpen] = useState(false);
   const reduced = useReducedMotion();
   const desktopMotion = useDesktopMotion();
   const menuButton = useRef<HTMLButtonElement>(null);
@@ -203,7 +301,7 @@ export default function App() {
                 {item}
                 <span>
                   {String(
-                    projects.filter(
+                    featuredProjects.filter(
                       (project) =>
                         item === "All work" || project.category === item,
                     ).length,
@@ -213,106 +311,58 @@ export default function App() {
             ))}
           </div>
           <div className="project-grid">
-            {projects
+            {featuredProjects
               .filter((p) => filter === "All work" || p.category === filter)
               .map((project) => (
-                <motion.article
-                  className={`project ${project.theme}`}
-                  id={`project-${project.theme}`}
+                <ProjectCard
                   key={project.id}
-                  initial={
-                    reduced ? false : { opacity: 0, y: desktopMotion ? 48 : 20 }
-                  }
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: desktopMotion ? 0.8 : 0.5,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  viewport={{ once: true, amount: 0.08 }}
-                >
-                  <div className="project-visual">
-                    <picture>
-                      {"mobileImage" in project && project.mobileImage && (
-                        <source
-                          media="(max-width: 600px)"
-                          srcSet={project.mobileImage}
-                        />
-                      )}
-                      <source
-                        srcSet={project.imageSrcSet}
-                        sizes={
-                          project.id === "01"
-                            ? "90vw"
-                            : "(max-width: 900px) 90vw, 45vw"
-                        }
-                      />
-                      <img
-                        src={project.image}
-                        alt={`${project.name} interface`}
-                        loading="lazy"
-                        decoding="async"
-                        width={1200}
-                        height={800}
-                      />
-                    </picture>
-                    {project.preview && (
-                      <GameplayPreview
-                        src={project.preview}
-                        poster={project.image}
-                      />
-                    )}
-                  </div>
-                  <div className="project-card-body">
-                    <div className="project-heading">
-                      <h3>
-                        <span className="project-number">{project.id}</span>
-                        <span className="project-name-desktop">
-                          {project.name}
-                        </span>
-                        <span className="project-name-mobile">
-                          {project.mobileName || project.name}
-                        </span>
-                      </h3>
-                      <span>{project.type}</span>
-                    </div>
-                    <p className="project-status">
-                      {project.href
-                        ? "Live project"
-                        : "In development, not yet hosted"}
-                    </p>
-                    <h4>{project.subtitle}</h4>
-                    <p>{project.description}</p>
-                    <div className="project-card-footer">
-                      <div className="tags">
-                        {project.tags.map((tag) => (
-                          <span key={tag}>{tag}</span>
-                        ))}
-                      </div>
-                      <a
-                        className="project-open"
-                        href={project.href || "#contact"}
-                        target={project.href ? "_blank" : undefined}
-                        rel="noopener noreferrer"
-                        aria-label={
-                          project.href
-                            ? `Visit ${project.name} (opens in a new tab)`
-                            : `Request a walkthrough of ${project.name}`
-                        }
-                      >
-                        <span className="project-open-icon" aria-hidden="true">
-                          <Arrow />
-                          <span className="project-cta-label-mobile">
-                            {project.href ? "View" : "Request"}
-                          </span>
-                          <span className="project-cta-label-circle-desktop">
-                            {project.href ? "View" : "ASK"}
-                          </span>
-                        </span>
-                      </a>
-                    </div>
-                  </div>
-                </motion.article>
+                  project={project}
+                  reduced={reduced}
+                  desktopMotion={desktopMotion}
+                />
               ))}
+          </div>
+          <div className="project-lab">
+            <button
+              type="button"
+              className="project-lab-toggle"
+              aria-expanded={projectLabOpen}
+              aria-controls="project-lab-collection"
+              onClick={() => setProjectLabOpen((open) => !open)}
+            >
+              <span>
+                {projectLabOpen
+                  ? "Close the Project Lab"
+                  : "Open the Project Lab"}
+              </span>
+              <span className="project-lab-count" aria-hidden="true">
+                {String(projectLabProjects.length).padStart(2, "0")} project
+                {projectLabProjects.length === 1 ? "" : "s"}
+              </span>
+            </button>
+            <div
+              id="project-lab-collection"
+              className="project-lab-collection"
+              aria-hidden={!projectLabOpen}
+            >
+              {projectLabOpen && (
+                <motion.div
+                  className="project-lab-grid"
+                  initial={reduced ? false : { opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  {projectLabProjects.map((project) => (
+                    <ProjectCard
+                      key={project.id}
+                      project={project}
+                      reduced={reduced}
+                      desktopMotion={desktopMotion}
+                    />
+                  ))}
+                </motion.div>
+              )}
+            </div>
           </div>
         </section>
         <DocumentationSection />

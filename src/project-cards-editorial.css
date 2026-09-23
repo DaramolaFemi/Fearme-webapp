@@ -284,6 +284,75 @@
   background: rgba(244, 237, 243, 0.035) !important;
 }
 
+.project.tentio .project-visual {
+  background: #110f0e;
+}
+
+@media (min-width: 901px) {
+  .project.tentio .project-visual {
+    aspect-ratio: 1440 / 828;
+  }
+}
+
+.project-lab {
+  margin-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.project-lab-toggle {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: "Literata", serif;
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  text-align: left;
+  text-transform: none;
+  transition: color 220ms ease;
+}
+
+.project-lab-count {
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  text-transform: none;
+  transition: color 220ms ease;
+}
+
+.project-lab-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  padding: 4px 0 2px;
+}
+
+.project-lab-grid > .project:first-child {
+  grid-column: auto;
+}
+
+.project-lab-grid > .project:first-child .project-visual {
+  aspect-ratio: 1.78;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .project-lab-toggle:hover,
+  .project-lab-toggle:hover .project-lab-count {
+    color: var(--accent);
+  }
+}
+
 @media (max-width: 900px) {
   .project-grid {
     grid-template-columns: 1fr;
@@ -302,6 +371,11 @@
   .project.cedius .project-visual,
   .project.gleez .project-visual {
     aspect-ratio: 1.45;
+  }
+
+  .project-lab-grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
   }
 }
 
@@ -401,6 +475,23 @@
   .project.neon .project-visual {
     aspect-ratio: 1.45;
   }
+
+  .project.tentio .project-visual img {
+    object-position: left top;
+  }
+
+  .project-lab {
+    margin-top: 22px;
+  }
+
+  .project-lab-toggle {
+    padding: 14px 0;
+    font-size: 17px;
+  }
+
+  .project-lab-count {
+    font-size: 8px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -408,7 +499,9 @@
   .project-open-icon,
   .project-open .direction-arrow,
   .work .filters button,
-  .work .filters button::after {
+  .work .filters button::after,
+  .project-lab-toggle,
+  .project-lab-count {
     transition: none !important;
   }
 
@@ -416,7 +509,6 @@
     transform: none;
   }
 }
-
 
 /* Surgical follow-up: keep mobile actions inside the existing circles and
    let the full-width Bouldwood preview show its complete source image on desktop. */
@@ -472,7 +564,6 @@
   }
 }
 
-
 /* The mobile CTA already renders its real label in the circle.
    Disable the older generated duplicate while keeping its stretched hit area. */
 @media (max-width: 600px) {
@@ -481,7 +572,6 @@
     display: none !important;
   }
 }
-
 
 /* Mobile CTA final: the word itself lives inside the circle.
    The anchor stays static so the existing ::before stretched hit area keeps
@@ -548,7 +638,6 @@
     font-size: 8px;
   }
 }
-
 
 /* Desktop-only alignment and CTA correction.
    Mobile/tablet rules remain unchanged. */

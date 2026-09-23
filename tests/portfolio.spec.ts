@@ -255,10 +255,11 @@ test("touch layouts use SVG arrows and fields keep readable sizing on focus", as
     );
   }
   await expect(page.locator(".contact-grid")).toHaveCSS("transform", "none");
-  await expect(page.locator(".weather img")).toHaveAttribute(
-    "src",
-    "/Images/harmattan-desktop.png",
-  );
+  await expect(page.locator(".project-lab-collection .weather")).toHaveCount(0);
+  await page.getByRole("button", { name: "Open the Project Lab" }).click();
+  await expect(
+    page.locator(".project-lab-collection .weather img"),
+  ).toHaveAttribute("src", "/Images/harmattan-desktop.png");
   await context.close();
 });
 test("desktop actions use SVG arrows and reduced motion stays static", async ({
@@ -298,10 +299,11 @@ test("navigation is quiet and each project has exactly one CTA", async ({
     await expect(project.locator("a")).toHaveCount(1);
     await expect(project.locator("a")).toHaveClass("project-open");
   }
-  await expect(page.locator(".weather img")).toHaveAttribute(
-    "src",
-    "/Images/harmattan-desktop.png",
-  );
+  await expect(page.locator(".project-lab-collection .weather")).toHaveCount(0);
+  await page.getByRole("button", { name: "Open the Project Lab" }).click();
+  await expect(
+    page.locator(".project-lab-collection .weather img"),
+  ).toHaveAttribute("src", "/Images/harmattan-desktop.png");
   await page.setViewportSize({ width: 390, height: 844 });
   for (const project of await page.locator("article.project").all()) {
     await project.scrollIntoViewIfNeeded();
@@ -319,6 +321,57 @@ test("navigation is quiet and each project has exactly one CTA", async ({
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBe(true);
+});
+
+test("selected work keeps the featured order and reveals the Project Lab", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto("/");
+  const featured = page.locator(".project-grid > article");
+  await expect(featured).toHaveCount(5);
+  await expect(featured.locator(".project-name-desktop")).toHaveText([
+    "Bouldwood",
+    "Tentio",
+    "Cedius",
+    "Gleez",
+    "Zer0 Lane",
+  ]);
+  const [lead, tentio, cedius, gleez, zer0Lane] = await featured.evaluateAll(
+    (cards) =>
+      cards.map((card) => {
+        const rect = card.getBoundingClientRect();
+        return { x: rect.x, y: rect.y, width: rect.width };
+      }),
+  );
+  expect(lead.width).toBeGreaterThan(tentio.width * 1.9);
+  expect(tentio.y).toBe(cedius.y);
+  expect(gleez.y).toBe(zer0Lane.y);
+  expect(gleez.y).toBeGreaterThan(tentio.y);
+  await expect(page.locator("#project-weather")).toHaveCount(0);
+  await page.getByRole("button", { name: "Open the Project Lab" }).click();
+  await expect(page.locator("#project-weather")).toBeVisible();
+  await expect(page.locator("#project-weather")).toContainText(
+    "Harmattan 9ja Skies",
+  );
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.reload();
+  const mobileFeatured = page.locator(".project-grid > article");
+  await expect(mobileFeatured).toHaveCount(5);
+  const mobileCards = await mobileFeatured.evaluateAll((cards) =>
+    cards.map((card) => {
+      const rect = card.getBoundingClientRect();
+      return { x: rect.x, y: rect.y };
+    }),
+  );
+  expect(new Set(mobileCards.map((card) => card.x)).size).toBe(1);
+  expect(mobileCards.map((card) => card.y)).toEqual(
+    [...mobileCards.map((card) => card.y)].sort((a, b) => a - b),
+  );
+  await expect(page.locator("#project-weather")).toHaveCount(0);
+  await page.getByRole("button", { name: "Open the Project Lab" }).click();
+  await expect(page.locator("#project-weather")).toBeVisible();
 });
 
 test("documentation and poetry extend the editorial portfolio", async ({

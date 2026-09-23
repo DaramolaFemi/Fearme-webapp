@@ -1,4 +1,21 @@
-export const projects = [
+export type Project = {
+  id: string;
+  name: string;
+  mobileName?: string;
+  subtitle: string;
+  category: string;
+  type: string;
+  description: string;
+  href: string;
+  image: string;
+  mobileImage?: string;
+  imageSrcSet: string;
+  preview?: string;
+  theme: string;
+  tags: string[];
+};
+
+export const featuredProjects: Project[] = [
   {
     id: "01",
     name: "Bouldwood",
@@ -16,6 +33,21 @@ export const projects = [
   },
   {
     id: "02",
+    name: "Tentio",
+    subtitle: "Writing, with intention.",
+    category: "Web applications",
+    type: "Poetry studio",
+    description:
+      "A poetry studio built around memory, mood, and deliberate language. Designed to help a poem begin somewhere honest instead of somewhere generic.",
+    href: "https://tentio.vercel.app/",
+    image: "/Images/tentio-dark-desktop.png",
+    mobileImage: "/Images/tentio-dark-mobile.png",
+    imageSrcSet: "/Images/tentio-dark-desktop.png 1440w",
+    theme: "tentio",
+    tags: ["Next.js", "TypeScript", "Writing experience"],
+  },
+  {
+    id: "03",
     name: "Cedius",
     subtitle: "Less chasing numbers. More building a business.",
     category: "Web applications",
@@ -30,23 +62,22 @@ export const projects = [
     tags: ["Next.js", "React", "Prisma", "PostgreSQL"],
   },
   {
-    id: "03",
-    name: "Harmattan 9ja Skies",
-    mobileName: "Harmattan",
-    subtitle: "The skies, closer to home.",
+    id: "04",
+    name: "Gleez",
+    subtitle: "More than a cut. A standard.",
     category: "Web applications",
-    type: "Weather application",
+    type: "Barbershop landing page",
     description:
-      "A weather app rooted in Nigerian conditions. Forecasts meet ambient sound and a little play, making the weather something you can feel.",
-    href: "https://harmattan-skies-over-naija-weather.vercel.app/",
-    theme: "weather",
-    image: "/Images/harmattan-desktop.png",
-    imageSrcSet:
-      "/Images/optimized/harmattan-desktop-720-d6058f481b.webp 720w, /Images/optimized/harmattan-desktop-1440-061b47fdae.webp 1440w",
-    tags: ["Weather", "Sound design", "Responsive UI"],
+      "A premium barbershop experience brought online, with a refined visual system that guides clients from discovery to booking a chair.",
+    href: "https://gleets.vercel.app/",
+    image: "/Images/gleez-live-2026-v2-desktop.svg",
+    mobileImage: "/Images/gleez-live-2026-v2-mobile.svg",
+    imageSrcSet: "/Images/gleez-live-2026-v2-desktop.svg 1440w",
+    theme: "gleez",
+    tags: ["Next.js", "Booking experience", "Premium UI"],
   },
   {
-    id: "04",
+    id: "05",
     name: "Zer0 Lane",
     subtitle: "Find your line.",
     category: "Web applications",
@@ -61,20 +92,24 @@ export const projects = [
     theme: "neon",
     tags: ["Game development", "Interaction design"],
   },
+];
+
+export const projectLabProjects: Project[] = [
   {
-    id: "05",
-    name: "Gleez",
-    subtitle: "More than a cut. A standard.",
+    id: "06",
+    name: "Harmattan 9ja Skies",
+    mobileName: "Harmattan",
+    subtitle: "The skies, closer to home.",
     category: "Web applications",
-    type: "Barbershop landing page",
+    type: "Weather application",
     description:
-      "A premium barbershop experience brought online, with a refined visual system that guides clients from discovery to booking a chair.",
-    href: "https://gleets.vercel.app/",
-    image: "/Images/gleez-live-2026-v2-desktop.svg",
-    mobileImage: "/Images/gleez-live-2026-v2-mobile.svg",
-    imageSrcSet: "/Images/gleez-live-2026-v2-desktop.svg 1440w",
-    theme: "gleez",
-    tags: ["Next.js", "Booking experience", "Premium UI"],
+      "A weather app rooted in Nigerian conditions. Forecasts meet ambient sound and a little play, making the weather something you can feel.",
+    href: "https://harmattan-skies-over-naija-weather.vercel.app/",
+    theme: "weather",
+    image: "/Images/harmattan-desktop.png",
+    imageSrcSet:
+      "/Images/optimized/harmattan-desktop-720-d6058f481b.webp 720w, /Images/optimized/harmattan-desktop-1440-061b47fdae.webp 1440w",
+    tags: ["Weather", "Sound design", "Responsive UI"],
   },
 ];
 export const filters = ["All work", "Web applications", "Websites"];
