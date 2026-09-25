@@ -195,7 +195,6 @@ export default function App() {
             <span>
               <i /> Software engineer & technical writer
             </span>
-            <span>Based in Nigeria · Working everywhere</span>
           </div>
           <motion.div
             initial={
