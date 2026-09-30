@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import ScrollReveal, { ReadingProgress } from "./ScrollReveal";
 import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
 import "./immortal-case-study.css";
@@ -6,16 +7,38 @@ import "./immortal-case-study.css";
 const liveUrl = "https://immortal-craft.vercel.app/";
 const originalUrl = "https://www.immortalcraftbarbers.com/";
 
+const decisions = [
+  {
+    number: "01",
+    title: "Make the barber the product.",
+    text: "The person behind the chair moved into the center of the journey. Discovery, work, and booking now belong to the same decision.",
+  },
+  {
+    number: "02",
+    title: "Make proof do work.",
+    text: "Reviews, photography, services, and the lounge now reinforce one another before the visitor is asked to commit.",
+  },
+  {
+    number: "03",
+    title: "Make every section earn the next.",
+    text: "Identity leads to people. People lead to proof. Proof leads to place. Place leads to booking. Nothing exists only to fill a screen.",
+  },
+];
+
+const route = ["Arrive", "Meet", "Compare", "Trust", "Book"];
+
 export default function ImmortalCraftCaseStudy() {
   useEffect(() => {
     const previousTitle = document.title;
     const description = document.querySelector('meta[name="description"]');
     const previousDescription = description?.getAttribute("content") || "";
+
     document.title = "Immortal Craft Case Study — Daramola Femi";
     description?.setAttribute(
       "content",
       "Immortal Craft: a barbershop website redesign case study by Daramola Femi.",
     );
+
     return () => {
       document.title = previousTitle;
       description?.setAttribute("content", previousDescription);
@@ -24,13 +47,16 @@ export default function ImmortalCraftCaseStudy() {
 
   return (
     <>
+      <ReadingProgress />
       <a className="skip-link" href="#case-study-main">
         Skip to case study
       </a>
+
       <header className="case-header">
         <a href="/#work" className="wordmark" aria-label="Femi: back to selected work">
           <Logo />
         </a>
+        <span className="case-header-title">Immortal Craft / Case study</span>
         <div className="case-header-actions">
           <ThemeToggle />
           <a href="/#work" className="case-back-link">
@@ -40,21 +66,34 @@ export default function ImmortalCraftCaseStudy() {
       </header>
 
       <main id="case-study-main" className="case-study">
-        <section className="case-hero">
+        <section className="case-hero" aria-labelledby="case-title">
           <div className="case-kicker">
             <span>Case study / Immortal Craft</span>
             <span>Las Vegas / 2026</span>
           </div>
-          <div className="case-hero-copy">
-            <h1>
-              From a dated brochure site to a <em>booking-led experience.</em>
-            </h1>
-            <p>
-              Immortal Craft already had the barbers, the reputation, and the work.
-              The website needed to make those strengths easier to see and easier to act on.
-            </p>
+
+          <div className="case-hero-grid">
+            <div className="case-hero-title">
+              <span className="case-eyebrow">Website redesign / Design + development</span>
+              <h1 id="case-title">
+                The craft was already there.
+                <em>The website had to catch up.</em>
+              </h1>
+            </div>
+
+            <div className="case-hero-note">
+              <p>
+                Immortal Craft already had the barbers, the reputation, and a way to book.
+                The redesign had one job: make the path to the right chair obvious.
+              </p>
+              <div className="case-proof-line">
+                <span>Not a reskin.</span>
+                <span>A rebuilt decision path.</span>
+              </div>
+            </div>
           </div>
-          <div className="case-meta">
+
+          <div className="case-meta" aria-label="Project details">
             <span>
               <small>Role</small>
               Design and development
@@ -69,35 +108,46 @@ export default function ImmortalCraftCaseStudy() {
             </span>
           </div>
 
-          <div className="case-after-hero" aria-label="Redesigned Immortal Craft hero">
+          <div className="case-cinema">
             <img
               src="/Images/case-studies/immortal-after-hero.webp"
               alt="Immortal Craft barber lounge used in the redesigned website hero"
               width={2500}
               height={1667}
             />
-            <div className="case-after-shade" />
-            <div className="case-after-copy">
-              <span>Las Vegas, Nevada</span>
-              <h2>
+            <div className="case-cinema-copy" aria-hidden="true">
+              <span>After</span>
+              <strong>
                 Immortal
                 <br />
                 Craft
-              </h2>
-              <p>A cut that outlives the moment.</p>
-              <span className="case-after-action">Choose your barber</span>
+              </strong>
+              <small>A cut that outlives the moment.</small>
             </div>
             <span className="case-media-label">After / redesigned hero system</span>
           </div>
         </section>
 
-        <section className="case-section case-problem">
-          <div className="case-section-heading">
-            <span>01 / The starting point</span>
-            <h2>The information existed. The journey did not.</h2>
+        <section className="case-dark case-diagnosis" aria-labelledby="diagnosis-title">
+          <div className="case-chapter">
+            <span>01 / Diagnose</span>
+            <span>Before touching the surface</span>
           </div>
-          <div className="case-problem-grid">
-            <div className="case-before-frame">
+
+          <ScrollReveal className="case-diagnosis-heading">
+            <h2 id="diagnosis-title">
+              The information existed.
+              <br />
+              <em>The journey did not.</em>
+            </h2>
+            <p>
+              The old website could tell you about the shop. It did not help a visitor
+              move confidently from first impression to the right barber.
+            </p>
+          </ScrollReveal>
+
+          <div className="case-diagnosis-grid">
+            <figure className="case-before-stage">
               <img
                 src="/Images/case-studies/immortal-before-hero.webp"
                 alt="Original Immortal Craft website hero before the redesign"
@@ -105,63 +155,100 @@ export default function ImmortalCraftCaseStudy() {
                 height={654}
                 loading="lazy"
               />
-              <span>Before / original homepage</span>
-            </div>
-            <div className="case-copy">
-              <p className="case-lead">
-                The old site introduced the shop, but it behaved more like a set of
-                pages than a guided client journey.
-              </p>
-              <p>
-                The hero pushed a generic booking action. Barber discovery lived
-                elsewhere. Contact information, app links, gallery content, and the
-                team were separated instead of working together to answer one
-                question: who should I book with?
-              </p>
+              <figcaption>Before / original homepage</figcaption>
+            </figure>
+
+            <div className="case-diagnosis-list">
+              <article>
+                <span>01</span>
+                <div>
+                  <h3>Barber discovery sat too far from the decision.</h3>
+                  <p>The visitor had to hunt for the person behind the service.</p>
+                </div>
+              </article>
+              <article>
+                <span>02</span>
+                <div>
+                  <h3>Proof was present, but scattered.</h3>
+                  <p>Work, reviews, services, place, and booking did not strengthen one another.</p>
+                </div>
+              </article>
+              <article>
+                <span>03</span>
+                <div>
+                  <h3>Booking existed without a designed route to it.</h3>
+                  <p>The site had actions. What it lacked was sequence.</p>
+                </div>
+              </article>
             </div>
           </div>
         </section>
 
-        <section className="case-section">
-          <div className="case-section-heading">
-            <span>02 / The decisions</span>
-            <h2>Rebuild the path, not just the surface.</h2>
+        <section className="case-route" aria-labelledby="route-title">
+          <div className="case-route-intro">
+            <span>02 / Reframe</span>
+            <h2 id="route-title">
+              From pages
+              <br />
+              to a path.
+            </h2>
+            <p>
+              The new architecture follows the decision a real client is trying to make.
+            </p>
           </div>
+
+          <ol className="case-route-line" aria-label="Redesigned client journey">
+            {route.map((step, index) => (
+              <li key={step}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <strong>{step}</strong>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section className="case-decisions-section" aria-labelledby="decisions-title">
+          <div className="case-chapter case-chapter-light">
+            <span>03 / Design moves</span>
+            <span>Three decisions shaped the system</span>
+          </div>
+
+          <ScrollReveal className="case-decision-head">
+            <h2 id="decisions-title">Three moves. One clearer decision.</h2>
+          </ScrollReveal>
+
           <div className="case-decisions">
-            <article>
-              <span>01</span>
-              <h3>Make the barber the product.</h3>
-              <p>
-                The redesign moves barber discovery into the core experience so
-                clients can see the people, the work, and the booking path together.
-              </p>
-            </article>
-            <article>
-              <span>02</span>
-              <h3>Turn proof into part of the interface.</h3>
-              <p>
-                Reviews, photography, services, and the lounge itself now build
-                confidence before the visitor reaches a booking decision.
-              </p>
-            </article>
-            <article>
-              <span>03</span>
-              <h3>Give every section a job.</h3>
-              <p>
-                The page moves from identity to barbers, services, proof, place, and
-                action. Nothing is there only to fill a screen.
-              </p>
-            </article>
+            {decisions.map((decision, index) => (
+              <ScrollReveal
+                key={decision.number}
+                className="case-decision"
+                delay={index * 0.05}
+              >
+                <span className="case-decision-number">{decision.number}</span>
+                <h3>{decision.title}</h3>
+                <p>{decision.text}</p>
+              </ScrollReveal>
+            ))}
           </div>
         </section>
 
-        <section className="case-section case-transformation">
-          <div className="case-section-heading">
-            <span>03 / The transformation</span>
-            <h2>A clearer hierarchy from first look to final action.</h2>
+        <section className="case-dark case-transformation" aria-labelledby="transformation-title">
+          <div className="case-chapter">
+            <span>04 / Transformation</span>
+            <span>Same business / different order of attention</span>
           </div>
-          <div className="case-transform-grid">
-            <figure className="case-before-frame case-before-contact">
+
+          <ScrollReveal className="case-transform-heading">
+            <h2 id="transformation-title">
+              Rebuild the path,
+              <br />
+              <em>not just the surface.</em>
+            </h2>
+          </ScrollReveal>
+
+          <div className="case-compare">
+            <figure className="case-compare-before">
+              <div className="case-compare-mark">Before</div>
               <img
                 src="/Images/case-studies/immortal-before-contact.webp"
                 alt="Original Immortal Craft contact and team presentation before the redesign"
@@ -169,9 +256,13 @@ export default function ImmortalCraftCaseStudy() {
                 height={654}
                 loading="lazy"
               />
-              <figcaption>Before / contact-heavy, fragmented presentation</figcaption>
+              <figcaption>
+                Contact-heavy presentation. Discovery, proof, and action were separated.
+              </figcaption>
             </figure>
-            <figure className="case-after-detail">
+
+            <figure className="case-compare-after">
+              <div className="case-compare-mark">After</div>
               <img
                 src="/Images/case-studies/immortal-after-detail.webp"
                 alt="Barber shaping a haircut in the redesigned Immortal Craft visual system"
@@ -179,34 +270,61 @@ export default function ImmortalCraftCaseStudy() {
                 height={1200}
                 loading="lazy"
               />
-              <figcaption>After / image-led craft, stronger hierarchy, direct action</figcaption>
+              <figcaption>
+                Image-led craft. Barber, proof, place, and action now work as one system.
+              </figcaption>
             </figure>
           </div>
+
           <blockquote>
-            The redesign did not need more decoration. It needed a clearer order of decisions.
+            The redesign did not need more decoration.
+            <em>It needed a clearer order of decisions.</em>
           </blockquote>
         </section>
 
-        <section className="case-section case-result">
-          <div className="case-section-heading">
-            <span>04 / The result</span>
-            <h2>The shop now reads like the experience it sells.</h2>
+        <section className="case-result" aria-labelledby="result-title">
+          <div className="case-chapter case-chapter-light">
+            <span>05 / Result</span>
+            <span>No invented metrics / the work is visible</span>
           </div>
+
           <div className="case-result-grid">
-            <p>
-              The final system is darker, calmer, and more photographic, but the
-              visual change is only the visible layer. Underneath it is a simpler
-              route through the business: understand the lounge, choose a barber,
-              trust the work, and book.
-            </p>
+            <ScrollReveal className="case-result-copy">
+              <span className="case-result-index">05</span>
+              <h2 id="result-title">The shop now reads like the experience it sells.</h2>
+              <p>
+                The interface is darker, calmer, and more photographic, but the real
+                change is structural: understand the lounge, meet the barbers, see the
+                proof, choose with confidence, and book.
+              </p>
+            </ScrollReveal>
+
+            <div className="case-result-proof">
+              <span>What changed</span>
+              <ul>
+                <li>Barber-led discovery</li>
+                <li>Proof embedded into the journey</li>
+                <li>Clear service and booking hierarchy</li>
+                <li>Responsive motion with restraint</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="case-final-action">
+            <p>See the transformation yourself.</p>
             <div className="case-result-actions">
               <a href={liveUrl} target="_blank" rel="noopener noreferrer">
-                Open the redesign
+                <span>Open the redesign</span>
+                <small>Live build</small>
               </a>
               <a href={originalUrl} target="_blank" rel="noopener noreferrer">
-                View the original website
+                <span>View the original website</span>
+                <small>Before</small>
               </a>
-              <a href="/#work">Return to selected work</a>
+              <a href="/#work">
+                <span>Return to selected work</span>
+                <small>Portfolio</small>
+              </a>
             </div>
           </div>
         </section>
