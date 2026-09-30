@@ -167,6 +167,18 @@ export default function Contact() {
           )}
         </form>
       </div>
+      <div className="contact-footer-curve" aria-hidden="true">
+        <svg
+          viewBox="0 0 1440 130"
+          preserveAspectRatio="none"
+          focusable="false"
+        >
+          <path
+            d="M0 18 C155 18 205 108 370 108 H1165 C1305 108 1365 92 1440 18"
+            vectorEffect="non-scaling-stroke"
+          />
+        </svg>
+      </div>
     </section>
   );
 }
