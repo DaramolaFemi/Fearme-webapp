@@ -2769,3 +2769,277 @@ a.documentation-cta {
     display: none;
   }
 }
+
+
+/* Mobile documentation reference composition */
+@media (max-width: 600px) {
+  :root[data-theme="dark"] .documentation-index {
+    width: 100%;
+    margin-inline: 0;
+  }
+
+  :root[data-theme="dark"] .documentation-index > li {
+    margin-bottom: 12px;
+  }
+
+  :root[data-theme="dark"] .documentation-entry {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 18px minmax(0, 1fr) minmax(94px, 0.72fr);
+    grid-template-rows: auto auto auto auto;
+    column-gap: 10px;
+    row-gap: 10px;
+    min-height: 300px;
+    padding: 18px 14px 16px;
+    border: 1px solid rgba(110, 221, 212, 0.28);
+    border-radius: 12px;
+    background:
+      linear-gradient(108deg, rgba(110, 221, 212, 0.014), transparent 45%),
+      #071d20;
+    box-shadow: none;
+  }
+
+  :root[data-theme="dark"] .documentation-number {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+    padding-top: 1px;
+    font-size: 9px;
+    line-height: 1.2;
+    color: color-mix(in srgb, var(--night-cyan) 72%, var(--muted));
+  }
+
+  :root[data-theme="dark"] .documentation-title {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+    width: 100%;
+    min-width: 0;
+  }
+
+  :root[data-theme="dark"] .documentation-title > p {
+    margin: 0 0 9px;
+    min-height: 0;
+    max-width: none;
+    font-size: 7.5px;
+    line-height: 1.3;
+    letter-spacing: 0.045em;
+    color: var(--muted);
+    white-space: normal;
+  }
+
+  :root[data-theme="dark"] .documentation-title h3 {
+    max-width: 11.5ch;
+    margin: 0;
+    font-size: clamp(19px, 5.7vw, 23px);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+  }
+
+  :root[data-theme="dark"] .documentation-description {
+    grid-column: 2;
+    grid-row: 2;
+    width: 100%;
+    max-width: 29ch;
+    margin: 0;
+    font-size: 9.25px;
+    line-height: 1.52;
+    color: color-mix(in srgb, var(--ink) 73%, var(--muted));
+  }
+
+  :root[data-theme="dark"] .documentation-meta {
+    grid-column: 2;
+    grid-row: 3;
+    width: 100%;
+    align-self: end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    margin-top: 2px;
+  }
+
+  :root[data-theme="dark"] .documentation-status {
+    font-size: 8.5px;
+    gap: 6px;
+  }
+
+  :root[data-theme="dark"] .documentation-status::before {
+    width: 6px;
+    height: 6px;
+  }
+
+  :root[data-theme="dark"] a.documentation-cta,
+  :root[data-theme="dark"] span.documentation-cta {
+    width: fit-content;
+    font-size: 9.5px;
+    line-height: 1.2;
+    text-underline-offset: 4px;
+  }
+
+  :root[data-theme="dark"] .documentation-tags {
+    grid-column: 2 / 4;
+    grid-row: 4;
+    width: 100%;
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 5px !important;
+    align-self: end;
+    margin: 2px 0 0;
+    padding-right: 2px;
+  }
+
+  :root[data-theme="dark"] .documentation-tags.tags span {
+    min-height: 21px;
+    padding: 4px 7px !important;
+    border-color: rgba(110, 221, 212, 0.36) !important;
+    background: rgba(110, 221, 212, 0.012) !important;
+    font-size: 7.25px;
+    line-height: 1;
+  }
+
+  /*
+    Artwork owns the right side of the card.
+    It is clipped by the card edge rather than sitting behind the copy.
+  */
+  :root[data-theme="dark"] .documentation-orbit {
+    display: block;
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    right: 0;
+    width: 43%;
+    height: 100%;
+    opacity: 0.82;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.5) 18%, #000 40%, #000 100%);
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.5) 18%, #000 40%, #000 100%);
+  }
+
+  :root[data-theme="dark"] .documentation-number,
+  :root[data-theme="dark"] .documentation-title,
+  :root[data-theme="dark"] .documentation-description,
+  :root[data-theme="dark"] .documentation-meta,
+  :root[data-theme="dark"] .documentation-tags {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Cedius: sweeping orbital tracks + two signal points. */
+  :root[data-theme="dark"] .documentation-index > li:nth-child(1) .documentation-orbit {
+    background:
+      radial-gradient(circle at 58% 41%, rgba(194, 24, 91, 0.98) 0 3px, transparent 4px),
+      radial-gradient(circle at 48% 50%, rgba(110, 221, 212, 0.96) 0 1.7px, transparent 2.6px),
+      radial-gradient(circle at 78% 31%, rgba(110, 221, 212, 0.10) 0 1px, transparent 1.7px),
+      radial-gradient(ellipse at 104% 50%, transparent 0 43%, rgba(110, 221, 212, 0.55) 43.25% 43.55%, transparent 43.8% 55%, rgba(110, 221, 212, 0.20) 55.2% 55.48%, transparent 55.75% 65%, rgba(110, 221, 212, 0.10) 65.2% 65.4%, transparent 65.7%);
+  }
+
+  :root[data-theme="dark"] .documentation-index > li:nth-child(1) .documentation-orbit::before {
+    inset: 12% -34% 11% 7%;
+    border: 1px solid rgba(110, 221, 212, 0.18);
+    border-radius: 50%;
+    transform: rotate(-16deg);
+    background: transparent;
+  }
+
+  :root[data-theme="dark"] .documentation-index > li:nth-child(1) .documentation-orbit::after {
+    width: 72%;
+    height: 72%;
+    right: -25%;
+    top: 12%;
+    border: 1px solid rgba(110, 221, 212, 0.10);
+    border-radius: 50%;
+    transform: rotate(11deg);
+    background: transparent;
+  }
+
+  /* ERC-20: intersecting routes with restrained rotated frames. */
+  :root[data-theme="dark"] .documentation-index > li:nth-child(2) .documentation-orbit {
+    background:
+      radial-gradient(circle at 71% 54%, rgba(194, 24, 91, 0.98) 0 3px, transparent 4px),
+      radial-gradient(circle at 57% 66%, rgba(110, 221, 212, 0.92) 0 1.7px, transparent 2.6px),
+      linear-gradient(31deg, transparent 49.65%, rgba(110, 221, 212, 0.34) 49.85% 50.15%, transparent 50.35%),
+      linear-gradient(-28deg, transparent 49.72%, rgba(110, 221, 212, 0.19) 49.9% 50.1%, transparent 50.28%);
+  }
+
+  :root[data-theme="dark"] .documentation-index > li:nth-child(2) .documentation-orbit::before {
+    width: 96px;
+    height: 96px;
+    right: -6px;
+    top: 27%;
+    border: 1px solid rgba(110, 221, 212, 0.24);
+    transform: rotate(30deg);
+    background: transparent;
+  }
+
+  :root[data-theme="dark"] .documentation-index > li:nth-child(2) .documentation-orbit::after {
+    width: 70px;
+    height: 70px;
+    right: 30px;
+    top: 39%;
+    border: 1px solid rgba(110, 221, 212, 0.13);
+    transform: rotate(-22deg);
+    background: transparent;
+  }
+
+  /* Harmattan: a soft particulate weather mass held inside an orbital system. */
+  :root[data-theme="dark"] .documentation-index > li:nth-child(3) .documentation-orbit {
+    background:
+      radial-gradient(circle at 57% 42%, rgba(194, 24, 91, 0.98) 0 3px, transparent 4px),
+      radial-gradient(circle at 72% 28%, rgba(110, 221, 212, 0.96) 0 1.7px, transparent 2.6px),
+      radial-gradient(circle at 80% 63%, rgba(110, 221, 212, 0.09) 0 1px, transparent 1.7px),
+      radial-gradient(ellipse at 106% 48%, transparent 0 46%, rgba(110, 221, 212, 0.47) 46.25% 46.55%, transparent 46.82% 58%, rgba(110, 221, 212, 0.17) 58.2% 58.48%, transparent 58.75%);
+  }
+
+  :root[data-theme="dark"] .documentation-index > li:nth-child(3) .documentation-orbit::before {
+    width: 112px;
+    height: 88px;
+    right: -4px;
+    top: 37%;
+    border: 0;
+    border-radius: 48% 52% 44% 56%;
+    transform: rotate(-7deg);
+    background:
+      radial-gradient(circle at 18% 58%, rgba(110, 221, 212, 0.13) 0 24%, transparent 25%),
+      radial-gradient(circle at 36% 42%, rgba(110, 221, 212, 0.18) 0 27%, transparent 28%),
+      radial-gradient(circle at 53% 55%, rgba(110, 221, 212, 0.17) 0 29%, transparent 30%),
+      radial-gradient(circle at 69% 40%, rgba(110, 221, 212, 0.14) 0 25%, transparent 26%),
+      radial-gradient(circle at 83% 58%, rgba(110, 221, 212, 0.11) 0 21%, transparent 22%);
+    filter: blur(5px);
+    opacity: 0.95;
+  }
+
+  :root[data-theme="dark"] .documentation-index > li:nth-child(3) .documentation-orbit::after {
+    width: 140px;
+    height: 104px;
+    right: -37px;
+    top: 28%;
+    border: 1px solid rgba(110, 221, 212, 0.16);
+    border-radius: 50%;
+    transform: rotate(-8deg);
+    background: transparent;
+  }
+}
+
+@media (max-width: 340px) {
+  :root[data-theme="dark"] .documentation-entry {
+    grid-template-columns: 16px minmax(0, 1fr) minmax(78px, 0.62fr);
+    column-gap: 8px;
+    min-height: 292px;
+    padding-inline: 12px;
+  }
+
+  :root[data-theme="dark"] .documentation-title h3 {
+    font-size: 18px;
+  }
+
+  :root[data-theme="dark"] .documentation-description {
+    font-size: 8.75px;
+  }
+
+  :root[data-theme="dark"] .documentation-orbit {
+    width: 40%;
+  }
+}
