@@ -5,10 +5,12 @@ import { poems } from "../data/poetry";
 
 const App = lazy(() => import("../App"));
 const PoemPage = lazy(() => import("./PoemPage"));
+const ImmortalCraftCaseStudy = lazy(() => import("./ImmortalCraftCaseStudy"));
 
 export default function SitePage() {
   const pathname = window.location.pathname.replace(/\/+$/, "");
   const isPoetry = pathname === "/poetry" || pathname.startsWith("/poetry/");
+  const isImmortalCaseStudy = pathname === "/work/immortal-craft";
   const poem = poems.find((entry) => pathname === `/poetry/${entry.slug}`);
   return (
     <PageBoundary>
@@ -19,7 +21,13 @@ export default function SitePage() {
           </main>
         }
       >
-        {isPoetry ? <PoemPage poem={poem} /> : <App />}
+        {isImmortalCaseStudy ? (
+          <ImmortalCraftCaseStudy />
+        ) : isPoetry ? (
+          <PoemPage poem={poem} />
+        ) : (
+          <App />
+        )}
       </Suspense>
       <BackToTop />
     </PageBoundary>
