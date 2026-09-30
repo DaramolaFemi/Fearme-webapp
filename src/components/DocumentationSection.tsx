@@ -2,11 +2,13 @@ import Arrow from "./Arrow";
 import ScrollReveal from "./ScrollReveal";
 import { documentation } from "../data/documentation";
 
+const romanNumerals = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"];
+
 export default function DocumentationSection() {
   return (
     <section id="documentation" className="documentation section-pad">
       <div className="section-kicker">
-        <span>02 / Documentation</span>
+        <span>II / Documentation</span>
         <span>Systems, made understandable</span>
       </div>
 
@@ -26,7 +28,7 @@ export default function DocumentationSection() {
         {documentation.map((entry, index) => (
           <li key={entry.id}>
             <ScrollReveal className="documentation-entry" delay={index * 0.06}>
-              <div className="documentation-number">{entry.id}</div>
+              <div className="documentation-number">{romanNumerals[index] ?? entry.id}</div>
               <div className="documentation-title">
                 <p>{entry.category}</p>
                 <h3>{entry.title}</h3>
