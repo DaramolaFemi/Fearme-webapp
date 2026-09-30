@@ -5,16 +5,16 @@
   color-scheme: light;
   font-synthesis: none;
   font-weight: 400;
-  --paper: #f3f0e8;
-  --ink: #242720;
-  --muted: #62645c;
-  --line: #cecec2;
-  --accent: #bf3923;
-  --panel: #e9e7de;
-  --field-line: #acae9f;
-  --placeholder: #727469;
-  --band: #bf3923;
-  --band-text: #f3f0e8;
+  --paper: #f7f3eb;
+  --ink: #211f20;
+  --muted: #6a6261;
+  --line: #d8d0c8;
+  --accent: #c2185b;
+  --panel: #eee8df;
+  --field-line: #b6aca5;
+  --placeholder: #786e6d;
+  --band: #c2185b;
+  --band-text: #f7f3eb;
 }
 * {
   box-sizing: border-box;
@@ -49,8 +49,8 @@ a {
   touch-action: manipulation;
 }
 ::selection {
-  background: #e5a087;
-  color: #242720;
+  background: #f0b5cb;
+  color: #211f20;
 }
 :focus-visible {
   outline: 2px solid var(--accent);
@@ -434,8 +434,8 @@ h2 {
   font-size: 10px;
   line-height: 1.4;
   color: var(--ink);
-  border: 1px solid rgba(36, 39, 32, 0.22);
-  background: rgba(36, 39, 32, 0.04);
+  border: 1px solid rgba(33, 31, 32, 0.2);
+  background: rgba(33, 31, 32, 0.035);
   border-radius: 999px;
   padding: 7px 10px;
   font-weight: 500;
@@ -664,7 +664,7 @@ textarea::placeholder {
   color: var(--paper);
 }
 .button {
-  background: rgba(36, 39, 32, 0.04);
+  background: rgba(33, 31, 32, 0.035);
   color: var(--ink);
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -681,8 +681,8 @@ textarea::placeholder {
     transform 0.2s ease;
 }
 .button:hover {
-  background: rgba(36, 39, 32, 0.08);
-  border-color: rgba(36, 39, 32, 0.32);
+  background: rgba(33, 31, 32, 0.07);
+  border-color: rgba(33, 31, 32, 0.3);
 }
 .form-status {
   font-size: 12px;
@@ -1389,8 +1389,8 @@ textarea::placeholder {
   min-width: 44px;
   height: 42px;
   padding: 0 12px;
-  background: rgba(248, 244, 236, 0.96);
-  border: 1px solid rgba(36, 39, 32, 0.14);
+  background: rgba(247, 243, 235, 0.96);
+  border: 1px solid rgba(33, 31, 32, 0.14);
   border-radius: 999px;
   color: var(--accent);
   box-shadow: 0 10px 18px rgba(24, 24, 18, 0.06);
@@ -1401,7 +1401,7 @@ textarea::placeholder {
 }
 .project-visual:hover .project-open,
 :root[data-theme="dark"] .project-visual:hover .project-open {
-  background: rgba(255, 250, 244, 0.98);
+  background: rgba(251, 247, 241, 0.98);
   transform: none;
 }
 @media (hover: hover) and (pointer: fine) {
