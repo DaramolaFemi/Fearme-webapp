@@ -656,6 +656,46 @@ for (const width of [320, 390, 1440]) {
   });
 }
 
+test("Bones and Flowers uses the reusable restrained poem atmosphere", async ({ page }) => {
+  for (const width of [390, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.emulateMedia({ reducedMotion: "reduce", colorScheme: "dark" });
+    await page.goto("/poetry/bones-and-flowers");
+
+    const atmosphere = page.locator(".poem-atmosphere-bone-botanical");
+    await expect(atmosphere).toHaveCount(1);
+    await expect(atmosphere.locator(".poem-atmosphere-art")).toHaveCount(2);
+    await expect(atmosphere.locator(".poem-petal")).toHaveCount(5);
+    await expect(atmosphere.locator(".poem-petal").first()).toHaveCSS(
+      "display",
+      "none",
+    );
+
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+      "Bones and Flowers",
+    );
+    await expect(page.locator(".poem-body")).toContainText(
+      "My bones keep your name",
+    );
+    expect(
+      await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+    ).toBe(true);
+  }
+
+  await page.goto("/poetry/dreams");
+  await expect(page.locator(".poem-atmosphere")).toHaveCount(0);
+});
+
+test("Bones and Flowers petal motion stays sparse when motion is allowed", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.emulateMedia({ reducedMotion: "no-preference", colorScheme: "dark" });
+  await page.goto("/poetry/bones-and-flowers");
+
+  const petals = page.locator(".poem-petal");
+  await expect(petals).toHaveCount(5);
+  await expect(petals.first()).toHaveCSS("animation-name", "poem-petal-drift");
+});
+
 test("poem metadata, final navigation, and missing poem", async ({ page }) => {
   await page.goto("/poetry/he-took-the-one-i-wed");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(

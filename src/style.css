@@ -1907,6 +1907,173 @@ button:focus-visible .direction-arrow {
 .poetry-status:hover {
   color: var(--accent);
 }
+
+/*
+  Individual poems can opt into a restrained atmosphere without changing the
+  reading component. The artwork stays at the edges so type remains dominant.
+*/
+.poem-page {
+  position: relative;
+  z-index: 1;
+}
+
+.poem-atmosphere {
+  --poem-bone: rgba(33, 31, 32, 0.16);
+  --poem-botanical: rgba(33, 31, 32, 0.12);
+  --poem-flower: rgba(194, 24, 91, 0.34);
+  --poem-petal: rgba(194, 24, 91, 0.36);
+  --poem-petal-glow: rgba(194, 24, 91, 0.16);
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: var(--poem-atmosphere-intensity, 0.72);
+}
+
+:root[data-theme="dark"] .poem-atmosphere {
+  --poem-bone: rgba(120, 230, 220, 0.17);
+  --poem-botanical: rgba(247, 243, 235, 0.1);
+  --poem-flower: rgba(232, 160, 189, 0.34);
+  --poem-petal: rgba(232, 160, 189, 0.34);
+  --poem-petal-glow: rgba(232, 160, 189, 0.2);
+}
+
+.poem-atmosphere-art {
+  position: absolute;
+  top: 5vh;
+  width: min(34vw, 540px);
+  height: 92vh;
+  overflow: visible;
+}
+
+.poem-atmosphere-art-left {
+  left: -1.5vw;
+}
+
+.poem-atmosphere-art-right {
+  right: -1.5vw;
+}
+
+.poem-atmosphere-bones {
+  fill: none;
+  stroke: var(--poem-bone);
+  stroke-width: 1.45;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.poem-atmosphere-botanical {
+  fill: var(--poem-botanical);
+  stroke: var(--poem-botanical);
+  stroke-width: 1.05;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.poem-atmosphere-botanical > path {
+  fill: none;
+}
+
+.poem-atmosphere-flower {
+  fill: var(--poem-flower);
+  stroke: var(--poem-flower);
+}
+
+.poem-petals {
+  position: absolute;
+  inset: 0;
+}
+
+.poem-petal {
+  position: absolute;
+  top: -10vh;
+  left: var(--petal-x);
+  width: var(--petal-size);
+  height: 7px;
+  border-radius: 82% 18% 72% 28%;
+  background: var(--poem-petal);
+  box-shadow: 0 0 10px var(--poem-petal-glow);
+  opacity: 0;
+  transform: rotate(22deg);
+  will-change: transform, opacity;
+}
+
+.poem-atmosphere.is-drifting .poem-petal {
+  animation: poem-petal-drift var(--petal-duration) linear var(--petal-delay) infinite;
+}
+
+@keyframes poem-petal-drift {
+  0% {
+    transform: translate3d(0, -8vh, 0) rotate(12deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.36;
+  }
+  52% {
+    transform: translate3d(var(--petal-sway), 54vh, 0) rotate(142deg);
+    opacity: 0.24;
+  }
+  88% {
+    opacity: 0.18;
+  }
+  100% {
+    transform: translate3d(0, 116vh, 0) rotate(286deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .poem-atmosphere-art {
+    width: 42vw;
+    height: 88vh;
+    top: 8vh;
+  }
+
+  .poem-atmosphere-art-left {
+    left: -10vw;
+  }
+
+  .poem-atmosphere-art-right {
+    right: -10vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .poem-atmosphere {
+    opacity: 0.68;
+  }
+
+  .poem-atmosphere-art {
+    width: 48vw;
+    height: 82vh;
+    top: 12vh;
+  }
+
+  .poem-atmosphere-art-left {
+    left: -18vw;
+  }
+
+  .poem-atmosphere-art-right {
+    right: -18vw;
+  }
+
+  .poem-atmosphere-bones {
+    stroke-width: 1.2;
+  }
+
+  .poem-atmosphere-botanical {
+    stroke-width: 0.9;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .poem-petal {
+    display: none;
+    animation: none;
+  }
+}
 .form-status:empty {
   margin: 0;
 }
