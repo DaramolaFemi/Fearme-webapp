@@ -684,7 +684,7 @@
   min-height: 18%;
   padding: 0 4.3%;
   display: grid;
-  grid-template-columns: 1.7fr repeat(5, auto);
+  grid-template-columns: 1.7fr repeat(6, auto);
   align-items: center;
   gap: 3.2%;
   border-bottom: 1px solid rgba(242, 237, 227, 0.1);
