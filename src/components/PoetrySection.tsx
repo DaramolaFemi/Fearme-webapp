@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Arrow from "./Arrow";
 import ScrollReveal from "./ScrollReveal";
 import { poems } from "../data/poetry";
 
@@ -59,9 +58,7 @@ export default function PoetrySection() {
                   tabIndex={isVisible ? undefined : -1}
                 >
                   <h3>{poem.title}</h3>
-                  <span className="poetry-row-arrow">
-                    <Arrow direction="right" />
-                  </span>
+                  <span className="poetry-thread" aria-hidden="true" />
                 </a>
               </li>
             );
