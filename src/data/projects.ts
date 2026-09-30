@@ -11,6 +11,9 @@ export type Project = {
   mobileImage?: string;
   imageSrcSet: string;
   preview?: string;
+  previewAutoplay?: boolean;
+  caseStudyPath?: string;
+  ctaLabel?: string;
   theme: string;
   tags: string[];
 };
@@ -18,6 +21,22 @@ export type Project = {
 export const featuredProjects: Project[] = [
   {
     id: "01",
+    name: "Flux & Form",
+    subtitle: "A studio built in motion.",
+    category: "Websites",
+    type: "Hair & beauty studio",
+    description:
+      "An editorial salon experience where motion, image, and type carry the brand from first impression to consultation.",
+    href: "https://flow-form-studio.vercel.app/",
+    image: "/Images/flux-form-feature-poster.webp",
+    imageSrcSet: "/Images/flux-form-feature-poster.webp 1280w",
+    preview: "/Video/flux-form-feature-loop.mp4",
+    previewAutoplay: true,
+    theme: "flux-form",
+    tags: ["Next.js", "Responsive design", "Motion system"],
+  },
+  {
+    id: "02",
     name: "Bouldwood",
     subtitle: "A slower kind of shopping.",
     category: "Websites",
@@ -32,7 +51,7 @@ export const featuredProjects: Project[] = [
     tags: ["React", "TypeScript", "E-commerce demo"],
   },
   {
-    id: "02",
+    id: "03",
     name: "Tentio",
     subtitle: "Writing, with intention.",
     category: "Web applications",
@@ -45,21 +64,6 @@ export const featuredProjects: Project[] = [
     imageSrcSet: "/Images/tentio-dark-desktop.png 1440w",
     theme: "tentio",
     tags: ["Next.js", "TypeScript", "Writing experience"],
-  },
-  {
-    id: "03",
-    name: "Cedius",
-    subtitle: "Less chasing numbers. More building a business.",
-    category: "Web applications",
-    type: "Business management SaaS",
-    description:
-      "Customers, invoices, expenses, and financial insights in one workspace. Built for small businesses, with team roles and access controls that give each person the right view of the work.",
-    href: "",
-    image: "/Images/cedius1.jpeg",
-    imageSrcSet:
-      "/Images/optimized/cedius1-720-7df31b4f2a.webp 720w, /Images/optimized/cedius1-1440-aeb2d84a7f.webp 1440w",
-    theme: "cedius",
-    tags: ["Next.js", "React", "Prisma", "PostgreSQL"],
   },
   {
     id: "04",
@@ -78,6 +82,40 @@ export const featuredProjects: Project[] = [
   },
   {
     id: "05",
+    name: "Immortal Craft",
+    subtitle: "From brochure site to booking-led experience.",
+    category: "Websites",
+    type: "Barbershop redesign",
+    description:
+      "A ground-up redesign for a Las Vegas barbershop, rebuilding barber discovery, services, reviews, gallery, and the route from first impression to booking.",
+    href: "https://immortal-craft.vercel.app/",
+    caseStudyPath: "/work/immortal-craft",
+    ctaLabel: "Study",
+    image: "/Images/case-studies/immortal-after-hero.webp",
+    imageSrcSet: "/Images/case-studies/immortal-after-hero.webp 2500w",
+    theme: "immortal",
+    tags: ["Next.js", "Responsive redesign", "Booking UX"],
+  },
+];
+
+export const projectLabProjects: Project[] = [
+  {
+    id: "06",
+    name: "Cedius",
+    subtitle: "Less chasing numbers. More building a business.",
+    category: "Web applications",
+    type: "Business management SaaS",
+    description:
+      "Customers, invoices, expenses, and financial insights in one workspace. Built for small businesses, with team roles and access controls that give each person the right view of the work.",
+    href: "",
+    image: "/Images/cedius1.jpeg",
+    imageSrcSet:
+      "/Images/optimized/cedius1-720-7df31b4f2a.webp 720w, /Images/optimized/cedius1-1440-aeb2d84a7f.webp 1440w",
+    theme: "cedius",
+    tags: ["Next.js", "React", "Prisma", "PostgreSQL"],
+  },
+  {
+    id: "07",
     name: "Zer0 Lane",
     subtitle: "Find your line.",
     category: "Web applications",
@@ -92,11 +130,8 @@ export const featuredProjects: Project[] = [
     theme: "neon",
     tags: ["Game development", "Interaction design"],
   },
-];
-
-export const projectLabProjects: Project[] = [
   {
-    id: "06",
+    id: "08",
     name: "Harmattan 9ja Skies",
     mobileName: "Harmattan",
     subtitle: "The skies, closer to home.",
@@ -112,4 +147,5 @@ export const projectLabProjects: Project[] = [
     tags: ["Weather", "Sound design", "Responsive UI"],
   },
 ];
+
 export const filters = ["All work", "Web applications", "Websites"];
