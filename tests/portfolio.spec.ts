@@ -484,11 +484,15 @@ for (const width of [320, 390, 1440]) {
     expect(await page.locator(".poem-body p").first().textContent()).toBe(
       "I buried a boy beneath my keyboard,\nbut every night he returns smelling of moonlight.",
     );
-    expect(
-      await page.locator(".poem-body").evaluate((el) =>
-        Number.parseFloat(getComputedStyle(el).fontSize),
-      ),
-    ).toBeLessThanOrEqual(20);
+    const poemBodySize = await page.locator(".poem-body").evaluate((el) =>
+      Number.parseFloat(getComputedStyle(el).fontSize),
+    );
+    expect(poemBodySize).toBeLessThanOrEqual(width <= 390 ? 17 : 19);
+
+    const poemTitleSize = await page.locator(".poem-page h1").evaluate((el) =>
+      Number.parseFloat(getComputedStyle(el).fontSize),
+    );
+    expect(poemTitleSize).toBeLessThanOrEqual(width <= 390 ? 44 : 68);
     for (const theme of ["light", "dark"]) {
       if (theme === "dark") await page.getByRole("switch").click();
       expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
