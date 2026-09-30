@@ -47,6 +47,12 @@
 }
 
 @media (max-width: 600px) {
+  .project.flux-form .project-visual img,
+  .project.flux-form .gameplay-preview {
+    object-fit: contain;
+    object-position: center;
+  }
+
   .project.neon .gameplay-preview {
     object-fit: contain;
     object-position: center;
