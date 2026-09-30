@@ -12,7 +12,7 @@ export default function PoetrySection() {
   return (
     <section id="poetry" className="poetry section-pad">
       <div className="section-kicker">
-        <span>04 / Selected poetry</span>
+        <span>Selected poetry</span>
         <span>Words from somewhere darker</span>
       </div>
 
@@ -58,7 +58,6 @@ export default function PoetrySection() {
                   aria-label={`Read ${poem.title}`}
                   tabIndex={isVisible ? undefined : -1}
                 >
-                  <span className="poetry-number">{poem.id}</span>
                   <h3>{poem.title}</h3>
                   <span className="poetry-row-arrow">
                     <Arrow direction="right" />
