@@ -664,10 +664,10 @@ test("Bones and Flowers uses the reusable restrained poem atmosphere", async ({ 
 
     const atmosphere = page.locator(".poem-atmosphere-bone-botanical");
     await expect(atmosphere).toHaveCount(1);
-    await expect(atmosphere.locator(".poem-atmosphere-art")).toHaveCount(2);
+    await expect(atmosphere.locator(".poem-atmosphere-scene")).toHaveCount(3);
     await expect(atmosphere.locator(".poem-petal")).toHaveCount(5);
     await expect(atmosphere.locator(".poem-petal").first()).toHaveCSS(
-      "display",
+      "animation-name",
       "none",
     );
 
