@@ -1909,9 +1909,9 @@ button:focus-visible .direction-arrow {
 }
 
 /*
-  Individual poems can opt into an authored atmosphere without changing the
-  reading component. Bones and Flowers uses a full-page ossuary bloom:
-  bone, root, flower, burial. The poem remains the foreground.
+  Individual poems can opt into authored atmosphere without changing the
+  reading component. Bones and Flowers uses generated transparent artwork:
+  ribcage / flowers on the left, skeletal hand / flowers on the right.
 */
 .poem-page {
   position: relative;
@@ -1921,17 +1921,12 @@ button:focus-visible .direction-arrow {
 
 .poem-page > :not(.poem-atmosphere) {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .poem-atmosphere {
-  --poem-bone: rgba(31, 37, 36, 0.2);
-  --poem-bone-detail: rgba(31, 37, 36, 0.14);
-  --poem-root: rgba(9, 61, 67, 0.18);
-  --poem-flower: rgba(194, 24, 91, 0.34);
-  --poem-flower-core: rgba(194, 24, 91, 0.58);
-  --poem-petal: rgba(194, 24, 91, 0.32);
-  --poem-petal-shadow: rgba(194, 24, 91, 0.14);
+  --poem-petal: rgba(214, 151, 175, 0.5);
+  --poem-petal-shadow: rgba(214, 151, 175, 0.12);
   position: absolute;
   top: 0;
   left: 50%;
@@ -1942,109 +1937,46 @@ button:focus-visible .direction-arrow {
   pointer-events: none;
   overflow: hidden;
   z-index: 0;
-  opacity: var(--poem-atmosphere-intensity, 0.8);
+  opacity: var(--poem-atmosphere-intensity, 0.78);
 }
 
-:root[data-theme="dark"] .poem-atmosphere {
-  --poem-bone: rgba(235, 229, 219, 0.28);
-  --poem-bone-detail: rgba(235, 229, 219, 0.18);
-  --poem-root: rgba(113, 224, 202, 0.2);
-  --poem-flower: rgba(217, 142, 173, 0.42);
-  --poem-flower-core: rgba(242, 178, 204, 0.62);
-  --poem-petal: rgba(217, 142, 173, 0.38);
-  --poem-petal-shadow: rgba(217, 142, 173, 0.16);
-}
-
-.poem-atmosphere-scene,
-.poem-atmosphere-vines {
+.poem-atmosphere-art {
   position: absolute;
   display: block;
-  overflow: visible;
+  max-width: none;
+  height: auto;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+  image-rendering: auto;
+  filter: saturate(0.82) contrast(0.96);
+  transform: translateZ(0);
 }
 
-.poem-atmosphere-vines {
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.42;
-}
-
-.poem-atmosphere-scene-left {
+.poem-atmosphere-art-left {
   top: 1.5%;
-  left: -1vw;
-  width: clamp(360px, 31vw, 560px);
-  opacity: 0.96;
+  left: 0;
+  width: clamp(190px, 18vw, 260px);
+  opacity: 0.43;
 }
 
-.poem-atmosphere-scene-right {
-  top: 28%;
-  right: -1.5vw;
-  width: clamp(360px, 30vw, 550px);
-  opacity: 0.92;
+.poem-atmosphere-art-right {
+  top: 42%;
+  right: 0;
+  width: clamp(220px, 20vw, 310px);
+  opacity: 0.38;
 }
 
-.poem-bone-mass,
-.poem-bone-detail,
-.poem-root-study {
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+:root[data-theme="light"] .poem-atmosphere-art {
+  filter: saturate(0.72) contrast(1.04) brightness(0.72);
 }
 
-.poem-bone-mass {
-  stroke: var(--poem-bone);
-  stroke-width: 8.5;
+:root[data-theme="light"] .poem-atmosphere-art-left {
+  opacity: 0.28;
 }
 
-.poem-bone-detail {
-  stroke: var(--poem-bone-detail);
-  stroke-width: 1.35;
-}
-
-.poem-bone-detail ellipse,
-.poem-bone-detail circle {
-  fill: var(--poem-bone-detail);
-  stroke: var(--poem-bone);
-  stroke-width: 0.9;
-}
-
-.poem-root-study {
-  stroke: var(--poem-root);
-  stroke-width: 1.55;
-}
-
-.poem-root-study ellipse {
-  fill: var(--poem-root);
-  stroke: none;
-}
-
-.poem-botanical-study {
-  fill: var(--poem-flower);
-  stroke: var(--poem-root);
-  stroke-width: 0.85;
-}
-
-.poem-botanical-study > path {
-  fill: none;
-}
-
-.poem-atmosphere-flower path {
-  fill: var(--poem-flower);
-  stroke: var(--poem-root);
-  stroke-width: 0.6;
-}
-
-.poem-atmosphere-flower circle {
-  fill: var(--poem-flower-core);
-  stroke: none;
-}
-
-.poem-hand-mass {
-  stroke-width: 8;
-}
-
-.poem-root-entanglement {
-  stroke-width: 1.35;
+:root[data-theme="light"] .poem-atmosphere-art-right {
+  opacity: 0.25;
 }
 
 .poem-petals {
@@ -2057,12 +1989,13 @@ button:focus-visible .direction-arrow {
   top: var(--petal-top);
   left: var(--petal-x);
   width: var(--petal-size);
-  aspect-ratio: 1.45 / 1;
-  border-radius: 84% 18% 76% 26% / 74% 28% 70% 32%;
+  aspect-ratio: 1.7 / 1;
+  border-radius: 86% 18% 78% 24% / 74% 28% 72% 30%;
   background: var(--poem-petal);
-  box-shadow: 0 0 12px var(--poem-petal-shadow);
-  opacity: 0.24;
-  transform: rotate(20deg);
+  box-shadow: 0 0 10px var(--poem-petal-shadow);
+  opacity: 0.18;
+  transform: rotate(18deg);
+  filter: blur(0.15px);
   will-change: transform, opacity;
 }
 
@@ -2072,89 +2005,71 @@ button:focus-visible .direction-arrow {
 
 @keyframes poem-petal-drift {
   0% {
-    transform: translate3d(0, -12px, 0) rotate(12deg);
+    transform: translate3d(0, -18px, 0) rotate(10deg);
     opacity: 0;
   }
   14% {
-    opacity: 0.36;
-  }
-  48% {
-    transform: translate3d(var(--petal-sway), 58px, 0) rotate(98deg);
     opacity: 0.28;
   }
+  50% {
+    transform: translate3d(var(--petal-sway), 92px, 0) rotate(104deg);
+    opacity: 0.22;
+  }
   82% {
-    opacity: 0.2;
+    opacity: 0.14;
   }
   100% {
-    transform: translate3d(0, 122px, 0) rotate(var(--petal-turn));
+    transform: translate3d(0, 190px, 0) rotate(var(--petal-turn));
     opacity: 0;
   }
 }
 
 @media (max-width: 900px) {
-  .poem-atmosphere-scene-left {
-    left: -14vw;
-    width: 55vw;
+  .poem-atmosphere-art-left {
+    left: -28px;
+    width: clamp(170px, 30vw, 230px);
+    opacity: 0.36;
   }
 
-  .poem-atmosphere-scene-right {
-    right: -15vw;
-    width: 54vw;
-  }
-
-  .poem-atmosphere-vines {
-    opacity: 0.34;
-  }
-
-  .poem-bone-mass {
-    stroke-width: 7;
+  .poem-atmosphere-art-right {
+    right: -34px;
+    width: clamp(190px, 31vw, 250px);
+    opacity: 0.32;
   }
 }
 
 @media (max-width: 600px) {
   .poem-atmosphere {
-    opacity: 0.82;
+    opacity: 0.9;
   }
 
-  .poem-atmosphere-scene-left {
-    top: 3%;
-    left: -13vw;
-    width: 58vw;
-    opacity: 0.78;
+  .poem-atmosphere-art-left {
+    top: 5%;
+    left: -34px;
+    width: 158px;
+    opacity: 0.28;
   }
 
-  .poem-atmosphere-scene-right {
-    top: 44%;
-    right: -14vw;
-    width: 58vw;
-    opacity: 0.76;
-  }
-
-  .poem-atmosphere-vines {
-    opacity: 0.26;
-  }
-
-  .poem-bone-mass {
-    stroke-width: 6.5;
-  }
-
-  .poem-bone-detail {
-    stroke-width: 1.15;
-  }
-
-  .poem-root-study {
-    stroke-width: 1.25;
+  .poem-atmosphere-art-right {
+    top: 52%;
+    right: -54px;
+    width: 190px;
+    opacity: 0.25;
   }
 
   .poem-petal {
-    opacity: 0.18;
+    opacity: 0.14;
+  }
+
+  .poem-petal:nth-child(5) {
+    display: none;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .poem-petal {
     animation: none !important;
-    opacity: 0.16;
+    opacity: 0.12;
     transform: rotate(18deg);
   }
 }
