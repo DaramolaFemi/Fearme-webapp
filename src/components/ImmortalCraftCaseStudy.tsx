@@ -305,6 +305,7 @@ export default function ImmortalCraftCaseStudy() {
                   <span>SERVICES</span>
                   <span>GALLERY</span>
                   <span>CONTACT</span>
+                  <span>CHOOSE YOUR BARBER</span>
                 </div>
                 <div className="case-after-snapshot-copy" aria-hidden="true">
                   <small>LAS VEGAS, NEVADA</small>
