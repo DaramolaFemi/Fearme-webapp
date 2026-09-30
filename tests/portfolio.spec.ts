@@ -408,16 +408,22 @@ test("documentation and poetry extend the editorial portfolio", async ({
   await expect(page.locator("#documentation li")).toHaveCount(3);
   await expect(page.locator("#documentation a")).toHaveCount(3);
 
-  const numberedKickers = await page
+  const sectionKickers = await page
     .locator(".section-kicker > span:first-child")
     .allTextContents();
-  expect(numberedKickers).toEqual([
+  expect(sectionKickers).toEqual([
     "01 / Selected work",
-    "02 / Documentation",
+    "II / Documentation",
     "03 / The person behind the work",
-    "04 / Selected poetry",
+    "Selected poetry",
     "05 / A conversation",
   ]);
+  await expect(page.locator("#documentation .documentation-number")).toHaveText([
+    "I",
+    "II",
+    "III",
+  ]);
+  await expect(page.locator("#poetry .poetry-number")).toHaveCount(0);
 });
 
 for (const width of [320, 390, 1440]) {
@@ -452,6 +458,11 @@ for (const width of [320, 390, 1440]) {
     expect(await page.locator(".poem-body p").first().textContent()).toBe(
       "I buried a boy beneath my keyboard,\nbut every night he returns smelling of moonlight.",
     );
+    expect(
+      await page.locator(".poem-body").evaluate((el) =>
+        Number.parseFloat(getComputedStyle(el).fontSize),
+      ),
+    ).toBeLessThanOrEqual(20);
     for (const theme of ["light", "dark"]) {
       if (theme === "dark") await page.getByRole("switch").click();
       expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
