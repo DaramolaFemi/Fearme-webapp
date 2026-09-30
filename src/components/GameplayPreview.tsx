@@ -6,9 +6,11 @@ type Connection = EventTarget & { saveData?: boolean };
 export default function GameplayPreview({
   src,
   poster,
+  autoplayInView = false,
 }: {
   src: string;
   poster: string;
+  autoplayInView?: boolean;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
 
@@ -44,7 +46,7 @@ export default function GameplayPreview({
         !failed &&
         !document.hidden &&
         inView &&
-        (touch.matches || hovered || focused);
+        (autoplayInView || touch.matches || hovered || focused);
 
       if (!wanted) {
         stop();
@@ -57,7 +59,6 @@ export default function GameplayPreview({
       if (active) return;
       active = true;
       const currentAttempt = ++attempt;
-      // Reuse the already displayed responsive poster; no extra initial fetch.
       video.poster = visual.querySelector("img")?.currentSrc || poster;
       if (!video.hasAttribute("src")) video.src = src;
       video.muted = true;
@@ -97,10 +98,10 @@ export default function GameplayPreview({
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        inView = entry.isIntersecting && entry.intersectionRatio >= 0.6;
+        inView = entry.isIntersecting && entry.intersectionRatio >= 0.55;
         update();
       },
-      { threshold: [0, 0.6] },
+      { threshold: [0, 0.55] },
     );
     observer.observe(visual);
     visual.addEventListener("pointerenter", enter);
@@ -131,7 +132,7 @@ export default function GameplayPreview({
       video.removeAttribute("src");
       video.load();
     };
-  }, [src, poster]);
+  }, [autoplayInView, src, poster]);
 
   return (
     <video
