@@ -10,18 +10,18 @@ const originalUrl = "https://www.immortalcraftbarbers.com/";
 const decisions = [
   {
     number: "01",
-    title: "Make the barber the product.",
-    text: "The person behind the chair moved into the center of the journey. Discovery, work, and booking now belong to the same decision.",
+    title: "Put the barber at the center.",
+    text: "The people behind the chairs became part of the first decision. Visitors can meet the barbers, see the work, and move toward booking without hunting through the site.",
   },
   {
     number: "02",
-    title: "Make proof do work.",
-    text: "Reviews, photography, services, and the lounge now reinforce one another before the visitor is asked to commit.",
+    title: "Let the work prove the promise.",
+    text: "Reviews, photography, services, and the lounge now sit where they can build confidence before a visitor chooses a barber.",
   },
   {
     number: "03",
-    title: "Make every section earn the next.",
-    text: "Identity leads to people. People lead to proof. Proof leads to place. Place leads to booking. Nothing exists only to fill a screen.",
+    title: "Make every section lead somewhere.",
+    text: "The page now moves with purpose: identity, barbers, proof, place, then booking. Each section prepares the next choice.",
   },
 ];
 
@@ -88,7 +88,7 @@ export default function ImmortalCraftCaseStudy() {
               </p>
               <div className="case-proof-line">
                 <span>Not a reskin.</span>
-                <span>A rebuilt decision path.</span>
+                <span>A clearer way to choose and book.</span>
               </div>
             </div>
           </div>
@@ -208,7 +208,7 @@ export default function ImmortalCraftCaseStudy() {
 
         <section className="case-route" aria-labelledby="route-title">
           <div className="case-route-intro">
-            <span>02 / Reframe</span>
+            <span>02 / The new route</span>
             <h2 id="route-title">
               From pages
               <br />
@@ -231,12 +231,12 @@ export default function ImmortalCraftCaseStudy() {
 
         <section className="case-decisions-section" aria-labelledby="decisions-title">
           <div className="case-chapter case-chapter-light">
-            <span>03 / Design moves</span>
-            <span>Three decisions shaped the system</span>
+            <span>03 / What changed</span>
+            <span>Three changes, one clearer journey</span>
           </div>
 
           <ScrollReveal className="case-decision-head">
-            <h2 id="decisions-title">Three moves. One clearer decision.</h2>
+            <h2 id="decisions-title">Three changes made the journey easier.</h2>
           </ScrollReveal>
 
           <div className="case-decisions">
@@ -307,7 +307,7 @@ export default function ImmortalCraftCaseStudy() {
         <section className="case-result" aria-labelledby="result-title">
           <div className="case-chapter case-chapter-light">
             <span>05 / Result</span>
-            <span>No invented metrics / the work is visible</span>
+            <span>A clearer route / from first look to booking</span>
           </div>
 
           <div className="case-result-grid">
@@ -324,10 +324,10 @@ export default function ImmortalCraftCaseStudy() {
             <div className="case-result-proof">
               <span>What changed</span>
               <ul>
-                <li>Barber-led discovery</li>
-                <li>Proof embedded into the journey</li>
-                <li>Clear service and booking hierarchy</li>
-                <li>Responsive motion with restraint</li>
+                <li>Barbers are easier to discover</li>
+                <li>Work, reviews, and services now support the choice</li>
+                <li>The path from interest to booking is obvious</li>
+                <li>Motion supports the experience without getting in the way</li>
               </ul>
             </div>
           </div>
