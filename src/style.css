@@ -2834,7 +2834,7 @@ a.documentation-cta {
     max-width: 11.5ch;
     margin: 0;
     font-size: clamp(19px, 5.7vw, 23px);
-    line-height: 0.98;
+    line-height: 1.02;
     letter-spacing: -0.035em;
   }
 
@@ -2945,7 +2945,7 @@ a.documentation-cta {
   }
 
   :root[data-theme="dark"] .documentation-index > li:nth-child(1) .documentation-orbit::after {
-    width: 72%;
+    width: 79%;
     height: 72%;
     right: -25%;
     top: 12%;
@@ -3051,7 +3051,7 @@ a.documentation-cta {
     grid-template-columns: 18px minmax(0, 1fr);
     grid-template-rows: auto auto auto auto;
     column-gap: 10px;
-    row-gap: 7px;
+    row-gap: 9px;
     min-height: 0;
     padding: 15px 14px 14px;
   }
@@ -3075,7 +3075,7 @@ a.documentation-cta {
   }
 
   :root[data-theme="dark"] .documentation-title > p {
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     font-size: 7.5px;
     line-height: 1.25;
   }
@@ -3088,21 +3088,21 @@ a.documentation-cta {
 
   :root[data-theme="dark"] .documentation-description {
     grid-row: 2;
-    width: 72%;
-    max-width: 34ch;
+    width: 81%;
+    max-width: 40ch;
     font-size: 10px;
-    line-height: 1.46;
+    line-height: 1.54;
   }
 
   :root[data-theme="dark"] .documentation-meta {
     grid-row: 3;
-    width: 72%;
+    width: 81%;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
-    gap: 9px 14px;
-    margin: 2px 0 1px;
+    gap: 10px 16px;
+    margin: 4px 0 2px;
   }
 
   :root[data-theme="dark"] .documentation-status {
@@ -3120,9 +3120,9 @@ a.documentation-cta {
   :root[data-theme="dark"] .documentation-tags {
     grid-row: 4;
     width: 100%;
-    margin-top: 2px;
+    margin-top: 4px;
     padding-right: 0;
-    gap: 4px !important;
+    gap: 5px !important;
   }
 
   :root[data-theme="dark"] .documentation-tags.tags span {
@@ -3132,8 +3132,8 @@ a.documentation-cta {
   }
 
   :root[data-theme="dark"] .documentation-orbit {
-    right: -2%;
-    width: 42%;
+    right: -4%;
+    width: 38%;
     height: 100%;
   }
 }
@@ -3142,7 +3142,7 @@ a.documentation-cta {
   :root[data-theme="dark"] .documentation-entry {
     grid-template-columns: 16px minmax(0, 1fr);
     column-gap: 8px;
-    row-gap: 6px;
+    row-gap: 8px;
     min-height: 0;
     padding: 13px 12px;
   }
@@ -3150,12 +3150,12 @@ a.documentation-cta {
   :root[data-theme="dark"] .documentation-title,
   :root[data-theme="dark"] .documentation-description,
   :root[data-theme="dark"] .documentation-meta {
-    width: 76%;
+    width: 82%;
   }
 
   :root[data-theme="dark"] .documentation-description {
     font-size: 9.5px;
-    line-height: 1.43;
+    line-height: 1.5;
   }
 
   :root[data-theme="dark"] a.documentation-cta,
