@@ -16,6 +16,7 @@ export default function ScrollPositionRestoration() {
     let restoreFrame = 0;
     let saveFrame = 0;
     const previousScrollRestoration = history.scrollRestoration;
+    const restoreDeadline = performance.now() + 5000;
 
     if (shouldRestore && "scrollRestoration" in history) {
       history.scrollRestoration = "manual";
@@ -50,6 +51,15 @@ export default function ScrollPositionRestoration() {
 
       if (Math.abs(window.scrollY - savedY) <= 2 || maxY >= savedY) {
         finishRestore();
+        return;
+      }
+
+      // A reload can briefly render the Suspense fallback before the real page
+      // has enough height to reach the saved position. Keep trying through that
+      // window, but never lock the browser in a restoration loop indefinitely.
+      if (performance.now() >= restoreDeadline) {
+        finishRestore();
+        writeSavedScrollPosition();
         return;
       }
 
