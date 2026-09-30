@@ -2300,6 +2300,10 @@ a.documentation-cta {
 }
 
 
+.documentation-orbit {
+  display: none;
+}
+
 /* Dark mode refinement 2: subtract cyan, deepen tone, author section identities */
 :root[data-theme="dark"] .work {
   background: #041416;
@@ -2498,6 +2502,7 @@ a.documentation-cta {
 
 /* Each entry carries one distinct systems motif rather than repeating decoration. */
 :root[data-theme="dark"] .documentation-orbit {
+  display: block;
   position: absolute;
   z-index: 0;
   top: -12%;
