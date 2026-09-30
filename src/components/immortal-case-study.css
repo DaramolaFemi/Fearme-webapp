@@ -1,7 +1,7 @@
 .case-study {
   --case-black: #11110f;
   --case-cream: var(--paper);
-  --case-red: var(--accent);
+  --case-red: #b64331;
   --case-muted-light: rgba(244, 240, 232, 0.68);
   background: var(--case-cream);
   color: var(--ink);
@@ -192,33 +192,145 @@
   filter: brightness(0.58) saturate(0.86);
 }
 
-.case-cinema-copy {
+.case-site-shade {
   position: absolute;
-  inset: auto auto clamp(44px, 6vw, 88px) clamp(26px, 5vw, 76px);
+  inset: 0;
   z-index: 1;
-  display: grid;
-  gap: 12px;
+  background:
+    linear-gradient(90deg, rgba(8, 7, 6, 0.94) 0%, rgba(9, 8, 7, 0.78) 33%, rgba(10, 9, 8, 0.43) 62%, rgba(10, 9, 8, 0.22) 100%),
+    linear-gradient(0deg, rgba(7, 6, 5, 0.64), rgba(7, 6, 5, 0.06) 48%, rgba(7, 6, 5, 0.2) 100%);
 }
 
-.case-cinema-copy > span,
-.case-cinema-copy > small {
+.case-site-nav {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 2;
+  min-height: 88px;
+  padding: 0 clamp(24px, 4vw, 64px);
+  display: grid;
+  grid-template-columns: minmax(180px, 0.7fr) 1fr auto;
+  align-items: center;
+  gap: 28px;
+  border-bottom: 1px solid rgba(244, 240, 232, 0.1);
+}
+
+.case-site-brand {
+  display: inline-flex;
+  width: max-content;
+  flex-direction: column;
+  gap: 5px;
+  font-family: "Literata", serif;
+  letter-spacing: 0.22em;
+}
+
+.case-site-brand strong {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.case-site-brand small {
+  color: rgba(244, 240, 232, 0.7);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 6px;
+  letter-spacing: 0.4em;
+}
+
+.case-site-links {
+  display: flex;
+  justify-content: center;
+  gap: clamp(18px, 2.6vw, 42px);
+}
+
+.case-site-links i {
+  color: rgba(244, 240, 232, 0.86);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 8px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.case-site-book {
+  padding-bottom: 7px;
+  border-bottom: 1px solid rgba(145, 166, 175, 0.78);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.case-site-hero {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 96px clamp(28px, 5vw, 82px) 74px;
+}
+
+.case-site-hero > span {
+  margin-bottom: 18px;
+  color: #c6d2d6;
   font-family: "IBM Plex Sans", sans-serif;
   font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+}
+
+.case-site-hero > strong {
+  font-family: "Literata", serif;
+  font-size: clamp(72px, 10vw, 156px);
+  font-weight: 400;
+  line-height: 0.82;
+  letter-spacing: -0.07em;
+  text-transform: uppercase;
+}
+
+.case-site-hero > i {
+  width: 68px;
+  height: 1px;
+  margin: 24px 0;
+  background: #91a6af;
+}
+
+.case-site-hero > p {
+  margin: 0 0 28px;
+  font-size: clamp(13px, 1.25vw, 18px);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.case-site-hero > b {
+  min-width: 190px;
+  padding: 14px 18px;
+  border: 1px solid #91a6af;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 9px;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
-.case-cinema-copy > strong {
-  font-family: "Literata", serif;
-  font-size: clamp(72px, 11vw, 170px);
-  font-weight: 400;
-  line-height: 0.78;
-  letter-spacing: -0.075em;
-}
-
-.case-cinema-copy > small {
-  margin-top: 10px;
-  color: rgba(244, 240, 232, 0.72);
+.case-site-foot {
+  position: absolute;
+  right: clamp(24px, 4vw, 64px);
+  bottom: 24px;
+  left: clamp(24px, 4vw, 64px);
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  color: rgba(244, 240, 232, 0.7);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 7px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .case-media-label {
@@ -343,8 +455,8 @@
 .case-route {
   position: relative;
   padding: 70px max(4.5vw, 24px) 76px;
-  background: var(--case-red);
-  color: #f8f0e8;
+  background: #e8e2d8;
+  color: #181815;
 }
 
 .case-route-intro {
@@ -385,14 +497,14 @@
   grid-template-columns: repeat(5, minmax(0, 1fr));
   margin: 0;
   padding: 0;
-  border-top: 1px solid rgba(248, 240, 232, 0.48);
+  border-top: 1px solid rgba(24, 24, 21, 0.34);
 }
 
 .case-route-line li {
   position: relative;
   min-height: 130px;
   padding: 16px 14px 16px 0;
-  border-right: 1px solid rgba(248, 240, 232, 0.34);
+  border-right: 1px solid rgba(24, 24, 21, 0.22);
 }
 
 .case-route-line li:not(:first-child) {
@@ -409,9 +521,9 @@
   left: 0;
   width: 9px;
   height: 9px;
-  border: 1px solid rgba(248, 240, 232, 0.86);
+  border: 1px solid rgba(24, 24, 21, 0.68);
   border-radius: 50%;
-  background: var(--case-red);
+  background: #e8e2d8;
   content: "";
 }
 
@@ -802,7 +914,7 @@
   .case-route-line {
     grid-template-columns: 1fr;
     border-top: 0;
-    border-left: 1px solid rgba(248, 240, 232, 0.48);
+    border-left: 1px solid rgba(24, 24, 21, 0.34);
     margin-left: 4px;
   }
 
@@ -814,7 +926,7 @@
     align-items: center;
     padding: 18px 0 18px 22px;
     border-right: 0;
-    border-bottom: 1px solid rgba(248, 240, 232, 0.32);
+    border-bottom: 1px solid rgba(24, 24, 21, 0.2);
   }
 
   .case-route-line li::before,
@@ -938,13 +1050,47 @@
     object-position: 58% center;
   }
 
-  .case-cinema-copy {
-    left: 18px;
-    bottom: 46px;
+  .case-site-nav {
+    min-height: 66px;
+    padding-inline: 18px;
+    grid-template-columns: 1fr auto;
   }
 
-  .case-cinema-copy > strong {
-    font-size: clamp(68px, 24vw, 98px);
+  .case-site-links {
+    display: none;
+  }
+
+  .case-site-brand strong {
+    font-size: 13px;
+  }
+
+  .case-site-book {
+    font-size: 7px;
+  }
+
+  .case-site-hero {
+    justify-content: flex-end;
+    padding: 92px 18px 82px;
+  }
+
+  .case-site-hero > strong {
+    font-size: clamp(66px, 22vw, 92px);
+  }
+
+  .case-site-hero > p {
+    max-width: 24ch;
+    font-size: 11px;
+  }
+
+  .case-site-foot {
+    right: 18px;
+    bottom: 22px;
+    left: 18px;
+  }
+
+  .case-site-foot span:first-child,
+  .case-site-foot span:last-child {
+    display: none;
   }
 
   .case-media-label {
