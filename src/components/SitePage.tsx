@@ -1,6 +1,5 @@
 import { lazy, Suspense } from "react";
 import PageBoundary from "./PageBoundary";
-import BackToTop from "./BackToTop";
 import { poems } from "../data/poetry";
 
 const App = lazy(() => import("../App"));
@@ -29,7 +28,6 @@ export default function SitePage() {
           <App />
         )}
       </Suspense>
-      <BackToTop />
     </PageBoundary>
   );
 }
