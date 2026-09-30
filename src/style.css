@@ -1855,17 +1855,17 @@ button:focus-visible .direction-arrow {
 }
 .poem-page h1 {
   font-family: "Instrument Serif", serif;
-  font-size: clamp(46px, 6vw, 80px);
+  font-size: clamp(42px, 5vw, 68px);
   font-weight: 400;
-  line-height: 1.05;
+  line-height: 1.06;
   letter-spacing: -0.025em;
-  margin: 28px 0 56px;
+  margin: 26px 0 48px;
   overflow-wrap: anywhere;
 }
 .poem-body {
   font-family: "Instrument Serif", serif;
-  font-size: clamp(18px, 1.15vw, 20px);
-  line-height: 1.72;
+  font-size: clamp(17px, 1.05vw, 19px);
+  line-height: 1.74;
   overflow-wrap: break-word;
 }
 .poem-body p {
@@ -1942,7 +1942,18 @@ button:focus-visible .direction-arrow {
     margin-left: auto;
   }
   .poem-page {
-    padding-top: 44px;
+    padding-top: 38px;
+  }
+
+  .poem-page h1 {
+    font-size: clamp(38px, 10.5vw, 44px);
+    line-height: 1.06;
+    margin: 22px 0 42px;
+  }
+
+  .poem-body {
+    font-size: 17px;
+    line-height: 1.72;
   }
   .poem-navigation {
     flex-direction: column;
