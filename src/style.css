@@ -1119,17 +1119,17 @@ textarea::placeholder {
    with cyan used as a restrained nocturnal light source rather than a second brand. */
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --paper: #071b1e;
+  --paper: #041416;
   --ink: #f3eee8;
-  --muted: #aab8b7;
-  --line: #1f464b;
+  --muted: #9eadaa;
+  --line: #15363a;
   --accent: #c2185b;
-  --panel: #0b2529;
-  --field-line: #31575b;
-  --placeholder: #789092;
+  --panel: #082226;
+  --field-line: #24474b;
+  --placeholder: #6f8586;
   --band: #c2185b;
   --band-text: #f7f3eb;
-  --night-cyan: #78e6dc;
+  --night-cyan: #6eddd4;
 }
 .logo {
   width: 136px;
@@ -2289,5 +2289,400 @@ a.documentation-cta {
   :root[data-theme="dark"] .documentation {
     background-image:
       radial-gradient(ellipse 88% 24% at 128% 18%, transparent 70%, rgba(120, 230, 220, 0.06) 70.5%, rgba(120, 230, 220, 0.06) 71%, transparent 71.5%);
+  }
+}
+
+:root:not([data-theme="dark"]) .capabilities h3 em {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: inherit;
+  color: inherit;
+}
+
+
+/* Dark mode refinement 2: subtract cyan, deepen tone, author section identities */
+:root[data-theme="dark"] .work {
+  background: #041416;
+}
+
+:root[data-theme="dark"] .documentation {
+  background:
+    radial-gradient(circle at 88% 9%, rgba(110, 221, 212, 0.025), transparent 24%),
+    #061b1e;
+}
+
+:root[data-theme="dark"] .about {
+  background:
+    radial-gradient(ellipse 42% 28% at 106% 10%, rgba(110, 221, 212, 0.03), transparent 66%),
+    #082226;
+}
+
+:root[data-theme="dark"] .poetry {
+  background:
+    radial-gradient(circle at 8% 72%, rgba(110, 221, 212, 0.022), transparent 22%),
+    #041719;
+}
+
+:root[data-theme="dark"] .contact {
+  background:
+    radial-gradient(circle at 88% 14%, rgba(110, 221, 212, 0.024), transparent 25%),
+    #06191c;
+}
+
+:root[data-theme="dark"] .footer {
+  background: #06191c;
+}
+
+/* Cyan is a light source, not the brand color. Keep ordinary metadata quiet. */
+:root[data-theme="dark"] .section-kicker > span:first-child {
+  color: var(--muted);
+}
+
+:root[data-theme="dark"] .documentation .section-kicker > span:first-child,
+:root[data-theme="dark"] .poetry .section-kicker > span:first-child {
+  color: color-mix(in srgb, var(--night-cyan) 66%, var(--muted));
+}
+
+:root[data-theme="dark"] .hero-rule,
+:root[data-theme="dark"] .section-kicker {
+  border-color: rgba(110, 221, 212, 0.11);
+}
+
+:root[data-theme="dark"] .filters button {
+  border-color: rgba(110, 221, 212, 0.09);
+}
+
+:root[data-theme="dark"] .filters button[aria-pressed="true"] {
+  border-color: rgba(110, 221, 212, 0.24);
+}
+
+:root[data-theme="dark"] .tags span {
+  border-color: rgba(110, 221, 212, 0.12);
+  background: rgba(110, 221, 212, 0.018);
+}
+
+/* Documentation is the one place where system geometry becomes explicit. */
+:root[data-theme="dark"] .documentation-heading h2 {
+  font-family: "Literata", serif;
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+
+:root[data-theme="dark"] .documentation-heading h2 em {
+  font-family: "Literata", serif;
+  font-style: italic;
+}
+
+:root[data-theme="dark"] .documentation-index {
+  max-width: 1180px;
+  margin-inline: auto;
+  border-top: 0;
+}
+
+:root[data-theme="dark"] .documentation-index > li {
+  margin-bottom: 18px;
+  border-bottom: 0;
+}
+
+:root[data-theme="dark"] .documentation-entry {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 10px 18px;
+  padding: 28px 30px 26px;
+  border: 1px solid rgba(110, 221, 212, 0.22);
+  border-radius: 14px;
+  background:
+    linear-gradient(105deg, rgba(110, 221, 212, 0.018), transparent 42%),
+    #071d20;
+  box-shadow: inset 0 1px 0 rgba(243, 238, 232, 0.018);
+}
+
+:root[data-theme="dark"] .documentation-number {
+  grid-column: 1;
+  grid-row: 1;
+  position: relative;
+  z-index: 2;
+  color: color-mix(in srgb, var(--night-cyan) 74%, var(--muted));
+}
+
+:root[data-theme="dark"] .documentation-title,
+:root[data-theme="dark"] .documentation-description,
+:root[data-theme="dark"] .documentation-meta,
+:root[data-theme="dark"] .documentation-tags {
+  grid-column: 2;
+  position: relative;
+  z-index: 2;
+  width: min(58%, 620px);
+}
+
+:root[data-theme="dark"] .documentation-title {
+  grid-row: 1;
+}
+
+:root[data-theme="dark"] .documentation-title > p {
+  min-height: 0;
+  margin: 0 0 10px;
+  color: var(--muted);
+}
+
+:root[data-theme="dark"] .documentation-title h3 {
+  max-width: 560px;
+  font-family: "Literata", serif;
+  font-size: clamp(25px, 2.25vw, 34px);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+:root[data-theme="dark"] .documentation-description {
+  grid-row: 2;
+  max-width: 620px;
+  color: color-mix(in srgb, var(--ink) 68%, var(--muted));
+  font-size: 13px;
+  line-height: 1.68;
+}
+
+:root[data-theme="dark"] .documentation-meta {
+  grid-row: 3;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin-top: 3px;
+}
+
+:root[data-theme="dark"] .documentation-status::before {
+  width: 8px;
+  height: 8px;
+  border: 0;
+  background: var(--accent);
+  box-shadow: 0 0 12px rgba(194, 24, 91, 0.28);
+}
+
+:root[data-theme="dark"] a.documentation-cta {
+  color: var(--ink);
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(194, 24, 91, 0.76);
+  text-underline-offset: 5px;
+}
+
+:root[data-theme="dark"] .documentation-tags {
+  grid-row: 4;
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px !important;
+  margin-top: 2px;
+}
+
+:root[data-theme="dark"] .documentation-tags.tags span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 5px 10px !important;
+  border: 1px solid rgba(110, 221, 212, 0.32) !important;
+  border-radius: 999px !important;
+  background: rgba(110, 221, 212, 0.018) !important;
+  color: color-mix(in srgb, var(--night-cyan) 56%, var(--ink));
+  font-size: 9px;
+  line-height: 1;
+}
+
+:root[data-theme="dark"] .documentation-tags.tags span::after {
+  content: none !important;
+}
+
+/* Each entry carries one distinct systems motif rather than repeating decoration. */
+:root[data-theme="dark"] .documentation-orbit {
+  position: absolute;
+  z-index: 0;
+  top: -12%;
+  right: -4%;
+  width: 48%;
+  height: 124%;
+  opacity: 0.72;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 26%, #000 100%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 26%, #000 100%);
+}
+
+:root[data-theme="dark"] .documentation-orbit::before,
+:root[data-theme="dark"] .documentation-orbit::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+:root[data-theme="dark"] .documentation-index > li:nth-child(1) .documentation-orbit {
+  background:
+    radial-gradient(circle at 61% 46%, rgba(194, 24, 91, 0.95) 0 3px, transparent 4px),
+    radial-gradient(circle at 54% 53%, rgba(110, 221, 212, 0.9) 0 2px, transparent 3px),
+    radial-gradient(ellipse at 92% 52%, transparent 0 43%, rgba(110, 221, 212, 0.52) 43.2% 43.5%, transparent 43.8% 55%, rgba(110, 221, 212, 0.14) 55.2% 55.5%, transparent 55.8%);
+}
+
+:root[data-theme="dark"] .documentation-index > li:nth-child(1) .documentation-orbit::before {
+  inset: 18% -13% 12% 16%;
+  border: 1px solid rgba(110, 221, 212, 0.22);
+  border-radius: 50%;
+  transform: rotate(-17deg);
+}
+
+:root[data-theme="dark"] .documentation-index > li:nth-child(2) .documentation-orbit {
+  background:
+    radial-gradient(circle at 70% 50%, rgba(194, 24, 91, 0.95) 0 3px, transparent 4px),
+    radial-gradient(circle at 63% 61%, rgba(110, 221, 212, 0.9) 0 2px, transparent 3px),
+    linear-gradient(31deg, transparent 49.7%, rgba(110, 221, 212, 0.34) 49.9% 50.1%, transparent 50.3%),
+    linear-gradient(-25deg, transparent 49.7%, rgba(110, 221, 212, 0.24) 49.9% 50.1%, transparent 50.3%);
+}
+
+:root[data-theme="dark"] .documentation-index > li:nth-child(2) .documentation-orbit::before {
+  width: 170px;
+  height: 170px;
+  right: 6%;
+  top: 24%;
+  border: 1px solid rgba(110, 221, 212, 0.22);
+  transform: rotate(32deg);
+}
+
+:root[data-theme="dark"] .documentation-index > li:nth-child(2) .documentation-orbit::after {
+  width: 122px;
+  height: 122px;
+  right: 18%;
+  top: 34%;
+  border: 1px solid rgba(110, 221, 212, 0.13);
+  transform: rotate(-24deg);
+}
+
+:root[data-theme="dark"] .documentation-index > li:nth-child(3) .documentation-orbit {
+  background:
+    radial-gradient(circle at 58% 42%, rgba(194, 24, 91, 0.95) 0 3px, transparent 4px),
+    radial-gradient(circle at 68% 31%, rgba(110, 221, 212, 0.9) 0 2px, transparent 3px),
+    radial-gradient(circle at 79% 49%, rgba(110, 221, 212, 0.09) 0 14%, transparent 15%),
+    radial-gradient(circle at 67% 52%, rgba(110, 221, 212, 0.07) 0 18%, transparent 19%),
+    radial-gradient(ellipse at 98% 46%, transparent 0 46%, rgba(110, 221, 212, 0.44) 46.3% 46.6%, transparent 46.9% 57%, rgba(110, 221, 212, 0.13) 57.3% 57.6%, transparent 57.9%);
+}
+
+/* Biography stays quiet; capabilities become the typographic release. */
+:root[data-theme="dark"] .capabilities > div {
+  border-color: rgba(110, 221, 212, 0.11);
+}
+
+:root[data-theme="dark"] .capabilities h3 {
+  font-family: "Literata", serif;
+  font-size: clamp(30px, 3.2vw, 48px);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+:root[data-theme="dark"] .capabilities h3 em {
+  font-family: "Literata", serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--night-cyan);
+}
+
+:root[data-theme="dark"] .capabilities .small-label {
+  color: var(--accent);
+}
+
+:root[data-theme="dark"] .tool-list {
+  color: color-mix(in srgb, var(--night-cyan) 60%, var(--muted));
+}
+
+/* Raspberry gets one large interruption; texture stops it reading as a flat banner. */
+:root[data-theme="dark"] .interlude {
+  background-color: var(--accent);
+  background-image:
+    radial-gradient(ellipse at 78% 20%, rgba(255, 255, 255, 0.06), transparent 34%),
+    linear-gradient(112deg, transparent 0 42%, rgba(56, 0, 22, 0.12) 42% 54%, transparent 54% 100%);
+}
+
+/* Contact stays restrained; cyan only appears as focus light. */
+:root[data-theme="dark"] .contact input,
+:root[data-theme="dark"] .contact textarea {
+  border-bottom-color: rgba(110, 221, 212, 0.15);
+}
+
+:root[data-theme="dark"] .contact input:focus,
+:root[data-theme="dark"] .contact textarea:focus {
+  border-bottom-color: rgba(110, 221, 212, 0.72);
+}
+
+:root[data-theme="dark"] .contact .button {
+  background: rgba(194, 24, 91, 0.025);
+  border-color: rgba(194, 24, 91, 0.68);
+}
+
+/* Poetry keeps the thread but gives the opening statement less visual dominance on phones. */
+@media (max-width: 600px) {
+  :root[data-theme="dark"] .documentation {
+    background: #061b1e;
+  }
+
+  :root[data-theme="dark"] .documentation-heading h2 {
+    font-size: 42px;
+    line-height: 0.99;
+  }
+
+  :root[data-theme="dark"] .documentation-index > li {
+    margin-bottom: 14px;
+  }
+
+  :root[data-theme="dark"] .documentation-entry {
+    grid-template-columns: 24px minmax(0, 1fr);
+    gap: 9px 11px;
+    padding: 21px 17px 19px;
+    border-radius: 12px;
+  }
+
+  :root[data-theme="dark"] .documentation-title,
+  :root[data-theme="dark"] .documentation-description,
+  :root[data-theme="dark"] .documentation-meta,
+  :root[data-theme="dark"] .documentation-tags {
+    width: 100%;
+  }
+
+  :root[data-theme="dark"] .documentation-title h3 {
+    max-width: 15ch;
+    font-size: 25px;
+    line-height: 1.04;
+  }
+
+  :root[data-theme="dark"] .documentation-description {
+    max-width: 45ch;
+    font-size: 11.5px;
+    line-height: 1.68;
+  }
+
+  :root[data-theme="dark"] .documentation-meta {
+    gap: 9px 16px;
+  }
+
+  :root[data-theme="dark"] .documentation-orbit {
+    right: -19%;
+    width: 67%;
+    opacity: 0.42;
+  }
+
+  :root[data-theme="dark"] .documentation-tags.tags span {
+    min-height: 23px;
+    padding: 4px 7px !important;
+    font-size: 8px;
+  }
+
+  :root[data-theme="dark"] .capabilities h3 {
+    font-size: 32px;
+    line-height: 1.04;
+  }
+
+  :root[data-theme="dark"] .poetry-intro h2 {
+    font-size: 34px;
+    line-height: 1.04;
+    letter-spacing: -0.018em;
   }
 }
