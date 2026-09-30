@@ -15,6 +15,7 @@ import DocumentationSection from "./components/DocumentationSection";
 import PoetrySection from "./components/PoetrySection";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { MotionConfig, motion, useReducedMotion } from "motion/react";
+import { shouldRestoreReloadScroll } from "./utils/navigation";
 
 type ProjectCardProps = {
   project: Project;
@@ -136,15 +137,24 @@ export default function App() {
   const menuButton = useRef<HTMLButtonElement>(null);
   useLayoutEffect(() => {
     let cancelled = false;
+    const preserveReloadPosition = shouldRestoreReloadScroll();
+
     function landOnSection() {
       const target = document.getElementById(window.location.hash.slice(1));
       target?.scrollIntoView({ block: "start", behavior: "instant" });
     }
-    landOnSection();
-    // Font metrics can change section positions after the first render.
-    void document.fonts.ready.then(() => {
-      if (!cancelled) landOnSection();
-    });
+
+    // A real hash navigation should still land on its section. On reload,
+    // however, the exact saved scroll position takes precedence so the page
+    // does not snap to the top or to the start of the hashed section.
+    if (!preserveReloadPosition) {
+      landOnSection();
+      // Font metrics can change section positions after the first render.
+      void document.fonts.ready.then(() => {
+        if (!cancelled) landOnSection();
+      });
+    }
+
     window.addEventListener("hashchange", landOnSection);
     return () => {
       cancelled = true;
