@@ -584,6 +584,52 @@ test("desktop CV action is text-led and intentionally compact", async ({ page })
   expect(width).toBeLessThanOrEqual(350.5);
 });
 
+test("mobile dark documentation follows the reference card composition", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.emulateMedia({ colorScheme: "light", reducedMotion: "reduce" });
+  await page.goto("/#documentation");
+  await page.getByRole("switch", { name: "Dark mode" }).click();
+
+  const cards = page.locator("#documentation .documentation-entry");
+  await expect(cards).toHaveCount(3);
+
+  for (const card of await cards.all()) {
+    await card.scrollIntoViewIfNeeded();
+    const metrics = await card.evaluate((el) => {
+      const rect = el.getBoundingClientRect();
+      const styles = getComputedStyle(el);
+      return {
+        width: rect.width,
+        height: rect.height,
+        radius: styles.borderRadius,
+        columns: styles.gridTemplateColumns,
+      };
+    });
+
+    expect(metrics.height).toBeLessThan(380);
+    expect(metrics.width / metrics.height).toBeGreaterThan(0.8);
+    expect(metrics.radius).toBe("12px");
+    expect(metrics.columns.split(" ").length).toBeGreaterThanOrEqual(3);
+  }
+
+  const first = cards.first();
+  const title = first.locator(".documentation-title h3");
+  expect(
+    await title.evaluate((el) => parseFloat(getComputedStyle(el).fontSize)),
+  ).toBeLessThanOrEqual(23);
+
+  const art = first.locator(".documentation-orbit");
+  const artBox = await art.boundingBox();
+  const cardBox = await first.boundingBox();
+  expect(artBox).not.toBeNull();
+  expect(cardBox).not.toBeNull();
+  expect(artBox!.x).toBeGreaterThan(cardBox!.x + cardBox!.width * 0.5);
+
+  expect(
+    await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+  ).toBe(true);
+});
+
 test("dark documentation uses authored cards and no generic arrows", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 900 });
   await page.emulateMedia({ colorScheme: "light", reducedMotion: "reduce" });
