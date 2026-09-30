@@ -9,7 +9,7 @@ for (const width of [390, 1440]) {
 
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
     await expect(page.getByText("Before / original homepage")).toBeVisible();
-    await expect(page.getByText("After / redesigned hero system")).toBeVisible();
+    await expect(page.getByText("After / final hero experience")).toBeVisible();
 
     expect(
       await page.evaluate(
