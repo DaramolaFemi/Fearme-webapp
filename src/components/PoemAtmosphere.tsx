@@ -2,181 +2,144 @@ import type { CSSProperties } from "react";
 import type { PoemAtmosphereConfig } from "../data/poetry";
 
 const petals = [
-  { x: "12%", top: "14%", delay: "-9s", duration: "24s", size: "11px", sway: "34px", turn: "168deg" },
-  { x: "82%", top: "27%", delay: "-15s", duration: "29s", size: "9px", sway: "-30px", turn: "216deg" },
-  { x: "18%", top: "46%", delay: "-4s", duration: "27s", size: "8px", sway: "28px", turn: "192deg" },
-  { x: "76%", top: "61%", delay: "-19s", duration: "31s", size: "12px", sway: "-36px", turn: "238deg" },
-  { x: "88%", top: "78%", delay: "-12s", duration: "26s", size: "7px", sway: "-22px", turn: "184deg" },
+  { x: "8%", top: "18%", delay: "-7s", duration: "25s", size: "12px", sway: "34px", turn: "176deg" },
+  { x: "88%", top: "26%", delay: "-13s", duration: "31s", size: "10px", sway: "-28px", turn: "228deg" },
+  { x: "16%", top: "43%", delay: "-3s", duration: "28s", size: "8px", sway: "26px", turn: "198deg" },
+  { x: "79%", top: "58%", delay: "-18s", duration: "33s", size: "11px", sway: "-34px", turn: "242deg" },
+  { x: "91%", top: "76%", delay: "-10s", duration: "27s", size: "7px", sway: "-20px", turn: "188deg" },
 ];
 
-function Flower({ x, y, scale = 1, rotate = 0 }: { x: number; y: number; scale?: number; rotate?: number }) {
+function Bloom({ x, y, scale = 1, rotate = 0 }: { x: number; y: number; scale?: number; rotate?: number }) {
   return (
-    <g
-      className="poem-atmosphere-flower"
-      transform={"translate(" + x + " " + y + ") rotate(" + rotate + ") scale(" + scale + ")"}
-    >
-      <path d="M0-3C-11-24-7-41 3-45C15-40 17-22 4-2Z" />
-      <path d="M3 0C22-14 39-10 43 1C37 13 20 14 2 5Z" />
-      <path d="M0 4C13 24 8 40-3 44C-15 39-17 21-4 2Z" />
-      <path d="M-4 0C-23 12-39 7-42-4C-35-15-18-15-2-5Z" />
-      <path d="M-2-2C8-11 18-9 22-1C18 8 7 10-2 4C-11 8-21 4-22-5C-16-12-8-11-2-2Z" />
-      <circle cx="0" cy="0" r="3.5" />
+    <g className="poem-atmosphere-flower" transform={`translate(${x} ${y}) rotate(${rotate}) scale(${scale})`}>
+      <path d="M0-4C-18-34-11-58 5-64C23-57 25-31 7-2Z" />
+      <path d="M4-1C34-22 57-15 63 2C54 20 29 21 2 7Z" />
+      <path d="M1 5C18 35 9 58-7 64C-24 55-24 29-6 2Z" />
+      <path d="M-5 0C-35 19-58 11-63-6C-52-23-27-22-2-7Z" />
+      <path d="M-4-4C10-17 26-14 31-2C26 11 10 15-4 7C-18 13-31 6-31-7C-22-18-10-16-4-4Z" />
+      <circle cx="0" cy="0" r="4" />
     </g>
   );
 }
 
-function RibBloomStudy({ botanical }: { botanical: boolean }) {
-  const vertebrae = [94, 126, 160, 196, 234, 274, 316, 360, 406];
+function LeftOssuaryBloom({ botanical }: { botanical: boolean }) {
+  const vertebrae = [144, 178, 214, 252, 292, 334, 378, 424, 472, 522];
   return (
-    <svg
-      className="poem-atmosphere-scene poem-atmosphere-scene-opening"
-      viewBox="0 0 520 720"
-      preserveAspectRatio="xMinYMin meet"
-      focusable="false"
-    >
-      <g className="poem-bone-mass">
-        <path d="M171 73C154 154 156 247 151 330C147 414 141 504 111 608" />
-        <path d="M168 121C125 102 75 107 34 138C9 157-5 181-16 209" />
-        <path d="M166 160C115 136 57 146 16 184C-5 204-18 229-26 257" />
-        <path d="M163 203C111 178 53 193 14 234C-7 256-17 281-21 307" />
-        <path d="M159 250C111 226 59 242 26 281C7 303-2 328-3 354" />
-        <path d="M156 298C118 279 78 291 50 321C32 340 22 362 18 385" />
-        <path d="M153 347C125 334 95 342 74 363C60 378 50 397 45 417" />
+    <svg className="poem-atmosphere-scene poem-atmosphere-scene-left" viewBox="0 0 520 1120" preserveAspectRatio="xMinYMin meet" focusable="false">
+      <g className="poem-bone-mass poem-ribcage">
+        <path d="M214 93C198 194 200 291 196 387C192 488 182 602 147 744" />
+        <path d="M210 151C166 130 109 135 61 170C29 194 8 225-4 260" />
+        <path d="M207 194C158 168 95 174 45 216C14 242-5 273-14 307" />
+        <path d="M203 242C151 214 88 225 39 269C8 297-8 330-14 365" />
+        <path d="M199 294C149 267 90 280 47 324C19 353 6 385 2 418" />
+        <path d="M195 349C151 326 102 337 67 375C44 400 32 429 28 459" />
+        <path d="M191 405C154 386 114 394 84 425C64 446 53 472 49 499" />
+        <path d="M187 462C157 448 126 454 103 477C88 493 78 512 74 533" />
       </g>
+
       <g className="poem-bone-detail">
-        <path d="M173 96C198 79 227 76 255 88" />
-        <path d="M171 133C203 113 240 113 272 130" />
-        <path d="M168 173C205 152 246 155 280 176" />
-        <path d="M165 217C204 199 247 205 280 229" />
-        <path d="M162 264C199 251 238 260 267 282" />
-        <path d="M158 312C190 305 223 314 247 332" />
-        <path d="M151 363C178 359 203 366 224 381" />
-        {vertebrae.map((y, index) => (
-          <ellipse key={y} cx={161 - index * 2.4} cy={y} rx={13 - index * 0.35} ry="8" transform={"rotate(" + (index % 2 ? -7 : 6) + " " + (161 - index * 2.4) + " " + y + ")"} />
-        ))}
-        <path d="M130 471C95 508 82 552 88 597C92 628 105 658 125 681" />
-        <path d="M151 472C186 505 202 548 198 592C195 626 180 657 157 680" />
+        {vertebrae.map((y,index)=><ellipse key={y} cx={204-index*2.1} cy={y} rx={15-index*0.45} ry="9" transform={`rotate(${index%2?-7:7} ${204-index*2.1} ${y})`} />)}
+        <path d="M219 124C251 100 291 97 326 116" />
+        <path d="M216 166C254 141 300 143 338 168" />
+        <path d="M212 211C255 188 306 193 345 223" />
+        <path d="M207 260C252 240 304 250 342 282" />
+        <path d="M202 313C244 299 291 310 326 340" />
+        <path d="M198 368C234 360 273 371 302 396" />
+        <path d="M192 425C222 421 255 431 279 450" />
+        <path d="M160 643C116 692 99 749 106 806C111 847 129 887 158 919" />
+        <path d="M184 644C229 689 249 746 244 801C240 845 222 884 194 918" />
       </g>
 
-      {botanical && (
-        <g className="poem-botanical-study">
-          <path d="M25 659C47 601 54 542 43 487C31 425 43 370 77 327C105 292 116 250 112 200C108 155 121 112 151 74" />
-          <path d="M49 512C76 495 101 490 128 493" />
-          <path d="M69 386C95 365 121 355 147 357" />
-          <path d="M91 278C117 258 143 250 169 254" />
-          <path d="M112 179C138 161 164 156 189 162" />
-          <path d="M77 495C60 473 55 452 61 431" />
-          <path d="M118 357C101 337 97 316 104 296" />
-          <path d="M148 253C135 234 133 216 140 198" />
-          <ellipse cx="91" cy="482" rx="20" ry="7" transform="rotate(-28 91 482)" />
-          <ellipse cx="125" cy="361" rx="18" ry="6" transform="rotate(18 125 361)" />
-          <ellipse cx="150" cy="252" rx="19" ry="7" transform="rotate(-21 150 252)" />
-          <ellipse cx="171" cy="161" rx="16" ry="6" transform="rotate(23 171 161)" />
-          <Flower x={63} y={428} scale={0.9} rotate={-12} />
-          <Flower x={140} y={292} scale={0.72} rotate={16} />
-          <Flower x={159} y={121} scale={0.56} rotate={-8} />
-        </g>
-      )}
-    </svg>
-  );
-}
-
-function RootBloomStudy({ botanical }: { botanical: boolean }) {
-  return (
-    <svg
-      className="poem-atmosphere-scene poem-atmosphere-scene-middle"
-      viewBox="0 0 560 560"
-      preserveAspectRatio="xMaxYMid meet"
-      focusable="false"
-    >
-      <g className="poem-root-study">
-        <path d="M560 77C490 95 447 126 421 168C390 218 367 257 323 279C276 303 254 342 247 397C241 448 211 487 157 520" />
-        <path d="M505 117C477 161 470 199 485 232C499 263 495 294 472 326" />
-        <path d="M423 169C389 148 357 146 326 161" />
-        <path d="M349 267C314 245 278 243 244 259" />
-        <path d="M257 395C223 374 188 372 154 389" />
-        <path d="M470 327C439 345 422 368 418 397C414 431 396 455 363 472" />
-        <path d="M327 161C309 188 304 213 313 236" />
-        <path d="M244 259C228 283 224 306 233 329" />
-        <path d="M154 389C136 415 131 438 139 462" />
-        <ellipse cx="395" cy="151" rx="19" ry="7" transform="rotate(-33 395 151)" />
-        <ellipse cx="291" cy="250" rx="17" ry="6" transform="rotate(22 291 250)" />
-        <ellipse cx="208" cy="382" rx="18" ry="7" transform="rotate(-19 208 382)" />
-      </g>
       {botanical && (
         <>
-          <g className="poem-botanical-study">
-            <Flower x={425} y={168} scale={1.02} rotate={8} />
-            <Flower x={247} y={398} scale={0.78} rotate={-17} />
+          <g className="poem-botanical-study poem-vine-left">
+            <path d="M16 1021C53 935 67 849 49 766C31 681 42 607 87 548C126 497 140 437 130 366C122 306 134 247 171 193C194 159 215 124 226 88" />
+            <path d="M55 820C94 794 128 786 164 792" />
+            <path d="M72 678C111 649 147 640 184 647" />
+            <path d="M96 530C134 505 171 498 205 506" />
+            <path d="M119 392C157 367 191 361 224 370" />
+            <path d="M145 276C179 256 209 251 239 259" />
+            <ellipse cx="112" cy="793" rx="25" ry="8" transform="rotate(-25 112 793)" />
+            <ellipse cx="141" cy="646" rx="22" ry="7" transform="rotate(22 141 646)" />
+            <ellipse cx="168" cy="503" rx="23" ry="7" transform="rotate(-18 168 503)" />
+            <ellipse cx="195" cy="369" rx="20" ry="7" transform="rotate(21 195 369)" />
+            <ellipse cx="212" cy="258" rx="18" ry="6" transform="rotate(-22 212 258)" />
           </g>
-          <g className="poem-decay-study">
-            <path d="M420 171C402 184 390 199 384 216" />
-            <path d="M247 401C226 415 211 431 202 449" />
-          </g>
+          <Bloom x={83} y={744} scale={0.72} rotate={-18} />
+          <Bloom x={145} y={581} scale={0.9} rotate={14} />
+          <Bloom x={185} y={424} scale={0.58} rotate={-9} />
+          <Bloom x={214} y={235} scale={0.5} rotate={11} />
         </>
       )}
     </svg>
   );
 }
 
-function OssuaryHandStudy({ botanical }: { botanical: boolean }) {
+function RightHandBloom({ botanical }: { botanical: boolean }) {
   const joints = [
-    [262, 306], [300, 292], [335, 302], [367, 323], [390, 352],
-    [233, 363], [278, 350], [320, 357], [357, 379], [383, 409],
+    [255,355],[293,335],[331,341],[366,359],[397,386],
+    [236,411],[281,394],[324,402],[363,422],[395,452],
   ];
   return (
-    <svg
-      className="poem-atmosphere-scene poem-atmosphere-scene-ending"
-      viewBox="0 0 560 700"
-      preserveAspectRatio="xMaxYMax meet"
-      focusable="false"
-    >
-      <g className="poem-grave-study">
-        <path d="M116 611C191 582 270 578 349 595C421 611 487 610 554 585" />
-        <path d="M87 639C186 613 288 615 388 635C447 647 503 645 560 627" />
-        <path d="M147 669C249 649 350 653 454 675" />
-      </g>
+    <svg className="poem-atmosphere-scene poem-atmosphere-scene-right" viewBox="0 0 560 1040" preserveAspectRatio="xMaxYMid meet" focusable="false">
       <g className="poem-bone-mass poem-hand-mass">
-        <path d="M169 649C204 558 220 476 231 382" />
-        <path d="M208 657C238 566 251 486 259 390" />
-        <path d="M244 384C262 350 278 324 299 293C316 267 330 238 341 205" />
-        <path d="M267 393C294 358 316 331 340 304C363 279 382 251 398 220" />
-        <path d="M284 410C317 381 347 358 379 336C408 316 434 292 456 264" />
-        <path d="M294 433C333 411 367 394 404 380C439 367 471 349 500 325" />
-        <path d="M246 395C219 363 201 332 190 301C181 276 169 253 152 232" />
+        <path d="M161 940C196 824 215 698 228 563" />
+        <path d="M203 948C239 831 256 706 264 574" />
+        <path d="M246 565C263 513 281 469 303 421C322 379 337 334 348 284" />
+        <path d="M270 573C299 520 322 477 348 437C375 397 397 355 415 309" />
+        <path d="M287 590C324 546 357 510 392 477C426 445 456 409 481 368" />
+        <path d="M299 616C343 582 383 555 424 532C465 509 502 481 534 447" />
+        <path d="M248 575C222 524 205 478 194 438C185 404 172 374 154 348" />
       </g>
       <g className="poem-bone-detail">
-        <path d="M222 455C252 444 279 427 299 403C316 383 326 360 329 336" />
-        <path d="M237 477C271 465 299 446 320 420C336 400 345 378 349 354" />
-        {joints.map(([x, y]) => <circle key={x + "-" + y} cx={x} cy={y} r="7" />)}
-        <circle cx="245" cy="392" r="10" />
-        <circle cx="268" cy="399" r="9" />
-        <circle cx="286" cy="414" r="9" />
-        <circle cx="296" cy="435" r="8" />
+        <path d="M223 652C262 635 294 611 316 579C334 553 345 523 349 490" />
+        <path d="M240 681C283 662 318 635 341 600C359 572 369 543 373 514" />
+        {joints.map(([x,y])=><circle key={x+"-"+y} cx={x} cy={y} r="8" />)}
+        <circle cx="246" cy="566" r="11" />
+        <circle cx="270" cy="575" r="10" />
+        <circle cx="289" cy="592" r="9" />
+        <circle cx="301" cy="617" r="9" />
       </g>
-      <g className="poem-root-study poem-root-entanglement">
-        <path d="M118 614C171 589 214 549 240 494C259 454 284 428 315 411C353 390 380 360 399 320" />
-        <path d="M187 640C205 592 235 558 278 540C320 522 349 490 364 444" />
-        <path d="M244 493C215 480 190 456 170 422" />
-        <path d="M312 412C335 421 355 439 372 466" />
-        <ellipse cx="205" cy="562" rx="20" ry="7" transform="rotate(-28 205 562)" />
-        <ellipse cx="340" cy="474" rx="17" ry="6" transform="rotate(24 340 474)" />
-      </g>
+
       {botanical && (
-        <g className="poem-botanical-study">
-          <Flower x={399} y={319} scale={0.66} rotate={22} />
-          <Flower x={171} y={423} scale={0.5} rotate={-18} />
-        </g>
+        <>
+          <g className="poem-root-study poem-root-entanglement">
+            <path d="M108 958C176 924 224 875 247 809C266 755 295 718 334 695C381 668 414 626 435 569" />
+            <path d="M184 980C205 920 239 877 288 854C339 830 374 788 393 726" />
+            <path d="M248 810C216 793 188 765 168 726" />
+            <path d="M335 695C361 705 384 728 405 764" />
+            <path d="M435 569C465 580 492 604 515 642" />
+            <ellipse cx="206" cy="890" rx="24" ry="8" transform="rotate(-27 206 890)" />
+            <ellipse cx="371" cy="777" rx="20" ry="7" transform="rotate(24 371 777)" />
+            <ellipse cx="474" cy="602" rx="18" ry="6" transform="rotate(-18 474 602)" />
+          </g>
+          <Bloom x={439} y={567} scale={0.66} rotate={18} />
+          <Bloom x={332} y={696} scale={0.52} rotate={-15} />
+          <Bloom x={195} y={895} scale={0.46} rotate={9} />
+        </>
       )}
     </svg>
   );
 }
 
-export default function PoemAtmosphere({
-  config,
-}: {
-  config?: PoemAtmosphereConfig;
-}) {
+function EdgeVines() {
+  return (
+    <svg className="poem-atmosphere-vines" viewBox="0 0 1600 1800" preserveAspectRatio="none" focusable="false">
+      <g className="poem-root-study">
+        <path d="M0 72C121 91 177 141 214 222C246 290 309 327 393 336" />
+        <path d="M1600 146C1496 158 1447 210 1417 291C1394 353 1347 398 1269 417" />
+        <path d="M0 1540C112 1507 181 1449 217 1363C250 1287 306 1248 392 1245" />
+        <path d="M1600 1580C1490 1549 1423 1497 1381 1413C1347 1344 1287 1303 1202 1292" />
+        <ellipse cx="168" cy="164" rx="26" ry="8" transform="rotate(25 168 164)" />
+        <ellipse cx="1452" cy="245" rx="24" ry="8" transform="rotate(-24 1452 245)" />
+        <ellipse cx="183" cy="1420" rx="25" ry="8" transform="rotate(-26 183 1420)" />
+        <ellipse cx="1417" cy="1474" rx="25" ry="8" transform="rotate(22 1417 1474)" />
+      </g>
+    </svg>
+  );
+}
+
+export default function PoemAtmosphere({ config }: { config?: PoemAtmosphereConfig }) {
   if (!config) return null;
 
   const styles = {
@@ -185,10 +148,9 @@ export default function PoemAtmosphere({
 
   const botanical = config.elements.includes("botanical");
   const drifting = config.motion === "drift";
-  const visiblePetals =
-    drifting && config.elements.includes("petals")
-      ? petals.slice(0, config.petalCount ?? 4)
-      : [];
+  const visiblePetals = drifting && config.elements.includes("petals")
+    ? petals.slice(0, config.petalCount ?? 4)
+    : [];
 
   return (
     <div
@@ -198,9 +160,9 @@ export default function PoemAtmosphere({
     >
       {config.artwork === "bone-botanical" && (
         <>
-          <RibBloomStudy botanical={botanical} />
-          <RootBloomStudy botanical={botanical} />
-          <OssuaryHandStudy botanical={botanical} />
+          <EdgeVines />
+          <LeftOssuaryBloom botanical={botanical} />
+          <RightHandBloom botanical={botanical} />
         </>
       )}
 
