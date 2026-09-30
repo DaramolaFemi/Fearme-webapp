@@ -10,6 +10,8 @@ for (const width of [390, 1440]) {
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
     await expect(page.getByText("Before / original homepage")).toBeVisible();
     await expect(page.getByText("After / final hero experience")).toBeVisible();
+    await expect(page.locator(".case-after-snapshot")).toBeVisible();
+    await expect(page.locator(".case-diagnosis-list article > span")).toHaveCount(0);
 
     expect(
       await page.evaluate(
