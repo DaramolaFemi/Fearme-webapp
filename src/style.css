@@ -2379,7 +2379,7 @@ a.documentation-cta {
 }
 
 :root[data-theme="dark"] .documentation-index {
-  max-width: 1080px;
+  max-width: 1180px;
   margin-inline: auto;
   border-top: 0;
 }
@@ -2693,140 +2693,19 @@ a.documentation-cta {
 }
 
 
-/* Desktop documentation proportion + systems-art refinement */
+/* About CV affordance — intentionally compact; documentation remains reverted. */
 .experience-download-cue {
   display: none;
 }
 
 @media (min-width: 901px) {
-  :root[data-theme="dark"] .documentation-index {
-    width: min(100%, 1080px);
-    margin-inline: auto;
-  }
-
-  :root[data-theme="dark"] .documentation-entry {
-    min-height: 292px;
-    padding: 30px 34px 28px;
-  }
-
-  :root[data-theme="dark"] .documentation-title,
-  :root[data-theme="dark"] .documentation-description,
-  :root[data-theme="dark"] .documentation-meta,
-  :root[data-theme="dark"] .documentation-tags {
-    width: min(56%, 565px);
-  }
-
-  :root[data-theme="dark"] .documentation-title h3 {
-    max-width: 15ch;
-    font-size: clamp(27px, 2.1vw, 33px);
-  }
-
-  :root[data-theme="dark"] .documentation-description {
-    max-width: 58ch;
-  }
-
-  :root[data-theme="dark"] .documentation-orbit {
-    top: 0;
-    right: 0;
-    width: 45%;
-    height: 100%;
-    opacity: 0.66;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.5) 18%, #000 38%, #000 100%);
-    mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.5) 18%, #000 38%, #000 100%);
-  }
-
-  /* Cedius: orbital paths with a quiet dust field, closer to the reference. */
-  :root[data-theme="dark"] .documentation-index > li:nth-child(1) .documentation-orbit {
-    background:
-      radial-gradient(circle at 68% 44%, rgba(194, 24, 91, 0.96) 0 3px, transparent 4px),
-      radial-gradient(circle at 58% 52%, rgba(110, 221, 212, 0.9) 0 2px, transparent 3px),
-      radial-gradient(circle at 78% 36%, rgba(110, 221, 212, 0.10) 0 1px, transparent 1.5px),
-      radial-gradient(circle at 82% 58%, rgba(110, 221, 212, 0.09) 0 1px, transparent 1.5px),
-      radial-gradient(ellipse at 102% 50%, transparent 0 46%, rgba(110, 221, 212, 0.52) 46.2% 46.5%, transparent 46.8% 58%, rgba(110, 221, 212, 0.18) 58.2% 58.5%, transparent 58.8% 68%, rgba(110, 221, 212, 0.08) 68.2% 68.4%, transparent 68.7%);
-  }
-
-  :root[data-theme="dark"] .documentation-index > li:nth-child(1) .documentation-orbit::before {
-    inset: 14% -18% 12% 8%;
-    border: 1px solid rgba(110, 221, 212, 0.16);
-    border-radius: 50%;
-    transform: rotate(-15deg);
-  }
-
-  /* ERC-20: intersection first, boxes second. Less giant-X, more authored diagram. */
-  :root[data-theme="dark"] .documentation-index > li:nth-child(2) .documentation-orbit {
-    background:
-      radial-gradient(circle at 67% 55%, rgba(194, 24, 91, 0.96) 0 3px, transparent 4px),
-      radial-gradient(circle at 56% 63%, rgba(110, 221, 212, 0.88) 0 2px, transparent 3px),
-      linear-gradient(32deg, transparent 49.76%, rgba(110, 221, 212, 0.30) 49.9% 50.1%, transparent 50.24%),
-      linear-gradient(-28deg, transparent 49.78%, rgba(110, 221, 212, 0.19) 49.92% 50.08%, transparent 50.22%);
-  }
-
-  :root[data-theme="dark"] .documentation-index > li:nth-child(2) .documentation-orbit::before {
-    width: 150px;
-    height: 150px;
-    right: 7%;
-    top: 25%;
-    border: 1px solid rgba(110, 221, 212, 0.24);
-    transform: rotate(31deg);
-    background: transparent;
-  }
-
-  :root[data-theme="dark"] .documentation-index > li:nth-child(2) .documentation-orbit::after {
-    width: 104px;
-    height: 104px;
-    right: 20%;
-    top: 40%;
-    border: 1px solid rgba(110, 221, 212, 0.12);
-    transform: rotate(-22deg);
-    background: transparent;
-  }
-
-  /* Harmattan: a particulate cloud suspended inside an orbit, not overlapping flat circles. */
-  :root[data-theme="dark"] .documentation-index > li:nth-child(3) .documentation-orbit {
-    background:
-      radial-gradient(circle at 66% 43%, rgba(194, 24, 91, 0.96) 0 3px, transparent 4px),
-      radial-gradient(circle at 76% 29%, rgba(110, 221, 212, 0.92) 0 2px, transparent 3px),
-      radial-gradient(circle at 82% 57%, rgba(110, 221, 212, 0.10) 0 1px, transparent 1.5px),
-      radial-gradient(ellipse at 103% 48%, transparent 0 48%, rgba(110, 221, 212, 0.44) 48.2% 48.5%, transparent 48.8% 60%, rgba(110, 221, 212, 0.14) 60.2% 60.5%, transparent 60.8%);
-  }
-
-  :root[data-theme="dark"] .documentation-index > li:nth-child(3) .documentation-orbit::before {
-    width: 245px;
-    height: 154px;
-    right: 4%;
-    top: 34%;
-    border: 0;
-    border-radius: 48% 52% 45% 55%;
-    transform: rotate(-8deg);
-    background:
-      radial-gradient(circle at 18% 58%, rgba(110, 221, 212, 0.13) 0 22%, transparent 23%),
-      radial-gradient(circle at 35% 40%, rgba(110, 221, 212, 0.16) 0 24%, transparent 25%),
-      radial-gradient(circle at 52% 56%, rgba(110, 221, 212, 0.14) 0 27%, transparent 28%),
-      radial-gradient(circle at 69% 38%, rgba(110, 221, 212, 0.12) 0 23%, transparent 24%),
-      radial-gradient(circle at 82% 59%, rgba(110, 221, 212, 0.10) 0 19%, transparent 20%);
-    filter: blur(7px);
-    opacity: 0.9;
-  }
-
-  :root[data-theme="dark"] .documentation-index > li:nth-child(3) .documentation-orbit::after {
-    width: 310px;
-    height: 190px;
-    right: -17%;
-    top: 23%;
-    border: 1px solid rgba(110, 221, 212, 0.17);
-    border-radius: 50%;
-    transform: rotate(-9deg);
-    background: transparent;
-  }
-
-  /* About download action: no generic SVG. The line itself becomes the affordance. */
   .about-copy .text-link {
     display: grid;
-    grid-template-columns: auto minmax(54px, 1fr);
+    grid-template-columns: auto minmax(34px, 1fr);
     align-items: center;
-    width: min(100%, 430px);
-    gap: 16px;
-    padding-bottom: 10px;
+    width: min(100%, 350px);
+    gap: 12px;
+    padding-bottom: 9px;
   }
 
   .about-copy .text-link > .direction-arrow {
@@ -2835,9 +2714,9 @@ a.documentation-cta {
 
   .about-copy .experience-download-cue {
     display: grid;
-    grid-template-columns: minmax(34px, 1fr) auto;
+    grid-template-columns: minmax(28px, 46px) auto;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     min-width: 0;
   }
 
@@ -2858,7 +2737,7 @@ a.documentation-cta {
     font-size: 8px;
     font-weight: 400;
     line-height: 1;
-    letter-spacing: 0.055em;
+    letter-spacing: 0.045em;
     white-space: nowrap;
   }
 
@@ -2874,9 +2753,9 @@ a.documentation-cta {
 
   :root[data-theme="dark"] .about-copy .text-link:hover .experience-download-cue i,
   :root[data-theme="dark"] .about-copy .text-link:focus-visible .experience-download-cue i {
-    transform: scaleX(1.08);
+    transform: scaleX(1.06);
     background: var(--night-cyan);
-    box-shadow: 0 0 10px rgba(110, 221, 212, 0.18);
+    box-shadow: 0 0 9px rgba(110, 221, 212, 0.16);
   }
 
   :root[data-theme="dark"] .about-copy .text-link:hover .experience-download-cue small,
