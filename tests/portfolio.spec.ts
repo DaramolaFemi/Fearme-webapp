@@ -183,11 +183,11 @@ for (const width of [390, 1440]) {
       };
     });
     expect(darkPalette).toEqual({
-      paper: "#071b1e",
+      paper: "#041416",
       ink: "#f3eee8",
       accent: "#c2185b",
-      panel: "#0b2529",
-      nightCyan: "#78e6dc",
+      panel: "#082226",
+      nightCyan: "#6eddd4",
     });
 
     await page.reload();
@@ -292,7 +292,7 @@ test("touch layouts use SVG arrows and fields keep readable sizing on focus", as
   await page.goto("/");
   for (const arrow of await page
     .locator(
-      ".project-open .direction-arrow, .documentation-cta .direction-arrow, .reading-action .direction-arrow, .form-bottom .direction-arrow",
+      ".project-open .direction-arrow, .reading-action .direction-arrow, .form-bottom .direction-arrow",
     )
     .all())
     await expect(arrow).toBeVisible();
@@ -569,6 +569,25 @@ test("poem metadata, final navigation, and missing poem", async ({ page }) => {
   await expect(page.locator("#poetry")).toBeVisible();
 });
 
+test("dark documentation uses authored cards and no generic arrows", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 900 });
+  await page.emulateMedia({ colorScheme: "light", reducedMotion: "reduce" });
+  await page.goto("/#documentation");
+  await page.getByRole("switch", { name: "Dark mode" }).click();
+
+  await expect(page.locator("#documentation .documentation-entry")).toHaveCount(3);
+  await expect(page.locator("#documentation .documentation-orbit")).toHaveCount(3);
+  await expect(page.locator("#documentation .documentation-cta svg.direction-arrow")).toHaveCount(0);
+
+  const firstCard = page.locator("#documentation .documentation-entry").first();
+  expect(
+    await firstCard.evaluate((el) => getComputedStyle(el).borderRadius),
+  ).toBe("12px");
+  expect(
+    await firstCard.evaluate((el) => getComputedStyle(el).backgroundColor),
+  ).not.toBe("rgba(0, 0, 0, 0)");
+});
+
 test("seven published poems link to reading pages", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator("#poetry li")).toHaveCount(7);
@@ -620,7 +639,7 @@ for (const width of [390, 1440]) {
       expect(
         await link.evaluate((el) => el.getBoundingClientRect().height),
       ).toBeGreaterThanOrEqual(44);
-      await expect(link.locator("svg.direction-arrow")).toBeVisible();
+      await expect(link.locator(".poetry-thread")).toBeVisible();
     }
   });
 }
@@ -638,19 +657,16 @@ test("a failed page download offers recovery", async ({ page }) => {
   );
 });
 
-test("reading actions share the same SVG on desktop and mobile", async ({
+test("poetry uses the authored thread on desktop and mobile", async ({
   page,
 }) => {
-  let desktopPath = "";
   for (const width of [1440, 390]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/#poetry");
     const action = page.locator("#poetry a").first();
     await action.scrollIntoViewIfNeeded();
-    await expect(action.locator("svg.direction-arrow")).toBeVisible();
-    const path = await action.locator("svg path").getAttribute("d");
-    if (width === 1440) desktopPath = path!;
-    else expect(path).toBe(desktopPath);
+    await expect(action.locator(".poetry-thread")).toBeVisible();
+    await expect(action.locator("svg.direction-arrow")).toHaveCount(0);
     expect(await action.innerText()).not.toMatch(
       /[↗←→]|[\u{1F300}-\u{1FAFF}]/u,
     );
