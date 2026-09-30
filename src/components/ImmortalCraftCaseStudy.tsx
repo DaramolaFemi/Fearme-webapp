@@ -108,23 +108,45 @@ export default function ImmortalCraftCaseStudy() {
             </span>
           </div>
 
-          <div className="case-cinema">
+          <div className="case-cinema" aria-label="Final Immortal Craft hero design">
             <img
               src="/Images/case-studies/immortal-after-hero.webp"
-              alt="Immortal Craft barber lounge used in the redesigned website hero"
+              alt="The final Immortal Craft website hero showing the barber lounge"
               width={2500}
               height={1667}
             />
-            <div className="case-cinema-copy" aria-hidden="true">
-              <span>After</span>
+            <div className="case-site-shade" aria-hidden="true" />
+            <div className="case-site-nav" aria-hidden="true">
+              <span className="case-site-brand">
+                <strong>IMMORTAL CRAFT</strong>
+                <small>BARBER LOUNGE</small>
+              </span>
+              <span className="case-site-links">
+                <i>Home</i>
+                <i>Barbers</i>
+                <i>Services</i>
+                <i>Gallery</i>
+                <i>Contact</i>
+              </span>
+              <span className="case-site-book">Choose your barber</span>
+            </div>
+            <div className="case-site-hero" aria-hidden="true">
+              <span>Las Vegas, Nevada</span>
               <strong>
                 Immortal
                 <br />
                 Craft
               </strong>
-              <small>A cut that outlives the moment.</small>
+              <i />
+              <p>A cut that outlives the moment.</p>
+              <b>Choose your barber</b>
             </div>
-            <span className="case-media-label">After / redesigned hero system</span>
+            <div className="case-site-foot" aria-hidden="true">
+              <span>Immortal Craft Barber Lounge</span>
+              <span>Meet the barbers</span>
+              <span>Las Vegas, NV</span>
+            </div>
+            <span className="case-media-label">After / final hero experience</span>
           </div>
         </section>
 
