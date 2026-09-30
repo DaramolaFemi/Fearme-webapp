@@ -29,7 +29,6 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
       <a className="skip-link" href="#main">
         Skip to poem
       </a>
-      <PoemAtmosphere config={poem?.atmosphere} />
       <header className="header poem-header">
         <a className="wordmark" href="/" aria-label="Femi: home">
           <Logo />
@@ -40,6 +39,7 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
         <ThemeToggle />
       </header>
       <main id="main" className="poem-page">
+        <PoemAtmosphere config={poem?.atmosphere} />
         {poem ? (
           <>
             <div className="poem-meta">
