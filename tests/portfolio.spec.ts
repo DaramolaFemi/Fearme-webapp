@@ -569,6 +569,25 @@ test("poem metadata, final navigation, and missing poem", async ({ page }) => {
   await expect(page.locator("#poetry")).toBeVisible();
 });
 
+test("desktop documentation stays composed and the CV action is text-led", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.emulateMedia({ colorScheme: "light", reducedMotion: "reduce" });
+  await page.goto("/#documentation");
+  await page.getByRole("switch", { name: "Dark mode" }).click();
+
+  const docs = page.locator("#documentation .documentation-index");
+  const width = await docs.evaluate((el) => el.getBoundingClientRect().width);
+  expect(width).toBeLessThanOrEqual(1080.5);
+
+  const harmattanArt = page.locator("#documentation .documentation-orbit").nth(2);
+  await expect(harmattanArt).toBeVisible();
+
+  const cv = page.locator("#about a[download]");
+  await expect(cv.locator("svg.direction-arrow")).toHaveCount(0);
+  await expect(cv.locator(".experience-download-cue")).toBeVisible();
+  await expect(cv).toContainText("PDF / download");
+});
+
 test("dark documentation uses authored cards and no generic arrows", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 900 });
   await page.emulateMedia({ colorScheme: "light", reducedMotion: "reduce" });
