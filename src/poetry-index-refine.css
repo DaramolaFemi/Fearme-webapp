@@ -1,4 +1,4 @@
-/* Poetry index refinement: preserve the editorial list while making each row the action. */
+/* Poetry index refinement: each title carries its own quiet raspberry thread instead of a generic arrow. */
 .poetry-index > li {
   display: block;
   padding: 0;
@@ -6,9 +6,9 @@
 
 .poetry-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 24px;
+  grid-template-columns: minmax(0, 1fr) 60px;
   align-items: center;
-  gap: 24px;
+  gap: 30px;
   min-height: 94px;
   padding: 24px 0 26px;
   color: var(--ink);
@@ -24,27 +24,100 @@
 
 .poetry-row h3 {
   margin: 0;
-  transition: transform 0.2s ease;
+  transition:
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 260ms ease;
 }
 
-.poetry-row-arrow {
-  display: inline-flex;
+/*
+  The thread is intentionally not an icon.
+  Its line length varies per poem so the archive feels annotated rather than templated.
+*/
+.poetry-thread {
+  --thread-rest: 24px;
+  --thread-glow: rgba(194, 24, 91, 0.46);
+  position: relative;
+  display: block;
   justify-self: end;
-  align-items: center;
+  width: 60px;
+  height: 14px;
   color: var(--accent);
-  transition: transform 0.2s ease;
 }
 
-.poetry-row .direction-arrow.direction-arrow {
-  display: inline-block !important;
-  width: 18px;
-  height: 18px;
-  flex: 0 0 18px;
+.poetry-index > li:nth-child(1) .poetry-thread {
+  --thread-rest: 23px;
+}
+
+.poetry-index > li:nth-child(2) .poetry-thread {
+  --thread-rest: 31px;
+}
+
+.poetry-index > li:nth-child(3) .poetry-thread {
+  --thread-rest: 26px;
+}
+
+.poetry-index > li:nth-child(4) .poetry-thread {
+  --thread-rest: 35px;
+}
+
+.poetry-index > li:nth-child(5) .poetry-thread {
+  --thread-rest: 28px;
+}
+
+.poetry-index > li:nth-child(6) .poetry-thread {
+  --thread-rest: 33px;
+}
+
+.poetry-index > li:nth-child(7) .poetry-thread {
+  --thread-rest: 25px;
+}
+
+:root[data-theme="dark"] .poetry-thread {
+  --thread-glow: rgba(232, 160, 189, 0.42);
+}
+
+.poetry-thread::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: var(--thread-rest);
+  height: 1px;
+  background: currentColor;
+  opacity: 0.68;
+  transform: translateY(-50%);
+  transform-origin: right center;
+  transition:
+    width 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 280ms ease,
+    filter 320ms ease;
+}
+
+.poetry-thread::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0;
+  transform: translateY(-50%) scale(0.7);
+  box-shadow: 0 0 8px var(--thread-glow);
+  pointer-events: none;
 }
 
 .poetry-row:focus-visible {
   outline: 1px solid var(--accent);
   outline-offset: 6px;
+}
+
+.poetry-row:focus-visible .poetry-thread::before,
+.poetry-row:active .poetry-thread::before {
+  width: 100%;
+  opacity: 1;
+  filter: drop-shadow(0 0 4px var(--thread-glow));
 }
 
 .poetry-index > li.poetry-collapsible {
@@ -106,12 +179,20 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .poetry-row:hover .poetry-row-arrow {
-    transform: translateX(4px);
+  .poetry-row:hover h3 {
+    color: var(--accent);
+    transform: translateX(2px);
   }
 
-  .poetry-row:hover h3 {
-    transform: translateX(2px);
+  .poetry-row:hover .poetry-thread::before {
+    width: 100%;
+    opacity: 1;
+    filter: drop-shadow(0 0 4px var(--thread-glow));
+  }
+
+  .poetry-row:hover .poetry-thread::after,
+  .poetry-row:focus-visible .poetry-thread::after {
+    animation: poetry-thread-pulse 760ms cubic-bezier(0.22, 1, 0.36, 1) 80ms 1;
   }
 
   .poetry-archive-toggle:hover,
@@ -120,17 +201,44 @@
   }
 }
 
+@keyframes poetry-thread-pulse {
+  0% {
+    left: 0;
+    opacity: 0;
+    transform: translateY(-50%) scale(0.6);
+  }
+
+  16% {
+    opacity: 1;
+  }
+
+  74% {
+    opacity: 0.92;
+    transform: translateY(-50%) scale(1);
+  }
+
+  100% {
+    left: calc(100% - 4px);
+    opacity: 0;
+    transform: translateY(-50%) scale(0.7);
+  }
+}
+
 @media (max-width: 900px) {
   .poetry-row {
-    grid-template-columns: minmax(0, 1fr) 20px;
+    grid-template-columns: minmax(0, 1fr) 52px;
     gap: 20px;
+  }
+
+  .poetry-thread {
+    width: 52px;
   }
 }
 
 @media (max-width: 600px) {
   .poetry-row {
-    grid-template-columns: minmax(0, 1fr) 18px;
-    gap: 12px;
+    grid-template-columns: minmax(0, 1fr) 44px;
+    gap: 14px;
     min-height: 88px;
     padding: 25px 0 27px;
   }
@@ -139,11 +247,13 @@
     font-size: 27px;
   }
 
-  .poetry-row .direction-arrow.direction-arrow {
-    display: inline-block !important;
-    width: 16px;
+  .poetry-thread {
+    width: 44px;
     height: 16px;
-    flex-basis: 16px;
+  }
+
+  .poetry-thread::before {
+    opacity: 0.78;
   }
 
   .poetry-archive-toggle {
@@ -160,12 +270,16 @@
 
 @media (prefers-reduced-motion: reduce) {
   .poetry-row h3,
-  .poetry-row-arrow,
+  .poetry-thread::before,
   .poetry-index > li.poetry-collapsible,
   .poetry-index > li.poetry-collapsible--open,
   .poetry-archive-toggle,
   .poetry-archive-count {
     transition: none;
+  }
+
+  .poetry-thread::after {
+    display: none;
   }
 
   .poetry-index > li.poetry-collapsible,
