@@ -422,17 +422,9 @@
 }
 
 .case-diagnosis-list article {
-  display: grid;
-  grid-template-columns: 42px minmax(0, 1fr);
-  gap: 18px;
+  display: block;
   padding: 24px 0 30px;
   border-bottom: 1px solid rgba(244, 240, 232, 0.2);
-}
-
-.case-diagnosis-list article > span {
-  color: #dc6d5c;
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 10px;
 }
 
 .case-diagnosis-list h3 {
@@ -654,6 +646,122 @@
   width: 100%;
   max-height: 570px;
   object-fit: cover;
+}
+
+.case-after-snapshot {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #151310;
+  color: #f2ede3;
+}
+
+.case-after-snapshot > img,
+.case-after-snapshot-shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.case-after-snapshot > img {
+  object-fit: cover;
+  object-position: center 53%;
+  filter: saturate(0.92) contrast(1.04) brightness(0.82);
+}
+
+.case-after-snapshot-shade {
+  background:
+    linear-gradient(90deg, rgba(8, 7, 6, 0.94) 0%, rgba(9, 8, 7, 0.82) 32%, rgba(10, 9, 8, 0.46) 62%, rgba(10, 9, 8, 0.2) 100%),
+    linear-gradient(0deg, rgba(7, 6, 5, 0.52), rgba(7, 6, 5, 0.06) 48%, rgba(7, 6, 5, 0.2) 100%);
+}
+
+.case-after-snapshot-nav {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 2;
+  min-height: 18%;
+  padding: 0 4.3%;
+  display: grid;
+  grid-template-columns: 1.7fr repeat(5, auto);
+  align-items: center;
+  gap: 3.2%;
+  border-bottom: 1px solid rgba(242, 237, 227, 0.1);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: clamp(5px, 0.52vw, 8px);
+  letter-spacing: 0.13em;
+}
+
+.case-after-snapshot-nav > span:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  justify-self: start;
+}
+
+.case-after-snapshot-nav strong {
+  font-family: "Literata", serif;
+  font-size: clamp(7px, 0.85vw, 13px);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+}
+
+.case-after-snapshot-nav small {
+  color: rgba(242, 237, 227, 0.62);
+  font-size: clamp(4px, 0.4vw, 6px);
+  letter-spacing: 0.34em;
+}
+
+.case-after-snapshot-copy {
+  position: absolute;
+  inset: 17% auto 8% 5%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.case-after-snapshot-copy small {
+  margin-bottom: 2.5%;
+  color: #c6d2d6;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: clamp(5px, 0.55vw, 8px);
+  font-weight: 600;
+  letter-spacing: 0.26em;
+}
+
+.case-after-snapshot-copy strong {
+  font-family: "Literata", serif;
+  font-size: clamp(32px, 5.3vw, 82px);
+  font-weight: 400;
+  line-height: 0.82;
+  letter-spacing: -0.07em;
+}
+
+.case-after-snapshot-copy i {
+  width: clamp(26px, 4vw, 58px);
+  height: 1px;
+  margin: 3% 0;
+  background: #91a6af;
+}
+
+.case-after-snapshot-copy p {
+  margin: 0 0 4%;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: clamp(6px, 0.72vw, 11px);
+  font-weight: 500;
+  letter-spacing: 0.15em;
+}
+
+.case-after-snapshot-copy b {
+  padding: 2.1% 3%;
+  border: 1px solid #91a6af;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: clamp(5px, 0.55vw, 8px);
+  font-weight: 600;
+  letter-spacing: 0.11em;
 }
 
 .case-compare-before img {
@@ -1121,8 +1229,7 @@
   }
 
   .case-diagnosis-list article {
-    grid-template-columns: 30px minmax(0, 1fr);
-    gap: 10px;
+    display: block;
     padding: 20px 0 24px;
   }
 
@@ -1465,8 +1572,7 @@
   }
 
   .case-diagnosis-list article {
-    grid-template-columns: 28px minmax(0, 1fr);
-    gap: 10px;
+    display: block;
     padding: 18px 0 21px;
   }
 
@@ -1577,19 +1683,40 @@
     margin-left: 12px;
   }
 
-  .case-compare img {
+  .case-compare-before > img {
     width: 100%;
     height: min(60vw, 260px);
     max-height: 260px;
     object-fit: cover;
-  }
-
-  .case-compare-before img {
     object-position: top center;
   }
 
-  .case-compare-after img {
-    object-position: center 30%;
+  .case-after-snapshot {
+    aspect-ratio: 16 / 10;
+  }
+
+  .case-after-snapshot-nav {
+    grid-template-columns: 1fr auto;
+    min-height: 20%;
+    padding-inline: 4%;
+  }
+
+  .case-after-snapshot-nav > span:not(:first-child):not(:last-child) {
+    display: none;
+  }
+
+  .case-after-snapshot-copy {
+    inset: 20% auto 7% 4.5%;
+  }
+
+  .case-after-snapshot-copy strong {
+    font-size: clamp(30px, 10vw, 44px);
+  }
+
+  .case-after-snapshot-copy small,
+  .case-after-snapshot-copy p,
+  .case-after-snapshot-copy b {
+    font-size: 6px;
   }
 
   .case-compare figcaption {
