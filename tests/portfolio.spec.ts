@@ -599,7 +599,7 @@ test("Immortal Craft case study preserves the portfolio identity and transformat
   await page.goto("/work/immortal-craft");
   await expect(page).toHaveTitle("Immortal Craft Case Study — Daramola Femi");
   await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "booking-led experience",
+    "The craft was already there.",
   );
   await expect(page.getByText("Before / original homepage")).toBeVisible();
   await expect(page.getByText("After / redesigned hero system")).toBeVisible();
