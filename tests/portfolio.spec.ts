@@ -30,6 +30,37 @@ for (const width of [320, 390, 768, 1024, 1440]) {
     });
   });
 }
+for (const viewport of [
+  { width: 390, height: 844 },
+  { width: 834, height: 1112 },
+  { width: 1440, height: 1000 },
+]) {
+  test(`reload preserves the current scroll position at ${viewport.width}px`, async ({
+    page,
+  }) => {
+    await page.setViewportSize(viewport);
+    await page.goto("/");
+
+    const target = page.locator("#contact");
+    await target.scrollIntoViewIfNeeded();
+
+    const before = await page.evaluate(() => window.scrollY);
+    expect(before).toBeGreaterThan(0);
+
+    await page.reload();
+
+    await expect
+      .poll(
+        () => page.evaluate(() => window.scrollY),
+        { timeout: 3000 },
+      )
+      .toBeGreaterThan(before - 80);
+
+    const after = await page.evaluate(() => window.scrollY);
+    expect(Math.abs(after - before)).toBeLessThan(120);
+  });
+}
+
 test("project filters and mobile keyboard menu", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
