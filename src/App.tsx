@@ -424,7 +424,11 @@ export default function App() {
                 href="/Images/CV.pdf"
                 download="Daramola-Femi-CV.pdf"
               >
-                A closer look at my experience <Arrow direction="down" />
+                <span>A closer look at my experience</span>
+                <span className="experience-download-cue" aria-hidden="true">
+                  <i />
+                  <small>PDF / download</small>
+                </span>
               </a>
             </ScrollReveal>
           </div>
