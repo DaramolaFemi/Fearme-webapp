@@ -268,25 +268,25 @@ test("touch layouts use SVG arrows and fields keep readable sizing on focus", as
   ).toHaveAttribute("src", "/Images/harmattan-desktop.png");
   await context.close();
 });
-test("desktop actions use SVG arrows and reduced motion stays static", async ({
+test("desktop project actions keep their editorial circle treatment and reduced motion stays static", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   await expect(
-    page.locator(".reading-action svg.direction-arrow").first(),
+    page.locator("#poetry a svg.direction-arrow").first(),
   ).toBeVisible();
-  await expect(page.locator(".project-cta-label").first()).toBeVisible();
+  await expect(
+    page.locator(".project-cta-label-circle-desktop").first(),
+  ).toBeVisible();
+  const circle = page.locator(".project-open-icon").first();
+  expect(
+    await circle.evaluate((el) => el.getBoundingClientRect().width),
+  ).toBeGreaterThanOrEqual(40);
   expect(
     await page
-      .locator(".project-open")
-      .first()
-      .evaluate((el) => el.getBoundingClientRect().width),
-  ).toBeGreaterThan(90);
-  expect(
-    await page
-      .locator(".project-cta-label")
+      .locator(".project-cta-label-circle-desktop")
       .first()
       .evaluate((el) => el.getBoundingClientRect().height),
   ).toBeLessThan(24);
@@ -314,8 +314,8 @@ test("navigation is quiet and each project has exactly one CTA", async ({
   for (const project of await page.locator("article.project").all()) {
     await project.scrollIntoViewIfNeeded();
     await expect(project.locator("a.project-open")).toBeVisible();
-    await expect(project.locator(".project-cta-label")).toBeVisible();
-    await expect(project.locator("svg.direction-arrow")).toBeVisible();
+    await expect(project.locator(".project-cta-label-mobile")).toBeVisible();
+    await expect(project.locator(".project-open-icon svg.direction-arrow")).toBeHidden();
   }
   const footer = page.locator(".footer-copyright");
   await footer.scrollIntoViewIfNeeded();
@@ -549,13 +549,12 @@ for (const width of [390, 1440]) {
         .toBeLessThanOrEqual(100);
       await expect(page.locator("#poetry h2")).toBeInViewport();
       const link = page.locator("#poetry a").first();
-      await expect(link).toContainText("Read poem");
+      await expect(link).toHaveAttribute("aria-label", /^Read /);
+      await expect(link).toHaveAttribute("href", /^\/poetry\//);
       expect(
         await link.evaluate((el) => el.getBoundingClientRect().height),
       ).toBeGreaterThanOrEqual(44);
-      await expect(
-        page.locator(".reading-action svg.direction-arrow").first(),
-      ).toBeVisible();
+      await expect(link.locator("svg.direction-arrow")).toBeVisible();
     }
   });
 }
