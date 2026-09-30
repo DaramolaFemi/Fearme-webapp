@@ -419,6 +419,43 @@ test("navigation is quiet and each project has exactly one CTA", async ({
   ).toBe(true);
 });
 
+test("tablet actions show their labels and mobile footer keeps the reference rhythm", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 834, height: 1194 });
+  await page.goto("/");
+
+  await expect(page.locator(".back-to-top")).toHaveCount(0);
+
+  const tabletAction = page.locator(".project-grid > article").first();
+  await expect(
+    tabletAction.locator(".project-cta-label-circle-desktop"),
+  ).toBeVisible();
+  await expect(
+    tabletAction.locator(".project-cta-label-circle-desktop"),
+  ).toHaveText("View");
+  await expect(
+    tabletAction.locator(".project-open-icon .direction-arrow"),
+  ).toBeHidden();
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.reload();
+
+  const footer = page.locator(".footer");
+  await footer.scrollIntoViewIfNeeded();
+
+  await expect(footer.locator(".wordmark")).toBeVisible();
+  await expect(footer.getByRole("link", { name: "Back to top" })).toBeVisible();
+  await expect(footer.locator(".footer-copyright")).toHaveCSS(
+    "white-space",
+    "nowrap",
+  );
+  await expect(footer.locator(".footer-socials a")).toHaveCount(4);
+  expect(
+    await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+  ).toBe(true);
+});
+
 test("selected work keeps the featured order and reveals the Project Lab", async ({
   page,
 }) => {
