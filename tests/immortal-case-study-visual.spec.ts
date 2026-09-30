@@ -19,6 +19,23 @@ for (const width of [390, 1440]) {
 
     expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
 
+    if (width === 390) {
+      await expect(page.locator(".case-header")).not.toHaveCSS("position", "sticky");
+      expect(
+        await page.locator(".case-cinema").evaluate((el) => el.getBoundingClientRect().height),
+      ).toBeLessThan(560);
+      expect(
+        await page.locator(".case-site-hero > strong").evaluate((el) => {
+          const rect = el.getBoundingClientRect();
+          const frame = el.closest(".case-cinema")!.getBoundingClientRect();
+          return rect.right <= frame.right && rect.left >= frame.left;
+        }),
+      ).toBe(true);
+      expect(
+        await page.locator(".case-compare-after img").evaluate((el) => el.getBoundingClientRect().height),
+      ).toBeLessThanOrEqual(260);
+    }
+
     for (const image of await page.locator("img").all()) {
       await image.scrollIntoViewIfNeeded();
       await expect
