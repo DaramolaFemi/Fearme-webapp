@@ -109,26 +109,28 @@
     font-weight: 400;
   }
 
-  /* Cooler light palette; dark theme remains exactly on its existing color system. */
+  /* Warm paper and raspberry identity; dark theme remains exactly on its existing color system. */
   :root:not([data-theme="dark"]) {
-    --paper: #f5f6f2;
-    --ink: #222621;
-    --muted: #636961;
-    --line: #cbd0c8;
-    --panel: #e9ede7;
-    --field-line: #aab1a7;
-    --placeholder: #737a71;
-    --band-text: #f5f6f2;
+    --paper: #f7f3eb;
+    --ink: #211f20;
+    --muted: #6a6261;
+    --line: #d8d0c8;
+    --accent: #c2185b;
+    --panel: #eee8df;
+    --field-line: #b6aca5;
+    --placeholder: #786e6d;
+    --band: #c2185b;
+    --band-text: #f7f3eb;
   }
 
   :root:not([data-theme="dark"]) ::selection {
-    background: #e5a087;
-    color: #222621;
+    background: #f0b5cb;
+    color: #211f20;
   }
 
   :root:not([data-theme="dark"]) a.documentation-cta {
     color: var(--ink);
-    text-decoration-color: rgba(34, 38, 33, 0.68);
+    text-decoration-color: rgba(33, 31, 32, 0.68);
   }
 
   :root:not([data-theme="dark"]) a.documentation-cta:hover,
