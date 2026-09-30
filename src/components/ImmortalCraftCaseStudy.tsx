@@ -182,21 +182,18 @@ export default function ImmortalCraftCaseStudy() {
 
             <div className="case-diagnosis-list">
               <article>
-                <span>01</span>
                 <div>
                   <h3>Barber discovery sat too far from the decision.</h3>
                   <p>The visitor had to hunt for the person behind the service.</p>
                 </div>
               </article>
               <article>
-                <span>02</span>
                 <div>
                   <h3>Proof was present, but scattered.</h3>
                   <p>Work, reviews, services, place, and booking did not strengthen one another.</p>
                 </div>
               </article>
               <article>
-                <span>03</span>
                 <div>
                   <h3>Booking existed without a designed route to it.</h3>
                   <p>The site had actions. What it lacked was sequence.</p>
@@ -285,15 +282,40 @@ export default function ImmortalCraftCaseStudy() {
 
             <figure className="case-compare-after">
               <div className="case-compare-mark">After</div>
-              <img
-                src="/Images/case-studies/immortal-after-detail.webp"
-                alt="Barber shaping a haircut in the redesigned Immortal Craft visual system"
-                width={1800}
-                height={1200}
-                loading="lazy"
-              />
+              <div
+                className="case-after-snapshot"
+                role="img"
+                aria-label="Final Immortal Craft homepage hero after the redesign"
+              >
+                <img
+                  src="/Images/case-studies/immortal-after-hero.webp"
+                  alt=""
+                  width={2500}
+                  height={1667}
+                  loading="lazy"
+                />
+                <div className="case-after-snapshot-shade" aria-hidden="true" />
+                <div className="case-after-snapshot-nav" aria-hidden="true">
+                  <span>
+                    <strong>IMMORTAL CRAFT</strong>
+                    <small>BARBER LOUNGE</small>
+                  </span>
+                  <span>HOME</span>
+                  <span>BARBERS</span>
+                  <span>SERVICES</span>
+                  <span>GALLERY</span>
+                  <span>CONTACT</span>
+                </div>
+                <div className="case-after-snapshot-copy" aria-hidden="true">
+                  <small>LAS VEGAS, NEVADA</small>
+                  <strong>IMMORTAL<br />CRAFT</strong>
+                  <i />
+                  <p>A CUT THAT OUTLIVES THE MOMENT.</p>
+                  <b>CHOOSE YOUR BARBER</b>
+                </div>
+              </div>
               <figcaption>
-                Image-led craft. Barber, proof, place, and action now work as one system.
+                Final homepage hero. The brand, barber path, and primary action now arrive together.
               </figcaption>
             </figure>
           </div>
