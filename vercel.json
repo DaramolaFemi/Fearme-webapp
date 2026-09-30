@@ -6,6 +6,10 @@
     {
       "source": "/poetry/:path*",
       "destination": "/index.html"
+    },
+    {
+      "source": "/work/:path*",
+      "destination": "/index.html"
     }
   ],
   "headers": [
