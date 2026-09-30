@@ -2,127 +2,170 @@ import type { CSSProperties } from "react";
 import type { PoemAtmosphereConfig } from "../data/poetry";
 
 const petals = [
-  { x: "9%", delay: "-11s", duration: "28s", size: "12px", sway: "42px" },
-  { x: "18%", delay: "-3s", duration: "24s", size: "9px", sway: "-34px" },
-  { x: "78%", delay: "-16s", duration: "31s", size: "11px", sway: "30px" },
-  { x: "88%", delay: "-7s", duration: "26s", size: "8px", sway: "-28px" },
-  { x: "66%", delay: "-21s", duration: "34s", size: "7px", sway: "22px" },
+  { x: "12%", top: "14%", delay: "-9s", duration: "24s", size: "11px", sway: "34px", turn: "168deg" },
+  { x: "82%", top: "27%", delay: "-15s", duration: "29s", size: "9px", sway: "-30px", turn: "216deg" },
+  { x: "18%", top: "46%", delay: "-4s", duration: "27s", size: "8px", sway: "28px", turn: "192deg" },
+  { x: "76%", top: "61%", delay: "-19s", duration: "31s", size: "12px", sway: "-36px", turn: "238deg" },
+  { x: "88%", top: "78%", delay: "-12s", duration: "26s", size: "7px", sway: "-22px", turn: "184deg" },
 ];
 
-function LeftBoneStudy({ botanical }: { botanical: boolean }) {
+function Flower({ x, y, scale = 1, rotate = 0 }: { x: number; y: number; scale?: number; rotate?: number }) {
+  return (
+    <g
+      className="poem-atmosphere-flower"
+      transform={"translate(" + x + " " + y + ") rotate(" + rotate + ") scale(" + scale + ")"}
+    >
+      <path d="M0-3C-11-24-7-41 3-45C15-40 17-22 4-2Z" />
+      <path d="M3 0C22-14 39-10 43 1C37 13 20 14 2 5Z" />
+      <path d="M0 4C13 24 8 40-3 44C-15 39-17 21-4 2Z" />
+      <path d="M-4 0C-23 12-39 7-42-4C-35-15-18-15-2-5Z" />
+      <path d="M-2-2C8-11 18-9 22-1C18 8 7 10-2 4C-11 8-21 4-22-5C-16-12-8-11-2-2Z" />
+      <circle cx="0" cy="0" r="3.5" />
+    </g>
+  );
+}
+
+function RibBloomStudy({ botanical }: { botanical: boolean }) {
+  const vertebrae = [94, 126, 160, 196, 234, 274, 316, 360, 406];
   return (
     <svg
-      className="poem-atmosphere-art poem-atmosphere-art-left"
-      viewBox="0 0 500 1000"
-      preserveAspectRatio="xMinYMid meet"
+      className="poem-atmosphere-scene poem-atmosphere-scene-opening"
+      viewBox="0 0 520 720"
+      preserveAspectRatio="xMinYMin meet"
       focusable="false"
     >
-      <g className="poem-atmosphere-bones">
-        <path d="M206 48C195 171 204 286 188 414C173 538 181 684 152 910" />
-        <path d="M198 126C157 111 104 116 61 146C38 163 22 184 10 210" />
-        <path d="M195 171C148 151 91 160 48 195C26 214 12 237 4 260" />
-        <path d="M191 218C142 196 82 212 42 252C21 273 10 295 4 319" />
-        <path d="M188 267C141 245 86 262 51 301C29 325 17 351 12 377" />
-        <path d="M184 318C145 299 102 315 74 348C56 369 46 393 40 418" />
-        <path d="M180 369C148 355 113 369 90 396C73 416 63 439 58 462" />
-        <path d="M184 111C217 94 253 92 286 104" />
-        <path d="M192 150C228 132 267 132 301 147" />
-        <path d="M198 191C237 173 281 177 316 195" />
-        <path d="M202 235C242 221 285 229 319 250" />
-        <path d="M204 283C241 273 278 282 307 302" />
-        <path d="M204 332C237 326 268 335 291 352" />
-        <path d="M194 80C223 59 260 57 292 73" />
-        <path d="M161 489C131 530 121 572 126 616C131 653 150 686 176 712" />
-        <path d="M176 490C213 523 232 565 229 611C227 649 211 683 187 711" />
-        <circle cx="196" cy="81" r="7" />
-        <circle cx="184" cy="490" r="9" />
+      <g className="poem-bone-mass">
+        <path d="M171 73C154 154 156 247 151 330C147 414 141 504 111 608" />
+        <path d="M168 121C125 102 75 107 34 138C9 157-5 181-16 209" />
+        <path d="M166 160C115 136 57 146 16 184C-5 204-18 229-26 257" />
+        <path d="M163 203C111 178 53 193 14 234C-7 256-17 281-21 307" />
+        <path d="M159 250C111 226 59 242 26 281C7 303-2 328-3 354" />
+        <path d="M156 298C118 279 78 291 50 321C32 340 22 362 18 385" />
+        <path d="M153 347C125 334 95 342 74 363C60 378 50 397 45 417" />
+      </g>
+      <g className="poem-bone-detail">
+        <path d="M173 96C198 79 227 76 255 88" />
+        <path d="M171 133C203 113 240 113 272 130" />
+        <path d="M168 173C205 152 246 155 280 176" />
+        <path d="M165 217C204 199 247 205 280 229" />
+        <path d="M162 264C199 251 238 260 267 282" />
+        <path d="M158 312C190 305 223 314 247 332" />
+        <path d="M151 363C178 359 203 366 224 381" />
+        {vertebrae.map((y, index) => (
+          <ellipse key={y} cx={161 - index * 2.4} cy={y} rx={13 - index * 0.35} ry="8" transform={"rotate(" + (index % 2 ? -7 : 6) + " " + (161 - index * 2.4) + " " + y + ")"} />
+        ))}
+        <path d="M130 471C95 508 82 552 88 597C92 628 105 658 125 681" />
+        <path d="M151 472C186 505 202 548 198 592C195 626 180 657 157 680" />
       </g>
 
       {botanical && (
-        <g className="poem-atmosphere-botanical">
-          <path d="M24 35C69 94 74 163 52 230C33 286 31 353 66 412C97 465 102 531 75 592C47 656 49 726 88 788C108 821 119 858 116 902" />
-          <path d="M59 173C87 151 112 140 139 138" />
-          <path d="M65 405C92 390 119 382 150 384" />
-          <path d="M79 590C110 571 137 564 166 568" />
-          <path d="M93 789C123 774 149 771 177 777" />
-          <ellipse cx="88" cy="157" rx="18" ry="7" transform="rotate(-31 88 157)" />
-          <ellipse cx="117" cy="140" rx="15" ry="6" transform="rotate(19 117 140)" />
-          <ellipse cx="96" cy="390" rx="19" ry="7" transform="rotate(-18 96 390)" />
-          <ellipse cx="131" cy="383" rx="15" ry="6" transform="rotate(24 131 383)" />
-          <ellipse cx="112" cy="574" rx="18" ry="7" transform="rotate(-24 112 574)" />
-          <ellipse cx="149" cy="568" rx="15" ry="6" transform="rotate(18 149 568)" />
-          <ellipse cx="126" cy="776" rx="18" ry="7" transform="rotate(-20 126 776)" />
-          <ellipse cx="159" cy="777" rx="14" ry="6" transform="rotate(26 159 777)" />
-          <g className="poem-atmosphere-flower" transform="translate(75 282)">
-            <ellipse cx="-11" cy="0" rx="13" ry="7" transform="rotate(12)" />
-            <ellipse cx="0" cy="-11" rx="7" ry="13" transform="rotate(8)" />
-            <ellipse cx="11" cy="0" rx="13" ry="7" transform="rotate(-12)" />
-            <ellipse cx="0" cy="11" rx="7" ry="13" transform="rotate(-8)" />
-            <circle cx="0" cy="0" r="4" />
-          </g>
-          <g className="poem-atmosphere-flower" transform="translate(102 688) scale(.82)">
-            <ellipse cx="-11" cy="0" rx="13" ry="7" transform="rotate(12)" />
-            <ellipse cx="0" cy="-11" rx="7" ry="13" transform="rotate(8)" />
-            <ellipse cx="11" cy="0" rx="13" ry="7" transform="rotate(-12)" />
-            <ellipse cx="0" cy="11" rx="7" ry="13" transform="rotate(-8)" />
-            <circle cx="0" cy="0" r="4" />
-          </g>
+        <g className="poem-botanical-study">
+          <path d="M25 659C47 601 54 542 43 487C31 425 43 370 77 327C105 292 116 250 112 200C108 155 121 112 151 74" />
+          <path d="M49 512C76 495 101 490 128 493" />
+          <path d="M69 386C95 365 121 355 147 357" />
+          <path d="M91 278C117 258 143 250 169 254" />
+          <path d="M112 179C138 161 164 156 189 162" />
+          <path d="M77 495C60 473 55 452 61 431" />
+          <path d="M118 357C101 337 97 316 104 296" />
+          <path d="M148 253C135 234 133 216 140 198" />
+          <ellipse cx="91" cy="482" rx="20" ry="7" transform="rotate(-28 91 482)" />
+          <ellipse cx="125" cy="361" rx="18" ry="6" transform="rotate(18 125 361)" />
+          <ellipse cx="150" cy="252" rx="19" ry="7" transform="rotate(-21 150 252)" />
+          <ellipse cx="171" cy="161" rx="16" ry="6" transform="rotate(23 171 161)" />
+          <Flower x={63} y={428} scale={0.9} rotate={-12} />
+          <Flower x={140} y={292} scale={0.72} rotate={16} />
+          <Flower x={159} y={121} scale={0.56} rotate={-8} />
         </g>
       )}
     </svg>
   );
 }
 
-function RightHandStudy({ botanical }: { botanical: boolean }) {
+function RootBloomStudy({ botanical }: { botanical: boolean }) {
   return (
     <svg
-      className="poem-atmosphere-art poem-atmosphere-art-right"
-      viewBox="0 0 500 1000"
+      className="poem-atmosphere-scene poem-atmosphere-scene-middle"
+      viewBox="0 0 560 560"
       preserveAspectRatio="xMaxYMid meet"
       focusable="false"
     >
-      <g className="poem-atmosphere-bones">
-        <path d="M112 942L223 711" />
-        <path d="M154 953L255 731" />
-        <path d="M221 711L274 628L312 575" />
-        <path d="M255 731L306 650L341 602" />
-        <path d="M273 628L320 525L349 425L365 333" />
-        <path d="M299 642L354 545L393 449L418 353" />
-        <path d="M318 660L381 580L438 508L480 431" />
-        <path d="M327 684L401 626L459 575L500 526" />
-        <path d="M278 646L229 594L196 538L177 489" />
-        <path d="M238 704C276 693 308 672 329 642C344 620 352 596 354 571" />
-        <path d="M249 726C291 716 326 692 348 659C361 638 369 616 373 591" />
-        <circle cx="275" cy="628" r="8" />
-        <circle cx="299" cy="642" r="8" />
-        <circle cx="318" cy="660" r="8" />
-        <circle cx="327" cy="684" r="8" />
-        <circle cx="229" cy="594" r="7" />
-        <circle cx="320" cy="525" r="6" />
-        <circle cx="354" cy="545" r="6" />
-        <circle cx="381" cy="580" r="6" />
-        <circle cx="401" cy="626" r="6" />
+      <g className="poem-root-study">
+        <path d="M560 77C490 95 447 126 421 168C390 218 367 257 323 279C276 303 254 342 247 397C241 448 211 487 157 520" />
+        <path d="M505 117C477 161 470 199 485 232C499 263 495 294 472 326" />
+        <path d="M423 169C389 148 357 146 326 161" />
+        <path d="M349 267C314 245 278 243 244 259" />
+        <path d="M257 395C223 374 188 372 154 389" />
+        <path d="M470 327C439 345 422 368 418 397C414 431 396 455 363 472" />
+        <path d="M327 161C309 188 304 213 313 236" />
+        <path d="M244 259C228 283 224 306 233 329" />
+        <path d="M154 389C136 415 131 438 139 462" />
+        <ellipse cx="395" cy="151" rx="19" ry="7" transform="rotate(-33 395 151)" />
+        <ellipse cx="291" cy="250" rx="17" ry="6" transform="rotate(22 291 250)" />
+        <ellipse cx="208" cy="382" rx="18" ry="7" transform="rotate(-19 208 382)" />
       </g>
-
       {botanical && (
-        <g className="poem-atmosphere-botanical">
-          <path d="M476 59C433 122 426 187 447 252C466 310 466 374 432 430C403 478 398 541 422 598C448 659 445 721 411 782C391 818 382 857 385 903" />
-          <path d="M440 185C413 164 387 153 358 151" />
-          <path d="M432 426C405 411 378 402 348 404" />
-          <path d="M419 600C391 583 363 575 335 580" />
-          <ellipse cx="410" cy="169" rx="18" ry="7" transform="rotate(29 410 169)" />
-          <ellipse cx="378" cy="152" rx="15" ry="6" transform="rotate(-18 378 152)" />
-          <ellipse cx="405" cy="411" rx="18" ry="7" transform="rotate(20 405 411)" />
-          <ellipse cx="368" cy="403" rx="15" ry="6" transform="rotate(-24 368 403)" />
-          <ellipse cx="389" cy="584" rx="18" ry="7" transform="rotate(22 389 584)" />
-          <ellipse cx="350" cy="578" rx="15" ry="6" transform="rotate(-17 350 578)" />
-          <g className="poem-atmosphere-flower" transform="translate(430 308) scale(.78)">
-            <ellipse cx="-11" cy="0" rx="13" ry="7" transform="rotate(12)" />
-            <ellipse cx="0" cy="-11" rx="7" ry="13" transform="rotate(8)" />
-            <ellipse cx="11" cy="0" rx="13" ry="7" transform="rotate(-12)" />
-            <ellipse cx="0" cy="11" rx="7" ry="13" transform="rotate(-8)" />
-            <circle cx="0" cy="0" r="4" />
+        <>
+          <g className="poem-botanical-study">
+            <Flower x={425} y={168} scale={1.02} rotate={8} />
+            <Flower x={247} y={398} scale={0.78} rotate={-17} />
           </g>
+          <g className="poem-decay-study">
+            <path d="M420 171C402 184 390 199 384 216" />
+            <path d="M247 401C226 415 211 431 202 449" />
+          </g>
+        </>
+      )}
+    </svg>
+  );
+}
+
+function OssuaryHandStudy({ botanical }: { botanical: boolean }) {
+  const joints = [
+    [262, 306], [300, 292], [335, 302], [367, 323], [390, 352],
+    [233, 363], [278, 350], [320, 357], [357, 379], [383, 409],
+  ];
+  return (
+    <svg
+      className="poem-atmosphere-scene poem-atmosphere-scene-ending"
+      viewBox="0 0 560 700"
+      preserveAspectRatio="xMaxYMax meet"
+      focusable="false"
+    >
+      <g className="poem-grave-study">
+        <path d="M116 611C191 582 270 578 349 595C421 611 487 610 554 585" />
+        <path d="M87 639C186 613 288 615 388 635C447 647 503 645 560 627" />
+        <path d="M147 669C249 649 350 653 454 675" />
+      </g>
+      <g className="poem-bone-mass poem-hand-mass">
+        <path d="M169 649C204 558 220 476 231 382" />
+        <path d="M208 657C238 566 251 486 259 390" />
+        <path d="M244 384C262 350 278 324 299 293C316 267 330 238 341 205" />
+        <path d="M267 393C294 358 316 331 340 304C363 279 382 251 398 220" />
+        <path d="M284 410C317 381 347 358 379 336C408 316 434 292 456 264" />
+        <path d="M294 433C333 411 367 394 404 380C439 367 471 349 500 325" />
+        <path d="M246 395C219 363 201 332 190 301C181 276 169 253 152 232" />
+      </g>
+      <g className="poem-bone-detail">
+        <path d="M222 455C252 444 279 427 299 403C316 383 326 360 329 336" />
+        <path d="M237 477C271 465 299 446 320 420C336 400 345 378 349 354" />
+        {joints.map(([x, y]) => <circle key={x + "-" + y} cx={x} cy={y} r="7" />)}
+        <circle cx="245" cy="392" r="10" />
+        <circle cx="268" cy="399" r="9" />
+        <circle cx="286" cy="414" r="9" />
+        <circle cx="296" cy="435" r="8" />
+      </g>
+      <g className="poem-root-study poem-root-entanglement">
+        <path d="M118 614C171 589 214 549 240 494C259 454 284 428 315 411C353 390 380 360 399 320" />
+        <path d="M187 640C205 592 235 558 278 540C320 522 349 490 364 444" />
+        <path d="M244 493C215 480 190 456 170 422" />
+        <path d="M312 412C335 421 355 439 372 466" />
+        <ellipse cx="205" cy="562" rx="20" ry="7" transform="rotate(-28 205 562)" />
+        <ellipse cx="340" cy="474" rx="17" ry="6" transform="rotate(24 340 474)" />
+      </g>
+      {botanical && (
+        <g className="poem-botanical-study">
+          <Flower x={399} y={319} scale={0.66} rotate={22} />
+          <Flower x={171} y={423} scale={0.5} rotate={-18} />
         </g>
       )}
     </svg>
@@ -142,22 +185,22 @@ export default function PoemAtmosphere({
 
   const botanical = config.elements.includes("botanical");
   const drifting = config.motion === "drift";
-  const visiblePetals = drifting && config.elements.includes("petals")
-    ? petals.slice(0, config.petalCount ?? 4)
-    : [];
+  const visiblePetals =
+    drifting && config.elements.includes("petals")
+      ? petals.slice(0, config.petalCount ?? 4)
+      : [];
 
   return (
     <div
-      className={`poem-atmosphere poem-atmosphere-${config.artwork}${
-        drifting ? " is-drifting" : ""
-      }`}
+      className={"poem-atmosphere poem-atmosphere-" + config.artwork + (drifting ? " is-drifting" : "")}
       style={styles}
       aria-hidden="true"
     >
       {config.artwork === "bone-botanical" && (
         <>
-          <LeftBoneStudy botanical={botanical} />
-          <RightHandStudy botanical={botanical} />
+          <RibBloomStudy botanical={botanical} />
+          <RootBloomStudy botanical={botanical} />
+          <OssuaryHandStudy botanical={botanical} />
         </>
       )}
 
@@ -170,10 +213,12 @@ export default function PoemAtmosphere({
               style={
                 {
                   "--petal-x": petal.x,
+                  "--petal-top": petal.top,
                   "--petal-delay": petal.delay,
                   "--petal-duration": petal.duration,
                   "--petal-size": petal.size,
                   "--petal-sway": petal.sway,
+                  "--petal-turn": petal.turn,
                 } as CSSProperties
               }
             />
