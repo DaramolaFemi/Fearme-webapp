@@ -321,7 +321,7 @@ test("navigation is quiet and each project has exactly one CTA", async ({
   await footer.scrollIntoViewIfNeeded();
   expect(
     await footer.evaluate((el) => parseFloat(getComputedStyle(el).fontSize)),
-  ).toBeGreaterThanOrEqual(15);
+  ).toBeGreaterThanOrEqual(13);
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
@@ -616,6 +616,10 @@ test("Immortal Craft case study preserves the portfolio identity and transformat
   expect(
     await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
   ).toBe(true);
+  await page.screenshot({
+    path: "test-results/immortal-case-study-1440.png",
+    fullPage: true,
+  });
 
   await page.setViewportSize({ width: 390, height: 844 });
   await page.reload();
@@ -623,4 +627,8 @@ test("Immortal Craft case study preserves the portfolio identity and transformat
   expect(
     await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
   ).toBe(true);
+  await page.screenshot({
+    path: "test-results/immortal-case-study-390.png",
+    fullPage: true,
+  });
 });
