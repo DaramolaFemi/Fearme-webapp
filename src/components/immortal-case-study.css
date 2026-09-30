@@ -552,13 +552,13 @@
 }
 
 .case-decision-head h2 {
-  max-width: 10ch;
+  max-width: 15ch;
   margin: 0;
   font-family: "Instrument Serif", serif;
-  font-size: clamp(64px, 8vw, 124px);
+  font-size: clamp(58px, 6.8vw, 106px);
   font-weight: 400;
-  line-height: 0.88;
-  letter-spacing: -0.05em;
+  line-height: 0.94;
+  letter-spacing: -0.045em;
 }
 
 .case-decisions {
@@ -833,7 +833,7 @@
 }
 
 .case-result h2 {
-  max-width: 10ch;
+  max-width: 13.5ch;
   color: var(--ink);
 }
 
@@ -880,10 +880,11 @@
 }
 
 .case-final-action > p {
+  max-width: 13ch;
   margin: 0;
   font-family: "Instrument Serif", serif;
-  font-size: clamp(32px, 4vw, 58px);
-  line-height: 1;
+  font-size: clamp(30px, 3.4vw, 50px);
+  line-height: 1.06;
 }
 
 .case-result-actions {
@@ -933,6 +934,33 @@
 
 .case-footer .logo {
   width: 105px;
+}
+
+
+@media (min-width: 901px) and (max-width: 1280px) {
+  .case-decision-head h2 {
+    max-width: 16ch;
+    font-size: clamp(58px, 6.4vw, 88px);
+  }
+
+  .case-result-grid {
+    grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+    gap: clamp(42px, 6vw, 76px);
+  }
+
+  .case-result h2 {
+    max-width: 14.5ch;
+    font-size: clamp(54px, 6.2vw, 86px);
+  }
+
+  .case-final-action {
+    grid-template-columns: minmax(0, 0.8fr) minmax(420px, 1fr);
+    gap: clamp(36px, 5vw, 70px);
+  }
+
+  .case-final-action > p {
+    max-width: 14ch;
+  }
 }
 
 @media (max-width: 900px) {
@@ -1558,8 +1586,12 @@
   .case-diagnosis h2,
   .case-transform-heading h2,
   .case-result h2 {
-    font-size: clamp(40px, 12.5vw, 52px);
-    line-height: 0.95;
+    font-size: clamp(38px, 11.5vw, 48px);
+    line-height: 0.98;
+  }
+
+  .case-result h2 {
+    max-width: 12.8ch;
   }
 
   .case-diagnosis-heading > p {
@@ -1631,9 +1663,9 @@
   }
 
   .case-decision-head h2 {
-    max-width: 9ch;
-    font-size: clamp(48px, 14.5vw, 62px);
-    line-height: 0.9;
+    max-width: 12.5ch;
+    font-size: clamp(42px, 12.8vw, 54px);
+    line-height: 0.96;
   }
 
   .case-decision {
@@ -1771,8 +1803,9 @@
   }
 
   .case-final-action > p {
-    max-width: 8ch;
-    font-size: 36px;
+    max-width: 12ch;
+    font-size: 32px;
+    line-height: 1.08;
   }
 
   .case-result-actions a {
