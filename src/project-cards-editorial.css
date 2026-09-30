@@ -810,3 +810,144 @@
     font-size: 8px;
   }
 }
+
+
+/* Final responsive QA: mobile footer + tablet project actions */
+
+/* Tablet project actions keep the same circular language as desktop, but put
+   the action word inside the circle instead of falling back to the arrow. */
+@media (min-width: 601px) and (max-width: 1023px) {
+  .project-open {
+    gap: 0;
+  }
+
+  .project-open-icon {
+    position: relative;
+    display: inline-grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    border-radius: 50%;
+  }
+
+  .project-open-icon .direction-arrow {
+    display: none !important;
+  }
+
+  .project-cta-label-mobile {
+    display: none !important;
+  }
+
+  .project-cta-label-circle-desktop {
+    display: block;
+    max-width: 100%;
+    padding: 0 2px;
+    color: var(--ink);
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .project-open[href="#contact"] .project-open-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .project-open[href="#contact"] .project-cta-label-circle-desktop {
+    font-size: 7.5px;
+  }
+}
+
+/* Mobile footer follows the approved reference composition:
+   logo + Back to top, a quiet rule, copyright, then the social row. */
+@media (max-width: 600px) {
+  .contact {
+    padding-bottom: 102px;
+  }
+
+  .contact-footer-curve {
+    height: 82px;
+  }
+
+  .footer {
+    position: relative;
+    margin: 0;
+    padding: 28px 24px 36px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto 1px auto auto;
+    align-items: center;
+    column-gap: 22px;
+    row-gap: 18px;
+    font-size: 13px;
+  }
+
+  .footer::before {
+    content: "";
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .footer .wordmark {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    align-self: center;
+    min-width: 0;
+  }
+
+  .footer .logo {
+    display: block;
+    width: 122px;
+    height: auto;
+  }
+
+  .footer > a:last-child {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    align-self: center;
+    padding: 8px 0;
+    border: 0;
+    white-space: nowrap;
+    font-size: 13px;
+  }
+
+  .footer .footer-copyright {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    justify-self: start;
+    width: auto;
+    max-width: none;
+    margin: 0;
+    text-align: left;
+    white-space: nowrap;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .footer .footer-socials {
+    grid-column: 1 / -1;
+    grid-row: 4;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 0;
+    border: 0;
+    font-size: 13px;
+  }
+
+  :root[data-theme="dark"] .footer::before {
+    background: rgba(110, 221, 212, 0.14);
+  }
+}
