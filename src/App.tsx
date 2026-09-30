@@ -355,7 +355,7 @@ export default function App() {
                     : "Open the Project Lab"}
                 </span>
                 <small>
-                  Experiments, in-progress systems, and smaller builds worth keeping.
+                  Other projects in motion.
                 </small>
               </span>
               <span className="project-lab-count" aria-hidden="true">
