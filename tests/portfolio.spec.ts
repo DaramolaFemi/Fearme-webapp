@@ -301,9 +301,8 @@ test("desktop project actions keep their editorial circle treatment and reduced 
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
-  await expect(
-    page.locator("#poetry a svg.direction-arrow").first(),
-  ).toBeVisible();
+  await expect(page.locator("#poetry svg.direction-arrow")).toHaveCount(0);
+  await expect(page.locator("#poetry .poetry-thread").first()).toBeVisible();
   await expect(
     page.locator(".project-cta-label-circle-desktop").first(),
   ).toBeVisible();
@@ -546,6 +545,8 @@ test("poem metadata, final navigation, and missing poem", async ({ page }) => {
 test("seven published poems link to reading pages", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator("#poetry li")).toHaveCount(7);
+  await expect(page.locator("#poetry .poetry-thread")).toHaveCount(7);
+  await expect(page.locator("#poetry svg.direction-arrow")).toHaveCount(0);
   await expect(page.locator("#poetry a")).toHaveCount(7);
   await expect(page.locator("#poetry h3")).toHaveText([
     "The Boy Who Writes",
