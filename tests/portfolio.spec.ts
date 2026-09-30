@@ -171,9 +171,32 @@ for (const width of [390, 1440]) {
     await expect(toggle).toHaveAttribute("aria-checked", "false");
     await toggle.click();
     await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+
+    const darkPalette = await page.evaluate(() => {
+      const styles = getComputedStyle(document.documentElement);
+      return {
+        paper: styles.getPropertyValue("--paper").trim(),
+        ink: styles.getPropertyValue("--ink").trim(),
+        accent: styles.getPropertyValue("--accent").trim(),
+        panel: styles.getPropertyValue("--panel").trim(),
+        nightCyan: styles.getPropertyValue("--night-cyan").trim(),
+      };
+    });
+    expect(darkPalette).toEqual({
+      paper: "#071b1e",
+      ink: "#f3eee8",
+      accent: "#c2185b",
+      panel: "#0b2529",
+      nightCyan: "#78e6dc",
+    });
+
     await page.reload();
     await expect(toggle).toHaveAttribute("aria-checked", "true");
     expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+    const projectCtaRadius = await page.locator(".project-open-icon").first().evaluate(
+      (el) => getComputedStyle(el).borderRadius,
+    );
+    expect(projectCtaRadius).toBe("50%");
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
