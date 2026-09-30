@@ -432,26 +432,31 @@ export default function App() {
             {[
               {
                 n: "01",
-                title: "Interfaces that make sense",
+                title: "Interfaces that",
+                emphasis: "make sense.",
                 text: "Responsive websites and applications, built around how people actually use them.",
                 tools: "React / Next.js / TypeScript / Tailwind CSS",
               },
               {
                 n: "02",
-                title: "Clarity for developers",
+                title: "Clarity for",
+                emphasis: "developers.",
                 text: "API references, technical guides, and documentation that help the next person find their way.",
                 tools: "API design / Technical writing / Developer experience",
               },
               {
                 n: "03",
-                title: "Room to experiment",
+                title: "Room to",
+                emphasis: "experiment.",
                 text: "Browser games, Web3, and the ideas that teach you something by asking you to build them.",
                 tools: "JavaScript / Solidity / Interaction design",
               },
             ].map((item) => (
               <ScrollReveal key={item.n} delay={Number(item.n) * 0.08}>
                 <span className="small-label">{item.n}</span>
-                <h3>{item.title}</h3>
+                <h3>
+                  {item.title} <em>{item.emphasis}</em>
+                </h3>
                 <p>{item.text}</p>
                 <span className="tool-list">{item.tools}</span>
               </ScrollReveal>
