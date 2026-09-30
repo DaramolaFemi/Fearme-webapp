@@ -73,7 +73,14 @@
 }
 
 :root[data-theme="dark"] .poetry-thread {
-  --thread-glow: rgba(232, 160, 189, 0.42);
+  --thread-glow: rgba(120, 230, 220, 0.36);
+  color: var(--night-cyan);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :root[data-theme="dark"] .poetry-row:hover h3 {
+    color: var(--night-cyan);
+  }
 }
 
 .poetry-thread::before {
