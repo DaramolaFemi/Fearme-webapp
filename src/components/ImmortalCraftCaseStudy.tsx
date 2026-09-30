@@ -4,6 +4,7 @@ import ThemeToggle from "./ThemeToggle";
 import "./immortal-case-study.css";
 
 const liveUrl = "https://immortal-craft.vercel.app/";
+const originalUrl = "https://www.immortalcraftbarbers.com/";
 
 export default function ImmortalCraftCaseStudy() {
   useEffect(() => {
@@ -200,7 +201,10 @@ export default function ImmortalCraftCaseStudy() {
             </p>
             <div className="case-result-actions">
               <a href={liveUrl} target="_blank" rel="noopener noreferrer">
-                Visit live redesign
+                Open the redesign
+              </a>
+              <a href={originalUrl} target="_blank" rel="noopener noreferrer">
+                View the original website
               </a>
               <a href="/#work">Return to selected work</a>
             </div>
