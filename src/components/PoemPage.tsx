@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { poems, type Poem } from "../data/poetry";
 import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
+import PoemAtmosphere from "./PoemAtmosphere";
 
 export default function PoemPage({ poem }: { poem?: Poem }) {
   useEffect(() => {
@@ -28,6 +29,7 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
       <a className="skip-link" href="#main">
         Skip to poem
       </a>
+      <PoemAtmosphere config={poem?.atmosphere} />
       <header className="header poem-header">
         <a className="wordmark" href="/" aria-label="Femi: home">
           <Logo />
