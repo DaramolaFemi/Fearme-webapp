@@ -2,11 +2,11 @@ import type { CSSProperties } from "react";
 import type { PoemAtmosphereConfig } from "../data/poetry";
 
 const petals = [
-  { x: "12%", top: "14%", delay: "-9s", duration: "29s", size: "11px", sway: "26px", turn: "190deg" },
-  { x: "83%", top: "23%", delay: "-17s", duration: "34s", size: "9px", sway: "-24px", turn: "236deg" },
-  { x: "20%", top: "42%", delay: "-4s", duration: "31s", size: "8px", sway: "22px", turn: "212deg" },
-  { x: "78%", top: "61%", delay: "-21s", duration: "36s", size: "10px", sway: "-30px", turn: "248deg" },
-  { x: "90%", top: "79%", delay: "-12s", duration: "32s", size: "7px", sway: "-18px", turn: "204deg" },
+  { x: "11%", top: "12%", delay: "-9s", duration: "34s", size: "16px", sway: "30px", turn: "188deg" },
+  { x: "86%", top: "24%", delay: "-18s", duration: "39s", size: "14px", sway: "-28px", turn: "232deg" },
+  { x: "19%", top: "43%", delay: "-5s", duration: "36s", size: "12px", sway: "24px", turn: "208deg" },
+  { x: "80%", top: "60%", delay: "-23s", duration: "41s", size: "15px", sway: "-32px", turn: "246deg" },
+  { x: "91%", top: "78%", delay: "-13s", duration: "37s", size: "11px", sway: "-20px", turn: "202deg" },
 ];
 
 export default function PoemAtmosphere({ config }: { config?: PoemAtmosphereConfig }) {
@@ -50,9 +50,13 @@ export default function PoemAtmosphere({ config }: { config?: PoemAtmosphereConf
       {visiblePetals.length > 0 && (
         <div className="poem-petals">
           {visiblePetals.map((petal, index) => (
-            <span
+            <img
               key={index}
               className="poem-petal"
+              src="/Images/poetry/bones-and-flowers-petal.webp"
+              alt=""
+              decoding="async"
+              draggable={false}
               style={
                 {
                   "--petal-x": petal.x,

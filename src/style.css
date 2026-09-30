@@ -1910,8 +1910,8 @@ button:focus-visible .direction-arrow {
 
 /*
   Individual poems can opt into authored atmosphere without changing the
-  reading component. Bones and Flowers uses generated transparent artwork:
-  ribcage / flowers on the left, skeletal hand / flowers on the right.
+  reading component. Bones and Flowers uses transparent anatomical/floral
+  artwork at the page edges so the poem remains the dominant layer.
 */
 .poem-page {
   position: relative;
@@ -1925,8 +1925,6 @@ button:focus-visible .direction-arrow {
 }
 
 .poem-atmosphere {
-  --poem-petal: rgba(214, 151, 175, 0.5);
-  --poem-petal-shadow: rgba(214, 151, 175, 0.12);
   position: absolute;
   top: 0;
   left: 50%;
@@ -1949,34 +1947,34 @@ button:focus-visible .direction-arrow {
   user-select: none;
   -webkit-user-drag: none;
   image-rendering: auto;
-  filter: saturate(0.82) contrast(0.96);
+  filter: saturate(0.9) contrast(0.98);
   transform: translateZ(0);
 }
 
 .poem-atmosphere-art-left {
   top: 1.5%;
-  left: 0;
-  width: clamp(190px, 18vw, 260px);
-  opacity: 0.43;
+  left: clamp(-118px, -5vw, -46px);
+  width: clamp(350px, 33vw, 520px);
+  opacity: 0.7;
 }
 
 .poem-atmosphere-art-right {
-  top: 42%;
-  right: 0;
-  width: clamp(220px, 20vw, 310px);
-  opacity: 0.38;
+  right: clamp(-112px, -4.5vw, -42px);
+  bottom: 2.5%;
+  width: clamp(320px, 30vw, 480px);
+  opacity: 0.64;
 }
 
 :root[data-theme="light"] .poem-atmosphere-art {
-  filter: saturate(0.72) contrast(1.04) brightness(0.72);
+  filter: saturate(0.72) contrast(0.98) brightness(0.74);
 }
 
 :root[data-theme="light"] .poem-atmosphere-art-left {
-  opacity: 0.28;
+  opacity: 0.42;
 }
 
 :root[data-theme="light"] .poem-atmosphere-art-right {
-  opacity: 0.25;
+  opacity: 0.38;
 }
 
 .poem-petals {
@@ -1989,13 +1987,13 @@ button:focus-visible .direction-arrow {
   top: var(--petal-top);
   left: var(--petal-x);
   width: var(--petal-size);
-  aspect-ratio: 1.7 / 1;
-  border-radius: 86% 18% 78% 24% / 74% 28% 72% 30%;
-  background: var(--poem-petal);
-  box-shadow: 0 0 10px var(--poem-petal-shadow);
-  opacity: 0.18;
+  height: auto;
+  max-width: none;
+  opacity: 0.34;
+  filter: saturate(0.82) blur(0.12px);
   transform: rotate(18deg);
-  filter: blur(0.15px);
+  user-select: none;
+  -webkit-user-drag: none;
   will-change: transform, opacity;
 }
 
@@ -2005,74 +2003,73 @@ button:focus-visible .direction-arrow {
 
 @keyframes poem-petal-drift {
   0% {
-    transform: translate3d(0, -18px, 0) rotate(10deg);
+    transform: translate3d(0, -22px, 0) rotate(10deg);
     opacity: 0;
   }
   14% {
-    opacity: 0.28;
+    opacity: 0.3;
   }
   50% {
-    transform: translate3d(var(--petal-sway), 92px, 0) rotate(104deg);
-    opacity: 0.22;
+    transform: translate3d(var(--petal-sway), 108px, 0) rotate(108deg);
+    opacity: 0.25;
   }
   82% {
-    opacity: 0.14;
+    opacity: 0.16;
   }
   100% {
-    transform: translate3d(0, 190px, 0) rotate(var(--petal-turn));
+    transform: translate3d(0, 214px, 0) rotate(var(--petal-turn));
     opacity: 0;
   }
 }
 
 @media (max-width: 900px) {
   .poem-atmosphere-art-left {
-    left: -28px;
-    width: clamp(170px, 30vw, 230px);
-    opacity: 0.36;
+    top: 3%;
+    left: -17vw;
+    width: 52vw;
+    opacity: 0.62;
   }
 
   .poem-atmosphere-art-right {
-    right: -34px;
-    width: clamp(190px, 31vw, 250px);
-    opacity: 0.32;
+    right: -15vw;
+    bottom: 3%;
+    width: 48vw;
+    opacity: 0.56;
   }
 }
 
 @media (max-width: 600px) {
   .poem-atmosphere {
-    opacity: 0.9;
+    opacity: 0.92;
   }
 
   .poem-atmosphere-art-left {
-    top: 5%;
-    left: -34px;
-    width: 158px;
-    opacity: 0.28;
+    top: 4%;
+    left: -30vw;
+    width: 72vw;
+    opacity: 0.58;
   }
 
   .poem-atmosphere-art-right {
-    top: 52%;
-    right: -54px;
-    width: 190px;
-    opacity: 0.25;
+    right: -25vw;
+    bottom: 4%;
+    width: 66vw;
+    opacity: 0.54;
   }
 
   .poem-petal {
-    opacity: 0.14;
-  }
-
-  .poem-petal:nth-child(5) {
-    display: none;
+    opacity: 0.28;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .poem-petal {
     animation: none !important;
-    opacity: 0.12;
+    opacity: 0.17;
     transform: rotate(18deg);
   }
 }
+
 
 .form-status:empty {
   margin: 0;
