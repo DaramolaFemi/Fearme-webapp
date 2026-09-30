@@ -1864,8 +1864,8 @@ button:focus-visible .direction-arrow {
 }
 .poem-body {
   font-family: "Instrument Serif", serif;
-  font-size: clamp(20px, 1.6vw, 26px);
-  line-height: 1.65;
+  font-size: clamp(18px, 1.15vw, 20px);
+  line-height: 1.72;
   overflow-wrap: break-word;
 }
 .poem-body p {
