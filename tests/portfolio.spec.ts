@@ -134,6 +134,33 @@ test("production security headers and assets", async ({ page }) => {
 });
 
 for (const width of [390, 1440]) {
+  test(`light palette keeps the raspberry paper identity at ${width}px`, async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.emulateMedia({ colorScheme: "light", reducedMotion: "reduce" });
+    await page.goto("/");
+
+    const palette = await page.evaluate(() => {
+      const styles = getComputedStyle(document.documentElement);
+      return {
+        paper: styles.getPropertyValue("--paper").trim(),
+        ink: styles.getPropertyValue("--ink").trim(),
+        accent: styles.getPropertyValue("--accent").trim(),
+        panel: styles.getPropertyValue("--panel").trim(),
+      };
+    });
+
+    expect(palette).toEqual({
+      paper: "#f7f3eb",
+      ink: "#211f20",
+      accent: "#c2185b",
+      panel: "#eee8df",
+    });
+  });
+}
+
+for (const width of [390, 1440]) {
   test(`dark theme contrast and saved preference at ${width}px`, async ({
     page,
   }) => {
