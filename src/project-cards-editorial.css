@@ -520,6 +520,10 @@
 }
 
 @media (max-width: 600px) {
+  .project.flux-form:first-child .project-visual {
+    aspect-ratio: 1280 / 654;
+  }
+
   .project-open {
     width: 40px;
     height: 40px;
