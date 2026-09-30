@@ -1,7 +1,7 @@
 .case-study {
   --case-black: #11110f;
   --case-cream: var(--paper);
-  --case-red: #b64331;
+  --case-red: var(--accent);
   --case-muted-light: rgba(244, 240, 232, 0.68);
   background: var(--case-cream);
   color: var(--ink);
@@ -376,7 +376,7 @@
 
 .case-diagnosis h2 em,
 .case-transform-heading h2 em {
-  color: #dc6d5c;
+  color: var(--accent);
   font-weight: 400;
 }
 
@@ -807,7 +807,7 @@
 
 .case-transformation blockquote em {
   display: block;
-  color: #dc6d5c;
+  color: var(--accent);
   font-weight: 400;
 }
 
@@ -1865,5 +1865,90 @@
     line-height: 1.08;
     letter-spacing: -0.025em;
     text-wrap: balance;
+  }
+}
+
+
+/* Light identity + compact mobile case-study hero */
+@media (max-width: 600px) {
+  .case-cinema {
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+    margin-inline: 0;
+    border: 1px solid var(--line);
+    background: #11110f;
+  }
+
+  .case-cinema > img {
+    object-position: center 48%;
+  }
+
+  .case-site-nav {
+    min-height: 44px;
+    padding-inline: 12px;
+  }
+
+  .case-site-brand strong {
+    font-size: 8px;
+    letter-spacing: 0.18em;
+  }
+
+  .case-site-brand small {
+    display: none;
+  }
+
+  .case-site-book {
+    max-width: 92px;
+    padding-bottom: 4px;
+    font-size: 5px;
+    letter-spacing: 0.1em;
+  }
+
+  .case-site-hero {
+    justify-content: center;
+    padding: 48px 14px 38px;
+  }
+
+  .case-site-hero > span {
+    margin-bottom: 8px;
+    font-size: 5px;
+    letter-spacing: 0.24em;
+  }
+
+  .case-site-hero > strong {
+    max-width: 8ch;
+    font-size: clamp(34px, 10.5vw, 44px);
+    line-height: 0.84;
+  }
+
+  .case-site-hero > i {
+    width: 38px;
+    margin: 11px 0;
+  }
+
+  .case-site-hero > p {
+    max-width: 24ch;
+    margin-bottom: 12px;
+    font-size: 6px;
+    line-height: 1.45;
+  }
+
+  .case-site-hero > b {
+    min-width: 0;
+    padding: 7px 9px;
+    font-size: 5px;
+  }
+
+  .case-site-foot {
+    right: 12px;
+    bottom: 10px;
+    left: 12px;
+    font-size: 5px;
+  }
+
+  .case-media-label {
+    right: 8px;
+    bottom: 6px;
+    font-size: 5px;
   }
 }
