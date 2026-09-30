@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import PageBoundary from "./PageBoundary";
+import ScrollPositionRestoration from "./ScrollPositionRestoration";
 import { poems } from "../data/poetry";
 
 const App = lazy(() => import("../App"));
@@ -13,6 +14,7 @@ export default function SitePage() {
   const poem = poems.find((entry) => pathname === `/poetry/${entry.slug}`);
   return (
     <PageBoundary>
+      <ScrollPositionRestoration />
       <Suspense
         fallback={
           <main className="poem-page" role="status">
