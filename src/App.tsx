@@ -23,9 +23,13 @@ type ProjectCardProps = {
 };
 
 function ProjectCard({ project, reduced, desktopMotion }: ProjectCardProps) {
+  const destination = project.caseStudyPath || project.href || "#contact";
+  const external = !project.caseStudyPath && Boolean(project.href);
+  const actionLabel = project.ctaLabel || (project.href ? "View" : "Request");
+
   return (
     <motion.article
-      className={`project ${project.theme}`}
+      className={`project ${project.theme}${project.preview ? " has-preview" : ""}`}
       id={`project-${project.theme}`}
       initial={reduced ? false : { opacity: 0, y: desktopMotion ? 48 : 20 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -55,8 +59,23 @@ function ProjectCard({ project, reduced, desktopMotion }: ProjectCardProps) {
             height={800}
           />
         </picture>
+        {project.theme === "immortal" && (
+          <div className="immortal-card-overlay" aria-hidden="true">
+            <span>Las Vegas, Nevada</span>
+            <strong>
+              Immortal
+              <br />
+              Craft
+            </strong>
+            <small>A cut that outlives the moment.</small>
+          </div>
+        )}
         {project.preview && (
-          <GameplayPreview src={project.preview} poster={project.image} />
+          <GameplayPreview
+            src={project.preview}
+            poster={project.image}
+            autoplayInView={project.previewAutoplay}
+          />
         )}
       </div>
       <div className="project-card-body">
@@ -83,22 +102,22 @@ function ProjectCard({ project, reduced, desktopMotion }: ProjectCardProps) {
           </div>
           <a
             className="project-open"
-            href={project.href || "#contact"}
-            target={project.href ? "_blank" : undefined}
-            rel="noopener noreferrer"
+            href={destination}
+            target={external ? "_blank" : undefined}
+            rel={external ? "noopener noreferrer" : undefined}
             aria-label={
-              project.href
-                ? `Visit ${project.name} (opens in a new tab)`
-                : `Request a walkthrough of ${project.name}`
+              project.caseStudyPath
+                ? `Read ${project.name} case study`
+                : project.href
+                  ? `Visit ${project.name} (opens in a new tab)`
+                  : `Request a walkthrough of ${project.name}`
             }
           >
             <span className="project-open-icon" aria-hidden="true">
               <Arrow />
-              <span className="project-cta-label-mobile">
-                {project.href ? "View" : "Request"}
-              </span>
+              <span className="project-cta-label-mobile">{actionLabel}</span>
               <span className="project-cta-label-circle-desktop">
-                {project.href ? "View" : "ASK"}
+                {actionLabel}
               </span>
             </span>
           </a>
@@ -257,12 +276,12 @@ export default function App() {
             </div>
             <a
               className="hero-index featured-shortcut"
-              href="#project-bouldwood"
+              href="#project-flux-form"
             >
-              Latest work / Bouldwood
+              Latest work / Flux & Form
               <br />
               <span className="arrow-label">
-                Step inside the showroom <Arrow />
+                Watch the studio move <Arrow />
               </span>
             </a>
           </div>
@@ -329,10 +348,15 @@ export default function App() {
               aria-controls="project-lab-collection"
               onClick={() => setProjectLabOpen((open) => !open)}
             >
-              <span>
-                {projectLabOpen
-                  ? "Close the Project Lab"
-                  : "Open the Project Lab"}
+              <span className="project-lab-heading">
+                <span>
+                  {projectLabOpen
+                    ? "Close the Project Lab"
+                    : "Open the Project Lab"}
+                </span>
+                <small>
+                  Experiments, in-progress systems, and smaller builds worth keeping.
+                </small>
               </span>
               <span className="project-lab-count" aria-hidden="true">
                 {String(projectLabProjects.length).padStart(2, "0")} project
