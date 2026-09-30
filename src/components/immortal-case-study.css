@@ -1822,3 +1822,48 @@
     padding-bottom: max(44px, env(safe-area-inset-bottom));
   }
 }
+
+
+/* Definitive phone headline rhythm */
+@media (max-width: 600px) {
+  .case-decision-head {
+    margin: 28px 0 28px;
+  }
+
+  .case-decision-head h2 {
+    width: 100%;
+    max-width: none;
+    font-size: clamp(34px, 9.8vw, 40px);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+
+  .case-result-grid {
+    gap: 26px;
+    padding: 32px 0 38px;
+  }
+
+  .case-result h2 {
+    width: 100%;
+    max-width: none;
+    font-size: clamp(35px, 10.2vw, 42px);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+
+  .case-final-action {
+    gap: 20px;
+    padding-top: 20px;
+  }
+
+  .case-final-action > p {
+    width: 100%;
+    max-width: none;
+    font-size: clamp(27px, 8vw, 32px);
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+}
