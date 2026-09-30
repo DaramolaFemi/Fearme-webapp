@@ -10,6 +10,11 @@ for (const width of [390, 1440]) {
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
     await expect(page.getByText("Before / original homepage")).toBeVisible();
     await expect(page.getByText("After / final hero experience")).toBeVisible();
+    expect(
+      await page.locator(".case-study").evaluate((el) =>
+        getComputedStyle(el).getPropertyValue("--case-red").trim(),
+      ),
+    ).toBe("var(--accent)");
     await expect(page.locator(".case-after-snapshot")).toBeVisible();
     await expect(page.locator(".case-diagnosis-list article > span")).toHaveCount(0);
 
@@ -25,7 +30,7 @@ for (const width of [390, 1440]) {
       await expect(page.locator(".case-header")).not.toHaveCSS("position", "sticky");
       expect(
         await page.locator(".case-cinema").evaluate((el) => el.getBoundingClientRect().height),
-      ).toBeLessThan(560);
+      ).toBeLessThan(300);
       expect(
         await page.locator(".case-site-hero > strong").evaluate((el) => {
           const rect = el.getBoundingClientRect();
