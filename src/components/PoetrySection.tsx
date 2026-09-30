@@ -82,9 +82,7 @@ export default function PoetrySection() {
                 : "Open the poetry archive"}
             </span>
             <span className="poetry-archive-count" aria-hidden="true">
-              {archiveOpen
-                ? `${String(poems.length).padStart(2, "0")} poems`
-                : `${String(hiddenCount).padStart(2, "0")} more`}
+              {archiveOpen ? "All poems" : "Archive"}
             </span>
           </button>
         )}
