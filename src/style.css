@@ -2041,73 +2041,73 @@ button:focus-visible .direction-arrow {
 @media (max-width: 600px) {
   /*
     Bones and Flowers mobile composition:
-    keep the anatomical/botanical art legible at the outer edges, avoid
-    upscaling the source artwork, and fade it before it enters the poem.
+    the artwork should read as an edge-frame, never as a second content
+    layer. Keep only a controlled slice of each anatomical piece visible.
   */
   .poem-atmosphere-bone-botanical {
     opacity: 1;
   }
 
   .poem-atmosphere-bone-botanical .poem-atmosphere-art {
-    filter: saturate(0.98) contrast(1.01) brightness(0.98);
+    filter: saturate(0.9) contrast(0.98) brightness(0.94);
   }
 
   .poem-atmosphere-bone-botanical .poem-atmosphere-art-left {
-    top: 7%;
-    left: -8vw;
-    width: 68vw;
-    opacity: 0.56;
+    top: 11%;
+    left: -30vw;
+    width: 44vw;
+    opacity: 0.4;
     -webkit-mask-image: linear-gradient(
       90deg,
       #000 0%,
-      #000 54%,
-      rgba(0, 0, 0, 0.82) 70%,
+      #000 48%,
+      rgba(0, 0, 0, 0.72) 66%,
       transparent 100%
     );
     mask-image: linear-gradient(
       90deg,
       #000 0%,
-      #000 54%,
-      rgba(0, 0, 0, 0.82) 70%,
+      #000 48%,
+      rgba(0, 0, 0, 0.72) 66%,
       transparent 100%
     );
   }
 
   .poem-atmosphere-bone-botanical .poem-atmosphere-art-right {
-    top: 57%;
-    right: -10vw;
+    top: 70%;
+    right: -27vw;
     bottom: auto;
-    width: 62vw;
-    opacity: 0.52;
+    width: 43vw;
+    opacity: 0.38;
     -webkit-mask-image: linear-gradient(
       270deg,
       #000 0%,
-      #000 54%,
-      rgba(0, 0, 0, 0.82) 70%,
+      #000 48%,
+      rgba(0, 0, 0, 0.72) 66%,
       transparent 100%
     );
     mask-image: linear-gradient(
       270deg,
       #000 0%,
-      #000 54%,
-      rgba(0, 0, 0, 0.82) 70%,
+      #000 48%,
+      rgba(0, 0, 0, 0.72) 66%,
       transparent 100%
     );
   }
 
   .poem-atmosphere-bone-botanical .poem-petal {
     width: var(--petal-size);
-    opacity: 0.3;
-    filter: saturate(0.96) blur(0.08px);
+    opacity: 0.42;
+    filter: saturate(1.08) brightness(1.06) blur(0.08px);
   }
 
   :root[data-theme="light"] .poem-atmosphere-bone-botanical .poem-atmosphere-art {
-    filter: saturate(0.76) contrast(0.98) brightness(0.76);
+    filter: saturate(0.7) contrast(0.96) brightness(0.72);
   }
 
   :root[data-theme="light"] .poem-atmosphere-bone-botanical .poem-atmosphere-art-left,
   :root[data-theme="light"] .poem-atmosphere-bone-botanical .poem-atmosphere-art-right {
-    opacity: 0.38;
+    opacity: 0.31;
   }
 }
 
