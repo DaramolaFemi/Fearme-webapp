@@ -2102,8 +2102,7 @@ button:focus-visible .direction-arrow {
     opacity: 0.18;
   }
   100% {
-    transform: translate3d(calc(var(--petal-sway) * -0.35), 118px, 0)
-      rotate(var(--petal-turn));
+    transform: translate3d(0, 118px, 0) rotate(var(--petal-turn));
     opacity: 0;
   }
 }
