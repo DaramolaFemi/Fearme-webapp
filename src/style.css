@@ -2039,26 +2039,50 @@ button:focus-visible .direction-arrow {
 }
 
 @media (max-width: 600px) {
-  .poem-atmosphere {
-    opacity: 0.92;
+  /*
+    Bones and Flowers: on phones the artwork needs to read as a deliberate
+    frame around the poem, not as tiny clipped fragments. Keep the art on
+    the outer edges and reserve the reading column for the text.
+  */
+  .poem-atmosphere-bone-botanical {
+    opacity: 0.96;
   }
 
-  .poem-atmosphere-art-left {
-    top: 4%;
-    left: -30vw;
-    width: 72vw;
-    opacity: 0.58;
+  .poem-atmosphere-bone-botanical .poem-atmosphere-art {
+    filter: saturate(1.08) contrast(1.02) brightness(1.03);
   }
 
-  .poem-atmosphere-art-right {
-    right: -25vw;
-    bottom: 4%;
-    width: 66vw;
-    opacity: 0.54;
+  .poem-atmosphere-bone-botanical .poem-atmosphere-art-left {
+    top: 6.5%;
+    left: -44vw;
+    width: 118vw;
+    opacity: 0.68;
   }
 
-  .poem-petal {
-    opacity: 0.28;
+  .poem-atmosphere-bone-botanical .poem-atmosphere-art-right {
+    top: 56%;
+    right: -43vw;
+    bottom: auto;
+    width: 104vw;
+    opacity: 0.62;
+  }
+
+  .poem-atmosphere-bone-botanical .poem-petal {
+    width: max(var(--petal-size), 14px);
+    opacity: 0.4;
+    filter: saturate(1.06) brightness(1.05) blur(0.08px);
+  }
+
+  :root[data-theme="light"] .poem-atmosphere-bone-botanical .poem-atmosphere-art {
+    filter: saturate(0.9) contrast(1.02) brightness(0.78);
+  }
+
+  :root[data-theme="light"] .poem-atmosphere-bone-botanical .poem-atmosphere-art-left {
+    opacity: 0.46;
+  }
+
+  :root[data-theme="light"] .poem-atmosphere-bone-botanical .poem-atmosphere-art-right {
+    opacity: 0.43;
   }
 }
 
