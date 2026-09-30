@@ -59,3 +59,10 @@
     font-weight: 400;
   }
 }
+
+/* Keep utility text readable on phone-sized screens without changing footer layout. */
+@media (max-width: 800px) {
+  .footer {
+    font-size: 15px;
+  }
+}
