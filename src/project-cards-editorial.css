@@ -475,6 +475,7 @@
   .project.bouldwood .project-visual,
   .project.cedius .project-visual,
   .project.gleez .project-visual,
+  .project.immortal .project-visual,
   .project.weather .project-visual,
   .project.neon .project-visual {
     aspect-ratio: 1.45;
@@ -510,19 +511,11 @@
   }
 }
 
-/* Surgical follow-up: keep mobile actions inside the existing circles and
-   let the full-width Bouldwood preview show its complete source image on desktop. */
+/* The lead project is motion-first. Keep the recorded interface uncropped on
+   wide screens while the rest of the collection keeps the paired card rhythm. */
 @media (min-width: 901px) {
-  .project.bouldwood .project-visual {
-    aspect-ratio: auto;
-  }
-
-  .project.bouldwood .project-visual img {
-    display: block;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    object-position: top center;
+  .project.flux-form:first-child .project-visual {
+    aspect-ratio: 1280 / 654;
   }
 }
 
@@ -707,5 +700,90 @@
 @media (max-width: 600px) {
   .work {
     padding-bottom: 38px;
+  }
+}
+
+
+.project.flux-form .project-visual {
+  background: #111a2d;
+}
+
+.project.immortal .project-visual {
+  position: relative;
+  background: #0c0d0c;
+}
+
+.project.immortal .project-visual img {
+  filter: brightness(0.58) saturate(0.86);
+  object-position: center;
+}
+
+.immortal-card-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(18px, 3vw, 34px);
+  color: #f4f0e8;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(6, 8, 7, 0.08) 20%, rgba(6, 8, 7, 0.78) 100%);
+}
+
+.immortal-card-overlay > span,
+.immortal-card-overlay > small {
+  font-family: "IBM Plex Sans", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.immortal-card-overlay > span {
+  margin-bottom: auto;
+  font-size: 8px;
+}
+
+.immortal-card-overlay > strong {
+  max-width: 7ch;
+  font-family: "Literata", serif;
+  font-size: clamp(38px, 5vw, 72px);
+  font-weight: 400;
+  line-height: 0.88;
+  letter-spacing: -0.06em;
+}
+
+.immortal-card-overlay > small {
+  margin-top: 14px;
+  font-size: 8px;
+}
+
+.project-lab-heading {
+  display: grid;
+  gap: 4px;
+}
+
+.project-lab-heading > small {
+  max-width: 52ch;
+  color: var(--muted);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.55;
+}
+
+@media (max-width: 600px) {
+  .immortal-card-overlay {
+    padding: 16px;
+  }
+
+  .immortal-card-overlay > strong {
+    font-size: clamp(32px, 10vw, 48px);
+  }
+
+  .project-lab-heading > small {
+    max-width: 34ch;
+    font-size: 8px;
   }
 }

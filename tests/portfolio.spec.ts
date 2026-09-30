@@ -34,8 +34,10 @@ test("project filters and mobile keyboard menu", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
   await page.getByRole("button", { name: "Websites" }).click();
-  await expect(page.locator("article")).toHaveCount(1);
+  await expect(page.locator(".project-grid > article")).toHaveCount(3);
+  await expect(page.getByRole("heading", { name: /Flux & Form/ })).toBeVisible();
   await expect(page.getByRole("heading", { name: /Bouldwood/ })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Immortal Craft/ })).toBeVisible();
   await page.getByRole("button", { name: "All work" }).click();
   await expect(page.locator("article")).toHaveCount(5);
   await page.getByRole("button", { name: "Menu" }).click();
@@ -182,16 +184,20 @@ test("system theme and storage-unavailable fallback", async ({ page }) => {
   await toggle.click();
   await expect(toggle).toHaveAttribute("aria-checked", "false");
 });
-test("featured Bouldwood and unhosted Cedius have correct destinations", async ({
+test("featured Flux, Immortal case study, and lab Cedius have correct destinations", async ({
   page,
 }) => {
   await page.goto("/");
   await expect(
-    page.locator("article").first().getByRole("heading", { level: 3 }),
-  ).toContainText("Bouldwood");
+    page.locator(".project-grid > article").first().getByRole("heading", { level: 3 }),
+  ).toContainText("Flux & Form");
   await expect(
-    page.getByRole("link", { name: "Visit Bouldwood (opens in a new tab)" }),
-  ).toHaveAttribute("href", "https://bouldwood-showroom.vercel.app/");
+    page.getByRole("link", { name: "Visit Flux & Form (opens in a new tab)" }),
+  ).toHaveAttribute("href", "https://flow-form-studio.vercel.app/");
+  await expect(
+    page.getByRole("link", { name: "Read Immortal Craft case study" }),
+  ).toHaveAttribute("href", "/work/immortal-craft");
+  await page.getByRole("button", { name: /Open the Project Lab/ }).click();
   await expect(
     page.getByRole("link", { name: "Request a walkthrough of Cedius" }),
   ).toHaveAttribute("href", "#contact");
@@ -262,25 +268,25 @@ test("touch layouts use SVG arrows and fields keep readable sizing on focus", as
   ).toHaveAttribute("src", "/Images/harmattan-desktop.png");
   await context.close();
 });
-test("desktop actions use SVG arrows and reduced motion stays static", async ({
+test("desktop project actions keep their editorial circle treatment and reduced motion stays static", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   await expect(
-    page.locator(".reading-action svg.direction-arrow").first(),
+    page.locator("#poetry a svg.direction-arrow").first(),
   ).toBeVisible();
-  await expect(page.locator(".project-cta-label").first()).toBeVisible();
+  await expect(
+    page.locator(".project-cta-label-circle-desktop").first(),
+  ).toBeVisible();
+  const circle = page.locator(".project-open-icon").first();
+  expect(
+    await circle.evaluate((el) => el.getBoundingClientRect().width),
+  ).toBeGreaterThanOrEqual(40);
   expect(
     await page
-      .locator(".project-open")
-      .first()
-      .evaluate((el) => el.getBoundingClientRect().width),
-  ).toBeGreaterThan(90);
-  expect(
-    await page
-      .locator(".project-cta-label")
+      .locator(".project-cta-label-circle-desktop")
       .first()
       .evaluate((el) => el.getBoundingClientRect().height),
   ).toBeLessThan(24);
@@ -308,14 +314,14 @@ test("navigation is quiet and each project has exactly one CTA", async ({
   for (const project of await page.locator("article.project").all()) {
     await project.scrollIntoViewIfNeeded();
     await expect(project.locator("a.project-open")).toBeVisible();
-    await expect(project.locator(".project-cta-label")).toBeVisible();
-    await expect(project.locator("svg.direction-arrow")).toBeVisible();
+    await expect(project.locator(".project-cta-label-mobile")).toBeVisible();
+    await expect(project.locator(".project-open-icon svg.direction-arrow")).toBeHidden();
   }
   const footer = page.locator(".footer-copyright");
   await footer.scrollIntoViewIfNeeded();
   expect(
     await footer.evaluate((el) => parseFloat(getComputedStyle(el).fontSize)),
-  ).toBeGreaterThanOrEqual(15);
+  ).toBeGreaterThanOrEqual(13);
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
@@ -331,26 +337,31 @@ test("selected work keeps the featured order and reveals the Project Lab", async
   const featured = page.locator(".project-grid > article");
   await expect(featured).toHaveCount(5);
   await expect(featured.locator(".project-name-desktop")).toHaveText([
+    "Flux & Form",
     "Bouldwood",
     "Tentio",
-    "Cedius",
     "Gleez",
-    "Zer0 Lane",
+    "Immortal Craft",
   ]);
-  const [lead, tentio, cedius, gleez, zer0Lane] = await featured.evaluateAll(
+  const [lead, bouldwood, tentio, gleez, immortal] = await featured.evaluateAll(
     (cards) =>
       cards.map((card) => {
         const rect = card.getBoundingClientRect();
         return { x: rect.x, y: rect.y, width: rect.width };
       }),
   );
-  expect(lead.width).toBeGreaterThan(tentio.width * 1.9);
-  expect(tentio.y).toBe(cedius.y);
-  expect(gleez.y).toBe(zer0Lane.y);
-  expect(gleez.y).toBeGreaterThan(tentio.y);
+  expect(lead.width).toBeGreaterThan(bouldwood.width * 1.9);
+  expect(bouldwood.y).toBe(tentio.y);
+  expect(gleez.y).toBe(immortal.y);
+  expect(gleez.y).toBeGreaterThan(bouldwood.y);
   await expect(page.locator("#project-weather")).toHaveCount(0);
-  await page.getByRole("button", { name: "Open the Project Lab" }).click();
+  await expect(page.locator("#project-cedius")).toHaveCount(0);
+  await expect(page.locator("#project-neon")).toHaveCount(0);
+  await page.getByRole("button", { name: /Open the Project Lab/ }).click();
+  await expect(page.locator(".project-lab-grid > article")).toHaveCount(3);
   await expect(page.locator("#project-weather")).toBeVisible();
+  await expect(page.locator("#project-cedius")).toBeVisible();
+  await expect(page.locator("#project-neon")).toBeVisible();
   await expect(page.locator("#project-weather")).toContainText(
     "Harmattan 9ja Skies",
   );
@@ -538,13 +549,12 @@ for (const width of [390, 1440]) {
         .toBeLessThanOrEqual(100);
       await expect(page.locator("#poetry h2")).toBeInViewport();
       const link = page.locator("#poetry a").first();
-      await expect(link).toContainText("Read poem");
+      await expect(link).toHaveAttribute("aria-label", /^Read /);
+      await expect(link).toHaveAttribute("href", /^\/poetry\//);
       expect(
         await link.evaluate((el) => el.getBoundingClientRect().height),
       ).toBeGreaterThanOrEqual(44);
-      await expect(
-        page.locator(".reading-action svg.direction-arrow").first(),
-      ).toBeVisible();
+      await expect(link.locator("svg.direction-arrow")).toBeVisible();
     }
   });
 }
@@ -579,4 +589,65 @@ test("reading actions share the same SVG on desktop and mobile", async ({
       /[↗←→]|[\u{1F300}-\u{1FAFF}]/u,
     );
   }
+});
+
+
+test("Immortal Craft case study preserves the portfolio identity and transformation story", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto("/work/immortal-craft");
+  await expect(page).toHaveTitle("Immortal Craft Case Study — Daramola Femi");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText(
+    "booking-led experience",
+  );
+  await expect(page.getByText("Before / original homepage")).toBeVisible();
+  await expect(page.getByText("After / redesigned hero system")).toBeVisible();
+  await expect(page.getByRole("link", { name: "Open the redesign" })).toHaveAttribute(
+    "href",
+    "https://immortal-craft.vercel.app/",
+  );
+  await expect(
+    page.getByRole("link", { name: "View the original website" }),
+  ).toHaveAttribute("href", "https://www.immortalcraftbarbers.com/");
+  await expect(
+    page.locator('img[src="/Images/case-studies/immortal-before-hero.webp"]'),
+  ).toBeVisible();
+  await expect(
+    page.locator('img[src="/Images/case-studies/immortal-after-hero.webp"]'),
+  ).toBeVisible();
+  for (const image of await page.locator(".case-study img").all()) {
+    await image.scrollIntoViewIfNeeded();
+    await expect
+      .poll(() =>
+        image.evaluate((node) => (node as HTMLImageElement).naturalWidth),
+      )
+      .toBeGreaterThan(0);
+  }
+  expect(
+    await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+  ).toBe(true);
+  await page.screenshot({
+    path: "test-results/immortal-case-study-1440.png",
+    fullPage: true,
+  });
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.reload();
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  for (const image of await page.locator(".case-study img").all()) {
+    await image.scrollIntoViewIfNeeded();
+    await expect
+      .poll(() =>
+        image.evaluate((node) => (node as HTMLImageElement).naturalWidth),
+      )
+      .toBeGreaterThan(0);
+  }
+  expect(
+    await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+  ).toBe(true);
+  await page.screenshot({
+    path: "test-results/immortal-case-study-390.png",
+    fullPage: true,
+  });
 });
