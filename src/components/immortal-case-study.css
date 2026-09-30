@@ -1268,3 +1268,397 @@
     transition: none;
   }
 }
+
+
+/* Mobile case-study correction pass */
+@media (max-width: 600px) {
+  .case-header {
+    position: relative;
+    min-height: 68px;
+    padding-inline: 16px;
+  }
+
+  .case-header .wordmark .logo {
+    width: 96px;
+  }
+
+  .case-header-actions {
+    gap: 7px;
+  }
+
+  .case-header .theme-toggle {
+    transform: scale(0.82);
+  }
+
+  .case-back-link {
+    min-height: 40px;
+    padding-bottom: 4px;
+    font-size: 9px;
+  }
+
+  .case-hero {
+    padding-top: 20px;
+    padding-bottom: 46px;
+  }
+
+  .case-kicker {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 6.5px;
+  }
+
+  .case-hero-grid {
+    gap: 22px;
+    padding: 30px 0 26px;
+  }
+
+  .case-eyebrow {
+    margin-bottom: 14px;
+    font-size: 7.5px;
+  }
+
+  .case-hero h1 {
+    max-width: 10.5ch;
+    font-size: clamp(44px, 13.6vw, 58px);
+    line-height: 0.92;
+    letter-spacing: -0.06em;
+  }
+
+  .case-hero h1 em {
+    margin-top: 0.08em;
+  }
+
+  .case-hero-note > p {
+    max-width: 35ch;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .case-proof-line {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
+    font-size: 8px;
+  }
+
+  .case-meta {
+    margin-bottom: 18px;
+  }
+
+  .case-meta > span,
+  .case-meta > span:not(:first-child) {
+    min-height: 0;
+    padding: 11px 0;
+    gap: 5px;
+    font-size: 9.5px;
+  }
+
+  .case-meta small {
+    font-size: 6.5px;
+  }
+
+  .case-cinema {
+    min-height: 0;
+    aspect-ratio: 4 / 5;
+    margin-inline: -18px;
+  }
+
+  .case-cinema > img {
+    object-position: 50% 42%;
+  }
+
+  .case-site-nav {
+    min-height: 56px;
+    padding-inline: 16px;
+  }
+
+  .case-site-brand {
+    gap: 3px;
+  }
+
+  .case-site-brand strong {
+    font-size: 11px;
+  }
+
+  .case-site-brand small {
+    font-size: 5px;
+  }
+
+  .case-site-book {
+    max-width: 112px;
+    font-size: 6px;
+    letter-spacing: 0.11em;
+  }
+
+  .case-site-hero {
+    justify-content: center;
+    padding: 70px 18px 66px;
+  }
+
+  .case-site-hero > span {
+    margin-bottom: 12px;
+    font-size: 7px;
+  }
+
+  .case-site-hero > strong {
+    max-width: 7ch;
+    font-size: clamp(46px, 15vw, 62px);
+    line-height: 0.84;
+  }
+
+  .case-site-hero > i {
+    width: 54px;
+    margin: 17px 0;
+  }
+
+  .case-site-hero > p {
+    max-width: 22ch;
+    margin-bottom: 18px;
+    font-size: 9px;
+    line-height: 1.5;
+  }
+
+  .case-site-hero > b {
+    min-width: 0;
+    padding: 11px 13px;
+    font-size: 7px;
+  }
+
+  .case-site-foot {
+    right: 16px;
+    bottom: 16px;
+    left: 16px;
+    font-size: 6px;
+  }
+
+  .case-media-label {
+    right: 10px;
+    bottom: 8px;
+    font-size: 6px;
+  }
+
+  .case-diagnosis {
+    padding-top: 48px;
+    padding-bottom: 58px;
+  }
+
+  .case-diagnosis-heading {
+    gap: 18px;
+    margin: 34px 0 34px;
+  }
+
+  .case-diagnosis h2,
+  .case-transform-heading h2,
+  .case-result h2 {
+    font-size: clamp(40px, 12.5vw, 52px);
+    line-height: 0.95;
+  }
+
+  .case-diagnosis-heading > p {
+    font-size: 11.5px;
+    line-height: 1.7;
+  }
+
+  .case-diagnosis-grid {
+    gap: 30px;
+  }
+
+  .case-diagnosis-list article {
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 10px;
+    padding: 18px 0 21px;
+  }
+
+  .case-diagnosis-list h3 {
+    font-size: 18px;
+    line-height: 1.2;
+  }
+
+  .case-diagnosis-list p {
+    font-size: 10.5px;
+    line-height: 1.65;
+  }
+
+  .case-route {
+    padding-top: 46px;
+    padding-bottom: 50px;
+  }
+
+  .case-route-intro {
+    gap: 16px;
+    margin-bottom: 34px;
+  }
+
+  .case-route-intro > span {
+    font-size: 7px;
+  }
+
+  .case-route-intro h2 {
+    max-width: 8ch;
+    font-size: clamp(54px, 16vw, 68px);
+    line-height: 0.84;
+  }
+
+  .case-route-intro p {
+    max-width: 30ch;
+    font-size: 11px;
+  }
+
+  .case-route-line li,
+  .case-route-line li:not(:first-child) {
+    grid-template-columns: 44px minmax(0, 1fr);
+    padding: 14px 0 14px 18px;
+  }
+
+  .case-route-line strong {
+    font-size: 19px;
+  }
+
+  .case-decisions-section {
+    padding-top: 52px;
+    padding-bottom: 60px;
+  }
+
+  .case-decision-head {
+    margin: 36px 0 30px;
+  }
+
+  .case-decision-head h2 {
+    max-width: 9ch;
+    font-size: clamp(48px, 14.5vw, 62px);
+    line-height: 0.9;
+  }
+
+  .case-decision {
+    grid-template-columns: 36px minmax(0, 1fr);
+    gap: 12px;
+    padding: 23px 0 25px;
+  }
+
+  .case-decision-number {
+    font-size: 28px;
+  }
+
+  .case-decision h3 {
+    font-size: 24px;
+    line-height: 1.05;
+  }
+
+  .case-decision p {
+    margin-top: -3px;
+    font-size: 10.5px;
+    line-height: 1.7;
+  }
+
+  .case-transformation {
+    padding-top: 54px;
+    padding-bottom: 62px;
+  }
+
+  .case-transform-heading {
+    margin: 36px 0 38px;
+  }
+
+  .case-compare {
+    gap: 22px;
+  }
+
+  .case-compare-before,
+  .case-compare-after {
+    margin: 0;
+  }
+
+  .case-compare-before {
+    margin-right: 12px;
+  }
+
+  .case-compare-after {
+    margin-left: 12px;
+  }
+
+  .case-compare img {
+    width: 100%;
+    height: min(60vw, 260px);
+    max-height: 260px;
+    object-fit: cover;
+  }
+
+  .case-compare-before img {
+    object-position: top center;
+  }
+
+  .case-compare-after img {
+    object-position: center 30%;
+  }
+
+  .case-compare figcaption {
+    padding: 10px 11px;
+    font-size: 8.5px;
+    line-height: 1.5;
+  }
+
+  .case-compare-mark {
+    top: 10px;
+    left: 10px;
+    padding: 6px 8px;
+    font-size: 7px;
+  }
+
+  .case-transformation blockquote {
+    margin-top: 42px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(244, 240, 232, 0.18);
+    font-size: clamp(36px, 11.5vw, 46px);
+    line-height: 0.98;
+  }
+
+  .case-result {
+    padding-top: 54px;
+    padding-bottom: 66px;
+  }
+
+  .case-result-grid {
+    gap: 30px;
+    padding: 38px 0 42px;
+  }
+
+  .case-result-copy > p {
+    margin-top: 20px;
+    font-size: 11.5px;
+    line-height: 1.7;
+  }
+
+  .case-result-proof ul {
+    margin-top: 18px;
+  }
+
+  .case-result-proof li {
+    padding: 11px 0;
+    font-size: 10.5px;
+  }
+
+  .case-final-action {
+    gap: 24px;
+    padding-top: 22px;
+  }
+
+  .case-final-action > p {
+    max-width: 8ch;
+    font-size: 36px;
+  }
+
+  .case-result-actions a {
+    min-height: 52px;
+    font-size: 11px;
+  }
+
+  .case-result-actions a small {
+    font-size: 7.5px;
+  }
+
+  .case-footer {
+    margin-inline: 18px;
+    padding-bottom: max(44px, env(safe-area-inset-bottom));
+  }
+}
