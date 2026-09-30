@@ -442,8 +442,8 @@ h2 {
   letter-spacing: 0.01em;
 }
 :root[data-theme="dark"] .tags span {
-  border-color: rgba(244, 237, 243, 0.25);
-  background: rgba(244, 237, 243, 0.05);
+  border-color: rgba(120, 230, 220, 0.22);
+  background: rgba(120, 230, 220, 0.04);
   color: var(--ink);
 }
 .weather-art {
@@ -1115,18 +1115,21 @@ textarea::placeholder {
   }
 }
 
-/* The same ink-and-paper identity, adapted for evening reading. */
+/* The same Femi identity after dark: petrol-black, warm text, raspberry,
+   with cyan used as a restrained nocturnal light source rather than a second brand. */
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --paper: #201c27;
-  --ink: #f4edf3;
-  --muted: #bfb2c5;
-  --line: #4c4057;
-  --accent: #e8a0bd;
-  --panel: #2b2433;
-  --field-line: #88758f;
-  --placeholder: #b9a9c1;
-  --band: #73364f;
+  --paper: #071b1e;
+  --ink: #f3eee8;
+  --muted: #aab8b7;
+  --line: #1f464b;
+  --accent: #c2185b;
+  --panel: #0b2529;
+  --field-line: #31575b;
+  --placeholder: #789092;
+  --band: #c2185b;
+  --band-text: #f7f3eb;
+  --night-cyan: #78e6dc;
 }
 .logo {
   width: 136px;
@@ -1226,8 +1229,8 @@ textarea::placeholder {
   background: var(--panel);
 }
 :root[data-theme="dark"] .button:hover:not(:disabled) {
-  background: rgba(244, 237, 243, 0.08);
-  border-color: rgba(244, 237, 243, 0.32);
+  background: rgba(120, 230, 220, 0.065);
+  border-color: rgba(120, 230, 220, 0.28);
   color: var(--ink);
 }
 .footer .logo {
@@ -2138,5 +2141,153 @@ a.documentation-cta {
   }
   .capabilities p {
     max-width: none;
+  }
+}
+
+
+/* Final dark-mode identity: nocturnal petrol + raspberry + cyan light */
+:root[data-theme="dark"] ::selection {
+  background: rgba(194, 24, 91, 0.42);
+  color: var(--ink);
+}
+
+:root[data-theme="dark"] .hero {
+  background:
+    radial-gradient(circle at 82% 28%, rgba(120, 230, 220, 0.055), transparent 29%),
+    linear-gradient(180deg, rgba(3, 49, 58, 0.16), rgba(3, 49, 58, 0) 58%);
+}
+
+:root[data-theme="dark"] .hero h1 em,
+:root[data-theme="dark"] .section-heading h2 em,
+:root[data-theme="dark"] .documentation-heading h2 em,
+:root[data-theme="dark"] .about h2 em,
+:root[data-theme="dark"] .poetry-intro h2 em,
+:root[data-theme="dark"] .contact h2 em {
+  color: var(--night-cyan);
+}
+
+:root[data-theme="dark"] .orbit-ring {
+  border-color: rgba(120, 230, 220, 0.74);
+  box-shadow: 0 0 22px rgba(120, 230, 220, 0.035);
+}
+
+:root[data-theme="dark"] .hero-rule,
+:root[data-theme="dark"] .section-kicker {
+  border-color: rgba(120, 230, 220, 0.2);
+}
+
+:root[data-theme="dark"] .section-kicker > span:first-child,
+:root[data-theme="dark"] .tool-list {
+  color: color-mix(in srgb, var(--night-cyan) 78%, var(--muted));
+}
+
+:root[data-theme="dark"] .text-link {
+  border-color: rgba(120, 230, 220, 0.42);
+}
+
+:root[data-theme="dark"] .text-link:hover {
+  color: var(--night-cyan);
+  border-color: var(--night-cyan);
+}
+
+:root[data-theme="dark"] .filters button {
+  border-color: rgba(120, 230, 220, 0.18);
+}
+
+:root[data-theme="dark"] .filters button[aria-pressed="true"] {
+  background: transparent;
+  border-color: rgba(120, 230, 220, 0.58);
+  color: var(--ink);
+}
+
+:root[data-theme="dark"] .documentation {
+  background-image:
+    radial-gradient(ellipse 54% 32% at 113% 22%, transparent 68%, rgba(120, 230, 220, 0.075) 68.4%, rgba(120, 230, 220, 0.075) 68.8%, transparent 69.2%),
+    radial-gradient(ellipse 58% 38% at 110% 78%, transparent 73%, rgba(120, 230, 220, 0.055) 73.4%, rgba(120, 230, 220, 0.055) 73.8%, transparent 74.2%);
+}
+
+:root[data-theme="dark"] .documentation-status::before {
+  border-color: var(--accent);
+}
+
+:root[data-theme="dark"] .documentation-status.status-in-progress::before {
+  background: var(--accent);
+}
+
+:root[data-theme="dark"] a.documentation-cta {
+  text-decoration-color: rgba(194, 24, 91, 0.7);
+}
+
+:root[data-theme="dark"] a.documentation-cta:hover,
+:root[data-theme="dark"] a.documentation-cta:focus-visible {
+  color: var(--night-cyan);
+  text-decoration-color: var(--accent);
+}
+
+:root[data-theme="dark"] .about {
+  background:
+    radial-gradient(ellipse 48% 34% at 108% 12%, rgba(120, 230, 220, 0.045), transparent 62%),
+    var(--panel);
+}
+
+:root[data-theme="dark"] .capabilities > div {
+  border-color: rgba(120, 230, 220, 0.2);
+}
+
+:root[data-theme="dark"] .capabilities .small-label {
+  color: var(--accent);
+}
+
+:root[data-theme="dark"] .poetry {
+  background-image:
+    radial-gradient(circle at 8% 74%, rgba(120, 230, 220, 0.035), transparent 24%);
+}
+
+:root[data-theme="dark"] .contact {
+  background:
+    radial-gradient(circle at 86% 18%, rgba(120, 230, 220, 0.045), transparent 28%);
+}
+
+:root[data-theme="dark"] .contact input,
+:root[data-theme="dark"] .contact textarea {
+  border-bottom-color: rgba(120, 230, 220, 0.28);
+}
+
+:root[data-theme="dark"] .contact input:focus,
+:root[data-theme="dark"] .contact textarea:focus {
+  border-bottom-color: var(--night-cyan);
+}
+
+:root[data-theme="dark"] .contact .button {
+  background: rgba(194, 24, 91, 0.08);
+  border-color: rgba(194, 24, 91, 0.72);
+  color: var(--ink);
+}
+
+:root[data-theme="dark"] .contact .button:hover:not(:disabled) {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--ink);
+}
+
+:root[data-theme="dark"] .footer {
+  border-color: rgba(120, 230, 220, 0.18);
+}
+
+:root[data-theme="dark"] .theme-track {
+  border-color: rgba(120, 230, 220, 0.24);
+  background: rgba(11, 37, 41, 0.88);
+}
+
+@media (max-width: 600px) {
+  :root[data-theme="dark"] .hero {
+    background:
+      radial-gradient(circle at 86% 24%, rgba(120, 230, 220, 0.045), transparent 25%),
+      linear-gradient(180deg, rgba(3, 49, 58, 0.11), rgba(3, 49, 58, 0) 48%);
+  }
+
+  :root[data-theme="dark"] .documentation {
+    background-image:
+      radial-gradient(ellipse 88% 24% at 128% 18%, transparent 70%, rgba(120, 230, 220, 0.06) 70.5%, rgba(120, 230, 220, 0.06) 71%, transparent 71.5%);
   }
 }
