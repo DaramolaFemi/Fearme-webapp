@@ -104,6 +104,47 @@ test("contact handles success and failure without sending messages", async ({
   );
 });
 
+test("contact and footer use the authored curve in both themes", async ({ page }) => {
+  for (const viewport of [
+    { width: 1440, height: 1000 },
+    { width: 390, height: 844 },
+  ]) {
+    await page.setViewportSize(viewport);
+    await page.emulateMedia({ colorScheme: "light", reducedMotion: "reduce" });
+    await page.goto("/#contact");
+
+    const curve = page.locator(".contact-footer-curve");
+    const path = curve.locator("path");
+    const form = page.locator("#contact form");
+    const footer = page.locator(".footer");
+
+    await expect(curve).toBeVisible();
+    await expect(path).toBeVisible();
+    expect(await form.evaluate((el) => getComputedStyle(el).borderTopStyle)).not.toBe("none");
+    expect(await footer.evaluate((el) => getComputedStyle(el).display)).toBe("grid");
+
+    const lightStroke = await path.evaluate((el) => getComputedStyle(el).stroke);
+
+    const toggle = page.getByRole("switch", { name: "Dark mode" });
+    await toggle.click();
+
+    const darkStroke = await path.evaluate((el) => getComputedStyle(el).stroke);
+    expect(darkStroke).not.toBe(lightStroke);
+
+    if (viewport.width <= 600) {
+      expect(
+        await footer
+          .locator(".footer-copyright")
+          .evaluate((el) => parseFloat(getComputedStyle(el).fontSize)),
+      ).toBeGreaterThanOrEqual(13);
+    }
+
+    expect(
+      await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+    ).toBe(true);
+  }
+});
+
 test("production security headers and assets", async ({ page }) => {
   const failures: string[] = [];
   page.on("console", (message) => {
