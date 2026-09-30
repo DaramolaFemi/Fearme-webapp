@@ -7,6 +7,15 @@ import poem5 from "../content/poetry/a-graveyard-for-lovers";
 import poem6 from "../content/poetry/a-minutes-silence";
 
 export type Publication = { label: string; href?: string };
+
+export type PoemAtmosphereConfig = {
+  artwork: "bone-botanical";
+  elements: Array<"botanical" | "petals">;
+  intensity: number;
+  motion: "drift" | "still";
+  petalCount?: number;
+};
+
 export type Poem = {
   id: string;
   title: string;
@@ -15,6 +24,7 @@ export type Poem = {
   form?: string;
   stanzas: string[];
   publication?: Publication;
+  atmosphere?: PoemAtmosphereConfig;
 };
 
 export const poems: Poem[] = [
@@ -34,6 +44,13 @@ export const poems: Poem[] = [
     title: "Bones and Flowers",
     slug: "bones-and-flowers",
     year: 2026,
+    atmosphere: {
+      artwork: "bone-botanical",
+      elements: ["botanical", "petals"],
+      intensity: 0.78,
+      motion: "drift",
+      petalCount: 5,
+    },
     stanzas: poem1,
   },
   { id: "03", title: "Dreams", slug: "dreams", year: 2023, stanzas: poem2 },
