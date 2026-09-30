@@ -616,6 +616,14 @@ test("Immortal Craft case study preserves the portfolio identity and transformat
   await expect(
     page.locator('img[src="/Images/case-studies/immortal-after-hero.webp"]'),
   ).toBeVisible();
+  for (const image of await page.locator(".case-study img").all()) {
+    await image.scrollIntoViewIfNeeded();
+    await expect
+      .poll(() =>
+        image.evaluate((node) => (node as HTMLImageElement).naturalWidth),
+      )
+      .toBeGreaterThan(0);
+  }
   expect(
     await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
   ).toBe(true);
@@ -627,6 +635,14 @@ test("Immortal Craft case study preserves the portfolio identity and transformat
   await page.setViewportSize({ width: 390, height: 844 });
   await page.reload();
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  for (const image of await page.locator(".case-study img").all()) {
+    await image.scrollIntoViewIfNeeded();
+    await expect
+      .poll(() =>
+        image.evaluate((node) => (node as HTMLImageElement).naturalWidth),
+      )
+      .toBeGreaterThan(0);
+  }
   expect(
     await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
   ).toBe(true);
