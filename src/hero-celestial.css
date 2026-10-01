@@ -108,41 +108,54 @@
 
 .hero-orbits-back {
   z-index: 1;
-  opacity: 0.12;
+  opacity: 0.24;
+  filter:
+    drop-shadow(0 0 3px rgba(110, 221, 212, 0.12))
+    drop-shadow(0 0 8px rgba(110, 221, 212, 0.045));
 }
 
 .hero-orbits-front {
   z-index: 3;
-  opacity: 0.1;
+  opacity: 0.46;
+  filter:
+    drop-shadow(0 0 4px rgba(110, 221, 212, 0.2))
+    drop-shadow(0 0 10px rgba(110, 221, 212, 0.07));
 }
 
 .hero-orbit {
   transform-box: view-box;
   transform-origin: 530px 350px;
+  will-change: transform;
 }
 
 .hero-orbit-line {
   fill: none;
   vector-effect: non-scaling-stroke;
-  stroke-width: 1.05;
+  stroke-width: 1.08;
   stroke-linecap: round;
 }
 
 .hero-orbit-line-cyan {
-  stroke: rgba(110, 221, 212, 0.42);
+  stroke: rgba(125, 240, 232, 0.66);
+  filter:
+    drop-shadow(0 0 2px rgba(125, 240, 232, 0.52))
+    drop-shadow(0 0 6px rgba(125, 240, 232, 0.18));
 }
 
 .hero-orbit-line-raspberry {
-  stroke: rgba(194, 24, 91, 0.34);
+  stroke: rgba(214, 57, 122, 0.48);
+  filter:
+    drop-shadow(0 0 2px rgba(214, 57, 122, 0.38))
+    drop-shadow(0 0 6px rgba(214, 57, 122, 0.14));
 }
 
 .hero-orbit-line-fine {
-  stroke-width: 0.72;
-  opacity: 0.72;
+  stroke-width: 0.78;
+  opacity: 0.76;
 }
 
 .hero-orbit-line-front {
-  opacity: 0.9;
+  opacity: 0.96;
 }
 
 .hero-celestial-grid {
@@ -222,20 +235,22 @@
 }
 
 :root[data-theme="dark"] .hero-orbits-back {
-  opacity: 0.42;
+  opacity: 0.44;
 }
 
 :root[data-theme="dark"] .hero-orbits-front {
-  opacity: 0.58;
-  filter: drop-shadow(0 0 3px rgba(110, 221, 212, 0.045));
+  opacity: 0.68;
+  filter:
+    drop-shadow(0 0 4px rgba(110, 221, 212, 0.22))
+    drop-shadow(0 0 11px rgba(110, 221, 212, 0.075));
 }
 
 :root[data-theme="dark"] .hero-orbit-line-cyan {
-  stroke: rgba(110, 221, 212, 0.58);
+  stroke: rgba(125, 240, 232, 0.76);
 }
 
 :root[data-theme="dark"] .hero-orbit-line-raspberry {
-  stroke: rgba(194, 24, 91, 0.52);
+  stroke: rgba(214, 57, 122, 0.58);
 }
 
 :root[data-theme="dark"] .hero-celestial-grid {
@@ -244,56 +259,56 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .hero-orbit-a {
-    animation: hero-orbit-a 28s ease-in-out infinite alternate;
+    animation: hero-orbit-a 18s linear infinite;
   }
 
   .hero-orbit-b {
-    animation: hero-orbit-b 34s ease-in-out infinite alternate;
+    animation: hero-orbit-b 24s linear infinite reverse;
   }
 
   .hero-orbit-c {
-    animation: hero-orbit-c 24s ease-in-out infinite alternate;
+    animation: hero-orbit-c 21s linear infinite;
   }
 
   @keyframes hero-orbit-a {
     from {
-      transform: rotate(-10deg);
+      transform: rotate(-9deg);
     }
     to {
-      transform: rotate(-3.5deg);
+      transform: rotate(351deg);
     }
   }
 
   @keyframes hero-orbit-b {
     from {
-      transform: rotate(11deg);
+      transform: rotate(12deg);
     }
     to {
-      transform: rotate(18deg);
+      transform: rotate(372deg);
     }
   }
 
   @keyframes hero-orbit-c {
     from {
-      transform: rotate(-20deg);
+      transform: rotate(-18deg);
     }
     to {
-      transform: rotate(-13deg);
+      transform: rotate(342deg);
     }
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-orbit-a {
-    transform: rotate(-7deg);
+    transform: rotate(-9deg);
   }
 
   .hero-orbit-b {
-    transform: rotate(14deg);
+    transform: rotate(12deg);
   }
 
   .hero-orbit-c {
-    transform: rotate(-17deg);
+    transform: rotate(-18deg);
   }
 }
 
@@ -463,15 +478,22 @@
   }
 
   :root[data-theme="dark"] .hero-orbits-back {
-    opacity: 0.17;
+    opacity: 0.3;
   }
 
   :root[data-theme="dark"] .hero-orbits-front {
-    opacity: 0.22;
+    opacity: 0.5;
+    filter:
+      drop-shadow(0 0 4px rgba(110, 221, 212, 0.2))
+      drop-shadow(0 0 9px rgba(110, 221, 212, 0.07));
+  }
+
+  :root[data-theme="dark"] .hero-orbit-line-cyan {
+    stroke: rgba(125, 240, 232, 0.68);
   }
 
   :root[data-theme="dark"] .hero-orbit-line-raspberry {
-    stroke: rgba(194, 24, 91, 0.42);
+    stroke: rgba(214, 57, 122, 0.44);
   }
 
   :root[data-theme="dark"] .hero-celestial-glow {
