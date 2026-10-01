@@ -859,10 +859,10 @@
 /* Mobile-only orbit pacing: keep the celestial motion restrained on phones. */
 @media (max-width: 600px) and (prefers-reduced-motion: no-preference) {
   .hero-orbit-a {
-    animation-duration: 66s;
+    animation-duration: 92s;
   }
 
   .hero-orbit-b {
-    animation-duration: 84s;
+    animation-duration: 118s;
   }
 }
