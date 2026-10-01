@@ -854,3 +854,15 @@
     opacity: 0.39;
   }
 }
+
+
+/* Mobile-only orbit pacing: keep the celestial motion restrained on phones. */
+@media (max-width: 600px) and (prefers-reduced-motion: no-preference) {
+  .hero-orbit-a {
+    animation-duration: 66s;
+  }
+
+  .hero-orbit-b {
+    animation-duration: 84s;
+  }
+}
