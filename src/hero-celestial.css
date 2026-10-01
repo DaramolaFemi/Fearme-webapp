@@ -745,17 +745,47 @@
 
 @media (min-width: 1441px) {
   :root:not([data-theme="dark"]) .hero-planet-light {
-    top: 48px;
-    right: clamp(56px, 4.8vw, 104px);
+    top: 68px;
+    right: clamp(6px, 1.4vw, 28px);
     width: min(40vw, 720px);
+    opacity: 0.50;
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.22) 5%,
+      rgba(0, 0, 0, 0.62) 13%,
+      #000 24%
+    );
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.22) 5%,
+      rgba(0, 0, 0, 0.62) 13%,
+      #000 24%
+    );
   }
 }
 
 @media (min-width: 1181px) and (max-width: 1440px) {
   :root:not([data-theme="dark"]) .hero-planet-light {
-    top: 60px;
-    right: clamp(22px, 2.8vw, 48px);
+    top: 80px;
+    right: clamp(-28px, -0.4vw, -6px);
     width: clamp(600px, 43vw, 690px);
+    opacity: 0.50;
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.22) 5%,
+      rgba(0, 0, 0, 0.62) 13%,
+      #000 24%
+    );
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.22) 5%,
+      rgba(0, 0, 0, 0.62) 13%,
+      #000 24%
+    );
   }
 }
 
@@ -790,7 +820,7 @@
     top: 108px;
     right: -52px;
     width: 356px;
-    opacity: 0.43;
+    opacity: 0.41;
     filter:
       saturate(0.72)
       contrast(0.93)
@@ -821,6 +851,6 @@
     top: 116px;
     right: -54px;
     width: 328px;
-    opacity: 0.41;
+    opacity: 0.39;
   }
 }
