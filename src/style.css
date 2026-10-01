@@ -248,45 +248,92 @@ h2 {
 }
 .hero-emphasis {
   display: inline-block;
-  transform-origin: 50% 75%;
-  will-change: transform;
+  white-space: nowrap;
 }
-.hero-emphasis-intent {
-  animation: intent-mark 7s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+
+.hero-letter {
+  display: inline-block;
+  transform-origin: 50% 78%;
+  will-change: transform, filter, text-shadow;
+  backface-visibility: hidden;
 }
-.hero-emphasis-weight {
-  animation: weight-mark 8s cubic-bezier(0.22, 1, 0.36, 1) 0.9s infinite;
+
+.hero-emphasis-intent .hero-letter {
+  animation: intent-resolve 16s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  animation-delay: calc(1.35s + (var(--i) * 52ms));
 }
-@keyframes intent-mark {
+
+.hero-emphasis-weight .hero-letter {
+  animation: weight-settle 16s cubic-bezier(0.2, 0.82, 0.24, 1) infinite;
+  animation-delay: calc(1.95s + (var(--i) * 48ms));
+}
+
+@keyframes intent-resolve {
   0%,
-  72%,
   100% {
-    transform: translateY(0) rotate(0deg);
+    transform: translate3d(0, 0, 0) rotate(0deg) scaleX(1);
+    filter: brightness(1);
+    text-shadow: 0 0 0 rgba(110, 221, 212, 0);
   }
-  79% {
-    transform: translateY(-0.045em) rotate(-0.7deg);
+
+  0.7% {
+    transform:
+      translate3d(var(--x, 0), 0.018em, 0)
+      rotate(var(--r, 0deg))
+      scaleX(1.006);
+    filter: brightness(1.06);
+    text-shadow: 0 0 0.12em rgba(110, 221, 212, 0.12);
   }
-  86% {
-    transform: translateY(0) rotate(0deg);
+
+  3.4% {
+    transform:
+      translate3d(calc(var(--x, 0) * -0.16), -0.008em, 0)
+      rotate(0deg)
+      scaleX(1.001);
+    filter: brightness(1.025);
+    text-shadow: 0 0 0.09em rgba(110, 221, 212, 0.08);
+  }
+
+  5.8%,
+  99.9% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scaleX(1);
+    filter: brightness(1);
+    text-shadow: 0 0 0 rgba(110, 221, 212, 0);
   }
 }
-@keyframes weight-mark {
+
+@keyframes weight-settle {
   0%,
-  74%,
   100% {
-    transform: translateY(0) scaleX(1);
+    transform: translate3d(0, 0, 0) scaleY(1);
+    filter: brightness(1);
+    text-shadow: 0 0 0 rgba(110, 221, 212, 0);
   }
-  81% {
-    transform: translateY(0.055em) scaleX(1.012);
+
+  0.6% {
+    transform: translate3d(0, -0.028em, 0) scaleY(1.002);
+    filter: brightness(1.035);
+    text-shadow: 0 0 0.1em rgba(110, 221, 212, 0.09);
   }
-  88% {
-    transform: translateY(0) scaleX(1);
+
+  3.2% {
+    transform: translate3d(0, 0.018em, 0) scaleY(0.998);
+    filter: brightness(1.02);
+    text-shadow: 0 0 0.07em rgba(110, 221, 212, 0.055);
+  }
+
+  5.8%,
+  99.9% {
+    transform: translate3d(0, 0, 0) scaleY(1);
+    filter: brightness(1);
+    text-shadow: 0 0 0 rgba(110, 221, 212, 0);
   }
 }
+
 @media (prefers-reduced-motion: reduce) {
-  .hero-emphasis-intent,
-  .hero-emphasis-weight {
+  .hero-letter {
     animation: none;
+    will-change: auto;
   }
 }
 .work {
