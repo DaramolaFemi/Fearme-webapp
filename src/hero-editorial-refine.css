@@ -38,16 +38,6 @@
 }
 
 @media (min-width: 1024px) {
-  .hero h1 {
-    margin: clamp(56px, 5vw, 78px) 0 clamp(40px, 3.8vw, 58px);
-    font-size: clamp(78px, 8.1vw, 132px);
-    line-height: 0.97;
-  }
-
-  .hero-line:nth-child(2) {
-    padding-left: clamp(58px, 7.6vw, 132px);
-  }
-
   .hero-bottom {
     grid-template-columns:
       minmax(330px, 1.08fr)
@@ -88,16 +78,6 @@
 }
 
 @media (min-width: 601px) and (max-width: 1023px) {
-  .hero h1 {
-    margin: 58px 0 42px;
-    font-size: clamp(58px, 8.7vw, 84px);
-    line-height: 0.99;
-  }
-
-  .hero-line:nth-child(2) {
-    padding-left: clamp(30px, 5vw, 58px);
-  }
-
   .hero-bottom {
     position: relative;
     display: grid;
@@ -155,16 +135,6 @@
     padding-top: 28px;
   }
 
-  .hero h1 {
-    margin: 42px 0 30px;
-    font-size: clamp(40px, 10.8vw, 46px);
-    line-height: 1.01;
-  }
-
-  .hero-line:nth-child(2) {
-    padding-left: clamp(14px, 4.8vw, 22px);
-  }
-
   .hero-bottom {
     min-height: 176px;
     margin-bottom: 32px;
@@ -212,14 +182,6 @@
 }
 
 @media (max-width: 340px) {
-  .hero h1 {
-    font-size: 38px;
-  }
-
-  .hero-line:nth-child(2) {
-    padding-left: 10px;
-  }
-
   .orbit {
     width: 78px;
     height: 84px;
