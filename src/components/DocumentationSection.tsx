@@ -13,11 +13,15 @@ export default function DocumentationSection() {
 
       <ScrollReveal className="section-heading documentation-heading">
         <h2>
-          I write the map
-          <br />
-          behind <em>the machine.</em>
+          <span className="documentation-heading-line documentation-heading-line-primary">
+            I write the map
+          </span>
+          <br className="documentation-heading-break" />
+          <span className="documentation-heading-line documentation-heading-line-secondary">
+            behind <em>the machine.</em>
+          </span>
         </h2>
-        <p>
+        <p className="documentation-heading-copy">
           Developer documentation, API references, and technical guides built to
           make complex systems easier to use.
         </p>
