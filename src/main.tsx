@@ -25,6 +25,7 @@ import "./desktop-identity-pass.css";
 import "./project-cards-editorial.css";
 import "./hero-editorial-refine.css";
 import "./hero-celestial.css";
+import "./poem-reader-editorial.css";
 import SitePage from "./components/SitePage";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
