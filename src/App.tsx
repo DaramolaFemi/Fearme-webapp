@@ -278,6 +278,12 @@ export default function App() {
               aria-hidden="true"
             />
 
+            <div className="hero-celestial-glints">
+              <span className="hero-glint hero-glint-a" />
+              <span className="hero-glint hero-glint-b" />
+              <span className="hero-glint hero-glint-c" />
+            </div>
+
             <svg
               className="hero-orbits hero-orbits-front"
               viewBox="0 0 1000 760"
@@ -296,6 +302,13 @@ export default function App() {
                 <g className="hero-orbit hero-orbit-a">
                   <ellipse
                     className="hero-orbit-line hero-orbit-line-cyan hero-orbit-line-front"
+                    cx="530"
+                    cy="350"
+                    rx="432"
+                    ry="142"
+                  />
+                  <ellipse
+                    className="hero-orbit-shimmer hero-orbit-shimmer-mobile"
                     cx="530"
                     cy="350"
                     rx="432"
@@ -326,6 +339,10 @@ export default function App() {
                 <g className="hero-orbit hero-orbit-a">
                   <path
                     className="hero-orbit-line hero-orbit-line-cyan hero-orbit-line-front hero-orbit-front-arc-primary"
+                    d="M 98 350 A 432 142 0 0 0 962 350"
+                  />
+                  <path
+                    className="hero-orbit-shimmer hero-orbit-shimmer-desktop"
                     d="M 98 350 A 432 142 0 0 0 962 350"
                   />
                 </g>

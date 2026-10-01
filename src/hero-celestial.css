@@ -896,3 +896,272 @@
     transform: rotate(10deg);
   }
 }
+
+
+/* Premium celestial micro-lighting */
+.hero-celestial-glints {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.hero-glint {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(220, 255, 250, 0.92);
+  opacity: 0;
+  transform: scale(0.72);
+  box-shadow:
+    0 0 4px rgba(110, 221, 212, 0.42),
+    0 0 12px rgba(110, 221, 212, 0.16),
+    0 0 24px rgba(110, 221, 212, 0.07);
+  will-change: opacity, transform;
+}
+
+.hero-glint-a {
+  top: 150px;
+  right: clamp(118px, 8.4vw, 164px);
+}
+
+.hero-glint-b {
+  top: 316px;
+  right: clamp(54px, 4.5vw, 90px);
+}
+
+.hero-glint-c {
+  top: 482px;
+  right: clamp(244px, 17vw, 324px);
+}
+
+.hero-orbit-shimmer {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+  stroke: rgba(190, 255, 247, 0.72);
+  stroke-width: 1.12;
+  stroke-linecap: round;
+  stroke-dasharray: 34 966;
+  opacity: 0.12;
+  filter:
+    drop-shadow(0 0 2px rgba(155, 246, 237, 0.22))
+    drop-shadow(0 0 5px rgba(110, 221, 212, 0.07));
+}
+
+:root:not([data-theme="dark"]) .hero-glint {
+  width: 2.6px;
+  height: 2.6px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow:
+    0 0 4px rgba(76, 164, 170, 0.24),
+    0 0 12px rgba(76, 164, 170, 0.09),
+    0 0 22px rgba(76, 164, 170, 0.035);
+}
+
+:root:not([data-theme="dark"]) .hero-orbit-shimmer {
+  stroke: rgba(84, 176, 180, 0.58);
+  opacity: 0.075;
+  filter:
+    drop-shadow(0 0 2px rgba(84, 176, 180, 0.12))
+    drop-shadow(0 0 5px rgba(84, 176, 180, 0.035));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-glint-a {
+    animation: hero-celestial-glint 7.4s ease-in-out infinite -1.4s;
+  }
+
+  .hero-glint-b {
+    animation: hero-celestial-glint 9.2s ease-in-out infinite -4.8s;
+  }
+
+  .hero-glint-c {
+    animation: hero-celestial-glint 10.8s ease-in-out infinite -7.2s;
+  }
+
+  .hero-orbit-shimmer {
+    animation: hero-ring-shimmer 18s linear infinite;
+  }
+
+  :root:not([data-theme="dark"]) .hero-glint-a {
+    animation-duration: 8.2s;
+  }
+
+  :root:not([data-theme="dark"]) .hero-glint-b {
+    animation-duration: 10.4s;
+  }
+
+  :root:not([data-theme="dark"]) .hero-glint-c {
+    animation-duration: 12s;
+  }
+
+  :root:not([data-theme="dark"]) .hero-orbit-shimmer {
+    animation-duration: 22s;
+  }
+
+  @keyframes hero-celestial-glint {
+    0%,
+    58%,
+    100% {
+      opacity: 0;
+      transform: scale(0.72);
+    }
+
+    66% {
+      opacity: 0.1;
+      transform: scale(0.82);
+    }
+
+    72% {
+      opacity: 0.66;
+      transform: scale(1);
+    }
+
+    80% {
+      opacity: 0.14;
+      transform: scale(0.88);
+    }
+
+    86% {
+      opacity: 0;
+      transform: scale(0.76);
+    }
+  }
+
+  @keyframes hero-ring-shimmer {
+    from {
+      stroke-dashoffset: 0;
+    }
+
+    to {
+      stroke-dashoffset: -1000;
+    }
+  }
+}
+
+@media (min-width: 1181px) and (max-width: 1440px) {
+  .hero-glint-a {
+    top: 158px;
+    right: 92px;
+  }
+
+  .hero-glint-b {
+    top: 326px;
+    right: 34px;
+  }
+
+  .hero-glint-c {
+    top: 486px;
+    right: 230px;
+  }
+
+  :root:not([data-theme="dark"]) .hero-glint-a {
+    right: 74px;
+  }
+
+  :root:not([data-theme="dark"]) .hero-glint-b {
+    right: 18px;
+  }
+
+  :root:not([data-theme="dark"]) .hero-glint-c {
+    right: 210px;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1180px) {
+  .hero-glint-a {
+    top: 164px;
+    right: 76px;
+  }
+
+  .hero-glint-b {
+    top: 298px;
+    right: 30px;
+  }
+
+  .hero-glint-c {
+    top: 414px;
+    right: 170px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-glint-c {
+    display: none;
+  }
+
+  .hero-orbit-shimmer {
+    stroke-width: 1;
+    stroke-dasharray: 26 974;
+    opacity: 0.075;
+  }
+
+  :root:not([data-theme="dark"]) .hero-orbit-shimmer {
+    opacity: 0.05;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-glint {
+    width: 2.4px;
+    height: 2.4px;
+  }
+
+  .hero-glint-a {
+    top: 164px;
+    right: 34px;
+  }
+
+  .hero-glint-b {
+    top: 310px;
+    right: 18px;
+  }
+
+  :root:not([data-theme="dark"]) .hero-glint {
+    width: 2.1px;
+    height: 2.1px;
+  }
+
+  :root:not([data-theme="dark"]) .hero-glint-a {
+    top: 158px;
+    right: 30px;
+  }
+
+  :root:not([data-theme="dark"]) .hero-glint-b {
+    top: 296px;
+    right: 14px;
+  }
+
+  .hero-orbit-shimmer {
+    stroke-dasharray: 22 978;
+    opacity: 0.055;
+  }
+
+  :root:not([data-theme="dark"]) .hero-orbit-shimmer {
+    opacity: 0.035;
+  }
+}
+
+@media (max-width: 600px) and (prefers-reduced-motion: no-preference) {
+  .hero-orbit-shimmer {
+    animation-duration: 32s;
+  }
+
+  :root:not([data-theme="dark"]) .hero-orbit-shimmer {
+    animation-duration: 38s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-glint {
+    animation: none;
+    opacity: 0.06;
+    transform: scale(0.82);
+  }
+
+  .hero-orbit-shimmer {
+    animation: none;
+    opacity: 0;
+  }
+}
