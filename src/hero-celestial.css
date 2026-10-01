@@ -158,6 +158,14 @@
   opacity: 0.96;
 }
 
+.hero-orbit-front-desktop {
+  display: none;
+}
+
+.hero-orbit-front-mobile {
+  display: block;
+}
+
 .hero-celestial-grid {
   position: absolute;
   inset: 0;
@@ -190,6 +198,30 @@
     grid-column: 2;
     width: min(100%, 280px);
     justify-self: end;
+  }
+
+  .hero-orbit-front-mobile {
+    display: none;
+  }
+
+  .hero-orbit-front-desktop {
+    display: block;
+  }
+
+  .hero-orbits-back {
+    opacity: 0.1;
+  }
+
+  .hero-orbits-front {
+    opacity: 0.24;
+  }
+
+  :root[data-theme="dark"] .hero-orbits-back {
+    opacity: 0.15;
+  }
+
+  :root[data-theme="dark"] .hero-orbits-front {
+    opacity: 0.3;
   }
 }
 
@@ -318,9 +350,9 @@
   }
 
   .hero-orbits {
-    top: 145px;
-    right: clamp(42px, 4vw, 60px);
-    width: clamp(580px, 41vw, 680px);
+    top: 110px;
+    right: clamp(-4px, 0.8vw, 14px);
+    width: clamp(680px, 49vw, 760px);
   }
 
   .hero-celestial-glow {
@@ -336,9 +368,9 @@
   }
 
   .hero-orbits {
-    top: 152px;
-    right: clamp(78px, 5.4vw, 108px);
-    width: min(39.5vw, 710px);
+    top: 104px;
+    right: clamp(18px, 1.7vw, 34px);
+    width: min(47.5vw, 820px);
   }
 
   .hero-celestial-glow {
@@ -366,9 +398,9 @@
   }
 
   .hero-orbits {
-    top: 160px;
-    right: 16px;
-    width: min(47vw, 530px);
+    top: 130px;
+    right: -20px;
+    width: min(56vw, 580px);
   }
 
   .hero-celestial-glow {
