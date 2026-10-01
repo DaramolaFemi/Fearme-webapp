@@ -3893,3 +3893,122 @@ a.documentation-cta {
     opacity: 0.32;
   }
 }
+
+
+/* Shared poetry reading identity: quiet title thread + stanza cadence marks. */
+.poem-page h1 {
+  position: relative;
+  font-size: clamp(39px, 4.4vw, 60px);
+}
+
+/*
+  A short thread beneath every poem title gives the reading pages a common
+  manuscript-like signature. Individual poem artwork remains behind this
+  layer, so Bones and Flowers keeps its existing composition untouched.
+*/
+.poem-page h1::after {
+  content: "";
+  display: block;
+  width: 42px;
+  height: 1px;
+  margin-top: 20px;
+  background: var(--accent);
+  opacity: 0.58;
+}
+
+:root[data-theme="dark"] .poem-page h1::after {
+  background: var(--night-cyan);
+  opacity: 0.5;
+}
+
+/*
+  Stanza cadence marks act like restrained marginal annotations rather than
+  decoration. Their changing lengths keep the rhythm human and editorial.
+*/
+.poem-body p {
+  position: relative;
+}
+
+.poem-body p::before {
+  content: "";
+  position: absolute;
+  top: 0.9em;
+  left: -28px;
+  width: 11px;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.26;
+}
+
+.poem-body p:nth-child(3n + 2)::before {
+  width: 7px;
+  opacity: 0.2;
+}
+
+.poem-body p:nth-child(3n)::before {
+  width: 15px;
+  opacity: 0.22;
+}
+
+.poem-body p:first-child::before {
+  width: 18px;
+  opacity: 0.48;
+}
+
+:root[data-theme="dark"] .poem-body p::before {
+  background: var(--night-cyan);
+}
+
+.poem-navigation a {
+  text-decoration-color: color-mix(in srgb, var(--accent) 58%, transparent);
+  transition:
+    color 220ms ease,
+    text-decoration-color 220ms ease;
+}
+
+:root[data-theme="dark"] .poem-navigation a {
+  text-decoration-color: color-mix(in srgb, var(--night-cyan) 54%, transparent);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .poem-navigation a:hover {
+    text-decoration-color: currentColor;
+  }
+}
+
+@media (max-width: 600px) {
+  .poem-page h1 {
+    font-size: clamp(34px, 9.2vw, 40px);
+    line-height: 1.07;
+  }
+
+  .poem-page h1::after {
+    width: 34px;
+    margin-top: 17px;
+  }
+
+  .poem-body p::before {
+    left: -17px;
+    width: 8px;
+    opacity: 0.22;
+  }
+
+  .poem-body p:nth-child(3n + 2)::before {
+    width: 5px;
+  }
+
+  .poem-body p:nth-child(3n)::before {
+    width: 10px;
+  }
+
+  .poem-body p:first-child::before {
+    width: 12px;
+    opacity: 0.42;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .poem-navigation a {
+    transition: none;
+  }
+}
