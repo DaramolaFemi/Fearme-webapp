@@ -369,29 +369,49 @@
 
   .hero-planet {
     top: 118px;
-    right: -30px;
+    right: -36px;
     width: 330px;
     height: auto !important;
-    opacity: 0.08;
-    -webkit-mask-image: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(0, 0, 0, 0.4) 7%,
-      rgba(0, 0, 0, 0.88) 18%,
-      #000 28%
-    );
-    mask-image: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(0, 0, 0, 0.4) 7%,
-      rgba(0, 0, 0, 0.88) 18%,
-      #000 28%
-    );
+    opacity: 0.075;
+    -webkit-mask-image:
+      linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(0, 0, 0, 0.4) 7%,
+        rgba(0, 0, 0, 0.88) 18%,
+        #000 28%
+      ),
+      linear-gradient(
+        180deg,
+        #000 0%,
+        #000 72%,
+        rgba(0, 0, 0, 0.72) 82%,
+        rgba(0, 0, 0, 0.28) 92%,
+        transparent 100%
+      );
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(0, 0, 0, 0.4) 7%,
+        rgba(0, 0, 0, 0.88) 18%,
+        #000 28%
+      ),
+      linear-gradient(
+        180deg,
+        #000 0%,
+        #000 72%,
+        rgba(0, 0, 0, 0.72) 82%,
+        rgba(0, 0, 0, 0.28) 92%,
+        transparent 100%
+      );
+    mask-composite: intersect;
   }
 
   .hero-orbits {
     top: 150px;
-    right: -45px;
+    right: -53px;
     width: 380px;
   }
 
@@ -434,20 +454,20 @@
   }
 
   :root[data-theme="dark"] .hero-planet {
-    opacity: 0.72;
+    opacity: 0.64;
     filter:
       saturate(0.82)
-      contrast(1.06)
-      brightness(0.7)
-      drop-shadow(0 0 12px rgba(110, 221, 212, 0.04));
+      contrast(1.05)
+      brightness(0.68)
+      drop-shadow(0 0 10px rgba(110, 221, 212, 0.035));
   }
 
   :root[data-theme="dark"] .hero-orbits-back {
-    opacity: 0.22;
+    opacity: 0.17;
   }
 
   :root[data-theme="dark"] .hero-orbits-front {
-    opacity: 0.3;
+    opacity: 0.22;
   }
 
   :root[data-theme="dark"] .hero-orbit-line-raspberry {
@@ -480,13 +500,13 @@
 @media (max-width: 360px) {
   .hero-planet {
     top: 124px;
-    right: -34px;
+    right: -40px;
     width: 306px;
   }
 
   .hero-orbits {
     top: 154px;
-    right: -47px;
+    right: -55px;
     width: 352px;
   }
 }
