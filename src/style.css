@@ -3969,3 +3969,75 @@ a.documentation-cta {
     line-height: 1.07;
   }
 }
+
+
+/* Desktop documentation-heading composition */
+@media (min-width: 1024px) {
+  .documentation-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1.18fr) minmax(320px, 0.56fr);
+    align-items: center;
+    column-gap: clamp(64px, 8vw, 138px);
+    margin-top: 16px;
+    margin-bottom: 54px;
+  }
+
+  .documentation-heading h2 {
+    max-width: 760px;
+    margin: 0;
+    line-height: 0.94;
+  }
+
+  .documentation-heading-line {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .documentation-heading-break {
+    display: none;
+  }
+
+  .documentation-heading-line-secondary {
+    margin-top: -0.025em;
+    padding-left: 0.07em;
+  }
+
+  .documentation-heading > .documentation-heading-copy {
+    position: relative;
+    justify-self: end;
+    align-self: center;
+    width: min(100%, 390px);
+    max-width: 390px;
+    margin: 0;
+    padding: 12px 0 12px 28px;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  .documentation-heading-copy::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    bottom: 0.5em;
+    width: 1px;
+    background:
+      linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--night-cyan) 70%, transparent),
+        color-mix(in srgb, var(--night-cyan) 18%, transparent)
+      );
+  }
+
+  .documentation-heading-copy::after {
+    content: "";
+    position: absolute;
+    left: -2px;
+    top: 0.5em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 28%, transparent);
+  }
+}
