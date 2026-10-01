@@ -616,22 +616,22 @@
   }
 
   :root[data-theme="dark"] .hero-orbits-back {
-    opacity: 0.14;
+    opacity: 0.11;
   }
 
   :root[data-theme="dark"] .hero-orbits-front {
-    opacity: 0.24;
+    opacity: 0.19;
     filter:
       drop-shadow(0 0 3px rgba(110, 221, 212, 0.1))
       drop-shadow(0 0 6px rgba(110, 221, 212, 0.03));
   }
 
   :root[data-theme="dark"] .hero-orbit-line-cyan {
-    stroke: rgba(125, 240, 232, 0.5);
+    stroke: rgba(125, 240, 232, 0.44);
   }
 
   :root[data-theme="dark"] .hero-orbit-line-raspberry {
-    stroke: rgba(214, 57, 122, 0.22);
+    stroke: rgba(214, 57, 122, 0.16);
   }
 
   :root[data-theme="dark"] .hero-celestial-glow {
@@ -856,13 +856,43 @@
 }
 
 
-/* Mobile-only orbit pacing: keep the celestial motion restrained on phones. */
+/* Mobile-only orbit behavior.
+   Keep the rings near the planet's equator so they read as orbital bands,
+   not rotating vertical loops. */
 @media (max-width: 600px) and (prefers-reduced-motion: no-preference) {
   .hero-orbit-a {
-    animation-duration: 92s;
+    animation: hero-orbit-a-mobile 52s ease-in-out infinite alternate;
   }
 
   .hero-orbit-b {
-    animation-duration: 118s;
+    animation: hero-orbit-b-mobile 68s ease-in-out infinite alternate;
+  }
+
+  @keyframes hero-orbit-a-mobile {
+    from {
+      transform: rotate(-10deg);
+    }
+    to {
+      transform: rotate(-4deg);
+    }
+  }
+
+  @keyframes hero-orbit-b-mobile {
+    from {
+      transform: rotate(7deg);
+    }
+    to {
+      transform: rotate(13deg);
+    }
+  }
+}
+
+@media (max-width: 600px) and (prefers-reduced-motion: reduce) {
+  .hero-orbit-a {
+    transform: rotate(-7deg);
+  }
+
+  .hero-orbit-b {
+    transform: rotate(10deg);
   }
 }
