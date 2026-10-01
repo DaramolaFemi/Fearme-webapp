@@ -108,18 +108,18 @@
 
 .hero-orbits-back {
   z-index: 1;
-  opacity: 0.24;
+  opacity: 0.12;
   filter:
-    drop-shadow(0 0 3px rgba(110, 221, 212, 0.12))
-    drop-shadow(0 0 8px rgba(110, 221, 212, 0.045));
+    drop-shadow(0 0 2px rgba(110, 221, 212, 0.07))
+    drop-shadow(0 0 5px rgba(110, 221, 212, 0.025));
 }
 
 .hero-orbits-front {
   z-index: 3;
-  opacity: 0.46;
+  opacity: 0.22;
   filter:
-    drop-shadow(0 0 4px rgba(110, 221, 212, 0.2))
-    drop-shadow(0 0 10px rgba(110, 221, 212, 0.07));
+    drop-shadow(0 0 3px rgba(110, 221, 212, 0.11))
+    drop-shadow(0 0 7px rgba(110, 221, 212, 0.035));
 }
 
 .hero-orbit {
@@ -136,17 +136,17 @@
 }
 
 .hero-orbit-line-cyan {
-  stroke: rgba(125, 240, 232, 0.66);
+  stroke: rgba(125, 240, 232, 0.48);
   filter:
-    drop-shadow(0 0 2px rgba(125, 240, 232, 0.52))
-    drop-shadow(0 0 6px rgba(125, 240, 232, 0.18));
+    drop-shadow(0 0 1.5px rgba(125, 240, 232, 0.28))
+    drop-shadow(0 0 4px rgba(125, 240, 232, 0.08));
 }
 
 .hero-orbit-line-raspberry {
-  stroke: rgba(214, 57, 122, 0.48);
+  stroke: rgba(214, 57, 122, 0.24);
   filter:
-    drop-shadow(0 0 2px rgba(214, 57, 122, 0.38))
-    drop-shadow(0 0 6px rgba(214, 57, 122, 0.14));
+    drop-shadow(0 0 1.5px rgba(214, 57, 122, 0.18))
+    drop-shadow(0 0 4px rgba(214, 57, 122, 0.05));
 }
 
 .hero-orbit-line-fine {
@@ -235,22 +235,22 @@
 }
 
 :root[data-theme="dark"] .hero-orbits-back {
-  opacity: 0.44;
+  opacity: 0.18;
 }
 
 :root[data-theme="dark"] .hero-orbits-front {
-  opacity: 0.68;
+  opacity: 0.28;
   filter:
-    drop-shadow(0 0 4px rgba(110, 221, 212, 0.22))
-    drop-shadow(0 0 11px rgba(110, 221, 212, 0.075));
+    drop-shadow(0 0 3px rgba(110, 221, 212, 0.12))
+    drop-shadow(0 0 7px rgba(110, 221, 212, 0.04));
 }
 
 :root[data-theme="dark"] .hero-orbit-line-cyan {
-  stroke: rgba(125, 240, 232, 0.76);
+  stroke: rgba(125, 240, 232, 0.56);
 }
 
 :root[data-theme="dark"] .hero-orbit-line-raspberry {
-  stroke: rgba(214, 57, 122, 0.58);
+  stroke: rgba(214, 57, 122, 0.26);
 }
 
 :root[data-theme="dark"] .hero-celestial-grid {
@@ -259,15 +259,15 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .hero-orbit-a {
-    animation: hero-orbit-a 18s linear infinite;
+    animation: hero-orbit-a 48s linear infinite;
   }
 
   .hero-orbit-b {
-    animation: hero-orbit-b 24s linear infinite reverse;
+    animation: hero-orbit-b 62s linear infinite reverse;
   }
 
   .hero-orbit-c {
-    animation: hero-orbit-c 21s linear infinite;
+    animation: hero-orbit-c 54s linear infinite;
   }
 
   @keyframes hero-orbit-a {
@@ -478,22 +478,22 @@
   }
 
   :root[data-theme="dark"] .hero-orbits-back {
-    opacity: 0.3;
+    opacity: 0.14;
   }
 
   :root[data-theme="dark"] .hero-orbits-front {
-    opacity: 0.5;
+    opacity: 0.24;
     filter:
-      drop-shadow(0 0 4px rgba(110, 221, 212, 0.2))
-      drop-shadow(0 0 9px rgba(110, 221, 212, 0.07));
+      drop-shadow(0 0 3px rgba(110, 221, 212, 0.1))
+      drop-shadow(0 0 6px rgba(110, 221, 212, 0.03));
   }
 
   :root[data-theme="dark"] .hero-orbit-line-cyan {
-    stroke: rgba(125, 240, 232, 0.68);
+    stroke: rgba(125, 240, 232, 0.5);
   }
 
   :root[data-theme="dark"] .hero-orbit-line-raspberry {
-    stroke: rgba(214, 57, 122, 0.44);
+    stroke: rgba(214, 57, 122, 0.22);
   }
 
   :root[data-theme="dark"] .hero-celestial-glow {
