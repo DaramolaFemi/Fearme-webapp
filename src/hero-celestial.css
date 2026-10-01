@@ -1165,3 +1165,138 @@
     opacity: 0;
   }
 }
+
+
+/* Keep every celestial glint physically inside the planet disc. */
+.hero-celestial-glints {
+  inset: auto;
+  top: 74px;
+  right: clamp(54px, 5vw, 96px);
+  width: clamp(520px, 37vw, 640px);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 50%;
+  clip-path: circle(48% at 50% 50%);
+}
+
+.hero-glint-a {
+  top: 20%;
+  left: 69%;
+  right: auto;
+}
+
+.hero-glint-b {
+  top: 51%;
+  left: 77%;
+  right: auto;
+}
+
+.hero-glint-c {
+  top: 72%;
+  left: 58%;
+  right: auto;
+}
+
+:root:not([data-theme="dark"]) .hero-celestial-glints {
+  top: 56px;
+  right: clamp(32px, 4.2vw, 78px);
+  width: clamp(560px, 39vw, 700px);
+}
+
+@media (min-width: 1441px) {
+  .hero-celestial-glints {
+    top: 80px;
+    right: clamp(72px, 6vw, 128px);
+    width: min(36vw, 650px);
+  }
+
+  :root:not([data-theme="dark"]) .hero-celestial-glints {
+    top: 68px;
+    right: clamp(6px, 1.4vw, 28px);
+    width: min(40vw, 720px);
+  }
+}
+
+@media (min-width: 1181px) and (max-width: 1440px) {
+  .hero-celestial-glints {
+    top: 88px;
+  }
+
+  :root:not([data-theme="dark"]) .hero-celestial-glints {
+    top: 80px;
+    right: clamp(-28px, -0.4vw, -6px);
+    width: clamp(600px, 43vw, 690px);
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1180px) {
+  .hero-celestial-glints {
+    top: 98px;
+    right: 28px;
+    width: min(44vw, 500px);
+  }
+
+  :root:not([data-theme="dark"]) .hero-celestial-glints {
+    top: 84px;
+    right: 2px;
+    width: min(49vw, 570px);
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1180px) {
+  .hero-celestial-glints {
+    top: 108px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .hero-celestial-glints {
+    top: 104px;
+    right: -18px;
+    width: 440px;
+  }
+
+  :root:not([data-theme="dark"]) .hero-celestial-glints {
+    top: 90px;
+    right: -40px;
+    width: 470px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-celestial-glints {
+    top: 118px;
+    right: -36px;
+    width: 330px;
+  }
+
+  :root:not([data-theme="dark"]) .hero-celestial-glints {
+    top: 108px;
+    right: -52px;
+    width: 356px;
+  }
+
+  .hero-glint-a {
+    top: 21%;
+    left: 70%;
+  }
+
+  .hero-glint-b {
+    top: 55%;
+    left: 76%;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-celestial-glints {
+    top: 124px;
+    right: -40px;
+    width: 306px;
+  }
+
+  :root:not([data-theme="dark"]) .hero-celestial-glints {
+    top: 116px;
+    right: -54px;
+    width: 328px;
+  }
+}
