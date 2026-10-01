@@ -346,41 +346,41 @@
 
 @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
   .hero-orbit-a {
-    animation: hero-orbit-a-desktop 46s ease-in-out infinite alternate;
+    animation: hero-orbit-a-desktop 44s ease-in-out infinite alternate;
   }
 
   .hero-orbit-b {
-    animation: hero-orbit-b-desktop 58s ease-in-out infinite alternate;
+    animation: hero-orbit-b-desktop 56s ease-in-out infinite alternate;
   }
 
   .hero-orbit-c {
-    animation: hero-orbit-c-desktop 64s ease-in-out infinite alternate;
+    animation: hero-orbit-c-desktop 62s ease-in-out infinite alternate;
   }
 
   @keyframes hero-orbit-a-desktop {
     from {
-      transform: rotate(-12deg);
+      transform: rotate(-14deg);
     }
     to {
-      transform: rotate(-5deg);
+      transform: rotate(-3deg);
     }
   }
 
   @keyframes hero-orbit-b-desktop {
     from {
-      transform: rotate(10deg);
+      transform: rotate(8deg);
     }
     to {
-      transform: rotate(18deg);
+      transform: rotate(20deg);
     }
   }
 
   @keyframes hero-orbit-c-desktop {
     from {
-      transform: rotate(64deg);
+      transform: rotate(62deg);
     }
     to {
-      transform: rotate(72deg);
+      transform: rotate(74deg);
     }
   }
 }
