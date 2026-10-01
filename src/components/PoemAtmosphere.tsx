@@ -44,6 +44,20 @@ export default function PoemAtmosphere({ config }: { config?: PoemAtmosphereConf
             decoding="async"
             draggable={false}
           />
+          <img
+            className="poem-atmosphere-mobile-frame poem-atmosphere-mobile-frame-top"
+            src="/Images/poetry/bones-and-flowers-mobile.webp"
+            alt=""
+            decoding="async"
+            draggable={false}
+          />
+          <img
+            className="poem-atmosphere-mobile-frame poem-atmosphere-mobile-frame-bottom"
+            src="/Images/poetry/bones-and-flowers-mobile.webp"
+            alt=""
+            decoding="async"
+            draggable={false}
+          />
         </>
       )}
 

@@ -3740,3 +3740,68 @@ a.documentation-cta {
     border-top-color: rgba(110, 221, 212, 0.12);
   }
 }
+
+
+/* Bones and Flowers: authored mobile composite supplied for the phone reading experience. */
+.poem-atmosphere-mobile-frame {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  /*
+    Mobile uses one purpose-built composite rather than enlarging the
+    desktop ribcage/hand crops. This keeps the anatomical artwork sharp,
+    anchored to the margins, and away from the poem's reading column.
+  */
+  .poem-atmosphere-bone-botanical .poem-atmosphere-art-left,
+  .poem-atmosphere-bone-botanical .poem-atmosphere-art-right {
+    display: none;
+  }
+
+  .poem-atmosphere-bone-botanical .poem-atmosphere-mobile-frame {
+    position: absolute;
+    left: 50%;
+    display: block;
+    width: min(112vw, 500px);
+    max-width: none;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    transform: translateX(-50%);
+    opacity: 0.42;
+    filter: saturate(0.82) contrast(0.96) brightness(0.82);
+  }
+
+  .poem-atmosphere-bone-botanical .poem-atmosphere-mobile-frame-top {
+    top: 4.5%;
+    clip-path: inset(0 0 48% 0);
+    -webkit-clip-path: inset(0 0 48% 0);
+  }
+
+  .poem-atmosphere-bone-botanical .poem-atmosphere-mobile-frame-bottom {
+    bottom: 4.5%;
+    clip-path: inset(45% 0 0 0);
+    -webkit-clip-path: inset(45% 0 0 0);
+  }
+
+  .poem-atmosphere-bone-botanical .poem-petal {
+    opacity: 0.34;
+  }
+
+  :root[data-theme="light"] .poem-atmosphere-bone-botanical .poem-atmosphere-mobile-frame {
+    opacity: 0.28;
+    filter: saturate(0.68) contrast(0.94) brightness(0.76);
+  }
+}
+
+@media (max-width: 380px) {
+  .poem-atmosphere-bone-botanical .poem-atmosphere-mobile-frame {
+    width: 116vw;
+    opacity: 0.38;
+  }
+
+  :root[data-theme="light"] .poem-atmosphere-bone-botanical .poem-atmosphere-mobile-frame {
+    opacity: 0.25;
+  }
+}
