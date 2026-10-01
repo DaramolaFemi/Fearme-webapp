@@ -272,7 +272,8 @@ export default function App() {
                 it understood.
               </p>
               <a href="#work" className="text-link">
-                Explore my work <Arrow />
+                Explore my work
+                <span className="hero-action-line" aria-hidden="true" />
               </a>
             </div>
             <div className="orbit" aria-hidden="true">
@@ -291,7 +292,8 @@ export default function App() {
               Latest work / Flux & Form
               <br />
               <span className="arrow-label">
-                Watch the studio move <Arrow />
+                Watch the studio move
+                <span className="hero-action-line" aria-hidden="true" />
               </span>
             </a>
           </div>
