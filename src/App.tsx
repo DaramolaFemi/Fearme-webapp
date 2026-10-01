@@ -17,6 +17,7 @@ import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from
 import { MotionConfig, motion, useReducedMotion } from "motion/react";
 import { shouldRestoreReloadScroll } from "./utils/navigation";
 import heroPlanetDataUri from "./assets/celestial/planet";
+import heroLightPlanetDataUri from "./assets/celestial-light/planet";
 
 type ProjectCardProps = {
   project: Project;
@@ -258,11 +259,21 @@ export default function App() {
             </svg>
 
             <img
-              className="hero-planet"
+              className="hero-planet hero-planet-dark"
               src={heroPlanetDataUri}
               alt=""
               width={600}
               height={600}
+              decoding="async"
+              aria-hidden="true"
+            />
+
+            <img
+              className="hero-planet-light"
+              src={heroLightPlanetDataUri}
+              alt=""
+              width={800}
+              height={800}
               decoding="async"
               aria-hidden="true"
             />

@@ -670,3 +670,157 @@
     width: 352px;
   }
 }
+
+
+/* Dedicated light-mode celestial companion.
+   The dark hero remains untouched; light mode gets its own brighter sculptural asset. */
+.hero-planet-light {
+  display: none;
+}
+
+:root:not([data-theme="dark"]) .hero-planet-dark {
+  display: none;
+}
+
+:root:not([data-theme="dark"]) .hero-planet-light {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  top: 56px;
+  right: clamp(32px, 4.2vw, 78px);
+  width: clamp(560px, 39vw, 700px);
+  height: auto !important;
+  max-width: none;
+  object-fit: contain;
+  opacity: 0.56;
+  filter:
+    saturate(0.76)
+    contrast(0.94)
+    brightness(0.99)
+    drop-shadow(0 14px 34px rgba(68, 155, 160, 0.08))
+    drop-shadow(0 0 18px rgba(110, 221, 212, 0.12));
+}
+
+:root:not([data-theme="dark"]) .hero-celestial-glow {
+  top: 42px;
+  right: 1vw;
+  width: min(46vw, 690px);
+  opacity: 0.15;
+  background:
+    radial-gradient(
+      circle at 76% 25%,
+      rgba(92, 205, 205, 0.16),
+      rgba(92, 205, 205, 0.05) 24%,
+      transparent 60%
+    );
+}
+
+:root:not([data-theme="dark"]) .hero-orbits-back {
+  opacity: 0.045;
+  filter:
+    drop-shadow(0 0 2px rgba(70, 164, 165, 0.04))
+    drop-shadow(0 0 5px rgba(70, 164, 165, 0.018));
+}
+
+:root:not([data-theme="dark"]) .hero-orbits-front {
+  opacity: 0.085;
+  filter:
+    drop-shadow(0 0 2px rgba(70, 164, 165, 0.055))
+    drop-shadow(0 0 6px rgba(70, 164, 165, 0.02));
+}
+
+:root:not([data-theme="dark"]) .hero-orbit-line-cyan {
+  stroke: rgba(57, 145, 151, 0.36);
+  filter:
+    drop-shadow(0 0 1.5px rgba(57, 145, 151, 0.11))
+    drop-shadow(0 0 4px rgba(57, 145, 151, 0.035));
+}
+
+:root:not([data-theme="dark"]) .hero-orbit-line-raspberry {
+  stroke: rgba(194, 24, 91, 0.16);
+  filter:
+    drop-shadow(0 0 1.5px rgba(194, 24, 91, 0.07))
+    drop-shadow(0 0 4px rgba(194, 24, 91, 0.02));
+}
+
+@media (min-width: 1441px) {
+  :root:not([data-theme="dark"]) .hero-planet-light {
+    top: 48px;
+    right: clamp(56px, 4.8vw, 104px);
+    width: min(40vw, 720px);
+  }
+}
+
+@media (min-width: 1181px) and (max-width: 1440px) {
+  :root:not([data-theme="dark"]) .hero-planet-light {
+    top: 60px;
+    right: clamp(22px, 2.8vw, 48px);
+    width: clamp(600px, 43vw, 690px);
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1180px) {
+  :root:not([data-theme="dark"]) .hero-planet-light {
+    top: 84px;
+    right: 2px;
+    width: min(49vw, 570px);
+    opacity: 0.52;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  :root:not([data-theme="dark"]) .hero-planet-light {
+    top: 90px;
+    right: -40px;
+    width: 470px;
+    opacity: 0.46;
+  }
+
+  :root:not([data-theme="dark"]) .hero-orbits-back {
+    opacity: 0.035;
+  }
+
+  :root:not([data-theme="dark"]) .hero-orbits-front {
+    opacity: 0.07;
+  }
+}
+
+@media (max-width: 600px) {
+  :root:not([data-theme="dark"]) .hero-planet-light {
+    top: 108px;
+    right: -52px;
+    width: 356px;
+    opacity: 0.43;
+    filter:
+      saturate(0.72)
+      contrast(0.93)
+      brightness(1)
+      drop-shadow(0 10px 24px rgba(68, 155, 160, 0.055))
+      drop-shadow(0 0 14px rgba(110, 221, 212, 0.09));
+  }
+
+  :root:not([data-theme="dark"]) .hero-orbits-back {
+    opacity: 0.032;
+  }
+
+  :root:not([data-theme="dark"]) .hero-orbits-front {
+    opacity: 0.062;
+  }
+
+  :root:not([data-theme="dark"]) .hero-celestial-glow {
+    top: 86px;
+    right: -42px;
+    width: 360px;
+    opacity: 0.09;
+    filter: blur(30px);
+  }
+}
+
+@media (max-width: 360px) {
+  :root:not([data-theme="dark"]) .hero-planet-light {
+    top: 116px;
+    right: -54px;
+    width: 328px;
+    opacity: 0.41;
+  }
+}
