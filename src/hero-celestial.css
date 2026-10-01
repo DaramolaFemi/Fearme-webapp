@@ -312,17 +312,37 @@
   }
 }
 
+@media (min-width: 1181px) and (max-width: 1440px) {
+  .hero-planet {
+    top: 88px;
+  }
+
+  .hero-orbits {
+    top: 145px;
+    right: clamp(42px, 4vw, 60px);
+    width: clamp(580px, 41vw, 680px);
+  }
+
+  .hero-celestial-glow {
+    top: 62px;
+  }
+}
+
 @media (min-width: 1441px) {
   .hero-planet {
-    top: 66px;
+    top: 80px;
     right: clamp(72px, 6vw, 128px);
     width: min(36vw, 650px);
   }
 
   .hero-orbits {
-    top: 125px;
-    right: clamp(28px, 3.5vw, 70px);
-    width: min(42vw, 760px);
+    top: 152px;
+    right: clamp(78px, 5.4vw, 108px);
+    width: min(39.5vw, 710px);
+  }
+
+  .hero-celestial-glow {
+    top: 62px;
   }
 }
 
@@ -337,6 +357,22 @@
     top: 142px;
     right: 2px;
     width: min(50vw, 560px);
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1180px) {
+  .hero-planet {
+    top: 108px;
+  }
+
+  .hero-orbits {
+    top: 160px;
+    right: 16px;
+    width: min(47vw, 530px);
+  }
+
+  .hero-celestial-glow {
+    top: 60px;
   }
 }
 
