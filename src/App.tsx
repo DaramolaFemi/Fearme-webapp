@@ -16,6 +16,7 @@ import PoetrySection from "./components/PoetrySection";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { MotionConfig, motion, useReducedMotion } from "motion/react";
 import { shouldRestoreReloadScroll } from "./utils/navigation";
+import heroPlanetDataUri from "./assets/celestial/planet";
 
 type ProjectCardProps = {
   project: Project;
@@ -222,7 +223,15 @@ export default function App() {
         <section id="top" className="hero section-pad">
           <div className="hero-celestial" aria-hidden="true">
             <div className="hero-celestial-glow" />
-            <div className="hero-planet" />
+            <img
+              className="hero-planet"
+              src={heroPlanetDataUri}
+              alt=""
+              width={600}
+              height={600}
+              decoding="async"
+              aria-hidden="true"
+            />
             <svg
               className="hero-celestial-rings"
               viewBox="0 0 1200 900"
