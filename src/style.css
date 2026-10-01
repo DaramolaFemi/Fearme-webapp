@@ -3974,17 +3974,18 @@ a.documentation-cta {
 /* Desktop documentation-heading composition */
 @media (min-width: 1024px) {
   .documentation-heading {
-    display: grid;
-    grid-template-columns: minmax(0, 1.18fr) minmax(320px, 0.56fr);
-    align-items: center;
-    column-gap: clamp(64px, 8vw, 138px);
+    position: relative;
+    display: block;
+    min-height: clamp(158px, 12vw, 196px);
     margin-top: 16px;
-    margin-bottom: 54px;
+    margin-bottom: 58px;
   }
 
   .documentation-heading h2 {
-    max-width: 760px;
-    margin: 0;
+    width: min(43vw, 690px);
+    max-width: none;
+    margin: 0 auto;
+    text-align: center;
     line-height: 0.94;
   }
 
@@ -3998,34 +3999,36 @@ a.documentation-cta {
   }
 
   .documentation-heading-line-secondary {
-    margin-top: -0.025em;
-    padding-left: 0.07em;
+    margin-top: -0.02em;
+    padding-left: 0;
   }
 
   .documentation-heading > .documentation-heading-copy {
-    position: relative;
-    justify-self: end;
-    align-self: center;
-    width: min(100%, 390px);
-    max-width: 390px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: clamp(230px, 19vw, 330px);
+    max-width: 330px;
     margin: 0;
-    padding: 12px 0 12px 28px;
+    padding: 11px 0 11px 24px;
+    transform: translateY(-42%);
     color: var(--muted);
-    line-height: 1.75;
+    text-align: left;
+    line-height: 1.72;
   }
 
   .documentation-heading-copy::before {
     content: "";
     position: absolute;
     left: 0;
-    top: 0.5em;
-    bottom: 0.5em;
+    top: 0.45em;
+    bottom: 0.45em;
     width: 1px;
     background:
       linear-gradient(
         180deg,
-        color-mix(in srgb, var(--night-cyan) 70%, transparent),
-        color-mix(in srgb, var(--night-cyan) 18%, transparent)
+        color-mix(in srgb, var(--night-cyan) 62%, transparent),
+        color-mix(in srgb, var(--night-cyan) 14%, transparent)
       );
   }
 
@@ -4033,11 +4036,24 @@ a.documentation-cta {
     content: "";
     position: absolute;
     left: -2px;
-    top: 0.5em;
+    top: 0.45em;
     width: 5px;
     height: 5px;
     border-radius: 50%;
     background: var(--accent);
-    box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 28%, transparent);
+    box-shadow: 0 0 7px color-mix(in srgb, var(--accent) 24%, transparent);
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1240px) {
+  .documentation-heading h2 {
+    width: min(45vw, 560px);
+  }
+
+  .documentation-heading > .documentation-heading-copy {
+    width: clamp(210px, 20vw, 250px);
+    max-width: 250px;
+    padding-left: 20px;
+    font-size: 12px;
   }
 }
