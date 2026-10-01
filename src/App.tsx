@@ -230,17 +230,17 @@ export default function App() {
             >
               <defs>
                 <radialGradient id="planet-body" cx="72%" cy="28%" r="78%">
-                  <stop offset="0%" stopColor="#1b4c50" />
-                  <stop offset="32%" stopColor="#0b2d30" />
-                  <stop offset="62%" stopColor="#061b1d" />
-                  <stop offset="84%" stopColor="#021012" />
+                  <stop offset="0%" stopColor="#12363a" />
+                  <stop offset="28%" stopColor="#0a2629" />
+                  <stop offset="60%" stopColor="#051618" />
+                  <stop offset="84%" stopColor="#020d0f" />
                   <stop offset="100%" stopColor="#010607" />
                 </radialGradient>
                 <radialGradient id="planet-rim" cx="92%" cy="22%" r="72%">
-                  <stop offset="0%" stopColor="#8cf2e8" stopOpacity="0.95" />
-                  <stop offset="13%" stopColor="#6eddd4" stopOpacity="0.5" />
-                  <stop offset="34%" stopColor="#6eddd4" stopOpacity="0.12" />
-                  <stop offset="68%" stopColor="#6eddd4" stopOpacity="0" />
+                  <stop offset="0%" stopColor="#8cf2e8" stopOpacity="0.72" />
+                  <stop offset="9%" stopColor="#6eddd4" stopOpacity="0.3" />
+                  <stop offset="24%" stopColor="#6eddd4" stopOpacity="0.08" />
+                  <stop offset="48%" stopColor="#6eddd4" stopOpacity="0" />
                 </radialGradient>
                 <linearGradient id="planet-fade" x1="0%" y1="50%" x2="100%" y2="50%">
                   <stop offset="0%" stopColor="white" stopOpacity="0.16" />
@@ -290,14 +290,14 @@ export default function App() {
                   height="840"
                   clipPath="url(#planet-disc)"
                   filter="url(#planet-noise)"
-                  opacity="0.42"
+                  opacity="0.24"
                 />
                 <circle
                   cx="500"
                   cy="500"
                   r="440"
                   fill="url(#planet-rim)"
-                  opacity="0.9"
+                  opacity="0.62"
                 />
                 <ellipse
                   cx="520"
@@ -307,7 +307,7 @@ export default function App() {
                   fill="none"
                   stroke="url(#planet-horizon)"
                   strokeWidth="5"
-                  opacity="0.65"
+                  opacity="0.38"
                 />
               </g>
               <circle
@@ -327,7 +327,7 @@ export default function App() {
                 fill="none"
                 stroke="#6eddd4"
                 strokeWidth="2"
-                opacity="0.42"
+                opacity="0.24"
               />
             </svg>
             <svg
