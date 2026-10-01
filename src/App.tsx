@@ -223,6 +223,40 @@ export default function App() {
         <section id="top" className="hero section-pad">
           <div className="hero-celestial" aria-hidden="true">
             <div className="hero-celestial-glow" />
+            <svg
+              className="hero-orbits hero-orbits-back"
+              viewBox="0 0 1000 760"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <g className="hero-orbit hero-orbit-a">
+                <ellipse
+                  className="hero-orbit-line hero-orbit-line-cyan"
+                  cx="530"
+                  cy="350"
+                  rx="432"
+                  ry="142"
+                />
+              </g>
+              <g className="hero-orbit hero-orbit-b">
+                <ellipse
+                  className="hero-orbit-line hero-orbit-line-raspberry"
+                  cx="530"
+                  cy="350"
+                  rx="468"
+                  ry="184"
+                />
+              </g>
+              <g className="hero-orbit hero-orbit-c">
+                <ellipse
+                  className="hero-orbit-line hero-orbit-line-cyan hero-orbit-line-fine"
+                  cx="530"
+                  cy="350"
+                  rx="394"
+                  ry="118"
+                />
+              </g>
+            </svg>
+
             <img
               className="hero-planet"
               src={heroPlanetDataUri}
@@ -232,35 +266,46 @@ export default function App() {
               decoding="async"
               aria-hidden="true"
             />
+
             <svg
-              className="hero-celestial-rings"
-              viewBox="0 0 1200 900"
+              className="hero-orbits hero-orbits-front"
+              viewBox="0 0 1000 760"
               preserveAspectRatio="xMidYMid meet"
             >
-              <ellipse
-                className="celestial-ring celestial-ring-cyan celestial-ring-outer"
-                cx="650"
-                cy="380"
-                rx="505"
-                ry="185"
-                transform="rotate(-8 650 380)"
-              />
-              <ellipse
-                className="celestial-ring celestial-ring-raspberry"
-                cx="650"
-                cy="380"
-                rx="540"
-                ry="220"
-                transform="rotate(10 650 380)"
-              />
-              <ellipse
-                className="celestial-ring celestial-ring-cyan celestial-ring-inner"
-                cx="650"
-                cy="380"
-                rx="455"
-                ry="152"
-                transform="rotate(-17 650 380)"
-              />
+              <defs>
+                <clipPath id="hero-orbit-front-clip">
+                  <rect x="0" y="350" width="1000" height="410" />
+                </clipPath>
+              </defs>
+              <g clipPath="url(#hero-orbit-front-clip)">
+                <g className="hero-orbit hero-orbit-a">
+                  <ellipse
+                    className="hero-orbit-line hero-orbit-line-cyan hero-orbit-line-front"
+                    cx="530"
+                    cy="350"
+                    rx="432"
+                    ry="142"
+                  />
+                </g>
+                <g className="hero-orbit hero-orbit-b">
+                  <ellipse
+                    className="hero-orbit-line hero-orbit-line-raspberry hero-orbit-line-front"
+                    cx="530"
+                    cy="350"
+                    rx="468"
+                    ry="184"
+                  />
+                </g>
+                <g className="hero-orbit hero-orbit-c">
+                  <ellipse
+                    className="hero-orbit-line hero-orbit-line-cyan hero-orbit-line-fine hero-orbit-line-front"
+                    cx="530"
+                    cy="350"
+                    rx="394"
+                    ry="118"
+                  />
+                </g>
+              </g>
             </svg>
             <div className="hero-celestial-grid" />
           </div>
