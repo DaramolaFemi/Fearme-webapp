@@ -222,15 +222,114 @@ export default function App() {
         <section id="top" className="hero section-pad">
           <div className="hero-celestial" aria-hidden="true">
             <div className="hero-celestial-glow" />
-            <img
+            <svg
               className="hero-planet"
-              src="/Images/hero/celestial-sphere.webp"
-              alt=""
-              width={1254}
-              height={1254}
-              decoding="async"
-              fetchPriority="high"
-            />
+              viewBox="0 0 1000 1000"
+              role="presentation"
+              focusable="false"
+            >
+              <defs>
+                <radialGradient id="planet-body" cx="72%" cy="28%" r="78%">
+                  <stop offset="0%" stopColor="#1b4c50" />
+                  <stop offset="32%" stopColor="#0b2d30" />
+                  <stop offset="62%" stopColor="#061b1d" />
+                  <stop offset="84%" stopColor="#021012" />
+                  <stop offset="100%" stopColor="#010607" />
+                </radialGradient>
+                <radialGradient id="planet-rim" cx="92%" cy="22%" r="72%">
+                  <stop offset="0%" stopColor="#8cf2e8" stopOpacity="0.95" />
+                  <stop offset="13%" stopColor="#6eddd4" stopOpacity="0.5" />
+                  <stop offset="34%" stopColor="#6eddd4" stopOpacity="0.12" />
+                  <stop offset="68%" stopColor="#6eddd4" stopOpacity="0" />
+                </radialGradient>
+                <linearGradient id="planet-fade" x1="0%" y1="50%" x2="100%" y2="50%">
+                  <stop offset="0%" stopColor="white" stopOpacity="0.16" />
+                  <stop offset="26%" stopColor="white" stopOpacity="0.48" />
+                  <stop offset="58%" stopColor="white" stopOpacity="0.9" />
+                  <stop offset="100%" stopColor="white" stopOpacity="1" />
+                </linearGradient>
+                <linearGradient id="planet-horizon" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#6eddd4" stopOpacity="0" />
+                  <stop offset="45%" stopColor="#6eddd4" stopOpacity="0.08" />
+                  <stop offset="76%" stopColor="#8cf2e8" stopOpacity="0.55" />
+                  <stop offset="100%" stopColor="#8cf2e8" stopOpacity="0" />
+                </linearGradient>
+                <filter id="planet-noise" x="-20%" y="-20%" width="140%" height="140%">
+                  <feTurbulence
+                    type="fractalNoise"
+                    baseFrequency="0.72"
+                    numOctaves="3"
+                    seed="17"
+                    result="noise"
+                  />
+                  <feColorMatrix
+                    in="noise"
+                    type="matrix"
+                    values="0 0 0 0 0.43
+                            0 0 0 0 0.87
+                            0 0 0 0 0.83
+                            0 0 0 0.26 0"
+                  />
+                </filter>
+                <filter id="planet-glow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="10" />
+                </filter>
+                <clipPath id="planet-disc">
+                  <circle cx="500" cy="500" r="440" />
+                </clipPath>
+                <mask id="planet-mask">
+                  <circle cx="500" cy="500" r="440" fill="url(#planet-fade)" />
+                </mask>
+              </defs>
+              <g mask="url(#planet-mask)">
+                <circle cx="500" cy="500" r="440" fill="url(#planet-body)" />
+                <rect
+                  x="80"
+                  y="80"
+                  width="840"
+                  height="840"
+                  clipPath="url(#planet-disc)"
+                  filter="url(#planet-noise)"
+                  opacity="0.42"
+                />
+                <circle
+                  cx="500"
+                  cy="500"
+                  r="440"
+                  fill="url(#planet-rim)"
+                  opacity="0.9"
+                />
+                <ellipse
+                  cx="520"
+                  cy="744"
+                  rx="340"
+                  ry="34"
+                  fill="none"
+                  stroke="url(#planet-horizon)"
+                  strokeWidth="5"
+                  opacity="0.65"
+                />
+              </g>
+              <circle
+                cx="500"
+                cy="500"
+                r="441"
+                fill="none"
+                stroke="#6eddd4"
+                strokeWidth="4"
+                opacity="0.16"
+                filter="url(#planet-glow)"
+              />
+              <circle
+                cx="500"
+                cy="500"
+                r="440"
+                fill="none"
+                stroke="#6eddd4"
+                strokeWidth="2"
+                opacity="0.42"
+              />
+            </svg>
             <svg
               className="hero-celestial-rings"
               viewBox="0 0 1200 900"
