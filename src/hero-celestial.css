@@ -254,31 +254,49 @@
   }
 }
 
-@media (min-width: 1441px) {
+
+@media (min-width: 1181px) and (max-width: 1440px) {
   .hero-planet {
-    top: 10px;
-    right: -62px;
-    width: min(43vw, 720px);
+    top: 30px;
+    right: clamp(28px, 4.5vw, 68px);
+    width: clamp(600px, 44vw, 720px);
   }
 
   .hero-celestial-rings {
-    top: 108px;
-    right: -94px;
-    width: min(46vw, 760px);
+    top: 122px;
+    right: clamp(-4px, 1.4vw, 22px);
+    width: clamp(650px, 49vw, 800px);
+    clip-path: inset(0 0 0 18%);
+  }
+}
+
+@media (min-width: 1441px) {
+  .hero-planet {
+    top: 18px;
+    right: clamp(52px, 5.5vw, 104px);
+    width: min(46vw, 780px);
+  }
+
+  .hero-celestial-rings {
+    top: 116px;
+    right: clamp(8px, 2vw, 34px);
+    width: min(50vw, 840px);
+    clip-path: inset(0 0 0 18%);
   }
 }
 
 @media (min-width: 901px) and (max-width: 1180px) {
   .hero-planet {
-    top: 64px;
-    right: -86px;
-    width: 560px;
+    top: 68px;
+    right: 18px;
+    width: min(55vw, 560px);
   }
 
   .hero-celestial-rings {
-    top: 150px;
-    right: -122px;
-    width: 600px;
+    top: 152px;
+    right: -8px;
+    width: min(59vw, 610px);
+    clip-path: inset(0 0 0 20%);
   }
 }
 
