@@ -333,13 +333,13 @@ export default function App() {
                     className="hero-emphasis hero-emphasis-intent"
                     aria-label="intent."
                   >
-                    <span className="hero-letter" aria-hidden="true" style={{ "--i": 0, "--x": "-0.028em", "--r": "-0.7deg" } as CSSProperties}>i</span>
-                    <span className="hero-letter" aria-hidden="true" style={{ "--i": 1, "--x": "0.018em", "--r": "0.45deg" } as CSSProperties}>n</span>
-                    <span className="hero-letter" aria-hidden="true" style={{ "--i": 2, "--x": "-0.012em", "--r": "-0.3deg" } as CSSProperties}>t</span>
-                    <span className="hero-letter" aria-hidden="true" style={{ "--i": 3, "--x": "0.022em", "--r": "0.4deg" } as CSSProperties}>e</span>
-                    <span className="hero-letter" aria-hidden="true" style={{ "--i": 4, "--x": "-0.016em", "--r": "-0.35deg" } as CSSProperties}>n</span>
-                    <span className="hero-letter" aria-hidden="true" style={{ "--i": 5, "--x": "0.014em", "--r": "0.25deg" } as CSSProperties}>t</span>
-                    <span className="hero-letter hero-letter-punctuation" aria-hidden="true" style={{ "--i": 6, "--x": "0.008em", "--r": "0deg" } as CSSProperties}>.</span>
+                    <span className="hero-letter" aria-hidden="true" style={{ "--x": "-0.028em", "--r": "-0.7deg" } as CSSProperties}>i</span>
+                    <span className="hero-letter" aria-hidden="true" style={{ "--x": "0.018em", "--r": "0.45deg" } as CSSProperties}>n</span>
+                    <span className="hero-letter" aria-hidden="true" style={{ "--x": "-0.012em", "--r": "-0.3deg" } as CSSProperties}>t</span>
+                    <span className="hero-letter" aria-hidden="true" style={{ "--x": "0.022em", "--r": "0.4deg" } as CSSProperties}>e</span>
+                    <span className="hero-letter" aria-hidden="true" style={{ "--x": "-0.016em", "--r": "-0.35deg" } as CSSProperties}>n</span>
+                    <span className="hero-letter" aria-hidden="true" style={{ "--x": "0.014em", "--r": "0.25deg" } as CSSProperties}>t</span>
+                    <span className="hero-letter hero-letter-punctuation" aria-hidden="true" style={{ "--x": "0.008em", "--r": "0deg" } as CSSProperties}>.</span>
                   </em>
                 </motion.span>
               </span>
@@ -358,13 +358,13 @@ export default function App() {
                     className="hero-emphasis hero-emphasis-weight"
                     aria-label="weight."
                   >
-                    <span className="hero-letter" aria-hidden="true" style={{ "--i": 0 } as CSSProperties}>w</span>
-                    <span className="hero-letter" aria-hidden="true" style={{ "--i": 1 } as CSSProperties}>e</span>
-                    <span className="hero-letter" aria-hidden="true" style={{ "--i": 2 } as CSSProperties}>i</span>
-                    <span className="hero-letter" aria-hidden="true" style={{ "--i": 3 } as CSSProperties}>g</span>
-                    <span className="hero-letter" aria-hidden="true" style={{ "--i": 4 } as CSSProperties}>h</span>
-                    <span className="hero-letter" aria-hidden="true" style={{ "--i": 5 } as CSSProperties}>t</span>
-                    <span className="hero-letter hero-letter-punctuation" aria-hidden="true" style={{ "--i": 6 } as CSSProperties}>.</span>
+                    <span className="hero-letter" aria-hidden="true">w</span>
+                    <span className="hero-letter" aria-hidden="true">e</span>
+                    <span className="hero-letter" aria-hidden="true">i</span>
+                    <span className="hero-letter" aria-hidden="true">g</span>
+                    <span className="hero-letter" aria-hidden="true">h</span>
+                    <span className="hero-letter" aria-hidden="true">t</span>
+                    <span className="hero-letter hero-letter-punctuation" aria-hidden="true">.</span>
                   </em>
                 </motion.span>
               </span>
