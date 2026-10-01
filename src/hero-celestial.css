@@ -344,6 +344,76 @@
   }
 }
 
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .hero-orbit-a {
+    animation: hero-orbit-a-desktop 46s ease-in-out infinite alternate;
+  }
+
+  .hero-orbit-b {
+    animation: hero-orbit-b-desktop 58s ease-in-out infinite alternate;
+  }
+
+  .hero-orbit-c {
+    animation: hero-orbit-c-desktop 64s ease-in-out infinite alternate;
+  }
+
+  @keyframes hero-orbit-a-desktop {
+    from {
+      transform: rotate(-12deg);
+    }
+    to {
+      transform: rotate(-5deg);
+    }
+  }
+
+  @keyframes hero-orbit-b-desktop {
+    from {
+      transform: rotate(10deg);
+    }
+    to {
+      transform: rotate(18deg);
+    }
+  }
+
+  @keyframes hero-orbit-c-desktop {
+    from {
+      transform: rotate(64deg);
+    }
+    to {
+      transform: rotate(72deg);
+    }
+  }
+}
+
+@media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
+  .hero-orbit-a {
+    transform: rotate(-8deg);
+  }
+
+  .hero-orbit-b {
+    transform: rotate(14deg);
+  }
+
+  .hero-orbit-c {
+    transform: rotate(68deg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-orbit-front-desktop .hero-orbit-line-front {
+    opacity: 0.82;
+  }
+
+  .hero-orbit-front-arc-primary {
+    stroke-width: 1.02;
+  }
+
+  .hero-orbit-front-arc-secondary {
+    stroke-width: 0.82;
+    opacity: 0.5;
+  }
+}
+
 @media (min-width: 1181px) and (max-width: 1440px) {
   .hero-planet {
     top: 88px;
