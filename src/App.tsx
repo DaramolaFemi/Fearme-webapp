@@ -273,11 +273,51 @@ export default function App() {
               preserveAspectRatio="xMidYMid meet"
             >
               <defs>
-                <clipPath id="hero-orbit-front-clip">
+                <clipPath id="hero-orbit-front-mobile-clip">
                   <rect x="0" y="350" width="1000" height="410" />
                 </clipPath>
+                <clipPath id="hero-orbit-front-desktop-clip">
+                  <rect x="0" y="395" width="1000" height="365" />
+                </clipPath>
               </defs>
-              <g clipPath="url(#hero-orbit-front-clip)">
+
+              <g
+                className="hero-orbit-front-mobile"
+                clipPath="url(#hero-orbit-front-mobile-clip)"
+              >
+                <g className="hero-orbit hero-orbit-a">
+                  <ellipse
+                    className="hero-orbit-line hero-orbit-line-cyan hero-orbit-line-front"
+                    cx="530"
+                    cy="350"
+                    rx="432"
+                    ry="142"
+                  />
+                </g>
+                <g className="hero-orbit hero-orbit-b">
+                  <ellipse
+                    className="hero-orbit-line hero-orbit-line-raspberry hero-orbit-line-front"
+                    cx="530"
+                    cy="350"
+                    rx="468"
+                    ry="184"
+                  />
+                </g>
+                <g className="hero-orbit hero-orbit-c">
+                  <ellipse
+                    className="hero-orbit-line hero-orbit-line-cyan hero-orbit-line-fine hero-orbit-line-front"
+                    cx="530"
+                    cy="350"
+                    rx="394"
+                    ry="118"
+                  />
+                </g>
+              </g>
+
+              <g
+                className="hero-orbit-front-desktop"
+                clipPath="url(#hero-orbit-front-desktop-clip)"
+              >
                 <g className="hero-orbit hero-orbit-a">
                   <ellipse
                     className="hero-orbit-line hero-orbit-line-cyan hero-orbit-line-front"
