@@ -220,6 +220,49 @@ export default function App() {
       </header>
       <main id="main">
         <section id="top" className="hero section-pad">
+          <div className="hero-celestial" aria-hidden="true">
+            <div className="hero-celestial-glow" />
+            <img
+              className="hero-planet"
+              src="/Images/hero/celestial-sphere.webp"
+              alt=""
+              width={1254}
+              height={1254}
+              decoding="async"
+              fetchPriority="high"
+            />
+            <svg
+              className="hero-celestial-rings"
+              viewBox="0 0 1200 900"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <ellipse
+                className="celestial-ring celestial-ring-cyan celestial-ring-outer"
+                cx="650"
+                cy="380"
+                rx="505"
+                ry="185"
+                transform="rotate(-8 650 380)"
+              />
+              <ellipse
+                className="celestial-ring celestial-ring-raspberry"
+                cx="650"
+                cy="380"
+                rx="540"
+                ry="220"
+                transform="rotate(10 650 380)"
+              />
+              <ellipse
+                className="celestial-ring celestial-ring-cyan celestial-ring-inner"
+                cx="650"
+                cy="380"
+                rx="455"
+                ry="152"
+                transform="rotate(-17 650 380)"
+              />
+            </svg>
+            <div className="hero-celestial-grid" />
+          </div>
           <div className="hero-meta">
             <span>
               <i /> Software engineer & technical writer
