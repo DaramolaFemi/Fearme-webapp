@@ -351,48 +351,57 @@
 
 @media (max-width: 600px) {
   .hero-celestial {
-    height: 465px;
+    height: 560px;
     bottom: auto;
   }
 
   .hero-planet {
-    top: 90px;
-    right: -28px;
-    width: 430px;
-    opacity: 0.075;
+    top: 38px;
+    right: -118px;
+    width: 500px;
+    opacity: 0.16;
     -webkit-mask-image: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(0, 0, 0, 0.12) 25%,
-      rgba(0, 0, 0, 0.7) 53%,
-      #000 72%
+      rgba(0, 0, 0, 0.18) 20%,
+      rgba(0, 0, 0, 0.72) 45%,
+      #000 66%
     );
     mask-image: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(0, 0, 0, 0.12) 25%,
-      rgba(0, 0, 0, 0.7) 53%,
-      #000 72%
+      rgba(0, 0, 0, 0.18) 20%,
+      rgba(0, 0, 0, 0.72) 45%,
+      #000 66%
     );
   }
 
   .hero-celestial-rings {
-    top: 120px;
-    right: -104px;
-    width: 520px;
-    opacity: 0.14;
+    top: 72px;
+    right: -182px;
+    width: 560px;
+    opacity: 0.12;
+    transform: rotate(-4deg);
+  }
+
+  .celestial-ring-raspberry {
+    opacity: 0.48;
+  }
+
+  .celestial-ring-inner {
+    opacity: 0.34;
   }
 
   .hero-celestial-glow {
-    top: 48px;
-    right: -54px;
-    width: 470px;
-    opacity: 0.18;
-    filter: blur(30px);
+    top: 14px;
+    right: -98px;
+    width: 520px;
+    opacity: 0.28;
+    filter: blur(34px);
   }
 
   .hero-celestial-grid {
-    opacity: 0.16;
+    opacity: 0.12;
     background-size: 50% 100%, 100% 100%;
   }
 
@@ -401,32 +410,48 @@
       linear-gradient(
         90deg,
         var(--paper) 0%,
-        color-mix(in srgb, var(--paper) 94%, transparent) 34%,
-        color-mix(in srgb, var(--paper) 62%, transparent) 58%,
-        transparent 80%
+        color-mix(in srgb, var(--paper) 96%, transparent) 26%,
+        color-mix(in srgb, var(--paper) 68%, transparent) 48%,
+        transparent 74%
       ),
       linear-gradient(
         180deg,
-        transparent 0 64%,
-        color-mix(in srgb, var(--paper) 68%, transparent) 82%,
+        transparent 0 70%,
+        color-mix(in srgb, var(--paper) 72%, transparent) 88%,
         var(--paper) 100%
       );
   }
 
+  .hero .orbit {
+    width: 74px;
+    height: 78px;
+    right: 2px;
+    bottom: 10px;
+    opacity: 0.52;
+  }
+
+  .hero .orbit-ring {
+    opacity: 0.62;
+  }
+
+  .hero .orbit-core {
+    font-size: 30px;
+  }
+
   :root[data-theme="dark"] .hero-planet {
-    opacity: 0.4;
+    opacity: 0.72;
   }
 
   :root[data-theme="dark"] .hero-celestial-rings {
-    opacity: 0.42;
+    opacity: 0.34;
   }
 
   :root[data-theme="dark"] .hero-celestial-glow {
-    opacity: 0.5;
+    opacity: 0.68;
   }
 
   :root[data-theme="dark"] .hero-celestial-grid {
-    opacity: 0.22;
+    opacity: 0.16;
   }
 
   :root[data-theme="dark"] .hero-celestial::after {
@@ -434,14 +459,14 @@
       linear-gradient(
         90deg,
         #041416 0%,
-        rgba(4, 20, 22, 0.95) 35%,
-        rgba(4, 20, 22, 0.68) 58%,
-        transparent 81%
+        rgba(4, 20, 22, 0.96) 27%,
+        rgba(4, 20, 22, 0.7) 49%,
+        transparent 75%
       ),
       linear-gradient(
         180deg,
-        transparent 0 64%,
-        rgba(4, 20, 22, 0.62) 82%,
+        transparent 0 70%,
+        rgba(4, 20, 22, 0.68) 88%,
         #041416 100%
       );
   }
@@ -449,15 +474,15 @@
 
 @media (max-width: 360px) {
   .hero-planet {
-    top: 104px;
-    right: -36px;
-    width: 400px;
+    top: 48px;
+    right: -132px;
+    width: 470px;
   }
 
   .hero-celestial-rings {
-    top: 134px;
-    right: -116px;
-    width: 492px;
+    top: 82px;
+    right: -196px;
+    width: 530px;
   }
 }
 
