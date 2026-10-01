@@ -276,9 +276,6 @@ export default function App() {
                 <clipPath id="hero-orbit-front-mobile-clip">
                   <rect x="0" y="350" width="1000" height="410" />
                 </clipPath>
-                <clipPath id="hero-orbit-front-desktop-clip">
-                  <rect x="0" y="395" width="1000" height="365" />
-                </clipPath>
               </defs>
 
               <g
@@ -314,35 +311,17 @@ export default function App() {
                 </g>
               </g>
 
-              <g
-                className="hero-orbit-front-desktop"
-                clipPath="url(#hero-orbit-front-desktop-clip)"
-              >
+              <g className="hero-orbit-front-desktop">
                 <g className="hero-orbit hero-orbit-a">
-                  <ellipse
-                    className="hero-orbit-line hero-orbit-line-cyan hero-orbit-line-front"
-                    cx="530"
-                    cy="350"
-                    rx="432"
-                    ry="142"
+                  <path
+                    className="hero-orbit-line hero-orbit-line-cyan hero-orbit-line-front hero-orbit-front-arc-primary"
+                    d="M 98 350 A 432 142 0 0 0 962 350"
                   />
                 </g>
                 <g className="hero-orbit hero-orbit-b">
-                  <ellipse
-                    className="hero-orbit-line hero-orbit-line-raspberry hero-orbit-line-front"
-                    cx="530"
-                    cy="350"
-                    rx="468"
-                    ry="184"
-                  />
-                </g>
-                <g className="hero-orbit hero-orbit-c">
-                  <ellipse
-                    className="hero-orbit-line hero-orbit-line-cyan hero-orbit-line-fine hero-orbit-line-front"
-                    cx="530"
-                    cy="350"
-                    rx="394"
-                    ry="118"
+                  <path
+                    className="hero-orbit-line hero-orbit-line-raspberry hero-orbit-line-front hero-orbit-front-arc-secondary"
+                    d="M 62 350 A 468 184 0 0 0 998 350"
                   />
                 </g>
               </g>
