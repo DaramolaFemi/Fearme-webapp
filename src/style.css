@@ -260,13 +260,29 @@ h2 {
 
 .hero-emphasis-intent .hero-letter {
   animation: intent-resolve 16s cubic-bezier(0.22, 1, 0.36, 1) infinite;
-  animation-delay: calc(1.35s + (var(--i) * 52ms));
+  animation-delay: calc(1.35s + var(--letter-delay, 0ms));
 }
 
 .hero-emphasis-weight .hero-letter {
   animation: weight-settle 16s cubic-bezier(0.2, 0.82, 0.24, 1) infinite;
-  animation-delay: calc(1.95s + (var(--i) * 48ms));
+  animation-delay: calc(1.95s + var(--letter-delay, 0ms));
 }
+
+.hero-emphasis-intent .hero-letter:nth-child(1) { --letter-delay: 0ms; }
+.hero-emphasis-intent .hero-letter:nth-child(2) { --letter-delay: 52ms; }
+.hero-emphasis-intent .hero-letter:nth-child(3) { --letter-delay: 104ms; }
+.hero-emphasis-intent .hero-letter:nth-child(4) { --letter-delay: 156ms; }
+.hero-emphasis-intent .hero-letter:nth-child(5) { --letter-delay: 208ms; }
+.hero-emphasis-intent .hero-letter:nth-child(6) { --letter-delay: 260ms; }
+.hero-emphasis-intent .hero-letter:nth-child(7) { --letter-delay: 312ms; }
+
+.hero-emphasis-weight .hero-letter:nth-child(1) { --letter-delay: 0ms; }
+.hero-emphasis-weight .hero-letter:nth-child(2) { --letter-delay: 48ms; }
+.hero-emphasis-weight .hero-letter:nth-child(3) { --letter-delay: 96ms; }
+.hero-emphasis-weight .hero-letter:nth-child(4) { --letter-delay: 144ms; }
+.hero-emphasis-weight .hero-letter:nth-child(5) { --letter-delay: 192ms; }
+.hero-emphasis-weight .hero-letter:nth-child(6) { --letter-delay: 240ms; }
+.hero-emphasis-weight .hero-letter:nth-child(7) { --letter-delay: 288ms; }
 
 @keyframes intent-resolve {
   0%,
@@ -287,7 +303,7 @@ h2 {
 
   3.4% {
     transform:
-      translate3d(calc(var(--x, 0) * -0.16), -0.008em, 0)
+      translate3d(0, -0.008em, 0)
       rotate(0deg)
       scaleX(1.001);
     filter: brightness(1.025);
