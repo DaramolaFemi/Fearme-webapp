@@ -3749,9 +3749,8 @@ a.documentation-cta {
 
 @media (max-width: 600px) {
   /*
-    Mobile uses one purpose-built composite rather than enlarging the
-    desktop ribcage/hand crops. This keeps the anatomical artwork sharp,
-    anchored to the margins, and away from the poem's reading column.
+    Use the dedicated mobile crops only on phones. The desktop artwork stays
+    exactly as authored for larger viewports.
   */
   .poem-atmosphere-bone-botanical .poem-atmosphere-art-left,
   .poem-atmosphere-bone-botanical .poem-atmosphere-art-right {
@@ -3760,29 +3759,28 @@ a.documentation-cta {
 
   .poem-atmosphere-bone-botanical .poem-atmosphere-mobile-frame {
     position: absolute;
-    left: 50%;
     display: block;
-    width: min(112vw, 500px);
     max-width: none;
     height: auto;
     pointer-events: none;
     user-select: none;
     -webkit-user-drag: none;
-    transform: translateX(-50%);
-    opacity: 0.42;
-    filter: saturate(0.82) contrast(0.96) brightness(0.82);
+    object-fit: contain;
+    filter: saturate(0.88) contrast(0.98) brightness(0.92);
   }
 
   .poem-atmosphere-bone-botanical .poem-atmosphere-mobile-frame-top {
-    top: 4.5%;
-    clip-path: inset(0 0 48% 0);
-    -webkit-clip-path: inset(0 0 48% 0);
+    top: 3.5%;
+    left: -4vw;
+    width: min(66vw, 270px);
+    opacity: 0.48;
   }
 
   .poem-atmosphere-bone-botanical .poem-atmosphere-mobile-frame-bottom {
-    bottom: 4.5%;
-    clip-path: inset(45% 0 0 0);
-    -webkit-clip-path: inset(45% 0 0 0);
+    right: -7vw;
+    bottom: 2.8%;
+    width: min(72vw, 292px);
+    opacity: 0.46;
   }
 
   .poem-atmosphere-bone-botanical .poem-petal {
@@ -3790,18 +3788,19 @@ a.documentation-cta {
   }
 
   :root[data-theme="light"] .poem-atmosphere-bone-botanical .poem-atmosphere-mobile-frame {
-    opacity: 0.28;
-    filter: saturate(0.68) contrast(0.94) brightness(0.76);
+    opacity: 0.31;
+    filter: saturate(0.72) contrast(0.95) brightness(0.74);
   }
 }
 
 @media (max-width: 380px) {
-  .poem-atmosphere-bone-botanical .poem-atmosphere-mobile-frame {
-    width: 116vw;
-    opacity: 0.38;
+  .poem-atmosphere-bone-botanical .poem-atmosphere-mobile-frame-top {
+    left: -6vw;
+    width: 70vw;
   }
 
-  :root[data-theme="light"] .poem-atmosphere-bone-botanical .poem-atmosphere-mobile-frame {
-    opacity: 0.25;
+  .poem-atmosphere-bone-botanical .poem-atmosphere-mobile-frame-bottom {
+    right: -9vw;
+    width: 76vw;
   }
 }
