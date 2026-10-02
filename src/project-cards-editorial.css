@@ -528,8 +528,6 @@
   }
 }
 
-/* The lead project is motion-first. Keep the recorded interface uncropped on
-   wide screens while the rest of the collection keeps the paired card rhythm. */
 @media (min-width: 901px) {
   .project.flux-form:first-child .project-visual {
     aspect-ratio: 1280 / 654;
@@ -578,8 +576,6 @@
   }
 }
 
-/* The mobile CTA already renders its real label in the circle.
-   Disable the older generated duplicate while keeping its stretched hit area. */
 @media (max-width: 600px) {
   .project-cta-label::after {
     content: none !important;
@@ -802,8 +798,6 @@
   }
 }
 
-/* Tablet project actions keep the same circular language as desktop, but put
-   the action word inside the circle instead of falling back to the arrow. */
 @media (min-width: 601px) and (max-width: 1023px) {
   .project-open {
     gap: 0;
