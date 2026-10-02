@@ -128,7 +128,6 @@
   margin-bottom: 1.28em;
 }
 
-/* A Graveyard for Lovers: the scene is an opening atmosphere, not wallpaper for the full long-form poem. */
 .poem-page-graveyard::before {
   background:
     linear-gradient(
