@@ -526,6 +526,29 @@
     text-align: right;
   }
 
+  /* Mobile-only tap feedback for Previous / Next poem. */
+  .poem-page-editorial .poem-navigation > a:nth-child(2),
+  .poem-page-editorial .poem-navigation > a:nth-child(4) {
+    -webkit-tap-highlight-color: transparent;
+    transition:
+      color 140ms ease,
+      border-color 140ms ease,
+      transform 140ms ease,
+      text-shadow 140ms ease,
+      opacity 140ms ease;
+  }
+
+  .poem-page-editorial .poem-navigation > a:nth-child(2):active,
+  .poem-page-editorial .poem-navigation > a:nth-child(4):active,
+  .poem-page-editorial .poem-navigation > a:nth-child(2):focus-visible,
+  .poem-page-editorial .poem-navigation > a:nth-child(4):focus-visible {
+    color: #ffffff;
+    border-bottom-color: rgba(110, 221, 212, 0.82);
+    transform: translateY(1px);
+    text-shadow: 0 0 14px rgba(110, 221, 212, 0.2);
+    opacity: 0.9;
+  }
+
   .poem-reader-shell .poem-atmosphere-bone-botanical .poem-atmosphere-mobile-frame,
   :root[data-theme="light"] .poem-reader-shell .poem-atmosphere-bone-botanical .poem-atmosphere-mobile-frame {
     opacity: 0.46;
