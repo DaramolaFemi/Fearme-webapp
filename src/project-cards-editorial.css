@@ -1,6 +1,4 @@
-/* Selected work card redesign
-   Mirrors the approved editorial mockup while keeping the existing project copy,
-   media, filtering, themes, and project order intact. */
+
 
 .work .section-heading {
   max-width: 1180px;
@@ -589,9 +587,6 @@
   }
 }
 
-/* Mobile CTA final: the word itself lives inside the circle.
-   The anchor stays static so the existing ::before stretched hit area keeps
-   the full card clickable on mobile. */
 .project-cta-label-mobile {
   display: none;
 }
@@ -655,8 +650,6 @@
   }
 }
 
-/* Desktop-only alignment and CTA correction.
-   Mobile/tablet rules remain unchanged. */
 .project-cta-label-circle-desktop {
   display: none;
 }
@@ -714,7 +707,6 @@
   }
 }
 
-
 /* Tighten the handoff from Project Lab to Documentation without changing card layout. */
 .work {
   padding-bottom: 64px;
@@ -725,7 +717,6 @@
     padding-bottom: 38px;
   }
 }
-
 
 .project.flux-form .project-visual {
   background: #111a2d;
@@ -811,9 +802,6 @@
   }
 }
 
-
-/* Final responsive QA: mobile footer + tablet project actions */
-
 /* Tablet project actions keep the same circular language as desktop, but put
    the action word inside the circle instead of falling back to the arrow. */
 @media (min-width: 601px) and (max-width: 1023px) {
@@ -861,8 +849,6 @@
   }
 }
 
-/* Mobile footer follows the approved reference composition:
-   logo + Back to top, a quiet rule, copyright, then the social row. */
 @media (max-width: 600px) {
   .contact {
     padding-bottom: 102px;
@@ -951,7 +937,6 @@
     background: rgba(110, 221, 212, 0.14);
   }
 }
-
 
 /* Immortal Craft: preserve the actual editorial navigation language from the live redesign. */
 .immortal-card-overlay {
