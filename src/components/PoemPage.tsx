@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { boySceneDesktop, boySceneMobile } from "../assets/poetry/boyScene";
 import { wedSceneDesktop, wedSceneMobile } from "../assets/poetry/wedScene";
+import { goodMourningMobile } from "../assets/poetry/goodMourningScene";
 import { poems, type Poem } from "../data/poetry";
 import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
@@ -41,22 +42,22 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
   const editorialSceneDesktop = isMinutesSilence
     ? "/Images/poetry/a-minutes-silence-desktop-v2.webp"
     : isGraveyard
-      ? "/Images/poetry/graveyard-lovers-desktop.avif"
+      ? "/Images/poetry/graveyard-lovers-desktop-v2.webp"
       : isGoodMourning
-      ? "/Images/poetry/good-mourning-desktop.avif"
+      ? "/Images/poetry/good-mourning-desktop-v2.webp"
       : isDreams
-      ? "/Images/poetry/dreams-desktop.webp"
+      ? "/Images/poetry/dreams-desktop-v2.webp"
       : isWedMoonlit
         ? wedSceneDesktop
         : boySceneDesktop;
   const editorialSceneMobile = isMinutesSilence
     ? "/Images/poetry/a-minutes-silence-mobile-v2.webp"
     : isGraveyard
-      ? "/Images/poetry/graveyard-lovers-mobile.avif"
+      ? "/Images/poetry/graveyard-lovers-mobile-v2.webp"
       : isGoodMourning
-      ? "/Images/poetry/good-mourning-mobile.webp"
+      ? goodMourningMobile
       : isDreams
-      ? "/Images/poetry/dreams-mobile.webp"
+      ? "/Images/poetry/dreams-mobile-v2.webp"
       : isWedMoonlit
         ? wedSceneMobile
         : boySceneMobile;

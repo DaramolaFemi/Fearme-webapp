@@ -1012,3 +1012,117 @@
     opacity: 0.94;
   }
 }
+
+
+/* 2026-10-02 — poetry scene lock
+   The Boy Who Writes is the canonical reader behaviour: artwork stays pinned
+   to the viewport while the poem itself moves through the scene. */
+.poem-page-moonlit > .poem-moonlit-scene,
+.poem-page-minutes-silence > .poem-moonlit-scene,
+.poem-page-graveyard > .poem-moonlit-scene {
+  position: fixed !important;
+  inset: 0 !important;
+  left: 0 !important;
+  top: 0 !important;
+  width: 100vw !important;
+  height: 100svh !important;
+  overflow: hidden;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+}
+
+.poem-page-moonlit > .poem-moonlit-scene img,
+.poem-page-minutes-silence > .poem-moonlit-scene img,
+.poem-page-graveyard > .poem-moonlit-scene img {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none;
+  object-fit: cover !important;
+  transform: none !important;
+  image-rendering: auto;
+}
+
+.poem-page-moonlit::before {
+  position: fixed !important;
+  inset: 0 !important;
+  height: 100svh;
+}
+
+/* Preserve the authored compositions instead of using the old mobile 140% zoom. */
+.poem-page-dreams > .poem-moonlit-scene img {
+  object-position: center center !important;
+  opacity: 0.92;
+}
+
+.poem-page-good-mourning > .poem-moonlit-scene img {
+  object-position: center center !important;
+  opacity: 0.94;
+}
+
+.poem-page-graveyard > .poem-moonlit-scene img {
+  object-position: center center !important;
+  opacity: 0.92;
+}
+
+.poem-page-minutes-silence > .poem-moonlit-scene img {
+  object-position: center center !important;
+  opacity: 0.9;
+}
+
+/* Long poems must not fade the artwork to a flat teal field midway down the page. */
+.poem-page-graveyard::before {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3, 23, 25, 0.18) 0%,
+      rgba(3, 23, 25, 0.28) 36%,
+      rgba(3, 23, 25, 0.48) 68%,
+      rgba(3, 23, 25, 0.62) 100%
+    ),
+    linear-gradient(180deg, rgba(3, 23, 25, 0.08), rgba(3, 23, 25, 0.2));
+}
+
+.poem-page-minutes-silence::before {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3, 23, 25, 0.24) 0%,
+      rgba(3, 23, 25, 0.32) 38%,
+      rgba(3, 23, 25, 0.5) 70%,
+      rgba(3, 23, 25, 0.64) 100%
+    ),
+    linear-gradient(180deg, rgba(3, 23, 25, 0.08), rgba(3, 23, 25, 0.2));
+}
+
+@media (max-width: 900px) {
+  .poem-page-moonlit > .poem-moonlit-scene,
+  .poem-page-minutes-silence > .poem-moonlit-scene,
+  .poem-page-graveyard > .poem-moonlit-scene {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100svh !important;
+  }
+
+  .poem-page-moonlit > .poem-moonlit-scene img,
+  .poem-page-minutes-silence > .poem-moonlit-scene img,
+  .poem-page-graveyard > .poem-moonlit-scene img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+
+  .poem-page-dreams > .poem-moonlit-scene img {
+    object-position: center center !important;
+  }
+
+  .poem-page-good-mourning > .poem-moonlit-scene img {
+    object-position: center center !important;
+  }
+
+  .poem-page-graveyard > .poem-moonlit-scene img {
+    object-position: center center !important;
+  }
+}
