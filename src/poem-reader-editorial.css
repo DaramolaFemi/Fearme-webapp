@@ -1126,3 +1126,53 @@
     object-position: center center !important;
   }
 }
+
+
+/* 2026-10-02: lock authored poetry artwork to the viewport.
+   Text scrolls over the scene instead of carrying the image with it. */
+.poem-page-dreams > .poem-moonlit-scene,
+.poem-page-good-mourning > .poem-moonlit-scene,
+.poem-page-graveyard > .poem-moonlit-scene {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100svh !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+}
+
+.poem-page-dreams > .poem-moonlit-scene img,
+.poem-page-good-mourning > .poem-moonlit-scene img,
+.poem-page-graveyard > .poem-moonlit-scene img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  object-fit: cover !important;
+  opacity: 0.94;
+}
+
+.poem-page-dreams > .poem-moonlit-scene img {
+  object-position: left center !important;
+}
+
+.poem-page-good-mourning > .poem-moonlit-scene img {
+  object-position: center center !important;
+}
+
+.poem-page-graveyard > .poem-moonlit-scene img {
+  object-position: left center !important;
+}
+
+@media (max-width: 900px) {
+  .poem-page-dreams > .poem-moonlit-scene img {
+    object-position: center center !important;
+  }
+
+  .poem-page-good-mourning > .poem-moonlit-scene img {
+    object-position: center center !important;
+  }
+
+  .poem-page-graveyard > .poem-moonlit-scene img {
+    object-position: center center !important;
+  }
+}
