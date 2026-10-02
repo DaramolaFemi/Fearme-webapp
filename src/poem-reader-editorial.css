@@ -1,8 +1,4 @@
-/*
- * Poetry reader editorial system.
- * The portfolio theme can remain light or dark; individual poem pages deliberately
- * stay nocturnal so authored poem artwork keeps one coherent reading environment.
- */
+
 .poem-reader-shell {
   --paper: #031719;
   --ink: #f1ede6;
@@ -97,9 +93,6 @@
     linear-gradient(90deg, rgba(3, 23, 25, 0.04), rgba(3, 23, 25, 0.16) 44%, rgba(3, 23, 25, 0.08)),
     linear-gradient(180deg, rgba(3, 23, 25, 0.02), rgba(3, 23, 25, 0.08));
 }
-
-
-
 
 /* A Minute's Silence: dense wartime grief imagery is confined to the opening atmosphere. */
 .poem-page-minutes-silence::before {
@@ -384,7 +377,6 @@
   color: var(--ink);
 }
 
-/* Keep Bones and Flowers authored for a dark reading surface even when the site toggle is light. */
 .poem-reader-shell .poem-atmosphere-bone-botanical .poem-atmosphere-art,
 :root[data-theme="light"] .poem-reader-shell .poem-atmosphere-bone-botanical .poem-atmosphere-art {
   filter: saturate(0.9) contrast(0.98);
@@ -415,8 +407,6 @@
     object-position: center center;
     opacity: 0.88;
   }
-
-
 
   .poem-page-minutes-silence > .poem-moonlit-scene {
     position: absolute;
@@ -560,7 +550,6 @@
     line-height: 1.62;
   }
 
-
   .poem-page-graveyard > .poem-moonlit-scene {
     height: 116svh;
   }
@@ -676,7 +665,6 @@
     margin-bottom: 1.35em;
   }
 
-
   .poem-page-graveyard > .poem-moonlit-scene {
     position: absolute;
     top: 0;
@@ -775,7 +763,6 @@
     width: max-content;
     white-space: nowrap;
   }
-
 
   .poem-page-wed .poem-reading-intro h1.poem-title-wed {
     max-width: none;
@@ -916,7 +903,6 @@
     mask-image: linear-gradient(180deg, #000 0%, #000 90%, transparent 100%);
   }
 
-
   .poem-page-minutes-silence > .poem-moonlit-scene {
     left: 0;
     width: 100%;
@@ -973,7 +959,6 @@
   }
 }
 
-
 /* Desktop poem navigation: quiet movement and cyan hairline response. */
 @media (min-width: 901px) {
   .poem-page-editorial .poem-navigation > :nth-child(2),
@@ -1008,8 +993,6 @@
   }
 }
 
-
-/* Desktop bridal scene: preserve the authored left-side composition. */
 @media (min-width: 1180px) {
   .poem-page-wed > .poem-moonlit-scene img {
     object-position: left center;
@@ -1017,10 +1000,6 @@
   }
 }
 
-
-/* 2026-10-02 — poetry scene lock
-   The Boy Who Writes is the canonical reader behaviour: artwork stays pinned
-   to the viewport while the poem itself moves through the scene. */
 .poem-page-moonlit > .poem-moonlit-scene,
 .poem-page-minutes-silence > .poem-moonlit-scene,
 .poem-page-graveyard > .poem-moonlit-scene {
@@ -1053,7 +1032,6 @@
   height: 100svh;
 }
 
-/* Preserve the authored compositions instead of using the old mobile 140% zoom. */
 .poem-page-dreams > .poem-moonlit-scene img {
   object-position: center center !important;
   opacity: 0.92;
@@ -1131,9 +1109,6 @@
   }
 }
 
-
-/* 2026-10-02: lock authored poetry artwork to the viewport.
-   Text scrolls over the scene instead of carrying the image with it. */
 .poem-page-dreams > .poem-moonlit-scene,
 .poem-page-good-mourning > .poem-moonlit-scene,
 .poem-page-graveyard > .poem-moonlit-scene {
@@ -1181,9 +1156,6 @@
   }
 }
 
-
-/* Poetry navigation bridge: restrained global portfolio context above the reader.
-   Scoped to the poetry shell so the homepage/header system remains unchanged. */
 .poem-reader-shell .poem-reader-header {
   gap: clamp(28px, 4vw, 64px);
 }
@@ -1345,7 +1317,6 @@
     transition: none;
   }
 }
-
 
 /* Keep the poetry reader's mobile trigger in the same editorial language as the portfolio. */
 @media (max-width: 900px) {
