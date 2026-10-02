@@ -4205,3 +4205,491 @@ a.documentation-cta {
     display: none;
   }
 }
+
+
+/* Light documentation parity: the same authored system as dark mode, translated to warm paper.
+   Structure and geometry stay consistent while the material shifts from luminous panel to technical print. */
+:root:not([data-theme="dark"]) .documentation {
+  background:
+    radial-gradient(circle at 89% 10%, rgba(72, 157, 160, 0.055), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(72, 157, 160, 0.018) 62%, transparent 100%),
+    var(--paper);
+}
+
+:root:not([data-theme="dark"]) .documentation-heading h2 {
+  font-family: "Literata", serif;
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+
+:root:not([data-theme="dark"]) .documentation-heading h2 em {
+  font-family: "Literata", serif;
+  font-style: italic;
+}
+
+:root:not([data-theme="dark"]) .documentation-index {
+  max-width: 1180px;
+  margin-inline: auto;
+  border-top: 0;
+}
+
+:root:not([data-theme="dark"]) .documentation-index > li {
+  margin-bottom: 18px;
+  border-bottom: 0;
+}
+
+:root:not([data-theme="dark"]) .documentation-entry {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 10px 18px;
+  padding: 28px 30px 26px;
+  border: 1px solid rgba(65, 145, 150, 0.25);
+  border-radius: 14px;
+  background:
+    linear-gradient(105deg, rgba(72, 157, 160, 0.026), transparent 42%),
+    color-mix(in srgb, var(--paper) 88%, #ffffff);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.72),
+    0 12px 34px rgba(61, 95, 96, 0.025);
+}
+
+:root:not([data-theme="dark"]) .documentation-number {
+  grid-column: 1;
+  grid-row: 1;
+  position: relative;
+  z-index: 2;
+  color: color-mix(in srgb, #3f9196 72%, var(--muted));
+}
+
+:root:not([data-theme="dark"]) .documentation-title,
+:root:not([data-theme="dark"]) .documentation-description,
+:root:not([data-theme="dark"]) .documentation-meta,
+:root:not([data-theme="dark"]) .documentation-tags {
+  grid-column: 2;
+  position: relative;
+  z-index: 2;
+  width: min(58%, 620px);
+}
+
+:root:not([data-theme="dark"]) .documentation-title {
+  grid-row: 1;
+}
+
+:root:not([data-theme="dark"]) .documentation-title > p {
+  min-height: 0;
+  margin: 0 0 10px;
+  color: color-mix(in srgb, var(--muted) 86%, #3f9196);
+}
+
+:root:not([data-theme="dark"]) .documentation-title h3 {
+  max-width: 560px;
+  font-family: "Literata", serif;
+  font-size: clamp(25px, 2.25vw, 34px);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+:root:not([data-theme="dark"]) .documentation-description {
+  grid-row: 2;
+  max-width: 620px;
+  color: color-mix(in srgb, var(--ink) 72%, var(--muted));
+  font-size: 13px;
+  line-height: 1.68;
+}
+
+:root:not([data-theme="dark"]) .documentation-meta {
+  grid-row: 3;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin-top: 3px;
+}
+
+:root:not([data-theme="dark"]) .documentation-status::before {
+  width: 8px;
+  height: 8px;
+  border: 0;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(194, 24, 91, 0.16);
+}
+
+:root:not([data-theme="dark"]) a.documentation-cta {
+  color: var(--ink);
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(194, 24, 91, 0.62);
+  text-underline-offset: 5px;
+}
+
+:root:not([data-theme="dark"]) a.documentation-cta:hover,
+:root:not([data-theme="dark"]) a.documentation-cta:focus-visible {
+  color: #2f7479;
+  text-decoration-color: var(--accent);
+}
+
+:root:not([data-theme="dark"]) .documentation-tags {
+  grid-row: 4;
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px !important;
+  margin-top: 2px;
+}
+
+:root:not([data-theme="dark"]) .documentation-tags.tags span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 5px 10px !important;
+  border: 1px solid rgba(65, 145, 150, 0.34) !important;
+  border-radius: 999px !important;
+  background: rgba(72, 157, 160, 0.018) !important;
+  color: color-mix(in srgb, #3f9196 62%, var(--ink));
+  font-size: 9px;
+  line-height: 1;
+}
+
+:root:not([data-theme="dark"]) .documentation-tags.tags span::after {
+  content: none !important;
+}
+
+:root:not([data-theme="dark"]) .documentation-orbit {
+  display: block;
+  position: absolute;
+  z-index: 0;
+  top: -12%;
+  right: -4%;
+  width: 48%;
+  height: 124%;
+  opacity: 0.62;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 26%, #000 100%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 26%, #000 100%);
+}
+
+:root:not([data-theme="dark"]) .documentation-orbit::before,
+:root:not([data-theme="dark"]) .documentation-orbit::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Cedius: sweeping orbital tracks + two signal points. */
+:root:not([data-theme="dark"]) .documentation-index > li:nth-child(1) .documentation-orbit {
+  background:
+    radial-gradient(circle at 61% 46%, rgba(194, 24, 91, 0.88) 0 3px, transparent 4px),
+    radial-gradient(circle at 54% 53%, rgba(64, 151, 154, 0.80) 0 2px, transparent 3px),
+    radial-gradient(ellipse at 92% 52%, transparent 0 43%, rgba(64, 151, 154, 0.34) 43.2% 43.5%, transparent 43.8% 55%, rgba(64, 151, 154, 0.10) 55.2% 55.5%, transparent 55.8%);
+}
+
+:root:not([data-theme="dark"]) .documentation-index > li:nth-child(1) .documentation-orbit::before {
+  inset: 18% -13% 12% 16%;
+  border: 1px solid rgba(64, 151, 154, 0.19);
+  border-radius: 50%;
+  transform: rotate(-17deg);
+}
+
+/* ERC-20: intersecting routes + restrained rotated frames. */
+:root:not([data-theme="dark"]) .documentation-index > li:nth-child(2) .documentation-orbit {
+  background:
+    radial-gradient(circle at 70% 50%, rgba(194, 24, 91, 0.88) 0 3px, transparent 4px),
+    radial-gradient(circle at 63% 61%, rgba(64, 151, 154, 0.78) 0 2px, transparent 3px),
+    linear-gradient(31deg, transparent 49.7%, rgba(64, 151, 154, 0.24) 49.9% 50.1%, transparent 50.3%),
+    linear-gradient(-25deg, transparent 49.7%, rgba(64, 151, 154, 0.17) 49.9% 50.1%, transparent 50.3%);
+}
+
+:root:not([data-theme="dark"]) .documentation-index > li:nth-child(2) .documentation-orbit::before {
+  width: 170px;
+  height: 170px;
+  right: 6%;
+  top: 24%;
+  border: 1px solid rgba(64, 151, 154, 0.19);
+  transform: rotate(32deg);
+}
+
+:root:not([data-theme="dark"]) .documentation-index > li:nth-child(2) .documentation-orbit::after {
+  width: 122px;
+  height: 122px;
+  right: 18%;
+  top: 34%;
+  border: 1px solid rgba(64, 151, 154, 0.11);
+  transform: rotate(-24deg);
+}
+
+/* Harmattan: a soft weather mass held in a technical orbit. */
+:root:not([data-theme="dark"]) .documentation-index > li:nth-child(3) .documentation-orbit {
+  background:
+    radial-gradient(circle at 58% 42%, rgba(194, 24, 91, 0.88) 0 3px, transparent 4px),
+    radial-gradient(circle at 68% 31%, rgba(64, 151, 154, 0.78) 0 2px, transparent 3px),
+    radial-gradient(circle at 79% 49%, rgba(64, 151, 154, 0.07) 0 14%, transparent 15%),
+    radial-gradient(circle at 67% 52%, rgba(64, 151, 154, 0.055) 0 18%, transparent 19%),
+    radial-gradient(ellipse at 98% 51%, transparent 0 46%, rgba(64, 151, 154, 0.27) 46.2% 46.5%, transparent 46.8% 58%, rgba(64, 151, 154, 0.10) 58.2% 58.5%, transparent 58.8%);
+}
+
+:root:not([data-theme="dark"]) .documentation-index > li:nth-child(3) .documentation-orbit::before {
+  width: 172px;
+  height: 128px;
+  right: 7%;
+  top: 34%;
+  border: 0;
+  border-radius: 48% 52% 44% 56%;
+  transform: rotate(-7deg);
+  background:
+    radial-gradient(circle at 18% 58%, rgba(64, 151, 154, 0.09) 0 24%, transparent 25%),
+    radial-gradient(circle at 36% 42%, rgba(64, 151, 154, 0.13) 0 27%, transparent 28%),
+    radial-gradient(circle at 53% 55%, rgba(64, 151, 154, 0.12) 0 29%, transparent 30%),
+    radial-gradient(circle at 69% 40%, rgba(64, 151, 154, 0.10) 0 25%, transparent 26%),
+    radial-gradient(circle at 83% 58%, rgba(64, 151, 154, 0.075) 0 21%, transparent 22%);
+  filter: blur(5px);
+  opacity: 0.9;
+}
+
+:root:not([data-theme="dark"]) .documentation-index > li:nth-child(3) .documentation-orbit::after {
+  width: 210px;
+  height: 150px;
+  right: -6%;
+  top: 25%;
+  border: 1px solid rgba(64, 151, 154, 0.13);
+  border-radius: 50%;
+  transform: rotate(-8deg);
+}
+
+/* Tablet: keep the card language, reduce the drawing footprint. */
+@media (min-width: 601px) and (max-width: 900px) {
+  :root:not([data-theme="dark"]) .documentation-entry {
+    grid-template-columns: 26px minmax(0, 1fr);
+    gap: 9px 13px;
+    padding: 22px 18px 20px;
+    border-radius: 12px;
+  }
+
+  :root:not([data-theme="dark"]) .documentation-title,
+  :root:not([data-theme="dark"]) .documentation-description,
+  :root:not([data-theme="dark"]) .documentation-meta,
+  :root:not([data-theme="dark"]) .documentation-tags {
+    width: 72%;
+  }
+
+  :root:not([data-theme="dark"]) .documentation-title h3 {
+    font-size: 27px;
+  }
+
+  :root:not([data-theme="dark"]) .documentation-orbit {
+    right: -11%;
+    width: 58%;
+    opacity: 0.5;
+  }
+}
+
+/* Mobile: preserve the authored card identity without turning the content into a cramped desktop card. */
+@media (max-width: 600px) {
+  :root:not([data-theme="dark"]) .documentation {
+    background:
+      radial-gradient(circle at 112% 11%, rgba(72, 157, 160, 0.05), transparent 26%),
+      var(--paper);
+  }
+
+  :root:not([data-theme="dark"]) .documentation-heading h2 {
+    font-size: 42px;
+    line-height: 0.99;
+  }
+
+  :root:not([data-theme="dark"]) .documentation-index {
+    width: 100%;
+    margin-inline: 0;
+  }
+
+  :root:not([data-theme="dark"]) .documentation-index > li {
+    margin-bottom: 12px;
+  }
+
+  :root:not([data-theme="dark"]) .documentation-entry {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 18px minmax(0, 1fr);
+    grid-template-rows: auto auto auto auto;
+    column-gap: 10px;
+    row-gap: 9px;
+    min-height: 0;
+    padding: 15px 14px 14px;
+    border: 1px solid rgba(65, 145, 150, 0.28);
+    border-radius: 12px;
+    background:
+      linear-gradient(108deg, rgba(72, 157, 160, 0.022), transparent 45%),
+      color-mix(in srgb, var(--paper) 90%, #ffffff);
+    box-shadow: none;
+  }
+
+  :root:not([data-theme="dark"]) .documentation-number {
+    grid-column: 1;
+    grid-row: 1;
+    padding-top: 1px;
+    font-size: 9px;
+    line-height: 1.2;
+  }
+
+  :root:not([data-theme="dark"]) .documentation-title,
+  :root:not([data-theme="dark"]) .documentation-description,
+  :root:not([data-theme="dark"]) .documentation-meta,
+  :root:not([data-theme="dark"]) .documentation-tags {
+    grid-column: 2;
+    position: relative;
+    z-index: 2;
+  }
+
+  :root:not([data-theme="dark"]) .documentation-title {
+    grid-row: 1;
+    width: 72%;
+  }
+
+  :root:not([data-theme="dark"]) .documentation-title > p {
+    margin: 0 0 8px;
+    min-height: 0;
+    font-size: 7.5px;
+    line-height: 1.25;
+    letter-spacing: 0.045em;
+  }
+
+  :root:not([data-theme="dark"]) .documentation-title h3 {
+    max-width: 12ch;
+    margin: 0;
+    font-size: clamp(19px, 5.3vw, 21px);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+  }
+
+  :root:not([data-theme="dark"]) .documentation-description {
+    grid-row: 2;
+    width: 81%;
+    max-width: 40ch;
+    margin: 0;
+    font-size: 10px;
+    line-height: 1.54;
+    color: color-mix(in srgb, var(--ink) 72%, var(--muted));
+  }
+
+  :root:not([data-theme="dark"]) .documentation-meta {
+    grid-row: 3;
+    width: 81%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 10px 16px;
+    margin: 4px 0 2px;
+  }
+
+  :root:not([data-theme="dark"]) .documentation-status {
+    flex: 0 0 auto;
+    font-size: 8px;
+  }
+
+  :root:not([data-theme="dark"]) .documentation-status::before {
+    width: 6px;
+    height: 6px;
+  }
+
+  :root:not([data-theme="dark"]) a.documentation-cta,
+  :root:not([data-theme="dark"]) span.documentation-cta {
+    flex: 0 0 auto;
+    width: fit-content;
+    font-size: 8.75px;
+    line-height: 1.2;
+    white-space: nowrap;
+    text-underline-offset: 4px;
+  }
+
+  :root:not([data-theme="dark"]) .documentation-tags {
+    grid-row: 4;
+    width: 100%;
+    margin-top: 4px;
+    padding-right: 0;
+    gap: 5px !important;
+  }
+
+  :root:not([data-theme="dark"]) .documentation-tags.tags span {
+    min-height: 19px;
+    padding: 3px 6px !important;
+    font-size: 6.9px;
+  }
+
+  :root:not([data-theme="dark"]) .documentation-orbit {
+    display: block;
+    top: 0;
+    right: -4%;
+    width: 38%;
+    height: 100%;
+    opacity: 0.66;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.5) 18%, #000 40%, #000 100%);
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.5) 18%, #000 40%, #000 100%);
+  }
+
+  :root:not([data-theme="dark"]) .documentation-index > li:nth-child(1) .documentation-orbit::before {
+    inset: 12% -34% 11% 7%;
+  }
+
+  :root:not([data-theme="dark"]) .documentation-index > li:nth-child(2) .documentation-orbit::before {
+    width: 96px;
+    height: 96px;
+    right: -6px;
+    top: 27%;
+  }
+
+  :root:not([data-theme="dark"]) .documentation-index > li:nth-child(2) .documentation-orbit::after {
+    width: 70px;
+    height: 70px;
+    right: 30px;
+    top: 39%;
+  }
+
+  :root:not([data-theme="dark"]) .documentation-index > li:nth-child(3) .documentation-orbit::before {
+    width: 112px;
+    height: 88px;
+    right: -4px;
+    top: 37%;
+  }
+
+  :root:not([data-theme="dark"]) .documentation-index > li:nth-child(3) .documentation-orbit::after {
+    width: 140px;
+    height: 104px;
+    right: -37px;
+    top: 28%;
+  }
+}
+
+@media (max-width: 340px) {
+  :root:not([data-theme="dark"]) .documentation-entry {
+    grid-template-columns: 16px minmax(0, 1fr);
+    column-gap: 8px;
+    row-gap: 8px;
+    padding: 13px 12px;
+  }
+
+  :root:not([data-theme="dark"]) .documentation-title,
+  :root:not([data-theme="dark"]) .documentation-description,
+  :root:not([data-theme="dark"]) .documentation-meta {
+    width: 82%;
+  }
+
+  :root:not([data-theme="dark"]) .documentation-description {
+    font-size: 9.5px;
+    line-height: 1.5;
+  }
+
+  :root:not([data-theme="dark"]) a.documentation-cta,
+  :root:not([data-theme="dark"]) span.documentation-cta {
+    font-size: 8px;
+  }
+
+  :root:not([data-theme="dark"]) .documentation-tags.tags span {
+    font-size: 6.5px;
+    padding: 3px 5px !important;
+  }
+}
