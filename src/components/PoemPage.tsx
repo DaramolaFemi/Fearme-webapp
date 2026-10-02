@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { boySceneDesktop, boySceneMobile } from "../assets/poetry/boyScene";
+import { wedSceneDesktop, wedSceneMobile } from "../assets/poetry/wedScene";
 import { poems, type Poem } from "../data/poetry";
 import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
@@ -27,12 +28,8 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
   const isMoonlit = poem?.slug === "the-boy-who-writes";
   const isWedMoonlit = poem?.slug === "he-took-the-one-i-wed";
   const hasEditorialScene = isMoonlit || isWedMoonlit;
-  const editorialSceneDesktop = isWedMoonlit
-    ? "/Images/poetry/he-took-the-one-i-wed-desktop.avif"
-    : boySceneDesktop;
-  const editorialSceneMobile = isWedMoonlit
-    ? "/Images/poetry/he-took-the-one-i-wed-mobile.avif"
-    : boySceneMobile;
+  const editorialSceneDesktop = isWedMoonlit ? wedSceneDesktop : boySceneDesktop;
+  const editorialSceneMobile = isWedMoonlit ? wedSceneMobile : boySceneMobile;
 
   return (
     <div

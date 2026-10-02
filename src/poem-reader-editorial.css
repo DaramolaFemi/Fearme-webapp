@@ -459,7 +459,7 @@
   }
 
   .poem-page-wed > .poem-moonlit-scene img {
-    opacity: 0.82;
+    opacity: 0.92;
   }
 
   .poem-page-editorial .poem-body {
@@ -605,5 +605,14 @@
   .poem-page-editorial .poem-navigation > :nth-child(4) {
     transition: none;
     transform: none;
+  }
+}
+
+
+/* Desktop bridal scene: preserve the authored left-side composition. */
+@media (min-width: 1180px) {
+  .poem-page-wed > .poem-moonlit-scene img {
+    object-position: left center;
+    opacity: 0.94;
   }
 }
