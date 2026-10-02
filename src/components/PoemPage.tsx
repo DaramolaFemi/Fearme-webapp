@@ -33,16 +33,16 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
   const hasEditorialScene =
     isMoonlit || isDreams || isGoodMourning || isGraveyard || isWedMoonlit;
   const editorialSceneDesktop = isGraveyard
-    ? "/Images/poetry/graveyard-lovers-desktop.webp"
+    ? "/Images/poetry/graveyard-lovers-desktop.avif"
     : isGoodMourning
-      ? "/Images/poetry/good-mourning-desktop.webp"
+      ? "/Images/poetry/good-mourning-desktop.avif"
       : isDreams
       ? "/Images/poetry/dreams-desktop.webp"
       : isWedMoonlit
         ? wedSceneDesktop
         : boySceneDesktop;
   const editorialSceneMobile = isGraveyard
-    ? "/Images/poetry/graveyard-lovers-mobile.webp"
+    ? "/Images/poetry/graveyard-lovers-mobile.avif"
     : isGoodMourning
       ? "/Images/poetry/good-mourning-mobile.webp"
       : isDreams
