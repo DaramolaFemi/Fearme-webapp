@@ -820,13 +820,13 @@
     top: 108px;
     right: -52px;
     width: 356px;
-    opacity: 0.41;
+    opacity: 0.52;
     filter:
-      saturate(0.72)
-      contrast(0.93)
-      brightness(1)
-      drop-shadow(0 10px 24px rgba(68, 155, 160, 0.055))
-      drop-shadow(0 0 14px rgba(110, 221, 212, 0.09));
+      saturate(0.82)
+      contrast(1.02)
+      brightness(0.99)
+      drop-shadow(0 10px 26px rgba(68, 155, 160, 0.085))
+      drop-shadow(0 0 18px rgba(110, 221, 212, 0.135));
   }
 
   :root:not([data-theme="dark"]) .hero-orbits-back {
@@ -841,7 +841,7 @@
     top: 86px;
     right: -42px;
     width: 360px;
-    opacity: 0.09;
+    opacity: 0.12;
     filter: blur(30px);
   }
 }
@@ -851,7 +851,7 @@
     top: 116px;
     right: -54px;
     width: 328px;
-    opacity: 0.39;
+    opacity: 0.49;
   }
 }
 
