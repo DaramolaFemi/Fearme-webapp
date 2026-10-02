@@ -39,7 +39,7 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
     isMinutesSilence ||
     isWedMoonlit;
   const editorialSceneDesktop = isMinutesSilence
-    ? "/Images/poetry/a-minutes-silence-desktop.webp"
+    ? "/Images/poetry/a-minutes-silence-desktop-v2.webp"
     : isGraveyard
       ? "/Images/poetry/graveyard-lovers-desktop.avif"
       : isGoodMourning
@@ -50,7 +50,7 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
         ? wedSceneDesktop
         : boySceneDesktop;
   const editorialSceneMobile = isMinutesSilence
-    ? "/Images/poetry/a-minutes-silence-mobile.webp"
+    ? "/Images/poetry/a-minutes-silence-mobile-v2.webp"
     : isGraveyard
       ? "/Images/poetry/graveyard-lovers-mobile.avif"
       : isGoodMourning
