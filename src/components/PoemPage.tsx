@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { boySceneDesktop, boySceneMobile } from "../assets/poetry/boyScene";
 import { wedSceneDesktop, wedSceneMobile } from "../assets/poetry/wedScene";
-import { goodMourningMobile } from "../assets/poetry/goodMourningScene";
 import { poems, type Poem } from "../data/poetry";
 import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
@@ -40,7 +39,7 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
         ? wedSceneDesktop
         : boySceneDesktop;
   const editorialSceneMobile = isGoodMourning
-    ? goodMourningMobile
+    ? "/Images/poetry/good-mourning-mobile.webp"
     : isDreams
       ? "/Images/poetry/dreams-mobile.webp"
       : isWedMoonlit
