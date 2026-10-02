@@ -3155,10 +3155,7 @@ a.documentation-cta {
     line-height: 1;
   }
 
-  /*
-    Artwork owns the right side of the card.
-    It is clipped by the card edge rather than sitting behind the copy.
-  */
+  
   :root[data-theme="dark"] .documentation-orbit {
     display: block;
     position: absolute;
@@ -3839,10 +3836,7 @@ a.documentation-cta {
 }
 
 @media (min-width: 1000px) {
-  /*
-    Keep the poem index and date as one compact editorial ledger rather than
-    sending the year to the far edge of the reading column.
-  */
+  
   .poem-meta {
     justify-content: flex-start;
     align-items: center;
