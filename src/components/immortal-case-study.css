@@ -2111,3 +2111,20 @@
     font-size: clamp(52px, 6.7vw, 106px);
   }
 }
+
+
+/* Desktop case-study type balance: intentional line break and quieter closing statement. */
+@media (min-width: 1024px) {
+  .case-hero h1 em .case-title-em-line {
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    white-space: nowrap;
+  }
+
+  .case-transformation blockquote {
+    max-width: 920px;
+    font-size: clamp(42px, 4.6vw, 72px);
+    line-height: 0.96;
+  }
+}

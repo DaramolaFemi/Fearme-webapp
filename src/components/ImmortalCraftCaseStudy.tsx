@@ -77,7 +77,10 @@ export default function ImmortalCraftCaseStudy() {
               <span className="case-eyebrow">Website redesign / Design + development</span>
               <h1 id="case-title">
                 The craft was already there.
-                <em>The website had to catch up.</em>
+                <em>
+                  <span className="case-title-em-line">The website had</span>{" "}
+                  <span className="case-title-em-line">to catch up.</span>
+                </em>
               </h1>
             </div>
 
