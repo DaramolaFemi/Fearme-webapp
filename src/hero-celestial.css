@@ -1,6 +1,4 @@
-/* Celestial hero
-   The textured planet remains the primary visual. The orbital system is split
-   into rear and front layers so the paths visibly wrap around the sphere. */
+
 
 .hero {
   isolation: isolate;
@@ -671,9 +669,6 @@
   }
 }
 
-
-/* Dedicated light-mode celestial companion.
-   The dark hero remains untouched; light mode gets its own brighter sculptural asset. */
 .hero-planet-light {
   display: none;
 }
@@ -855,7 +850,6 @@
   }
 }
 
-
 /* Mobile-only orbit behavior.
    Keep the rings near the planet's equator so they read as orbital bands,
    not rotating vertical loops. */
@@ -897,8 +891,6 @@
   }
 }
 
-
-/* Premium celestial micro-lighting */
 .hero-celestial-glints {
   position: absolute;
   inset: 0;
@@ -1166,7 +1158,6 @@
   }
 }
 
-
 /* Keep every celestial glint physically inside the planet disc. */
 .hero-celestial-glints {
   inset: auto;
@@ -1301,9 +1292,6 @@
   }
 }
 
-
-/* Desktop light-mode parity: match the dark planet's visual scale and anchor.
-   Tablet/mobile light-mode treatment remains unchanged. */
 @media (min-width: 1441px) {
   :root:not([data-theme="dark"]) .hero-planet-light {
     top: 80px;
