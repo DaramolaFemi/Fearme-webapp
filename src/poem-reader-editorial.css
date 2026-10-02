@@ -976,6 +976,7 @@
 
 /* Desktop poem navigation: quiet movement and cyan hairline response. */
 @media (min-width: 901px) {
+  .poem-page-editorial .poem-navigation > :nth-child(2),
   .poem-page-editorial .poem-navigation > :nth-child(3),
   .poem-page-editorial .poem-navigation > :nth-child(4) {
     transition:
@@ -985,6 +986,8 @@
       text-shadow 220ms ease;
   }
 
+  .poem-page-editorial .poem-navigation > :nth-child(2):hover,
+  .poem-page-editorial .poem-navigation > :nth-child(2):focus-visible,
   .poem-page-editorial .poem-navigation > :nth-child(3):hover,
   .poem-page-editorial .poem-navigation > :nth-child(3):focus-visible,
   .poem-page-editorial .poem-navigation > :nth-child(4):hover,
@@ -997,6 +1000,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .poem-page-editorial .poem-navigation > :nth-child(2),
   .poem-page-editorial .poem-navigation > :nth-child(3),
   .poem-page-editorial .poem-navigation > :nth-child(4) {
     transition: none;
