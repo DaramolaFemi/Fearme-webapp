@@ -4131,10 +4131,10 @@ a.documentation-cta {
   }
 
   .menu-toggle::after {
-    width: 18px;
+    width: 14px;
   }
 
   .menu-toggle[aria-expanded="true"]::after {
-    width: 11px;
+    width: 9px;
   }
 }
