@@ -412,6 +412,16 @@
     letter-spacing: -0.024em;
   }
 
+  .poem-page-moonlit .poem-reading-intro .poem-title-moonlit {
+    max-width: none;
+  }
+
+  .poem-page-moonlit .poem-title-line {
+    display: block;
+    width: max-content;
+    white-space: nowrap;
+  }
+
   .poem-page-editorial .poem-body {
     font-size: clamp(17px, 4.65vw, 19px);
     line-height: 1.62;

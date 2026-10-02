@@ -73,12 +73,11 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
                   {poem.year}
                 </span>
               </div>
-              <h1>
+              <h1 className={isMoonlit ? "poem-title-moonlit" : undefined}>
                 {isMoonlit ? (
                   <>
-                    The Boy
-                    <br />
-                    Who Writes
+                    <span className="poem-title-line">The Boy</span>{" "}
+                    <span className="poem-title-line">Who Writes</span>
                   </>
                 ) : (
                   poem.title
