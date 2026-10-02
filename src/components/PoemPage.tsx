@@ -25,10 +25,18 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
   const previous = poems[index - 1];
   const next = poems[index + 1];
   const isMoonlit = poem?.slug === "the-boy-who-writes";
+  const isWedMoonlit = poem?.slug === "he-took-the-one-i-wed";
+  const hasEditorialScene = isMoonlit || isWedMoonlit;
+  const editorialSceneDesktop = isWedMoonlit
+    ? "/Images/poetry/he-took-the-one-i-wed-desktop.avif"
+    : boySceneDesktop;
+  const editorialSceneMobile = isWedMoonlit
+    ? "/Images/poetry/he-took-the-one-i-wed-mobile.avif"
+    : boySceneMobile;
 
   return (
     <div
-      className={`poem-reader-shell${isMoonlit ? " poem-reader-shell--moonlit" : ""}`}
+      className={`poem-reader-shell${hasEditorialScene ? " poem-reader-shell--moonlit" : ""}`}
     >
       <a className="skip-link" href="#main">
         Skip to poem
@@ -44,13 +52,16 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
       </header>
       <main
         id="main"
-        className={`poem-page poem-page-editorial${isMoonlit ? " poem-page-moonlit" : ""}`}
+        className={`poem-page poem-page-editorial${hasEditorialScene ? " poem-page-moonlit" : ""}${isWedMoonlit ? " poem-page-wed" : ""}`}
       >
-        {isMoonlit && (
-          <picture className="poem-moonlit-scene" aria-hidden="true">
-            <source media="(max-width: 900px)" srcSet={boySceneMobile} />
+        {hasEditorialScene && (
+          <picture
+            className={`poem-moonlit-scene${isWedMoonlit ? " poem-moonlit-scene--wed" : ""}`}
+            aria-hidden="true"
+          >
+            <source media="(max-width: 900px)" srcSet={editorialSceneMobile} />
             <img
-              src={boySceneDesktop}
+              src={editorialSceneDesktop}
               alt=""
               decoding="async"
               fetchPriority="high"
@@ -73,11 +84,25 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
                   {poem.year}
                 </span>
               </div>
-              <h1 className={isMoonlit ? "poem-title-moonlit" : undefined}>
+              <h1
+                className={
+                  isMoonlit
+                    ? "poem-title-moonlit"
+                    : isWedMoonlit
+                      ? "poem-title-wed"
+                      : undefined
+                }
+              >
                 {isMoonlit ? (
                   <>
                     <span className="poem-title-line">The Boy</span>{" "}
                     <span className="poem-title-line">Who Writes</span>
+                  </>
+                ) : isWedMoonlit ? (
+                  <>
+                    <span className="poem-title-line">He Took</span>
+                    <span className="poem-title-line">the One</span>
+                    <span className="poem-title-line">I Wed</span>
                   </>
                 ) : (
                   poem.title

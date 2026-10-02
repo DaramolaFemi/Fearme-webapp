@@ -98,6 +98,35 @@
     linear-gradient(180deg, rgba(3, 23, 25, 0.02), rgba(3, 23, 25, 0.08));
 }
 
+
+/* He Took the One I Wed: bridal rain scene with protected literary contrast. */
+.poem-page-wed::before {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3, 23, 25, 0.34) 0%,
+      rgba(3, 23, 25, 0.16) 34%,
+      rgba(3, 23, 25, 0.08) 62%,
+      rgba(3, 23, 25, 0.18) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(3, 23, 25, 0.08) 0%,
+      rgba(3, 23, 25, 0.12) 42%,
+      rgba(3, 23, 25, 0.38) 100%
+    );
+}
+
+.poem-page-wed .poem-reading-intro .poem-title-wed {
+  max-width: none;
+}
+
+.poem-page-wed .poem-title-wed .poem-title-line {
+  display: block;
+  width: max-content;
+  white-space: nowrap;
+}
+
 .poem-reading-layout,
 .poem-reading-not-found {
   position: relative;
@@ -422,6 +451,17 @@
     white-space: nowrap;
   }
 
+
+  .poem-page-wed .poem-reading-intro h1.poem-title-wed {
+    max-width: none;
+    font-size: clamp(40px, 11.6vw, 53px);
+    line-height: 0.98;
+  }
+
+  .poem-page-wed > .poem-moonlit-scene img {
+    opacity: 0.82;
+  }
+
   .poem-page-editorial .poem-body {
     font-size: clamp(17px, 4.65vw, 19px);
     line-height: 1.62;
@@ -499,6 +539,13 @@
     width: 140%;
     -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 84%, transparent 100%);
     mask-image: linear-gradient(180deg, #000 0%, #000 84%, transparent 100%);
+  }
+
+  .poem-page-wed > .poem-moonlit-scene {
+    left: 0;
+    width: 100%;
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 86%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 0%, #000 86%, transparent 100%);
   }
 }
 
