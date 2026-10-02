@@ -1,8 +1,4 @@
-/*
- * Mobile-only CTA corrections.
- * Keep the desktop/tablet editorial layout untouched while restoring the
- * lighter mobile treatment for poetry and project actions.
- */
+
 @media (max-width: 600px) {
   /* Mobile uses text-first actions. */
   .direction-arrow.direction-arrow,
