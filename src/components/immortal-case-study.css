@@ -2103,3 +2103,11 @@
     display: none;
   }
 }
+
+
+/* Desktop-only optical correction: keep the case-study thesis commanding without overwhelming the page. */
+@media (min-width: 1024px) {
+  .case-hero h1 {
+    font-size: clamp(52px, 6.7vw, 106px);
+  }
+}
