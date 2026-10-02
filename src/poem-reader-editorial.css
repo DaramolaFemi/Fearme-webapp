@@ -99,6 +99,24 @@
 }
 
 
+/* Good Mo(u)rning: preserve the deceptively beautiful courtyard while protecting the short poem. */
+.poem-page-good-mourning::before {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3, 23, 25, 0.08) 0%,
+      rgba(3, 23, 25, 0.12) 34%,
+      rgba(3, 23, 25, 0.26) 62%,
+      rgba(3, 23, 25, 0.46) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(3, 23, 25, 0.02) 0%,
+      rgba(3, 23, 25, 0.08) 54%,
+      rgba(3, 23, 25, 0.24) 100%
+    );
+}
+
 /* Dreams: the artwork carries the childhood fantasy; protect the reading field without flattening it. */
 .poem-page-dreams::before {
   background:
@@ -371,6 +389,19 @@
     line-height: 1.58;
     letter-spacing: -0.01em;
   }
+
+  .poem-page-good-mourning > .poem-moonlit-scene img {
+    object-position: center center;
+    opacity: 0.92;
+  }
+
+  .poem-page-good-mourning .poem-body {
+    max-width: 31ch;
+    margin-top: clamp(74px, 8.5vh, 104px);
+    font-size: clamp(22px, 1.5vw, 24px);
+    line-height: 1.55;
+    letter-spacing: -0.012em;
+  }
 }
 
 @media (min-width: 901px) and (max-width: 1179px) {
@@ -401,6 +432,12 @@
     max-width: 34ch;
     font-size: clamp(19px, 2.1vw, 22px);
     line-height: 1.58;
+  }
+
+  .poem-page-good-mourning .poem-body {
+    max-width: 32ch;
+    font-size: clamp(20px, 2.25vw, 23px);
+    line-height: 1.56;
   }
 
   .poem-page-editorial .poem-navigation {
@@ -617,6 +654,13 @@
     width: 100%;
     -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 90%, transparent 100%);
     mask-image: linear-gradient(180deg, #000 0%, #000 90%, transparent 100%);
+  }
+
+  .poem-page-good-mourning > .poem-moonlit-scene {
+    left: 0;
+    width: 100%;
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 91%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 0%, #000 91%, transparent 100%);
   }
 }
 

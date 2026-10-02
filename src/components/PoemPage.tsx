@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { boySceneDesktop, boySceneMobile } from "../assets/poetry/boyScene";
 import { wedSceneDesktop, wedSceneMobile } from "../assets/poetry/wedScene";
+import { goodMourningMobile } from "../assets/poetry/goodMourningScene";
 import { poems, type Poem } from "../data/poetry";
 import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
@@ -27,18 +28,24 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
   const next = poems[index + 1];
   const isMoonlit = poem?.slug === "the-boy-who-writes";
   const isDreams = poem?.slug === "dreams";
+  const isGoodMourning = poem?.slug === "good-mourning";
   const isWedMoonlit = poem?.slug === "he-took-the-one-i-wed";
-  const hasEditorialScene = isMoonlit || isDreams || isWedMoonlit;
-  const editorialSceneDesktop = isDreams
-    ? "/Images/poetry/dreams-desktop.webp"
-    : isWedMoonlit
-      ? wedSceneDesktop
-      : boySceneDesktop;
-  const editorialSceneMobile = isDreams
-    ? "/Images/poetry/dreams-mobile.webp"
-    : isWedMoonlit
-      ? wedSceneMobile
-      : boySceneMobile;
+  const hasEditorialScene =
+    isMoonlit || isDreams || isGoodMourning || isWedMoonlit;
+  const editorialSceneDesktop = isGoodMourning
+    ? "/Images/poetry/good-mourning-desktop.webp"
+    : isDreams
+      ? "/Images/poetry/dreams-desktop.webp"
+      : isWedMoonlit
+        ? wedSceneDesktop
+        : boySceneDesktop;
+  const editorialSceneMobile = isGoodMourning
+    ? goodMourningMobile
+    : isDreams
+      ? "/Images/poetry/dreams-mobile.webp"
+      : isWedMoonlit
+        ? wedSceneMobile
+        : boySceneMobile;
 
   return (
     <div
@@ -58,11 +65,11 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
       </header>
       <main
         id="main"
-        className={`poem-page poem-page-editorial${hasEditorialScene ? " poem-page-moonlit" : ""}${isDreams ? " poem-page-dreams" : ""}${isWedMoonlit ? " poem-page-wed" : ""}`}
+        className={`poem-page poem-page-editorial${hasEditorialScene ? " poem-page-moonlit" : ""}${isDreams ? " poem-page-dreams" : ""}${isGoodMourning ? " poem-page-good-mourning" : ""}${isWedMoonlit ? " poem-page-wed" : ""}`}
       >
         {hasEditorialScene && (
           <picture
-            className={`poem-moonlit-scene${isDreams ? " poem-moonlit-scene--dreams" : ""}${isWedMoonlit ? " poem-moonlit-scene--wed" : ""}`}
+            className={`poem-moonlit-scene${isDreams ? " poem-moonlit-scene--dreams" : ""}${isGoodMourning ? " poem-moonlit-scene--good-mourning" : ""}${isWedMoonlit ? " poem-moonlit-scene--wed" : ""}`}
             aria-hidden="true"
           >
             <source media="(max-width: 900px)" srcSet={editorialSceneMobile} />
