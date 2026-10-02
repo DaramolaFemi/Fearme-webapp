@@ -1178,8 +1178,6 @@ textarea::placeholder {
   }
 }
 
-/* The same Femi identity after dark: petrol-black, warm text, raspberry,
-   with cyan used as a restrained nocturnal light source rather than a second brand. */
 :root[data-theme="dark"] {
   color-scheme: dark;
   --paper: #041416;
@@ -1609,7 +1607,6 @@ button:focus-visible .direction-arrow {
   }
 }
 
-/* Shared label spacing preserves optical alignment across link contexts. */
 .arrow-label {
   display: inline-flex;
   align-items: center;
@@ -1971,11 +1968,6 @@ button:focus-visible .direction-arrow {
   color: var(--accent);
 }
 
-/*
-  Individual poems can opt into authored atmosphere without changing the
-  reading component. Bones and Flowers uses transparent anatomical/floral
-  artwork at the page edges so the poem remains the dominant layer.
-*/
 .poem-page {
   position: relative;
   z-index: 1;
@@ -2102,11 +2094,7 @@ button:focus-visible .direction-arrow {
 }
 
 @media (max-width: 600px) {
-  /*
-    Bones and Flowers mobile composition:
-    the artwork should read as an edge-frame, never as a second content
-    layer. Keep only a controlled slice of each anatomical piece visible.
-  */
+  
   .poem-atmosphere-bone-botanical {
     opacity: 1;
   }
@@ -2181,7 +2169,6 @@ button:focus-visible .direction-arrow {
     transform: rotate(18deg);
   }
 }
-
 
 .form-status:empty {
   margin: 0;
@@ -2420,8 +2407,6 @@ a.documentation-cta {
   }
 }
 
-
-/* Final dark-mode identity: nocturnal petrol + raspberry + cyan light */
 :root[data-theme="dark"] ::selection {
   background: rgba(194, 24, 91, 0.42);
   color: var(--ink);
@@ -2575,12 +2560,10 @@ a.documentation-cta {
   color: inherit;
 }
 
-
 .documentation-orbit {
   display: none;
 }
 
-/* Dark mode refinement 2: subtract cyan, deepen tone, author section identities */
 :root[data-theme="dark"] .work {
   background: #041416;
 }
@@ -2968,8 +2951,6 @@ a.documentation-cta {
   }
 }
 
-
-/* About CV affordance — intentionally compact; documentation remains reverted. */
 .experience-download-cue {
   display: none;
 }
@@ -3046,8 +3027,6 @@ a.documentation-cta {
   }
 }
 
-
-/* Mobile documentation reference composition */
 @media (max-width: 600px) {
   :root[data-theme="dark"] .documentation-index {
     width: 100%;
@@ -3320,8 +3299,6 @@ a.documentation-cta {
   }
 }
 
-
-/* Compact mobile documentation cards: keep the authored artwork, remove excess verticality. */
 @media (max-width: 600px) {
   :root[data-theme="dark"] .documentation-entry {
     grid-template-columns: 18px minmax(0, 1fr);
@@ -3445,8 +3422,6 @@ a.documentation-cta {
   }
 }
 
-
-/* Contact + footer authored boundary */
 .contact {
   --contact-curve-color: var(--accent);
   --contact-curve-glow: rgba(194, 24, 91, 0.22);
@@ -3804,17 +3779,12 @@ a.documentation-cta {
   }
 }
 
-
-/* Bones and Flowers: authored mobile composite supplied for the phone reading experience. */
 .poem-atmosphere-mobile-frame {
   display: none;
 }
 
 @media (max-width: 600px) {
-  /*
-    Use the dedicated mobile crops only on phones. The desktop artwork stays
-    exactly as authored for larger viewports.
-  */
+  
   .poem-atmosphere-bone-botanical .poem-atmosphere-art-left,
   .poem-atmosphere-bone-botanical .poem-atmosphere-art-right {
     display: none;
@@ -3868,8 +3838,6 @@ a.documentation-cta {
   }
 }
 
-
-/* Bones and Flowers desktop composition + poem metadata refinement */
 @media (min-width: 1000px) {
   /*
     Keep the poem index and date as one compact editorial ledger rather than
@@ -3900,11 +3868,7 @@ a.documentation-cta {
     white-space: nowrap;
   }
 
-  /*
-    Desktop artwork is deliberately smaller than the earlier viewport-scaled
-    treatment. The ribcage frames the upper-left margin; the hand answers it
-    from the lower-right without crowding the reading column.
-  */
+  
   .poem-atmosphere-bone-botanical .poem-atmosphere-art-left {
     top: 5.5%;
     left: clamp(22px, 3.2vw, 64px);
@@ -3957,8 +3921,6 @@ a.documentation-cta {
   }
 }
 
-
-/* Poetry title scale refinement. */
 .poem-page h1 {
   font-size: clamp(39px, 4.4vw, 60px);
 }
@@ -3969,7 +3931,6 @@ a.documentation-cta {
     line-height: 1.07;
   }
 }
-
 
 /* Desktop documentation-heading composition */
 @media (min-width: 1024px) {
@@ -4058,9 +4019,6 @@ a.documentation-cta {
   }
 }
 
-
-/* Mobile navigation trigger: editorial text control with a restrained hairline.
-   Structure stays untouched; only the trigger itself is refined. */
 @media (max-width: 900px) {
   .menu-toggle {
     display: inline-flex;
@@ -4139,9 +4097,6 @@ a.documentation-cta {
   }
 }
 
-
-/* Desktop documentation intro: stack the supporting line directly under the thesis.
-   Mobile keeps its existing copy and layout unchanged. */
 .documentation-heading-copy-desktop {
   display: inline;
 }
@@ -4174,8 +4129,6 @@ a.documentation-cta {
   }
 }
 
-
-/* Final desktop documentation intro placement: supporting copy belongs directly under the thesis. */
 @media (min-width: 901px) {
   .documentation-heading {
     display: flex;
@@ -4206,9 +4159,6 @@ a.documentation-cta {
   }
 }
 
-
-/* Light documentation parity: the same authored system as dark mode, translated to warm paper.
-   Structure and geometry stay consistent while the material shifts from luminous panel to technical print. */
 :root:not([data-theme="dark"]) .documentation {
   background:
     radial-gradient(circle at 89% 10%, rgba(72, 157, 160, 0.055), transparent 24%),
@@ -4486,7 +4436,6 @@ a.documentation-cta {
   }
 }
 
-/* Mobile: preserve the authored card identity without turning the content into a cramped desktop card. */
 @media (max-width: 600px) {
   :root:not([data-theme="dark"]) .documentation {
     background:
