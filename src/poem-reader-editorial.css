@@ -1345,3 +1345,45 @@
     transition: none;
   }
 }
+
+
+/* Keep the poetry reader's mobile trigger in the same editorial language as the portfolio. */
+@media (max-width: 900px) {
+  .poem-reader-shell .poetry-menu-toggle {
+    display: inline-flex;
+    min-width: 70px;
+    min-height: 44px;
+    padding: 0;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 9px;
+    border: 0;
+    background: transparent;
+    color: #dfe5e1;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .poem-reader-shell .poetry-menu-toggle::after {
+    background: currentColor;
+    opacity: 0.42;
+  }
+
+  .poem-reader-shell .poetry-menu-toggle[aria-expanded="true"]::after {
+    opacity: 0.68;
+  }
+}
+
+@media (max-width: 600px) {
+  .poem-reader-shell .poetry-menu-toggle {
+    min-width: 62px;
+    gap: 7px;
+    font-size: 9.5px;
+    letter-spacing: 0.14em;
+  }
+}
