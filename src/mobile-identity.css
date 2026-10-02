@@ -1,0 +1,185 @@
+
+
+@media (max-width: 600px) {
+  body {
+    font-family: "IBM Plex Sans", sans-serif;
+  }
+
+  /* Literary voice: distinct from the interface sans without changing structure. */
+  em,
+  .about-signature,
+  .poetry-index h3,
+  .poem-page h1,
+  .poem-body {
+    font-family: "Literata", serif;
+  }
+
+  .about-signature > span {
+    font-family: "IBM Plex Sans", sans-serif;
+  }
+
+  /* Keep mono reserved for genuinely technical microcopy. */
+  .documentation-number,
+  .documentation-title > p {
+    font-family: "IBM Plex Mono", monospace;
+  }
+
+  /* Let the typefaces keep their natural character instead of relying on crushed tracking. */
+  h1 {
+    font-size: clamp(38px, 10vw, 42px);
+    letter-spacing: -0.026em;
+  }
+
+  h1 em {
+    letter-spacing: -0.012em;
+  }
+
+  h2 {
+    font-size: 39px;
+    letter-spacing: -0.018em;
+  }
+
+  .project-heading h3,
+  .about-copy .lead,
+  .capabilities h3,
+  .documentation-title h3 {
+    letter-spacing: -0.01em;
+  }
+
+  .interlude {
+    letter-spacing: -0.015em;
+  }
+
+  .poetry-index h3 {
+    font-size: 25px;
+    line-height: 1.12;
+    letter-spacing: -0.008em;
+  }
+
+  .poem-page h1 {
+    letter-spacing: -0.008em;
+  }
+
+  /* Keep metadata quiet, but stop using wide all-caps as the default editorial signal. */
+  .hero-meta,
+  .hero-rule,
+  .section-kicker,
+  .small-label,
+  .project-heading > span,
+  .project-status,
+  .documentation-number,
+  .documentation-title > p,
+  .documentation-status,
+  .documentation-cta,
+  .poetry-status,
+  .poetry-archive-toggle {
+    text-transform: none;
+    letter-spacing: 0.015em;
+  }
+
+  .orbit-caption {
+    text-transform: none;
+    letter-spacing: 0.04em;
+  }
+}
+
+@media (max-width: 600px) {
+  :root:not([data-theme="dark"]) {
+    --paper: #f7f3eb;
+    --ink: #211f20;
+    --muted: #6a6261;
+    --line: #d8d0c8;
+    --accent: #c2185b;
+    --panel: #eee8df;
+    --field-line: #b6aca5;
+    --placeholder: #786e6d;
+    --band: #c2185b;
+    --band-text: #f7f3eb;
+  }
+
+  :root:not([data-theme="dark"]) ::selection {
+    background: #f0b5cb;
+    color: #211f20;
+  }
+
+  :root:not([data-theme="dark"]) .tags span {
+    border-color: rgba(33, 31, 32, 0.2);
+    background: rgba(33, 31, 32, 0.035);
+  }
+
+  /* Keep the documentation action legible on the warm paper surface. */
+  :root:not([data-theme="dark"]) a.documentation-cta {
+    color: var(--ink);
+    text-decoration-color: rgba(33, 31, 32, 0.68);
+  }
+
+  :root:not([data-theme="dark"]) a.documentation-cta:hover,
+  :root:not([data-theme="dark"]) a.documentation-cta:focus-visible {
+    text-decoration-color: var(--accent);
+  }
+}
+
+@media (max-width: 600px) {
+  .project > .tags {
+    gap: 0;
+    row-gap: 6px;
+    align-items: baseline;
+  }
+
+  .project > .tags span {
+    display: inline-flex;
+    align-items: center;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    padding: 0;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+
+  .project > .tags span:not(:last-child)::after {
+    content: "·";
+    margin: 0 8px;
+    color: var(--line);
+    font-weight: 400;
+  }
+
+  /* Documentation metadata should read as one baseline, not a row of mini cards. */
+  .documentation-tags.tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0;
+    row-gap: 5px;
+  }
+
+  .documentation-tags.tags span {
+    display: inline-flex;
+    align-items: baseline;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    padding: 0 !important;
+    color: var(--muted);
+    font-size: 9px;
+    line-height: 1.35;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+
+  .documentation-tags.tags span:not(:last-child)::after {
+    content: "·";
+    margin: 0 6px;
+    color: var(--line);
+    font-weight: 400;
+  }
+}
+
+/* Keep utility text readable on phone-sized screens without changing footer layout. */
+@media (max-width: 800px) {
+  .footer {
+    font-size: 15px;
+  }
+}

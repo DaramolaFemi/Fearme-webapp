@@ -1,6 +1,4 @@
-/* Desktop/non-mobile identity pass.
-   Carries the approved mobile identity system to wider viewports without changing
-   layout, spacing, motion, media behavior, CTA geometry, or dark-theme colors. */
+
 
 @media (min-width: 601px) {
   body {
@@ -109,7 +107,7 @@
     font-weight: 400;
   }
 
-  /* Warm paper and raspberry identity; dark theme remains exactly on its existing color system. */
+  
   :root:not([data-theme="dark"]) {
     --paper: #f7f3eb;
     --ink: #211f20;

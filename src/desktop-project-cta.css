@@ -1,8 +1,4 @@
-/*
- * Desktop/tablet project CTA refinement.
- * Keep the existing wording and interaction, but reduce the visual weight so
- * the project artwork remains the focal point.
- */
+
 @media (min-width: 601px) {
   .project-open {
     width: auto;

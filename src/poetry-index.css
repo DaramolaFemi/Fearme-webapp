@@ -1,4 +1,4 @@
-/* Poetry index refinement: each title carries its own quiet raspberry thread instead of a generic arrow. */
+
 .poetry-index > li {
   display: block;
   padding: 0;
@@ -29,10 +29,6 @@
     color 260ms ease;
 }
 
-/*
-  The thread is intentionally not an icon.
-  Its line length varies per poem so the archive feels annotated rather than templated.
-*/
 .poetry-thread {
   --thread-rest: 24px;
   --thread-glow: rgba(194, 24, 91, 0.46);
