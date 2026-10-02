@@ -936,7 +936,6 @@
   width: 105px;
 }
 
-
 @media (min-width: 901px) and (max-width: 1280px) {
   .case-decision-head h2 {
     max-width: 16ch;
@@ -1404,8 +1403,6 @@
   }
 }
 
-
-/* Mobile case-study correction pass */
 @media (max-width: 600px) {
   .case-header {
     position: relative;
@@ -1823,7 +1820,6 @@
   }
 }
 
-
 /* Definitive phone headline rhythm */
 @media (max-width: 600px) {
   .case-decision-head {
@@ -1868,8 +1864,6 @@
   }
 }
 
-
-/* Light identity + compact mobile case-study hero */
 @media (max-width: 600px) {
   .case-cinema {
     min-height: 0;
@@ -1953,8 +1947,6 @@
   }
 }
 
-
-/* Current Immortal Craft redesign chrome, matched to the approved live homepage screenshot. */
 .case-site-nav {
   grid-template-columns: minmax(190px, 0.7fr) 1fr minmax(150px, 0.34fr);
   align-items: stretch;
@@ -2104,14 +2096,11 @@
   }
 }
 
-
-/* Desktop-only optical correction: keep the case-study thesis commanding without overwhelming the page. */
 @media (min-width: 1024px) {
   .case-hero h1 {
     font-size: clamp(52px, 6.7vw, 106px);
   }
 }
-
 
 /* Desktop case-study type balance: intentional line break and quieter closing statement. */
 @media (min-width: 1024px) {
