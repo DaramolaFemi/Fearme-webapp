@@ -1952,3 +1952,154 @@
     font-size: 5px;
   }
 }
+
+
+/* Current Immortal Craft redesign chrome, matched to the approved live homepage screenshot. */
+.case-site-nav {
+  grid-template-columns: minmax(190px, 0.7fr) 1fr minmax(150px, 0.34fr);
+  align-items: stretch;
+  padding-right: 0;
+}
+
+.case-site-brand,
+.case-site-links {
+  align-self: center;
+}
+
+.case-site-links {
+  gap: clamp(16px, 2.15vw, 34px);
+}
+
+.case-site-book {
+  position: relative;
+  min-width: 150px;
+  padding: 0 clamp(34px, 3.2vw, 52px) 0 clamp(18px, 2vw, 30px);
+  border-bottom: 0;
+  border-left: 1px solid rgba(244, 240, 232, 0.16);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: stretch;
+  font-family: "IBM Plex Sans", sans-serif;
+  text-transform: uppercase;
+}
+
+.case-site-book small {
+  font-size: 5px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  opacity: 0.66;
+}
+
+.case-site-book strong {
+  margin-top: 2px;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+}
+
+.case-site-book i {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  width: 20px;
+  height: 7px;
+  transform: translateY(-50%);
+  border-top: 1px solid rgba(145, 166, 175, 0.86);
+  border-bottom: 1px solid rgba(145, 166, 175, 0.46);
+}
+
+.case-after-snapshot-nav {
+  grid-template-columns: 1.55fr repeat(6, auto) minmax(78px, 0.48fr);
+  gap: 2.3%;
+  padding-right: 0;
+  align-items: stretch;
+}
+
+.case-after-snapshot-nav > span:not(.case-after-snapshot-brand):not(.case-after-snapshot-book) {
+  align-self: center;
+}
+
+.case-after-snapshot-brand {
+  align-self: center;
+}
+
+.case-after-snapshot-book {
+  position: relative;
+  min-width: 78px;
+  padding: 0 24px 0 10px;
+  border-left: 1px solid rgba(242, 237, 227, 0.14);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.case-after-snapshot-book small {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: clamp(3px, 0.3vw, 4.5px);
+  letter-spacing: 0.14em;
+  opacity: 0.62;
+}
+
+.case-after-snapshot-book strong {
+  margin-top: 1px;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: clamp(4px, 0.48vw, 7px);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.case-after-snapshot-book i {
+  position: absolute;
+  right: 7px;
+  top: 50%;
+  width: 12px;
+  height: 4px;
+  transform: translateY(-50%);
+  border-top: 1px solid rgba(145, 166, 175, 0.78);
+  border-bottom: 1px solid rgba(145, 166, 175, 0.4);
+}
+
+@media (max-width: 900px) {
+  .case-site-nav {
+    grid-template-columns: 1fr minmax(118px, 0.34fr);
+    padding-right: 0;
+  }
+
+  .case-site-book {
+    min-width: 118px;
+    padding-left: 14px;
+    padding-right: 32px;
+  }
+
+  .case-site-book small {
+    font-size: 4px;
+  }
+
+  .case-site-book strong {
+    font-size: 7px;
+  }
+}
+
+@media (max-width: 600px) {
+  .case-site-nav {
+    grid-template-columns: 1fr 106px;
+    padding-right: 0;
+  }
+
+  .case-site-book {
+    min-width: 106px;
+    max-width: none;
+    padding-left: 10px;
+    padding-right: 28px;
+  }
+
+  .case-after-snapshot-nav {
+    grid-template-columns: 1fr 82px;
+    padding-right: 0;
+  }
+
+  .case-after-snapshot-nav > span:not(.case-after-snapshot-brand):not(.case-after-snapshot-book) {
+    display: none;
+  }
+}
