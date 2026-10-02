@@ -1300,3 +1300,48 @@
     width: 328px;
   }
 }
+
+
+/* Desktop light-mode parity: match the dark planet's visual scale and anchor.
+   Tablet/mobile light-mode treatment remains unchanged. */
+@media (min-width: 1441px) {
+  :root:not([data-theme="dark"]) .hero-planet-light {
+    top: 80px;
+    right: clamp(72px, 6vw, 128px);
+    width: min(36vw, 650px);
+  }
+
+  :root:not([data-theme="dark"]) .hero-celestial-glints {
+    top: 80px;
+    right: clamp(72px, 6vw, 128px);
+    width: min(36vw, 650px);
+  }
+}
+
+@media (min-width: 1181px) and (max-width: 1440px) {
+  :root:not([data-theme="dark"]) .hero-planet-light {
+    top: 88px;
+    right: clamp(54px, 5vw, 96px);
+    width: clamp(520px, 37vw, 640px);
+  }
+
+  :root:not([data-theme="dark"]) .hero-celestial-glints {
+    top: 88px;
+    right: clamp(54px, 5vw, 96px);
+    width: clamp(520px, 37vw, 640px);
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1180px) {
+  :root:not([data-theme="dark"]) .hero-planet-light {
+    top: 108px;
+    right: 28px;
+    width: min(44vw, 500px);
+  }
+
+  :root:not([data-theme="dark"]) .hero-celestial-glints {
+    top: 108px;
+    right: 28px;
+    width: min(44vw, 500px);
+  }
+}
