@@ -4173,3 +4173,35 @@ a.documentation-cta {
     display: inline;
   }
 }
+
+
+/* Final desktop documentation intro placement: supporting copy belongs directly under the thesis. */
+@media (min-width: 901px) {
+  .documentation-heading {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 18px;
+  }
+
+  .documentation-heading > .documentation-heading-copy {
+    position: static;
+    top: auto;
+    right: auto;
+    width: auto;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0;
+    transform: none;
+    text-align: center;
+    line-height: 1.72;
+  }
+
+  .documentation-heading-copy::before,
+  .documentation-heading-copy::after {
+    content: none;
+    display: none;
+  }
+}
