@@ -26,10 +26,19 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
   const previous = poems[index - 1];
   const next = poems[index + 1];
   const isMoonlit = poem?.slug === "the-boy-who-writes";
+  const isDreams = poem?.slug === "dreams";
   const isWedMoonlit = poem?.slug === "he-took-the-one-i-wed";
-  const hasEditorialScene = isMoonlit || isWedMoonlit;
-  const editorialSceneDesktop = isWedMoonlit ? wedSceneDesktop : boySceneDesktop;
-  const editorialSceneMobile = isWedMoonlit ? wedSceneMobile : boySceneMobile;
+  const hasEditorialScene = isMoonlit || isDreams || isWedMoonlit;
+  const editorialSceneDesktop = isDreams
+    ? "/Images/poetry/dreams-desktop.webp"
+    : isWedMoonlit
+      ? wedSceneDesktop
+      : boySceneDesktop;
+  const editorialSceneMobile = isDreams
+    ? "/Images/poetry/dreams-mobile.webp"
+    : isWedMoonlit
+      ? wedSceneMobile
+      : boySceneMobile;
 
   return (
     <div
@@ -49,11 +58,11 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
       </header>
       <main
         id="main"
-        className={`poem-page poem-page-editorial${hasEditorialScene ? " poem-page-moonlit" : ""}${isWedMoonlit ? " poem-page-wed" : ""}`}
+        className={`poem-page poem-page-editorial${hasEditorialScene ? " poem-page-moonlit" : ""}${isDreams ? " poem-page-dreams" : ""}${isWedMoonlit ? " poem-page-wed" : ""}`}
       >
         {hasEditorialScene && (
           <picture
-            className={`poem-moonlit-scene${isWedMoonlit ? " poem-moonlit-scene--wed" : ""}`}
+            className={`poem-moonlit-scene${isDreams ? " poem-moonlit-scene--dreams" : ""}${isWedMoonlit ? " poem-moonlit-scene--wed" : ""}`}
             aria-hidden="true"
           >
             <source media="(max-width: 900px)" srcSet={editorialSceneMobile} />

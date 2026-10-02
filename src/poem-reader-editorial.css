@@ -99,6 +99,24 @@
 }
 
 
+/* Dreams: the artwork carries the childhood fantasy; protect the reading field without flattening it. */
+.poem-page-dreams::before {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3, 23, 25, 0.06) 0%,
+      rgba(3, 23, 25, 0.12) 38%,
+      rgba(3, 23, 25, 0.3) 72%,
+      rgba(3, 23, 25, 0.42) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(3, 23, 25, 0.03) 0%,
+      rgba(3, 23, 25, 0.08) 52%,
+      rgba(3, 23, 25, 0.28) 100%
+    );
+}
+
 /* He Took the One I Wed: bridal rain scene with protected literary contrast. */
 .poem-page-wed::before {
   background:
@@ -340,6 +358,19 @@
   .poem-page-editorial .poem-navigation {
     margin-top: 54px;
   }
+
+  .poem-page-dreams > .poem-moonlit-scene img {
+    object-position: left center;
+    opacity: 0.92;
+  }
+
+  .poem-page-dreams .poem-body {
+    max-width: 32ch;
+    margin-top: clamp(88px, 11vh, 124px);
+    font-size: clamp(20px, 1.42vw, 23px);
+    line-height: 1.58;
+    letter-spacing: -0.01em;
+  }
 }
 
 @media (min-width: 901px) and (max-width: 1179px) {
@@ -364,6 +395,12 @@
     margin-top: 54px;
     padding-top: 32px;
     border-top: 1px solid rgba(126, 177, 174, 0.2);
+  }
+
+  .poem-page-dreams .poem-body {
+    max-width: 34ch;
+    font-size: clamp(19px, 2.1vw, 22px);
+    line-height: 1.58;
   }
 
   .poem-page-editorial .poem-navigation {
@@ -460,6 +497,10 @@
 
   .poem-page-wed > .poem-moonlit-scene img {
     opacity: 0.92;
+  }
+
+  .poem-page-dreams > .poem-moonlit-scene img {
+    opacity: 0.9;
   }
 
   .poem-page-editorial .poem-body {
@@ -569,6 +610,13 @@
     width: 100%;
     -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 86%, transparent 100%);
     mask-image: linear-gradient(180deg, #000 0%, #000 86%, transparent 100%);
+  }
+
+  .poem-page-dreams > .poem-moonlit-scene {
+    left: 0;
+    width: 100%;
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 90%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 0%, #000 90%, transparent 100%);
   }
 }
 
