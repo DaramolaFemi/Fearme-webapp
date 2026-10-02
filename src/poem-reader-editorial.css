@@ -99,6 +99,41 @@
 }
 
 
+
+/* A Graveyard for Lovers: the scene is an opening atmosphere, not wallpaper for the full long-form poem. */
+.poem-page-graveyard::before {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3, 23, 25, 0.14) 0%,
+      rgba(3, 23, 25, 0.22) 34%,
+      rgba(3, 23, 25, 0.42) 64%,
+      rgba(3, 23, 25, 0.62) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(3, 23, 25, 0.03) 0%,
+      rgba(3, 23, 25, 0.12) 64svh,
+      rgba(3, 23, 25, 0.72) 96svh,
+      #031719 118svh,
+      #031719 100%
+    );
+}
+
+.poem-page-graveyard .poem-title-graveyard {
+  max-width: none;
+}
+
+.poem-page-graveyard .poem-title-graveyard .poem-title-line {
+  display: block;
+  width: max-content;
+  white-space: nowrap;
+}
+
+.poem-page-graveyard .poem-body p {
+  margin-bottom: 1.18em;
+}
+
 /* Good Mo(u)rning: preserve the deceptively beautiful courtyard while protecting the short poem. */
 .poem-page-good-mourning::before {
   background:
@@ -346,6 +381,34 @@
     opacity: 0.88;
   }
 
+
+  .poem-page-graveyard > .poem-moonlit-scene {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 112svh;
+  }
+
+  .poem-page-graveyard > .poem-moonlit-scene img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left center;
+    opacity: 0.94;
+  }
+
+  .poem-page-graveyard .poem-reading-intro .poem-title-graveyard {
+    font-size: clamp(48px, 3.9vw, 68px);
+    line-height: 0.99;
+  }
+
+  .poem-page-graveyard .poem-body {
+    max-width: 34ch;
+    font-size: clamp(17px, 1.04vw, 18px);
+    line-height: 1.58;
+  }
+
   .poem-reading-layout {
     display: grid;
     grid-template-columns:
@@ -405,6 +468,30 @@
 }
 
 @media (min-width: 901px) and (max-width: 1179px) {
+
+  .poem-page-graveyard > .poem-moonlit-scene {
+    height: 116svh;
+  }
+
+  .poem-page-graveyard > .poem-moonlit-scene img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 34% center;
+    opacity: 0.92;
+  }
+
+  .poem-page-graveyard .poem-reading-intro .poem-title-graveyard {
+    max-width: none;
+    font-size: clamp(48px, 6.2vw, 66px);
+  }
+
+  .poem-page-graveyard .poem-body {
+    max-width: 36ch;
+    font-size: clamp(17px, 1.9vw, 19px);
+    line-height: 1.6;
+  }
+
   .poem-page-editorial {
     padding-inline: clamp(44px, 8vw, 84px);
   }
@@ -461,6 +548,42 @@
 }
 
 @media (max-width: 900px) {
+
+  .poem-page-graveyard > .poem-moonlit-scene {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 118svh;
+  }
+
+  .poem-page-graveyard > .poem-moonlit-scene img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    opacity: 0.94;
+  }
+
+  .poem-page-graveyard .poem-reading-intro {
+    margin-bottom: 58px;
+  }
+
+  .poem-page-graveyard .poem-reading-intro .poem-title-graveyard {
+    max-width: none;
+    font-size: clamp(39px, 10.8vw, 51px);
+    line-height: 1;
+  }
+
+  .poem-page-graveyard .poem-body {
+    font-size: clamp(16px, 4.35vw, 18px);
+    line-height: 1.62;
+  }
+
+  .poem-page-graveyard .poem-body p {
+    margin-bottom: 1.28em;
+  }
+
   .poem-reader-shell .poem-reader-header {
     min-height: 0;
     padding: 18px clamp(28px, 10.5vw, 52px) 24px;
@@ -635,6 +758,15 @@
 }
 
 @media (max-width: 600px) {
+
+  .poem-page-graveyard > .poem-moonlit-scene {
+    left: 0;
+    width: 100%;
+    height: 118svh;
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 74%, rgba(0,0,0,0.72) 86%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 0%, #000 74%, rgba(0,0,0,0.72) 86%, transparent 100%);
+  }
+
   .poem-page-moonlit > .poem-moonlit-scene {
     left: -20%;
     width: 140%;

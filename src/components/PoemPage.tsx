@@ -28,19 +28,24 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
   const isMoonlit = poem?.slug === "the-boy-who-writes";
   const isDreams = poem?.slug === "dreams";
   const isGoodMourning = poem?.slug === "good-mourning";
+  const isGraveyard = poem?.slug === "a-graveyard-for-lovers";
   const isWedMoonlit = poem?.slug === "he-took-the-one-i-wed";
   const hasEditorialScene =
-    isMoonlit || isDreams || isGoodMourning || isWedMoonlit;
-  const editorialSceneDesktop = isGoodMourning
-    ? "/Images/poetry/good-mourning-desktop.webp"
-    : isDreams
+    isMoonlit || isDreams || isGoodMourning || isGraveyard || isWedMoonlit;
+  const editorialSceneDesktop = isGraveyard
+    ? "/Images/poetry/graveyard-lovers-desktop.webp"
+    : isGoodMourning
+      ? "/Images/poetry/good-mourning-desktop.webp"
+      : isDreams
       ? "/Images/poetry/dreams-desktop.webp"
       : isWedMoonlit
         ? wedSceneDesktop
         : boySceneDesktop;
-  const editorialSceneMobile = isGoodMourning
-    ? "/Images/poetry/good-mourning-mobile.webp"
-    : isDreams
+  const editorialSceneMobile = isGraveyard
+    ? "/Images/poetry/graveyard-lovers-mobile.webp"
+    : isGoodMourning
+      ? "/Images/poetry/good-mourning-mobile.webp"
+      : isDreams
       ? "/Images/poetry/dreams-mobile.webp"
       : isWedMoonlit
         ? wedSceneMobile
@@ -64,11 +69,11 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
       </header>
       <main
         id="main"
-        className={`poem-page poem-page-editorial${hasEditorialScene ? " poem-page-moonlit" : ""}${isDreams ? " poem-page-dreams" : ""}${isGoodMourning ? " poem-page-good-mourning" : ""}${isWedMoonlit ? " poem-page-wed" : ""}`}
+        className={`poem-page poem-page-editorial${hasEditorialScene ? " poem-page-moonlit" : ""}${isDreams ? " poem-page-dreams" : ""}${isGoodMourning ? " poem-page-good-mourning" : ""}${isGraveyard ? " poem-page-graveyard" : ""}${isWedMoonlit ? " poem-page-wed" : ""}`}
       >
         {hasEditorialScene && (
           <picture
-            className={`poem-moonlit-scene${isDreams ? " poem-moonlit-scene--dreams" : ""}${isGoodMourning ? " poem-moonlit-scene--good-mourning" : ""}${isWedMoonlit ? " poem-moonlit-scene--wed" : ""}`}
+            className={`poem-moonlit-scene${isDreams ? " poem-moonlit-scene--dreams" : ""}${isGoodMourning ? " poem-moonlit-scene--good-mourning" : ""}${isGraveyard ? " poem-moonlit-scene--graveyard" : ""}${isWedMoonlit ? " poem-moonlit-scene--wed" : ""}`}
             aria-hidden="true"
           >
             <source media="(max-width: 900px)" srcSet={editorialSceneMobile} />
@@ -100,15 +105,22 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
                 className={
                   isMoonlit
                     ? "poem-title-moonlit"
-                    : isWedMoonlit
-                      ? "poem-title-wed"
-                      : undefined
+                    : isGraveyard
+                      ? "poem-title-graveyard"
+                      : isWedMoonlit
+                        ? "poem-title-wed"
+                        : undefined
                 }
               >
                 {isMoonlit ? (
                   <>
                     <span className="poem-title-line">The Boy</span>{" "}
                     <span className="poem-title-line">Who Writes</span>
+                  </>
+                ) : isGraveyard ? (
+                  <>
+                    <span className="poem-title-line">A Graveyard</span>
+                    <span className="poem-title-line">for Lovers</span>
                   </>
                 ) : isWedMoonlit ? (
                   <>
