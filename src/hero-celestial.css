@@ -850,9 +850,6 @@
   }
 }
 
-/* Mobile-only orbit behavior.
-   Keep the rings near the planet's equator so they read as orbital bands,
-   not rotating vertical loops. */
 @media (max-width: 600px) and (prefers-reduced-motion: no-preference) {
   .hero-orbit-a {
     animation: hero-orbit-a-mobile 52s ease-in-out infinite alternate;
