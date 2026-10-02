@@ -29,21 +29,31 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
   const isDreams = poem?.slug === "dreams";
   const isGoodMourning = poem?.slug === "good-mourning";
   const isGraveyard = poem?.slug === "a-graveyard-for-lovers";
+  const isMinutesSilence = poem?.slug === "a-minutes-silence";
   const isWedMoonlit = poem?.slug === "he-took-the-one-i-wed";
   const hasEditorialScene =
-    isMoonlit || isDreams || isGoodMourning || isGraveyard || isWedMoonlit;
-  const editorialSceneDesktop = isGraveyard
-    ? "/Images/poetry/graveyard-lovers-desktop.avif"
-    : isGoodMourning
+    isMoonlit ||
+    isDreams ||
+    isGoodMourning ||
+    isGraveyard ||
+    isMinutesSilence ||
+    isWedMoonlit;
+  const editorialSceneDesktop = isMinutesSilence
+    ? "/Images/poetry/a-minutes-silence-desktop.webp"
+    : isGraveyard
+      ? "/Images/poetry/graveyard-lovers-desktop.avif"
+      : isGoodMourning
       ? "/Images/poetry/good-mourning-desktop.avif"
       : isDreams
       ? "/Images/poetry/dreams-desktop.webp"
       : isWedMoonlit
         ? wedSceneDesktop
         : boySceneDesktop;
-  const editorialSceneMobile = isGraveyard
-    ? "/Images/poetry/graveyard-lovers-mobile.avif"
-    : isGoodMourning
+  const editorialSceneMobile = isMinutesSilence
+    ? "/Images/poetry/a-minutes-silence-mobile.webp"
+    : isGraveyard
+      ? "/Images/poetry/graveyard-lovers-mobile.avif"
+      : isGoodMourning
       ? "/Images/poetry/good-mourning-mobile.webp"
       : isDreams
       ? "/Images/poetry/dreams-mobile.webp"
@@ -69,11 +79,11 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
       </header>
       <main
         id="main"
-        className={`poem-page poem-page-editorial${hasEditorialScene ? " poem-page-moonlit" : ""}${isDreams ? " poem-page-dreams" : ""}${isGoodMourning ? " poem-page-good-mourning" : ""}${isGraveyard ? " poem-page-graveyard" : ""}${isWedMoonlit ? " poem-page-wed" : ""}`}
+        className={`poem-page poem-page-editorial${hasEditorialScene ? " poem-page-moonlit" : ""}${isDreams ? " poem-page-dreams" : ""}${isGoodMourning ? " poem-page-good-mourning" : ""}${isGraveyard ? " poem-page-graveyard" : ""}${isMinutesSilence ? " poem-page-minutes-silence" : ""}${isWedMoonlit ? " poem-page-wed" : ""}`}
       >
         {hasEditorialScene && (
           <picture
-            className={`poem-moonlit-scene${isDreams ? " poem-moonlit-scene--dreams" : ""}${isGoodMourning ? " poem-moonlit-scene--good-mourning" : ""}${isGraveyard ? " poem-moonlit-scene--graveyard" : ""}${isWedMoonlit ? " poem-moonlit-scene--wed" : ""}`}
+            className={`poem-moonlit-scene${isDreams ? " poem-moonlit-scene--dreams" : ""}${isGoodMourning ? " poem-moonlit-scene--good-mourning" : ""}${isGraveyard ? " poem-moonlit-scene--graveyard" : ""}${isMinutesSilence ? " poem-moonlit-scene--minutes-silence" : ""}${isWedMoonlit ? " poem-moonlit-scene--wed" : ""}`}
             aria-hidden="true"
           >
             <source media="(max-width: 900px)" srcSet={editorialSceneMobile} />
@@ -107,7 +117,9 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
                     ? "poem-title-moonlit"
                     : isGraveyard
                       ? "poem-title-graveyard"
-                      : isWedMoonlit
+                      : isMinutesSilence
+                        ? "poem-title-minutes-silence"
+                        : isWedMoonlit
                         ? "poem-title-wed"
                         : undefined
                 }
@@ -121,6 +133,11 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
                   <>
                     <span className="poem-title-line">A Graveyard</span>
                     <span className="poem-title-line">for Lovers</span>
+                  </>
+                ) : isMinutesSilence ? (
+                  <>
+                    <span className="poem-title-line">A Minute’s</span>
+                    <span className="poem-title-line">Silence</span>
                   </>
                 ) : isWedMoonlit ? (
                   <>
