@@ -64,13 +64,43 @@ function ProjectCard({ project, reduced, desktopMotion }: ProjectCardProps) {
         </picture>
         {project.theme === "immortal" && (
           <div className="immortal-card-overlay" aria-hidden="true">
-            <span>Las Vegas, Nevada</span>
-            <strong>
-              Immortal
-              <br />
-              Craft
-            </strong>
-            <small>A cut that outlives the moment.</small>
+            <div className="immortal-card-nav">
+              <span className="immortal-card-brand">
+                <strong>IMMORTAL CRAFT</strong>
+                <small>BARBER LOUNGE</small>
+              </span>
+              <span className="immortal-card-links">
+                <i>Home</i>
+                <i>Barbers</i>
+                <i>Services</i>
+                <i>Gallery</i>
+                <i>Contact</i>
+                <i>App</i>
+              </span>
+              <span className="immortal-card-booking">
+                <small>Appointments</small>
+                <strong>Booking</strong>
+                <i />
+              </span>
+            </div>
+
+            <div className="immortal-card-hero-copy">
+              <span>Las Vegas, Nevada</span>
+              <strong>
+                Immortal
+                <br />
+                Craft
+              </strong>
+              <i />
+              <small>A cut that outlives the moment.</small>
+              <b>Choose your barber <em /></b>
+            </div>
+
+            <div className="immortal-card-foot">
+              <span>Immortal Craft Barber Lounge</span>
+              <span>Meet the barbers <i /></span>
+              <span>Las Vegas, NV</span>
+            </div>
           </div>
         )}
         {project.preview && (

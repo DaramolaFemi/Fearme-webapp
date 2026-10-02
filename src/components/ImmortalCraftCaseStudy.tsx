@@ -127,8 +127,13 @@ export default function ImmortalCraftCaseStudy() {
                 <i>Services</i>
                 <i>Gallery</i>
                 <i>Contact</i>
+                <i>App</i>
               </span>
-              <span className="case-site-book">Choose your barber</span>
+              <span className="case-site-book">
+                <small>Appointments</small>
+                <strong>Booking</strong>
+                <i />
+              </span>
             </div>
             <div className="case-site-hero" aria-hidden="true">
               <span>Las Vegas, Nevada</span>
@@ -296,7 +301,7 @@ export default function ImmortalCraftCaseStudy() {
                 />
                 <div className="case-after-snapshot-shade" aria-hidden="true" />
                 <div className="case-after-snapshot-nav" aria-hidden="true">
-                  <span>
+                  <span className="case-after-snapshot-brand">
                     <strong>IMMORTAL CRAFT</strong>
                     <small>BARBER LOUNGE</small>
                   </span>
@@ -305,7 +310,12 @@ export default function ImmortalCraftCaseStudy() {
                   <span>SERVICES</span>
                   <span>GALLERY</span>
                   <span>CONTACT</span>
-                  <span>CHOOSE YOUR BARBER</span>
+                  <span>APP</span>
+                  <span className="case-after-snapshot-book">
+                    <small>APPOINTMENTS</small>
+                    <strong>BOOKING</strong>
+                    <i />
+                  </span>
                 </div>
                 <div className="case-after-snapshot-copy" aria-hidden="true">
                   <small>LAS VEGAS, NEVADA</small>
