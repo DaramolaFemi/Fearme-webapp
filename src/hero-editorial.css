@@ -1,5 +1,4 @@
-/* Hero editorial refinement
-   Local hero-only composition pass. No palette, content, or global layout changes. */
+
 
 .hero {
   position: relative;
@@ -77,8 +76,7 @@
     gap: 9px;
   }
 
-  /* Desktop CTA line language: underline the primary link, keep the project
-     shortcut line intentionally shorter so neither competes with the copy. */
+  
   .hero-intro .text-link {
     position: relative;
     display: inline-block;
