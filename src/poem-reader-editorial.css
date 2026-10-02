@@ -1180,3 +1180,168 @@
     object-position: center center !important;
   }
 }
+
+
+/* Poetry navigation bridge: restrained global portfolio context above the reader.
+   Scoped to the poetry shell so the homepage/header system remains unchanged. */
+.poem-reader-shell .poem-reader-header {
+  gap: clamp(28px, 4vw, 64px);
+}
+
+.poem-reader-shell .poetry-global-nav {
+  margin-left: auto;
+  gap: clamp(24px, 2.6vw, 38px);
+}
+
+.poem-reader-shell .poetry-global-nav a {
+  position: relative;
+  color: #c7d1cd;
+  text-decoration: none;
+  transition:
+    color 180ms ease,
+    opacity 180ms ease;
+}
+
+.poem-reader-shell .poetry-global-nav a:hover,
+.poem-reader-shell .poetry-global-nav a:focus-visible {
+  color: #ffffff;
+}
+
+.poem-reader-shell .poetry-global-nav a[aria-current="page"] {
+  color: #f3eee8;
+}
+
+.poem-reader-shell .poetry-global-nav a[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 1px;
+  background: var(--night-cyan);
+  opacity: 0.72;
+}
+
+.poetry-header-controls {
+  display: none;
+  align-items: center;
+  margin-left: 0;
+}
+
+.poetry-context-bar {
+  position: relative;
+  z-index: 19;
+  min-height: 42px;
+  padding: 10px max(5vw, 34px) 11px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  border-bottom: 1px solid rgba(126, 177, 174, 0.13);
+  background: #031719;
+  color: #dfe5e1;
+}
+
+.poetry-context-bar .poem-back {
+  color: #dfe5e1;
+  font-size: 11px;
+  text-decoration: underline;
+  text-decoration-color: rgba(223, 229, 225, 0.42);
+  text-underline-offset: 6px;
+  text-decoration-thickness: 1px;
+  transition:
+    color 180ms ease,
+    text-decoration-color 180ms ease;
+}
+
+.poetry-context-bar .poem-back:hover,
+.poetry-context-bar .poem-back:focus-visible {
+  color: #ffffff;
+  text-decoration-color: var(--night-cyan);
+}
+
+.poetry-context-current {
+  overflow: hidden;
+  color: #7f9290;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 9px;
+  line-height: 1.4;
+  letter-spacing: 1.05px;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .poem-reader-shell .poem-reader-header {
+    min-height: 76px;
+    padding: 0 clamp(28px, 8vw, 52px);
+  }
+
+  .poem-reader-shell .poetry-header-controls {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .poem-reader-shell .poetry-menu-toggle {
+    display: block;
+    border: 0;
+    background: transparent;
+    color: #dfe5e1;
+    font-size: 12px;
+    min-height: 44px;
+  }
+
+  .poem-reader-shell .poetry-global-nav {
+    display: none;
+    position: absolute;
+    z-index: 30;
+    top: 75px;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 18px clamp(28px, 8vw, 52px) 22px;
+    border-bottom: 1px solid rgba(126, 177, 174, 0.18);
+    background: #031719;
+  }
+
+  .poem-reader-shell .poetry-global-nav.open {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+  }
+
+  .poem-reader-shell .poetry-global-nav a {
+    min-height: 44px;
+    padding: 11px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(126, 177, 174, 0.12);
+    font-size: 15px;
+  }
+
+  .poem-reader-shell .poetry-global-nav a[aria-current="page"]::after {
+    left: auto;
+    right: 0;
+    bottom: 11px;
+    width: 30px;
+  }
+
+  .poetry-context-bar {
+    min-height: 40px;
+    padding: 9px clamp(28px, 8vw, 52px) 10px;
+  }
+
+  .poetry-context-current {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .poem-reader-shell .poetry-global-nav a,
+  .poetry-context-bar .poem-back {
+    transition: none;
+  }
+}

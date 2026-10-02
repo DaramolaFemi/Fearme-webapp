@@ -1,12 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { boySceneDesktop, boySceneMobile } from "../assets/poetry/boyScene";
 import { wedSceneDesktop, wedSceneMobile } from "../assets/poetry/wedScene";
 import { poems, type Poem } from "../data/poetry";
 import Logo from "./Logo";
-import ThemeToggle from "./ThemeToggle";
 import PoemAtmosphere from "./PoemAtmosphere";
 
 export default function PoemPage({ poem }: { poem?: Poem }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuButton = useRef<HTMLButtonElement>(null);
   useEffect(() => {
     const previousTitle = document.title;
     const description = document.querySelector('meta[name="description"]');
@@ -21,6 +22,18 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
       description?.setAttribute("content", previousDescription);
     };
   }, [poem]);
+
+  useEffect(() => {
+    function closeMenu(event: KeyboardEvent) {
+      if (event.key === "Escape" && menuOpen) {
+        setMenuOpen(false);
+        menuButton.current?.focus();
+      }
+    }
+
+    window.addEventListener("keydown", closeMenu);
+    return () => window.removeEventListener("keydown", closeMenu);
+  }, [menuOpen]);
 
   const index = poems.findIndex((entry) => entry.slug === poem?.slug);
   const previous = poems[index - 1];
@@ -72,11 +85,52 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
         <a className="wordmark" href="/" aria-label="Femi: home">
           <Logo />
         </a>
+
+        <nav
+          aria-label="Portfolio navigation"
+          id="poetry-global-navigation"
+          className={menuOpen ? "nav poetry-global-nav open" : "nav poetry-global-nav"}
+        >
+          {[
+            ["Work", "/#work"],
+            ["Documentation", "/#documentation"],
+            ["Poetry", "/#poetry"],
+            ["About", "/#about"],
+          ].map(([label, href]) => (
+            <a
+              key={href}
+              href={href}
+              aria-current={label === "Poetry" ? "page" : undefined}
+              onClick={() => setMenuOpen(false)}
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+
+        <div className="poetry-header-controls">
+          <button
+            ref={menuButton}
+            className="menu-toggle poetry-menu-toggle"
+            aria-controls="poetry-global-navigation"
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            {menuOpen ? "Close" : "Menu"}
+          </button>
+        </div>
+      </header>
+
+      <div className="poetry-context-bar" aria-label="Poetry context">
         <a className="poem-back" href="/#poetry">
           Selected poetry
         </a>
-        <ThemeToggle />
-      </header>
+        {poem && (
+          <span className="poetry-context-current" aria-current="page">
+            {poem.title}
+          </span>
+        )}
+      </div>
       <main
         id="main"
         className={`poem-page poem-page-editorial${hasEditorialScene ? " poem-page-moonlit" : ""}${isDreams ? " poem-page-dreams" : ""}${isGoodMourning ? " poem-page-good-mourning" : ""}${isGraveyard ? " poem-page-graveyard" : ""}${isMinutesSilence ? " poem-page-minutes-silence" : ""}${isWedMoonlit ? " poem-page-wed" : ""}`}
