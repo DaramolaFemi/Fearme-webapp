@@ -4138,3 +4138,38 @@ a.documentation-cta {
     width: 9px;
   }
 }
+
+
+/* Desktop documentation intro: stack the supporting line directly under the thesis.
+   Mobile keeps its existing copy and layout unchanged. */
+.documentation-heading-copy-desktop {
+  display: inline;
+}
+
+.documentation-heading-copy-mobile {
+  display: none;
+}
+
+@media (min-width: 901px) {
+  .documentation-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 16px;
+  }
+
+  .documentation-heading > p {
+    max-width: 760px;
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .documentation-heading-copy-desktop {
+    display: none;
+  }
+
+  .documentation-heading-copy-mobile {
+    display: inline;
+  }
+}

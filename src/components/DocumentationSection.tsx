@@ -22,8 +22,13 @@ export default function DocumentationSection() {
           </span>
         </h2>
         <p className="documentation-heading-copy">
-          Developer documentation, API references, and technical guides built to
-          make complex systems easier to use.
+          <span className="documentation-heading-copy-desktop">
+            Developer documentation, API references, and technical guides.
+          </span>
+          <span className="documentation-heading-copy-mobile">
+            Developer documentation, API references, and technical guides built to
+            make complex systems easier to use.
+          </span>
         </p>
       </ScrollReveal>
 
