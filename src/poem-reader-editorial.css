@@ -519,3 +519,34 @@
     transform: none;
   }
 }
+
+
+/* Desktop poem navigation: quiet movement and cyan hairline response. */
+@media (min-width: 901px) {
+  .poem-page-editorial .poem-navigation > :nth-child(3),
+  .poem-page-editorial .poem-navigation > :nth-child(4) {
+    transition:
+      color 220ms ease,
+      border-color 220ms ease,
+      transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      text-shadow 220ms ease;
+  }
+
+  .poem-page-editorial .poem-navigation > :nth-child(3):hover,
+  .poem-page-editorial .poem-navigation > :nth-child(3):focus-visible,
+  .poem-page-editorial .poem-navigation > :nth-child(4):hover,
+  .poem-page-editorial .poem-navigation > :nth-child(4):focus-visible {
+    color: #ffffff;
+    border-bottom-color: rgba(110, 221, 212, 0.72);
+    transform: translateX(4px);
+    text-shadow: 0 0 14px rgba(110, 221, 212, 0.16);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .poem-page-editorial .poem-navigation > :nth-child(3),
+  .poem-page-editorial .poem-navigation > :nth-child(4) {
+    transition: none;
+    transform: none;
+  }
+}
