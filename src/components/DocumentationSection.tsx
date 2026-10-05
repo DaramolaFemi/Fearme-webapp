@@ -1,33 +1,34 @@
 import ScrollReveal from "./ScrollReveal";
 import { documentation } from "../data/documentation";
+import { useLanguage } from "../i18n";
 
 const romanNumerals = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"];
 
 export default function DocumentationSection() {
+  const { translate } = useLanguage();
   return (
     <section id="documentation" className="documentation section-pad">
       <div className="section-kicker">
-        <span>II / Documentation</span>
-        <span>Systems, made understandable</span>
+        <span>II / {translate("Documentation")}</span>
+        <span>{translate("Systems, made understandable")}</span>
       </div>
 
       <ScrollReveal className="section-heading documentation-heading">
         <h2>
           <span className="documentation-heading-line documentation-heading-line-primary">
-            I write the map
+            {translate("I write the map")}
           </span>
           <br className="documentation-heading-break" />
           <span className="documentation-heading-line documentation-heading-line-secondary">
-            behind <em>the machine.</em>
+            {translate("behind")} <em>{translate("the machine.")}</em>
           </span>
         </h2>
         <p className="documentation-heading-copy">
           <span className="documentation-heading-copy-desktop">
-            Developer documentation, API references, and technical guides.
+            {translate("Developer documentation, API references, and technical guides.")}
           </span>
           <span className="documentation-heading-copy-mobile">
-            Developer documentation, API references, and technical guides built to
-            make complex systems easier to use.
+            {translate("Developer documentation, API references, and technical guides built to make complex systems easier to use.")}
           </span>
         </p>
       </ScrollReveal>
@@ -38,15 +39,15 @@ export default function DocumentationSection() {
             <ScrollReveal className="documentation-entry" delay={index * 0.06}>
               <div className="documentation-number">{romanNumerals[index] ?? entry.id}</div>
               <div className="documentation-title">
-                <p>{entry.category}</p>
+                <p>{translate(entry.category)}</p>
                 <h3>{entry.title}</h3>
               </div>
-              <p className="documentation-description">{entry.description}</p>
+              <p className="documentation-description">{translate(entry.description)}</p>
               <div className="documentation-meta">
                 <span
                   className={`documentation-status status-${entry.status.toLowerCase().replace(" ", "-")}`}
                 >
-                  {entry.status}
+                  {translate(entry.status)}
                 </span>
                 {entry.href ? (
                   <a
@@ -55,10 +56,10 @@ export default function DocumentationSection() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Read documentation
+                    {translate("Read documentation")}
                   </a>
                 ) : (
-                  <span className="documentation-cta">Coming soon</span>
+                  <span className="documentation-cta">{translate("Coming soon")}</span>
                 )}
               </div>
               <div className="documentation-tags tags">
