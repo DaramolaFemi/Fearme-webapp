@@ -4637,38 +4637,25 @@ a.documentation-cta {
   }
 }
 
-
-/* Editorial language selector — intentionally quiet in the footer. */
-.footer {
-  grid-template-columns: minmax(240px, 1fr) auto auto auto;
-  grid-template-areas:
-    "brand socials language top"
-    "copyright socials language top";
-}
-
-.footer .language-switcher {
-  grid-area: language;
-  align-self: center;
-  justify-self: end;
-}
-
-.language-switcher {
+/* Language selector — part of navigation, never the footer architecture. */
+.nav .language-switcher {
   position: relative;
-  z-index: 30;
+  z-index: 40;
+  flex: 0 0 auto;
 }
 
 .language-switcher-trigger {
   min-height: 38px;
   padding: 8px 0;
   border: 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--night-cyan) 56%, var(--line));
+  border-bottom: 1px solid color-mix(in srgb, var(--night-cyan) 54%, var(--line));
   background: transparent;
   color: var(--ink);
   display: inline-flex;
   align-items: center;
-  gap: 11px;
+  gap: 9px;
   font: inherit;
-  font-size: 12.5px;
+  font-size: 12px;
   letter-spacing: 0.025em;
   cursor: pointer;
   transition:
@@ -4677,8 +4664,13 @@ a.documentation-cta {
     opacity 180ms ease;
 }
 
+.nav .language-switcher-trigger > span:first-child {
+  display: none;
+}
+
 .language-switcher-trigger:hover,
 .language-switcher-trigger:focus-visible {
+  color: var(--night-cyan);
   border-bottom-color: var(--night-cyan);
 }
 
@@ -4688,18 +4680,18 @@ a.documentation-cta {
 }
 
 .language-switcher-code {
-  min-width: 27px;
+  min-width: 24px;
   color: var(--night-cyan);
   font-family: "IBM Plex Mono", monospace;
   font-size: 10px;
   letter-spacing: 0.11em;
-  text-align: right;
+  text-align: center;
 }
 
 .language-switcher-panel {
   position: absolute;
   right: 0;
-  bottom: calc(100% + 17px);
+  top: calc(100% + 14px);
   width: min(286px, calc(100vw - 32px));
   padding: 18px 18px 14px;
   border: 1px solid color-mix(in srgb, var(--night-cyan) 28%, var(--line));
@@ -4841,7 +4833,7 @@ a.documentation-cta {
 @keyframes language-panel-in {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(-6px);
   }
   to {
     opacity: 1;
@@ -4855,18 +4847,29 @@ a.documentation-cta {
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
-@media (max-width: 800px) {
-  .footer {
-    grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-areas:
-      "brand top"
-      "copyright language"
-      "social social";
-    gap: 18px 24px;
+@media (max-width: 600px) {
+  .nav .language-switcher {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--line);
   }
 
-  .footer .language-switcher {
-    justify-self: end;
+  .nav .language-switcher-trigger {
+    width: 100%;
+    min-height: 48px;
+    padding: 10px 0;
+    justify-content: space-between;
+    border-bottom-color: var(--line);
+    font-size: 14px;
+  }
+
+  .nav .language-switcher-trigger > span:first-child {
+    display: inline;
+  }
+
+  .language-switcher-code {
+    font-size: 10px;
+    text-align: right;
   }
 
   .language-switcher-panel {
@@ -4874,6 +4877,7 @@ a.documentation-cta {
     z-index: 202;
     left: 16px;
     right: 16px;
+    top: auto;
     bottom: max(16px, env(safe-area-inset-bottom));
     width: auto;
     max-height: min(560px, calc(100dvh - 32px));
@@ -4903,29 +4907,6 @@ a.documentation-cta {
 
   .language-switcher-native {
     font-size: 14px;
-  }
-}
-
-@media (max-width: 520px) {
-  .footer {
-    grid-template-areas:
-      "brand top"
-      "copyright language"
-      "social social";
-    padding-bottom: max(34px, env(safe-area-inset-bottom));
-  }
-
-  .footer .footer-copyright {
-    align-self: center;
-    font-size: 11px;
-  }
-
-  .language-switcher-trigger {
-    font-size: 11.5px;
-  }
-
-  .language-switcher-code {
-    font-size: 9px;
   }
 }
 
