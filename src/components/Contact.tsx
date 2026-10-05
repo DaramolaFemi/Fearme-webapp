@@ -1,7 +1,9 @@
 import Arrow from "./Arrow";
 import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useLanguage } from "../i18n";
 
 export default function Contact() {
+  const { translate } = useLanguage();
   const [status, setStatus] = useState<
     "idle" | "sending" | "success" | "error" | "invalid"
   >("idle");
@@ -57,19 +59,18 @@ export default function Contact() {
   return (
     <section id="contact" className="contact section-pad">
       <div className="section-kicker">
-        <span>05 / A conversation</span>
-        <span>Good work starts here</span>
+        <span>05 / {translate("A conversation")}</span>
+        <span>{translate("Good work starts here")}</span>
       </div>
       <div className="contact-grid">
         <div>
           <h2>
-            Have something
+            {translate("Have something")}
             <br />
-            on your <em>mind?</em>
+            {translate("on your")} <em>{translate("mind?")}</em>
           </h2>
           <p>
-            A product taking shape. Documentation that needs a clearer voice. An
-            idea you keep coming back to. I’d like to hear it.
+            {translate("A product taking shape. Documentation that needs a clearer voice. An idea you keep coming back to. I’d like to hear it.")}
           </p>
           <a className="email-link" href="mailto:daramola772@gmail.com">
             daramola772@gmail.com
@@ -80,21 +81,21 @@ export default function Contact() {
           onInput={() => {
             if (status === "success" || status === "invalid") setStatus("idle");
           }}
-          aria-label="Contact Femi"
+          aria-label={translate("Contact Femi")}
         >
           <div className="form-row">
             <label>
-              Your name
+              {translate("Your name")}
               <input
                 name="name"
                 autoComplete="name"
-                placeholder="What should I call you?"
+                placeholder={translate("What should I call you?")}
                 required
                 maxLength={100}
               />
             </label>
             <label>
-              Email address
+              {translate("Email address")}
               <input
                 name="email"
                 type="email"
@@ -106,10 +107,10 @@ export default function Contact() {
             </label>
           </div>
           <label>
-            A little about your project
+            {translate("A little about your project")}
             <textarea
               name="message"
-              placeholder="The idea, the challenge, the ambition…"
+              placeholder={translate("The idea, the challenge, the ambition…")}
               required
               minLength={10}
               maxLength={5000}
@@ -118,25 +119,27 @@ export default function Contact() {
           </label>
           <div className="honeypot" aria-hidden="true">
             <label>
-              Leave this empty
+              {translate("Leave this empty")}
               <input name="_gotcha" tabIndex={-1} autoComplete="off" />
             </label>
           </div>
           <div className="form-bottom">
             <span>
-              Delivered via Formspree.
+              {translate("Delivered via Formspree.")}
               <br />
-              Your details are used to reply.
+              {translate("Your details are used to reply.")}
             </span>
             <button
               className="button"
               disabled={status === "sending" || status === "success"}
             >
-              {status === "sending"
-                ? "Sending…"
-                : status === "success"
-                  ? "Message sent"
-                  : "Send a note"}{" "}
+              {translate(
+                status === "sending"
+                  ? "Sending…"
+                  : status === "success"
+                    ? "Message sent"
+                    : "Send a note",
+              )}{" "}
               <Arrow />
             </button>
           </div>
@@ -150,19 +153,20 @@ export default function Contact() {
           >
             {status === "success" && (
               <>
-                <strong>Message sent to Daramola Femi.</strong>
+                <strong>{translate("Message sent to Daramola Femi.")}</strong>
                 <p>
-                  Thank you. I’ve received your note and will get back to you
-                  soon.
+                  {translate("Thank you. I’ve received your note and will get back to you soon.")}
                 </p>
               </>
             )}
           </div>
           {(status === "error" || status === "invalid") && (
             <p className="form-status error" role="alert">
-              {status === "invalid"
-                ? "Please complete your name, email address, and message."
-                : "Your message could not be sent. Please try again or email me directly."}
+              {translate(
+                status === "invalid"
+                  ? "Please complete your name, email address, and message."
+                  : "Your message could not be sent. Please try again or email me directly.",
+              )}
             </p>
           )}
         </form>
