@@ -4636,3 +4636,307 @@ a.documentation-cta {
     padding: 3px 5px !important;
   }
 }
+
+
+/* Editorial language selector — intentionally quiet in the footer. */
+.footer {
+  grid-template-columns: minmax(240px, 1fr) auto auto auto;
+  grid-template-areas:
+    "brand socials language top"
+    "copyright socials language top";
+}
+
+.footer .language-switcher {
+  grid-area: language;
+  align-self: center;
+  justify-self: end;
+}
+
+.language-switcher {
+  position: relative;
+  z-index: 30;
+}
+
+.language-switcher-trigger {
+  min-height: 38px;
+  padding: 8px 0;
+  border: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--night-cyan) 56%, var(--line));
+  background: transparent;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  font: inherit;
+  font-size: 12.5px;
+  letter-spacing: 0.025em;
+  cursor: pointer;
+  transition:
+    border-color 180ms ease,
+    color 180ms ease,
+    opacity 180ms ease;
+}
+
+.language-switcher-trigger:hover,
+.language-switcher-trigger:focus-visible {
+  border-bottom-color: var(--night-cyan);
+}
+
+.language-switcher-trigger:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--night-cyan) 65%, transparent);
+  outline-offset: 5px;
+}
+
+.language-switcher-code {
+  min-width: 27px;
+  color: var(--night-cyan);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.11em;
+  text-align: right;
+}
+
+.language-switcher-panel {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 17px);
+  width: min(286px, calc(100vw - 32px));
+  padding: 18px 18px 14px;
+  border: 1px solid color-mix(in srgb, var(--night-cyan) 28%, var(--line));
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--paper) 94%, transparent);
+  color: var(--ink);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 color-mix(in srgb, var(--ink) 8%, transparent);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  animation: language-panel-in 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.language-switcher-panel::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 18px;
+  width: 58px;
+  height: 1px;
+  background: var(--accent);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 46%, transparent);
+}
+
+.language-switcher-heading {
+  display: grid;
+  gap: 4px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.language-switcher-heading > span {
+  font-family: "Instrument Serif", serif;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.language-switcher-heading small,
+.language-switcher-note {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.language-switcher-list {
+  display: grid;
+}
+
+.language-switcher-list > button {
+  position: relative;
+  width: 100%;
+  min-height: 46px;
+  padding: 0 2px 0 16px;
+  border: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 72%, transparent);
+  background: transparent;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    color 160ms ease,
+    padding-left 160ms ease;
+}
+
+.language-switcher-list > button:last-child {
+  border-bottom: 0;
+}
+
+.language-switcher-list > button::before {
+  content: "";
+  position: absolute;
+  left: 1px;
+  width: 5px;
+  height: 5px;
+  border: 1px solid color-mix(in srgb, var(--night-cyan) 72%, var(--line));
+  border-radius: 50%;
+  opacity: 0.42;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    opacity 160ms ease;
+}
+
+.language-switcher-list > button:hover,
+.language-switcher-list > button:focus-visible {
+  color: var(--night-cyan);
+  padding-left: 19px;
+}
+
+.language-switcher-list > button:focus-visible {
+  outline: none;
+}
+
+.language-switcher-list > button.is-selected::before {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 56%, transparent);
+  opacity: 1;
+}
+
+.language-switcher-native {
+  font-size: 12px;
+}
+
+.language-switcher-row-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.language-switcher-row-meta small {
+  color: var(--accent);
+  font: inherit;
+  font-size: 8px;
+}
+
+.language-switcher-note {
+  margin: 12px 0 0;
+  padding-top: 11px;
+  border-top: 1px solid var(--line);
+}
+
+.language-switcher-backdrop {
+  display: none;
+}
+
+@keyframes language-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+:root:not([data-theme="dark"]) .language-switcher-panel {
+  box-shadow:
+    0 18px 50px rgba(33, 31, 32, 0.11),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 800px) {
+  .footer {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "brand top"
+      "copyright language"
+      "social social";
+    gap: 18px 24px;
+  }
+
+  .footer .language-switcher {
+    justify-self: end;
+  }
+
+  .language-switcher-panel {
+    position: fixed;
+    z-index: 202;
+    left: 16px;
+    right: 16px;
+    bottom: max(16px, env(safe-area-inset-bottom));
+    width: auto;
+    max-height: min(560px, calc(100dvh - 32px));
+    overflow: auto;
+    padding: 22px 20px 17px;
+    border-radius: 12px;
+  }
+
+  .language-switcher-backdrop {
+    display: block;
+    position: fixed;
+    z-index: 201;
+    inset: 0;
+    border: 0;
+    background: rgba(0, 0, 0, 0.38);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+  }
+
+  .language-switcher-heading > span {
+    font-size: 28px;
+  }
+
+  .language-switcher-list > button {
+    min-height: 52px;
+  }
+
+  .language-switcher-native {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 520px) {
+  .footer {
+    grid-template-areas:
+      "brand top"
+      "copyright language"
+      "social social";
+    padding-bottom: max(34px, env(safe-area-inset-bottom));
+  }
+
+  .footer .footer-copyright {
+    align-self: center;
+    font-size: 11px;
+  }
+
+  .language-switcher-trigger {
+    font-size: 11.5px;
+  }
+
+  .language-switcher-code {
+    font-size: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .language-switcher-panel {
+    animation: none;
+  }
+
+  .language-switcher-trigger,
+  .language-switcher-list > button,
+  .language-switcher-list > button::before {
+    transition: none;
+  }
+}
