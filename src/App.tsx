@@ -4,6 +4,7 @@ import { useDesktopMotion } from "./hooks/useDesktopMotion";
 import GameplayPreview from "./components/GameplayPreview";
 import Logo from "./components/Logo";
 import ThemeToggle from "./components/ThemeToggle";
+import LanguageSwitcher from "./components/LanguageSwitcher";
 import {
   featuredProjects,
   filters,
@@ -18,6 +19,7 @@ import { MotionConfig, motion, useReducedMotion } from "motion/react";
 import { shouldRestoreReloadScroll } from "./utils/navigation";
 import heroPlanetDataUri from "./assets/celestial/planet";
 import heroLightPlanetDataUri from "./assets/celestial-light/planet";
+import { useLanguage } from "./i18n";
 
 type ProjectCardProps = {
   project: Project;
@@ -26,9 +28,14 @@ type ProjectCardProps = {
 };
 
 function ProjectCard({ project, reduced, desktopMotion }: ProjectCardProps) {
+  const { translate } = useLanguage();
   const destination = project.caseStudyPath || project.href || "#contact";
   const external = !project.caseStudyPath && Boolean(project.href);
-  const actionLabel = project.ctaLabel || (project.href ? "View" : "Request");
+  const actionLabel = project.ctaLabel
+    ? translate(project.ctaLabel)
+    : project.href
+      ? translate("View")
+      : translate("Request");
 
   return (
     <motion.article
@@ -120,13 +127,13 @@ function ProjectCard({ project, reduced, desktopMotion }: ProjectCardProps) {
               {project.mobileName || project.name}
             </span>
           </h3>
-          <span>{project.type}</span>
+          <span>{translate(project.type)}</span>
         </div>
         <p className="project-status">
-          {project.href ? "Live project" : "In development, not yet hosted"}
+          {project.href ? translate("Live project") : translate("In development, not yet hosted")}
         </p>
-        <h4>{project.subtitle}</h4>
-        <p>{project.description}</p>
+        <h4>{translate(project.subtitle)}</h4>
+        <p>{translate(project.description)}</p>
         <div className="project-card-footer">
           <div className="tags">
             {project.tags.map((tag) => (
@@ -161,6 +168,7 @@ function ProjectCard({ project, reduced, desktopMotion }: ProjectCardProps) {
 }
 
 export default function App() {
+  const { translate, locale } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
   const [filter, setFilter] = useState("All work");
   const [projectLabOpen, setProjectLabOpen] = useState(false);
@@ -207,7 +215,7 @@ export default function App() {
     <MotionConfig reducedMotion="user">
       <ReadingProgress />
       <a className="skip-link" href="#main">
-        Skip to content
+        {translate("Skip to content")}
       </a>
       <header className="header">
         <a href="#top" className="wordmark" aria-label="Femi: home">
@@ -226,7 +234,7 @@ export default function App() {
             ["Contact", "#contact"],
           ].map(([label, href]) => (
             <a key={href} href={href} onClick={() => setMenuOpen(false)}>
-              {label}
+              {translate(label)}
             </a>
           ))}
           <a
@@ -234,7 +242,7 @@ export default function App() {
             href="/Images/CV.pdf"
             download="Daramola-Femi-CV.pdf"
           >
-            Download résumé (PDF) <Arrow direction="down" />
+            {translate("Download résumé (PDF)")} <Arrow direction="down" />
           </a>
         </nav>
         <div className="header-controls">
@@ -246,7 +254,7 @@ export default function App() {
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen(!menuOpen)}
           >
-            {menuOpen ? "Close" : "Menu"}
+            {translate(menuOpen ? "Close" : "Menu")}
           </button>
         </div>
       </header>
@@ -388,7 +396,7 @@ export default function App() {
           </div>
           <div className="hero-meta">
             <span>
-              <i /> Software engineer & technical writer
+              <i /> {translate("Software engineer & technical writer")}
             </span>
           </div>
           <motion.div
@@ -405,18 +413,24 @@ export default function App() {
                   animate={{ y: 0 }}
                   transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  Code with{" "}
+                  {translate("Code with")}{" "}
                   <em
                     className="hero-emphasis hero-emphasis-intent"
-                    aria-label="intent."
+                    aria-label={translate("intent.")}
                   >
-                    <span className="hero-letter" aria-hidden="true" style={{ "--x": "-0.028em", "--r": "-0.7deg" } as CSSProperties}>i</span>
-                    <span className="hero-letter" aria-hidden="true" style={{ "--x": "0.018em", "--r": "0.45deg" } as CSSProperties}>n</span>
-                    <span className="hero-letter" aria-hidden="true" style={{ "--x": "-0.012em", "--r": "-0.3deg" } as CSSProperties}>t</span>
-                    <span className="hero-letter" aria-hidden="true" style={{ "--x": "0.022em", "--r": "0.4deg" } as CSSProperties}>e</span>
-                    <span className="hero-letter" aria-hidden="true" style={{ "--x": "-0.016em", "--r": "-0.35deg" } as CSSProperties}>n</span>
-                    <span className="hero-letter" aria-hidden="true" style={{ "--x": "0.014em", "--r": "0.25deg" } as CSSProperties}>t</span>
-                    <span className="hero-letter hero-letter-punctuation" aria-hidden="true" style={{ "--x": "0.008em", "--r": "0deg" } as CSSProperties}>.</span>
+                    {locale === "en" ? (
+                      <>
+                        <span className="hero-letter" aria-hidden="true" style={{ "--x": "-0.028em", "--r": "-0.7deg" } as CSSProperties}>i</span>
+                        <span className="hero-letter" aria-hidden="true" style={{ "--x": "0.018em", "--r": "0.45deg" } as CSSProperties}>n</span>
+                        <span className="hero-letter" aria-hidden="true" style={{ "--x": "-0.012em", "--r": "-0.3deg" } as CSSProperties}>t</span>
+                        <span className="hero-letter" aria-hidden="true" style={{ "--x": "0.022em", "--r": "0.4deg" } as CSSProperties}>e</span>
+                        <span className="hero-letter" aria-hidden="true" style={{ "--x": "-0.016em", "--r": "-0.35deg" } as CSSProperties}>n</span>
+                        <span className="hero-letter" aria-hidden="true" style={{ "--x": "0.014em", "--r": "0.25deg" } as CSSProperties}>t</span>
+                        <span className="hero-letter hero-letter-punctuation" aria-hidden="true" style={{ "--x": "0.008em", "--r": "0deg" } as CSSProperties}>.</span>
+                      </>
+                    ) : (
+                      translate("intent.")
+                    )}
                   </em>
                 </motion.span>
               </span>
@@ -430,18 +444,24 @@ export default function App() {
                     ease: [0.22, 1, 0.36, 1],
                   }}
                 >
-                  Words with{" "}
+                  {translate("Words with")}{" "}
                   <em
                     className="hero-emphasis hero-emphasis-weight"
-                    aria-label="weight."
+                    aria-label={translate("weight.")}
                   >
-                    <span className="hero-letter" aria-hidden="true">w</span>
-                    <span className="hero-letter" aria-hidden="true">e</span>
-                    <span className="hero-letter" aria-hidden="true">i</span>
-                    <span className="hero-letter" aria-hidden="true">g</span>
-                    <span className="hero-letter" aria-hidden="true">h</span>
-                    <span className="hero-letter" aria-hidden="true">t</span>
-                    <span className="hero-letter hero-letter-punctuation" aria-hidden="true">.</span>
+                    {locale === "en" ? (
+                      <>
+                        <span className="hero-letter" aria-hidden="true">w</span>
+                        <span className="hero-letter" aria-hidden="true">e</span>
+                        <span className="hero-letter" aria-hidden="true">i</span>
+                        <span className="hero-letter" aria-hidden="true">g</span>
+                        <span className="hero-letter" aria-hidden="true">h</span>
+                        <span className="hero-letter" aria-hidden="true">t</span>
+                        <span className="hero-letter hero-letter-punctuation" aria-hidden="true">.</span>
+                      </>
+                    ) : (
+                      translate("weight.")
+                    )}
                   </em>
                 </motion.span>
               </span>
@@ -449,14 +469,14 @@ export default function App() {
           </motion.div>
           <div className="hero-bottom">
             <div className="hero-intro">
-              <span className="small-label">Hello, I’m Daramola Femi.</span>
+              <span className="small-label">{translate("Hello, I’m Daramola Femi.")}</span>
               <p>
-                I build software that earns its place
-                <br className="desktop-break" /> and write the words that make
-                it understood.
+                {translate("I build software that earns its place")}
+                <br className="desktop-break" />{" "}
+                {translate("and write the words that make it understood.")}
               </p>
               <a href="#work" className="text-link">
-                Explore my work
+                {translate("Explore my work")}
                 <span className="hero-action-line" aria-hidden="true" />
               </a>
             </div>
@@ -467,52 +487,52 @@ export default function App() {
               <span className="orbit-core">
                 <Logo markOnly />
               </span>
-              <span className="orbit-caption">Logic meets language</span>
+              <span className="orbit-caption">{translate("Logic meets language")}</span>
             </div>
             <a
               className="hero-index featured-shortcut"
               href="#project-flux-form"
             >
-              Latest work / Flux & Form
+              {translate("Latest work / Flux & Form")}
               <br />
               <span className="arrow-label">
-                Watch the studio move
+                {translate("Watch the studio move")}
                 <span className="hero-action-line" aria-hidden="true" />
               </span>
             </a>
           </div>
           <div className="hero-rule">
-            <span>Engineering / Documentation / Poetry</span>
+            <span>{translate("Engineering / Documentation / Poetry")}</span>
             <span className="hero-signature">
-              An engineer’s archive, with a poet inside.
+              {translate("An engineer’s archive, with a poet inside.")}
             </span>
           </div>
         </section>
         <section id="work" className="work section-pad">
           <div className="section-kicker">
-            <span>01 / Selected work</span>
-            <span>Ideas, made tangible</span>
+            <span>01 / {translate("Selected work")}</span>
+            <span>{translate("Ideas, made tangible")}</span>
           </div>
           <ScrollReveal className="section-heading">
             <h2>
-              A few things
+              {translate("A few things")}
               <br />
-              I’ve put into <em>the world.</em>
+              {translate("I’ve put into")} <em>{translate("the world.")}</em>
             </h2>
             <p>
-              Different problems. Different expressions.
+              {translate("Different problems. Different expressions.")}
               <br />
-              The same care in the details.
+              {translate("The same care in the details.")}
             </p>
           </ScrollReveal>
-          <div className="filters" role="group" aria-label="Filter projects">
+          <div className="filters" role="group" aria-label={translate("Filter projects")}>
             {filters.map((item) => (
               <button
                 key={item}
                 aria-pressed={filter === item}
                 onClick={() => setFilter(item)}
               >
-                {item}
+                {translate(item)}
                 <span>
                   {String(
                     featuredProjects.filter(
@@ -546,17 +566,19 @@ export default function App() {
             >
               <span className="project-lab-heading">
                 <span>
-                  {projectLabOpen
-                    ? "Close the Project Lab"
-                    : "Open the Project Lab"}
+                  {translate(
+                    projectLabOpen
+                      ? "Close the Project Lab"
+                      : "Open the Project Lab",
+                  )}
                 </span>
                 <small>
-                  Other projects in motion.
+                  {translate("Other projects in motion.")}
                 </small>
               </span>
               <span className="project-lab-count" aria-hidden="true">
-                {String(projectLabProjects.length).padStart(2, "0")} project
-                {projectLabProjects.length === 1 ? "" : "s"}
+                {String(projectLabProjects.length).padStart(2, "0")}{" "}
+                {translate(projectLabProjects.length === 1 ? "project" : "projects")}
               </span>
             </button>
             <div
@@ -587,43 +609,38 @@ export default function App() {
         <DocumentationSection />
         <section id="about" className="about section-pad">
           <div className="section-kicker">
-            <span>03 / The person behind the work</span>
-            <span>Craft, with a point of view</span>
+            <span>03 / {translate("The person behind the work")}</span>
+            <span>{translate("Craft, with a point of view")}</span>
           </div>
           <div className="about-grid">
             <div>
               <h2>
-                An engineer’s mind.
-                <br />A writer’s <em>instinct.</em>
+                {translate("An engineer’s mind.")}
+                <br />{translate("A writer’s")} <em>{translate("instinct.")}</em>
               </h2>
               <div className="about-signature">
-                Daramola Femi<span>Software engineer. Technical writer.</span>
+                Daramola Femi<span>{translate("Software engineer. Technical writer.")}</span>
               </div>
             </div>
             <ScrollReveal className="about-copy" delay={0.12}>
               <p className="lead">
-                I care about what happens on both sides of an interface: the
-                system that makes it work, and the person trying to use it.
+                {translate("I care about what happens on both sides of an interface: the system that makes it work, and the person trying to use it.")}
               </p>
               <p>
-                My work moves between frontend engineering, API design, and
-                technical documentation. I enjoy giving complex ideas a clear
-                structure in a codebase, on a screen, or across a page.
+                {translate("My work moves between frontend engineering, API design, and technical documentation. I enjoy giving complex ideas a clear structure in a codebase, on a screen, or across a page.")}
               </p>
               <p>
-                I want the things I build to be useful long after the first
-                impression. Thoughtful decisions. Clear language. Details that
-                hold up in everyday use.
+                {translate("I want the things I build to be useful long after the first impression. Thoughtful decisions. Clear language. Details that hold up in everyday use.")}
               </p>
               <a
                 className="text-link"
                 href="/Images/CV.pdf"
                 download="Daramola-Femi-CV.pdf"
               >
-                <span>A closer look at my experience</span>
+                <span>{translate("A closer look at my experience")}</span>
                 <span className="experience-download-cue" aria-hidden="true">
                   <i />
-                  <small>PDF / download</small>
+                  <small>{translate("PDF / download")}</small>
                 </span>
               </a>
             </ScrollReveal>
@@ -632,23 +649,23 @@ export default function App() {
             {[
               {
                 n: "01",
-                title: "Interfaces that",
-                emphasis: "make sense.",
-                text: "Responsive websites and applications, built around how people actually use them.",
+                title: translate("Interfaces that"),
+                emphasis: translate("make sense."),
+                text: translate("Responsive websites and applications, built around how people actually use them."),
                 tools: "React / Next.js / TypeScript / Tailwind CSS",
               },
               {
                 n: "02",
-                title: "Clarity for",
-                emphasis: "developers.",
-                text: "API references, technical guides, and documentation that help the next person find their way.",
+                title: translate("Clarity for"),
+                emphasis: translate("developers."),
+                text: translate("API references, technical guides, and documentation that help the next person find their way."),
                 tools: "API design / Technical writing / Developer experience",
               },
               {
                 n: "03",
-                title: "Room to",
-                emphasis: "experiment.",
-                text: "Browser games, Web3, and the ideas that teach you something by asking you to build them.",
+                title: translate("Room to"),
+                emphasis: translate("experiment."),
+                text: translate("Browser games, Web3, and the ideas that teach you something by asking you to build them."),
                 tools: "JavaScript / Solidity / Interaction design",
               },
             ].map((item) => (
@@ -665,8 +682,8 @@ export default function App() {
         </section>
         <PoetrySection />
         <div className="interlude" aria-hidden="true">
-          <span>Make it work.</span>
-          <em>Make it matter.</em>
+          <span>{translate("Make it work.")}</span>
+          <em>{translate("Make it matter.")}</em>
         </div>
         <Contact />
       </main>
@@ -707,7 +724,8 @@ export default function App() {
             Medium
           </a>
         </div>
-        <a href="#top">Back to top</a>
+        <LanguageSwitcher />
+        <a className="footer-back-to-top" href="#top">{translate("Back to top")}</a>
       </footer>
     </MotionConfig>
   );
