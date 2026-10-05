@@ -4,8 +4,10 @@ import { wedSceneDesktop, wedSceneMobile } from "../assets/poetry/wedScene";
 import { poems, type Poem } from "../data/poetry";
 import Logo from "./Logo";
 import PoemAtmosphere from "./PoemAtmosphere";
+import { useLanguage } from "../i18n";
 
 export default function PoemPage({ poem }: { poem?: Poem }) {
+  const { translate } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButton = useRef<HTMLButtonElement>(null);
   useEffect(() => {
@@ -79,7 +81,7 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
       className={`poem-reader-shell${hasEditorialScene ? " poem-reader-shell--moonlit" : ""}`}
     >
       <a className="skip-link" href="#main">
-        Skip to poem
+        {translate("Skip to poem")}
       </a>
       <header className="header poem-header poem-reader-header">
         <a className="wordmark" href="/" aria-label="Femi: home">
@@ -103,7 +105,7 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
               aria-current={label === "Poetry" ? "page" : undefined}
               onClick={() => setMenuOpen(false)}
             >
-              {label}
+              {translate(label)}
             </a>
           ))}
         </nav>
@@ -116,14 +118,14 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((open) => !open)}
           >
-            {menuOpen ? "Close" : "Menu"}
+            {translate(menuOpen ? "Close" : "Menu")}
           </button>
         </div>
       </header>
 
       <div className="poetry-context-bar" aria-label="Poetry context">
         <a className="poem-back" href="/#poetry">
-          Selected poetry
+          {translate("Selected poetry")}
         </a>
         {poem && (
           <span className="poetry-context-current" aria-current="page">
@@ -213,7 +215,7 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
 
             <aside className="poem-reading-aside">
               <footer className="poem-signature">
-                <span className="poem-side-label">Written by</span>
+                <span className="poem-side-label">{translate("Written by")}</span>
                 <p className="poem-byline">Daramola Femi, {poem.year}</p>
                 {poem.publication && (
                   <p className="poem-publication">
@@ -229,30 +231,30 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
               </footer>
 
               <nav className="poem-navigation" aria-label="Poem navigation">
-                <span className="poem-side-label">Poetry navigation</span>
+                <span className="poem-side-label">{translate("Poetry navigation")}</span>
                 {previous ? (
                   <a href={`/poetry/${previous.slug}`} rel="prev">
-                    Previous poem
+                    {translate("Previous poem")}
                   </a>
                 ) : (
-                  <span aria-disabled="true">Previous poem</span>
+                  <span aria-disabled="true">{translate("Previous poem")}</span>
                 )}
-                <a href="/#poetry">Back to selected poetry</a>
+                <a href="/#poetry">{translate("Back to selected poetry")}</a>
                 {next ? (
                   <a href={`/poetry/${next.slug}`} rel="next">
-                    Next poem
+                    {translate("Next poem")}
                   </a>
                 ) : (
-                  <span aria-disabled="true">Next poem</span>
+                  <span aria-disabled="true">{translate("Next poem")}</span>
                 )}
               </nav>
             </aside>
           </article>
         ) : (
           <div className="poem-reading-not-found">
-            <h1>Poem not found</h1>
+            <h1>{translate("Poem not found")}</h1>
             <a className="text-link" href="/#poetry">
-              Back to selected poetry
+              {translate("Back to selected poetry")}
             </a>
           </div>
         )}
