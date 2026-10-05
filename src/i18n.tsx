@@ -1,5 +1,6 @@
 import {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -25,6 +26,7 @@ export const languageOptions: LanguageOption[] = [
 ];
 
 const STORAGE_KEY = "fearme-language";
+const MANUAL_STORAGE_KEY = "fearme-language-manual";
 
 const translations: Record<Exclude<Locale, "en">, Record<string, string>> = {
   nl: {
@@ -830,8 +832,14 @@ function detectPreferredLocale(): Locale | null {
 
 function readStoredLocale(): Locale {
   try {
+    const hasManualPreference =
+      window.localStorage.getItem(MANUAL_STORAGE_KEY) === "true";
     const stored = window.localStorage.getItem(STORAGE_KEY) as Locale | null;
-    if (languageOptions.some((language) => language.code === stored)) {
+
+    if (
+      hasManualPreference &&
+      languageOptions.some((language) => language.code === stored)
+    ) {
       return stored as Locale;
     }
   } catch {
@@ -849,6 +857,16 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>(readStoredLocale);
   const suggestedLocale = useMemo(readSuggestedLocale, []);
 
+  const setLocale = useCallback((nextLocale: Locale) => {
+    setLocaleState(nextLocale);
+    try {
+      window.localStorage.setItem(MANUAL_STORAGE_KEY, "true");
+      window.localStorage.setItem(STORAGE_KEY, nextLocale);
+    } catch {
+      // The current session can still switch languages without storage.
+    }
+  }, []);
+
   useEffect(() => {
     document.documentElement.lang = locale;
     try {
@@ -861,14 +879,14 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const value = useMemo<LanguageContextValue>(
     () => ({
       locale,
-      setLocale: setLocaleState,
+      setLocale,
       translate(source: string) {
         if (locale === "en") return source;
         return translations[locale][source] ?? source;
       },
       suggestedLocale,
     }),
-    [locale, suggestedLocale],
+    [locale, setLocale, suggestedLocale],
   );
 
   return (
