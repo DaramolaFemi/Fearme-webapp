@@ -1,34 +1,35 @@
 import { useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 import { poems } from "../data/poetry";
+import { useLanguage } from "../i18n";
 
 const PREVIEW_COUNT = 4;
 
 export default function PoetrySection() {
+  const { translate } = useLanguage();
   const [archiveOpen, setArchiveOpen] = useState(false);
   const hiddenCount = Math.max(poems.length - PREVIEW_COUNT, 0);
 
   return (
     <section id="poetry" className="poetry section-pad">
       <div className="section-kicker">
-        <span>Selected poetry</span>
-        <span>Words from somewhere darker</span>
+        <span>{translate("Selected poetry")}</span>
+        <span>{translate("Words from somewhere darker")}</span>
       </div>
 
       <div className="poetry-intro">
         <ScrollReveal>
           <h2>
-            Where logic ends
+            {translate("Where logic ends")}
             <br />
-            and silence begins,
+            {translate("and silence begins,")}
             <br />
-            <em>I write.</em>
+            <em>{translate("I write.")}</em>
           </h2>
         </ScrollReveal>
         <ScrollReveal className="poetry-copy" delay={0.1}>
           <p>
-            Seven poems, written between 2019 and 2026. A boy who writes, a
-            husband in mourning, and lovers who ask more of death than silence.
+            {translate("Seven poems, written between 2019 and 2026. A boy who writes, a husband in mourning, and lovers who ask more of death than silence.")}
           </p>
         </ScrollReveal>
       </div>
@@ -54,7 +55,7 @@ export default function PoetrySection() {
                 <a
                   className="poetry-row"
                   href={`/poetry/${poem.slug}`}
-                  aria-label={`Read ${poem.title}`}
+                  aria-label={`${translate("Read")} ${poem.title}`}
                   tabIndex={isVisible ? undefined : -1}
                 >
                   <h3>{poem.title}</h3>
@@ -74,12 +75,14 @@ export default function PoetrySection() {
             onClick={() => setArchiveOpen((open) => !open)}
           >
             <span>
-              {archiveOpen
-                ? "Close the poetry archive"
-                : "Open the poetry archive"}
+              {translate(
+                archiveOpen
+                  ? "Close the poetry archive"
+                  : "Open the poetry archive",
+              )}
             </span>
             <span className="poetry-archive-count" aria-hidden="true">
-              {archiveOpen ? "All poems" : "Archive"}
+              {translate(archiveOpen ? "All poems" : "Archive")}
             </span>
           </button>
         )}
