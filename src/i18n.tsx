@@ -7,7 +7,7 @@ import {
   type ReactNode,
 } from "react";
 
-export type Locale = "en" | "de" | "fr" | "es" | "pt";
+export type Locale = "en" | "de" | "nl" | "fr" | "es" | "pt";
 
 export type LanguageOption = {
   code: Locale;
@@ -18,6 +18,7 @@ export type LanguageOption = {
 export const languageOptions: LanguageOption[] = [
   { code: "en", short: "EN", label: "English" },
   { code: "de", short: "DE", label: "Deutsch" },
+  { code: "nl", short: "NL", label: "Nederlands" },
   { code: "fr", short: "FR", label: "Français" },
   { code: "es", short: "ES", label: "Español" },
   { code: "pt", short: "PT", label: "Português" },
@@ -26,6 +27,161 @@ export const languageOptions: LanguageOption[] = [
 const STORAGE_KEY = "fearme-language";
 
 const translations: Record<Exclude<Locale, "en">, Record<string, string>> = {
+  nl: {
+    "Language": "Taal",
+    "Choose language": "Kies taal",
+    "Choose the language for the interface.": "Kies de taal voor de interface.",
+    "Available languages": "Beschikbare talen",
+    "Suggested": "Voorgesteld",
+    "Portfolio interface translated. Poems remain in their original English.": "De portfolio-interface wordt vertaald. Gedichten blijven in het oorspronkelijke Engels.",
+    "Read": "Lezen",
+    "Contact Femi": "Contact met Femi",
+    "Skip to content": "Ga naar inhoud",
+    "Skip to poem": "Ga naar gedicht",
+    "Work": "Werk",
+    "Documentation": "Documentatie",
+    "Poetry": "Poëzie",
+    "About": "Over mij",
+    "Contact": "Contact",
+    "Download résumé (PDF)": "Cv downloaden (PDF)",
+    "Close": "Sluiten",
+    "Menu": "Menu",
+    "Software engineer & technical writer": "Software engineer & technisch schrijver",
+    "Code with": "Code met",
+    "intent.": "intentie.",
+    "Words with": "Woorden met",
+    "weight.": "gewicht.",
+    "Hello, I’m Daramola Femi.": "Hallo, ik ben Daramola Femi.",
+    "I build software that earns its place": "Ik bouw software die haar plek verdient",
+    "and write the words that make it understood.": "en schrijf de woorden die haar begrijpelijk maken.",
+    "Explore my work": "Bekijk mijn werk",
+    "Logic meets language": "Logica ontmoet taal",
+    "Latest work / Flux & Form": "Nieuwste werk / Flux & Form",
+    "Watch the studio move": "Bekijk de studio in beweging",
+    "Engineering / Documentation / Poetry": "Engineering / Documentatie / Poëzie",
+    "An engineer’s archive, with a poet inside.": "Het archief van een engineer, met een dichter erin.",
+    "Selected work": "Geselecteerd werk",
+    "Ideas, made tangible": "Ideeën, tastbaar gemaakt",
+    "A few things": "Een paar dingen",
+    "I’ve put into": "die ik in",
+    "the world.": "de wereld heb gezet.",
+    "Different problems. Different expressions.": "Verschillende problemen. Verschillende uitingen.",
+    "The same care in the details.": "Dezelfde zorg voor de details.",
+    "Filter projects": "Projecten filteren",
+    "All work": "Alles",
+    "Web applications": "Webapplicaties",
+    "Websites": "Websites",
+    "Live project": "Live project",
+    "In development, not yet hosted": "In ontwikkeling, nog niet gehost",
+    "View": "Bekijken",
+    "Request": "Aanvragen",
+    "Study": "Case",
+    "Open the Project Lab": "Project Lab openen",
+    "Close the Project Lab": "Project Lab sluiten",
+    "Other projects in motion.": "Andere projecten in beweging.",
+    "project": "project",
+    "projects": "projecten",
+    "The person behind the work": "De persoon achter het werk",
+    "Craft, with a point of view": "Vakmanschap, met een eigen blik",
+    "An engineer’s mind.": "De geest van een engineer.",
+    "A writer’s": "Het instinct van een",
+    "instinct.": "schrijver.",
+    "Software engineer. Technical writer.": "Software engineer. Technisch schrijver.",
+    "I care about what happens on both sides of an interface: the system that makes it work, and the person trying to use it.": "Ik geef om wat er aan beide kanten van een interface gebeurt: het systeem dat het laat werken en de persoon die het probeert te gebruiken.",
+    "My work moves between frontend engineering, API design, and technical documentation. I enjoy giving complex ideas a clear structure in a codebase, on a screen, or across a page.": "Mijn werk beweegt tussen frontend engineering, API-design en technische documentatie. Ik geef complexe ideeën graag een heldere structuur in code, op een scherm of op een pagina.",
+    "I want the things I build to be useful long after the first impression. Thoughtful decisions. Clear language. Details that hold up in everyday use.": "Ik wil dat wat ik bouw lang na de eerste indruk nuttig blijft. Doordachte keuzes. Heldere taal. Details die in dagelijks gebruik overeind blijven.",
+    "A closer look at my experience": "Mijn ervaring van dichterbij",
+    "PDF / download": "PDF / downloaden",
+    "Interfaces that": "Interfaces die",
+    "make sense.": "logisch voelen.",
+    "Responsive websites and applications, built around how people actually use them.": "Responsieve websites en applicaties, gebouwd rond hoe mensen ze daadwerkelijk gebruiken.",
+    "Clarity for": "Helderheid voor",
+    "developers.": "developers.",
+    "API references, technical guides, and documentation that help the next person find their way.": "API-referenties, technische handleidingen en documentatie die de volgende persoon helpen de weg te vinden.",
+    "Room to": "Ruimte om te",
+    "experiment.": "experimenteren.",
+    "Browser games, Web3, and the ideas that teach you something by asking you to build them.": "Browsergames, Web3 en ideeën die je iets leren door je te vragen ze te bouwen.",
+    "Words from somewhere darker": "Woorden uit een donkerdere plek",
+    "Where logic ends": "Waar logica eindigt",
+    "and silence begins,": "en stilte begint,",
+    "I write.": "schrijf ik.",
+    "Seven poems, written between 2019 and 2026. A boy who writes, a husband in mourning, and lovers who ask more of death than silence.": "Zeven gedichten, geschreven tussen 2019 en 2026. Een jongen die schrijft, een rouwende echtgenoot en geliefden die meer van de dood vragen dan stilte.",
+    "Open the poetry archive": "Poëziearchief openen",
+    "Close the poetry archive": "Poëziearchief sluiten",
+    "All poems": "Alle gedichten",
+    "Archive": "Archief",
+    "Make it work.": "Laat het werken.",
+    "Make it matter.": "Laat het ertoe doen.",
+    "A conversation": "Een gesprek",
+    "Good work starts here": "Goed werk begint hier",
+    "Have something": "Heb je iets",
+    "on your": "aan je",
+    "mind?": "hoofd?",
+    "A product taking shape. Documentation that needs a clearer voice. An idea you keep coming back to. I’d like to hear it.": "Een product dat vorm krijgt. Documentatie die een duidelijkere stem nodig heeft. Een idee waar je steeds op terugkomt. Ik hoor het graag.",
+    "Your name": "Je naam",
+    "What should I call you?": "Hoe mag ik je noemen?",
+    "Email address": "E-mailadres",
+    "A little about your project": "Iets over je project",
+    "The idea, the challenge, the ambition…": "Het idee, de uitdaging, de ambitie…",
+    "Delivered via Formspree.": "Verzonden via Formspree.",
+    "Your details are used to reply.": "Je gegevens worden alleen gebruikt om te antwoorden.",
+    "Leave this empty": "Laat dit leeg",
+    "Sending…": "Verzenden…",
+    "Message sent": "Bericht verzonden",
+    "Send a note": "Stuur een bericht",
+    "Message sent to Daramola Femi.": "Bericht verzonden naar Daramola Femi.",
+    "Thank you. I’ve received your note and will get back to you soon.": "Dank je. Ik heb je bericht ontvangen en neem snel contact met je op.",
+    "Please complete your name, email address, and message.": "Vul je naam, e-mailadres en bericht in.",
+    "Your message could not be sent. Please try again or email me directly.": "Je bericht kon niet worden verzonden. Probeer het opnieuw of mail me rechtstreeks.",
+    "Back to top": "Terug naar boven",
+    "Systems, made understandable": "Systemen, begrijpelijk gemaakt",
+    "I write the map": "Ik schrijf de kaart",
+    "behind": "achter",
+    "the machine.": "de machine.",
+    "Developer documentation, API references, and technical guides.": "Developerdocumentatie, API-referenties en technische handleidingen.",
+    "Developer documentation, API references, and technical guides built to make complex systems easier to use.": "Developerdocumentatie, API-referenties en technische handleidingen die complexe systemen makkelijker bruikbaar maken.",
+    "Published": "Gepubliceerd",
+    "In progress": "In uitvoering",
+    "Planned": "Gepland",
+    "Read documentation": "Documentatie lezen",
+    "Coming soon": "Binnenkort",
+    "REST API / Developer Documentation": "REST API / Developerdocumentatie",
+    "Web3 / Smart Contract Documentation": "Web3 / Smartcontractdocumentatie",
+    "Application Documentation": "Applicatiedocumentatie",
+    "Developer documentation for a business-management platform covering authentication, resources, workflows, webhooks, errors, API conventions, integration behavior, and the practical patterns developers need to move through the system with clarity.": "Developerdocumentatie voor een bedrijfsbeheerplatform met authenticatie, resources, workflows, webhooks, fouten, API-conventies, integratiegedrag en de praktische patronen die developers nodig hebben om helder door het systeem te bewegen.",
+    "Developer documentation for an ERC-20 escrow system covering contract architecture, escrow lifecycle, client and freelancer roles, token funding, platform fees, refunds, withdrawals, events, custom errors, frontend integration, and germane security considerations.": "Developerdocumentatie voor een ERC-20-escrowsysteem met contractarchitectuur, escrowlevenscyclus, rollen van klant en freelancer, tokenfinanciering, platformkosten, terugbetalingen, opnames, events, custom errors, frontendintegratie en relevante beveiligingsoverwegingen.",
+    "Developer and product documentation for Harmattan-The 9ja Skies, covering application architecture, Open-Meteo integration, weather-code interpretation, ambient audio, accessibility, troubleshooting, and the practical design decisions that shape a distinctly local weather product.": "Developer- en productdocumentatie voor Harmattan-The 9ja Skies, met applicatiearchitectuur, Open-Meteo-integratie, interpretatie van weercodes, omgevingsaudio, toegankelijkheid, troubleshooting en de praktische ontwerpkeuzes die een uitgesproken lokaal weerproduct vormen.",
+    "Hair & beauty studio": "Haar- en beautystudio",
+    "Furniture showroom": "Meubelshowroom",
+    "Poetry studio": "Poëziestudio",
+    "Barbershop landing page": "Landingspagina voor barbershop",
+    "Barbershop redesign": "Redesign van barbershop",
+    "Business management SaaS": "SaaS voor bedrijfsbeheer",
+    "Browser game": "Browsergame",
+    "Weather application": "Weerapplicatie",
+    "A studio built in motion.": "Een studio gebouwd in beweging.",
+    "A slower kind of shopping.": "Een rustigere manier van winkelen.",
+    "Writing, with intention.": "Schrijven, met intentie.",
+    "More than a cut. A standard.": "Meer dan een knipbeurt. Een standaard.",
+    "From brochure site to booking-led experience.": "Van brochuresite naar een boekingsgerichte ervaring.",
+    "Less chasing numbers. More building a business.": "Minder achter cijfers aan. Meer bouwen aan een bedrijf.",
+    "Find your line.": "Vind je lijn.",
+    "The skies, closer to home.": "De lucht, dichter bij huis.",
+    "An editorial salon experience where motion, image, and type carry the brand from first impression to consultation.": "Een redactionele salonervaring waarin beweging, beeld en typografie het merk dragen van eerste indruk tot consultatie.",
+    "An editorial furniture storefront, from the first room to the final selection. Product discovery, thoughtful filters, and a persistent shopping bag bring the showroom into the browser.": "Een redactionele meubelwinkel, van de eerste ruimte tot de uiteindelijke keuze. Productontdekking, doordachte filters en een blijvende winkelmand brengen de showroom naar de browser.",
+    "A poetry studio built around memory, mood, and deliberate language. Designed to help a poem begin somewhere honest instead of somewhere generic.": "Een poëziestudio rond herinnering, stemming en doelbewuste taal. Ontworpen om een gedicht ergens eerlijks te laten beginnen in plaats van ergens generieks.",
+    "A premium barbershop experience brought online, with a refined visual system that guides clients from discovery to booking a chair.": "Een premium barbershopervaring online gebracht, met een verfijnd visueel systeem dat klanten begeleidt van ontdekking tot het boeken van een stoel.",
+    "A ground-up redesign for a Las Vegas barbershop, rebuilding barber discovery, services, reviews, gallery, and the route from first impression to booking.": "Een volledig nieuw ontwerp voor een barbershop in Las Vegas, met herbouwde barber discovery, diensten, reviews, galerie en de route van eerste indruk naar boeking.",
+    "Customers, invoices, expenses, and financial insights in one workspace. Built for small businesses, with team roles and access controls that give each person the right view of the work.": "Klanten, facturen, uitgaven en financiële inzichten in één werkruimte. Gebouwd voor kleine bedrijven, met teamrollen en toegangsbeheer zodat iedereen de juiste blik op het werk krijgt.",
+    "An endless night-driving game built around steering, boost management, close passes, and chasing a personal best.": "Een eindeloze nachtelijke racegame rond sturen, boostbeheer, krappe inhaalacties en het najagen van een persoonlijk record.",
+    "A weather app rooted in Nigerian conditions. Forecasts meet ambient sound and a little play, making the weather something you can feel.": "Een weerapp geworteld in Nigeriaanse omstandigheden. Verwachtingen komen samen met omgevingsgeluid en een beetje spel, zodat je het weer bijna kunt voelen.",
+    "Previous poem": "Vorig gedicht",
+    "Back to selected poetry": "Terug naar geselecteerde poëzie",
+    "Next poem": "Volgend gedicht",
+    "Written by": "Geschreven door",
+    "Poetry navigation": "Poëzienavigatie",
+    "Poem not found": "Gedicht niet gevonden",
+  },
   de: {
     "Language": "Sprache",
     "Choose language": "Sprache wählen",
@@ -657,19 +813,7 @@ type LanguageContextValue = {
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
-function readStoredLocale(): Locale {
-  try {
-    const stored = window.localStorage.getItem(STORAGE_KEY) as Locale | null;
-    if (languageOptions.some((language) => language.code === stored)) {
-      return stored as Locale;
-    }
-  } catch {
-    // Browsers with storage disabled should simply fall back to English.
-  }
-  return "en";
-}
-
-function readSuggestedLocale(): Locale | null {
+function detectPreferredLocale(): Locale | null {
   const candidates = navigator.languages?.length
     ? navigator.languages
     : [navigator.language];
@@ -682,6 +826,23 @@ function readSuggestedLocale(): Locale | null {
   }
 
   return null;
+}
+
+function readStoredLocale(): Locale {
+  try {
+    const stored = window.localStorage.getItem(STORAGE_KEY) as Locale | null;
+    if (languageOptions.some((language) => language.code === stored)) {
+      return stored as Locale;
+    }
+  } catch {
+    // Browsers with storage disabled still use the browser-language preference.
+  }
+
+  return detectPreferredLocale() ?? "en";
+}
+
+function readSuggestedLocale(): Locale | null {
+  return detectPreferredLocale();
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
