@@ -25,9 +25,12 @@ import "./hero-editorial.css";
 import "./hero-celestial.css";
 import "./poem-reader-editorial.css";
 import SitePage from "./components/SitePage";
+import { LanguageProvider } from "./i18n";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <SitePage />
+    <LanguageProvider>
+      <SitePage />
+    </LanguageProvider>
   </React.StrictMode>,
 );
