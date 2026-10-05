@@ -244,6 +244,7 @@ export default function App() {
           >
             {translate("Download résumé (PDF)")} <Arrow direction="down" />
           </a>
+          <LanguageSwitcher />
         </nav>
         <div className="header-controls">
           <ThemeToggle />
@@ -724,7 +725,6 @@ export default function App() {
             Medium
           </a>
         </div>
-        <LanguageSwitcher />
         <a className="footer-back-to-top" href="#top">{translate("Back to top")}</a>
       </footer>
     </MotionConfig>
