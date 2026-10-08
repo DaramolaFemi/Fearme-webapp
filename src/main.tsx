@@ -20,6 +20,7 @@ import "./desktop-arrows.css";
 import "./back-to-top.css";
 import "./mobile-identity.css";
 import "./desktop-identity.css";
+import "./about-practice.css";
 import "./project-cards-editorial.css";
 import "./hero-editorial.css";
 import "./hero-celestial.css";
