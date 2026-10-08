@@ -610,7 +610,7 @@ export default function App() {
         <DocumentationSection />
         <section id="about" className="about section-pad">
           <div className="section-kicker">
-            <span>03 / {translate("The person behind the work")}</span>
+            <span>{translate("The person behind the work")}</span>
             <span>{translate("Craft, with a point of view")}</span>
           </div>
           <div className="about-grid">
@@ -646,40 +646,57 @@ export default function App() {
               </a>
             </ScrollReveal>
           </div>
-          <div className="capabilities">
+          <section className="practice" aria-label={translate("How I work")}>
+            <ScrollReveal className="practice-introduction">
+              <span className="practice-eyebrow">{translate("The practice")}</span>
+              <p>{translate("The work changes shape. The standard does not.")}</p>
+            </ScrollReveal>
+            <div className="practice-list">
             {[
               {
-                n: "01",
+                verb: translate("Build"),
                 title: translate("Interfaces that"),
                 emphasis: translate("make sense."),
                 text: translate("Responsive websites and applications, built around how people actually use them."),
                 tools: "React / Next.js / TypeScript / Tailwind CSS",
+                className: "practice-way-build",
               },
               {
-                n: "02",
+                verb: translate("Explain"),
                 title: translate("Clarity for"),
                 emphasis: translate("developers."),
                 text: translate("API references, technical guides, and documentation that help the next person find their way."),
                 tools: "API design / Technical writing / Developer experience",
+                className: "practice-way-explain",
               },
               {
-                n: "03",
+                verb: translate("Explore"),
                 title: translate("Room to"),
                 emphasis: translate("experiment."),
                 text: translate("Browser games, Web3, and the ideas that teach you something by asking you to build them."),
                 tools: "JavaScript / Solidity / Interaction design",
+                className: "practice-way-explore",
               },
-            ].map((item) => (
-              <ScrollReveal key={item.n} delay={Number(item.n) * 0.08}>
-                <span className="small-label">{item.n}</span>
-                <h3>
-                  {item.title} <em>{item.emphasis}</em>
-                </h3>
-                <p>{item.text}</p>
-                <span className="tool-list">{item.tools}</span>
+            ].map((item, index) => (
+              <ScrollReveal
+                key={item.verb}
+                delay={(index + 1) * 0.06}
+                className={`practice-way ${item.className}`}
+              >
+                <span className="practice-verb" aria-hidden="true">
+                  {item.verb}
+                </span>
+                <div className="practice-content">
+                  <h3>
+                    {item.title} <em>{item.emphasis}</em>
+                  </h3>
+                  <p>{item.text}</p>
+                  <span className="tool-list">{item.tools}</span>
+                </div>
               </ScrollReveal>
             ))}
-          </div>
+            </div>
+          </section>
         </section>
         <PoetrySection />
         <div className="interlude" aria-hidden="true">
