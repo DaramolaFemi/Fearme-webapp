@@ -218,14 +218,7 @@
   }
 
   .practice-introduction {
-    display: block;
-    padding: 1rem 0 3.7rem;
-  }
-
-  .practice-introduction p {
-    margin-top: 1.45rem;
-    font-size: 27px;
-    line-height: 1.06;
+    display: none;
   }
 
   .practice-way,
@@ -239,8 +232,8 @@
   .practice-way-explain .practice-verb {
     display: block;
     padding: 0;
-    font-size: clamp(56px, 19vw, 84px);
-    line-height: 0.72;
+    font-size: clamp(44px, 14vw, 62px);
+    line-height: 0.78;
     text-align: left;
   }
 
@@ -248,7 +241,7 @@
   .practice-way-explain .practice-content {
     display: block;
     max-width: none;
-    margin-top: 1.9rem;
+    margin-top: 1.2rem;
   }
 
   .practice-way-explore .practice-content {
@@ -276,6 +269,12 @@
   .practice-way:hover::after,
   .practice-way:focus-within::after {
     width: 42%;
+  }
+}
+
+@media (max-width: 600px) {
+  :root[data-theme="dark"] .practice-verb {
+    color: rgba(110, 221, 212, 0.1);
   }
 }
 
