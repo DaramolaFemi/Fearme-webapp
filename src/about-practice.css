@@ -9,111 +9,131 @@
   opacity: 0.58;
 }
 
-.about-credo {
-  position: relative;
+.about-practice {
+  margin-top: clamp(5rem, 10vw, 10rem);
+  border-top: 1px solid var(--line);
+}
+
+.about-practice-intro {
   display: grid;
   grid-template-columns: minmax(9rem, 0.38fr) minmax(0, 1fr);
   column-gap: clamp(2rem, 6vw, 7rem);
-  margin-top: clamp(4.75rem, 9vw, 9.5rem);
-  padding: clamp(1.25rem, 2.4vw, 2.5rem) 0 clamp(2rem, 4vw, 4.5rem);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  overflow: hidden;
+  padding: clamp(1.15rem, 2.1vw, 2rem) 0 clamp(3rem, 5vw, 5.25rem);
 }
 
-.about-credo::before {
-  content: "";
-  position: absolute;
-  right: -12%;
-  bottom: -58%;
-  width: min(48vw, 42rem);
-  aspect-ratio: 1;
-  border: 1px solid color-mix(in srgb, var(--line) 64%, transparent);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.about-credo-label {
-  position: relative;
-  z-index: 1;
-  padding-top: 0.45rem;
+.about-practice-intro > span {
+  padding-top: 0.3rem;
   color: var(--muted);
   font-family: "IBM Plex Mono", monospace;
   font-size: 10px;
   letter-spacing: 0.06em;
 }
 
-.about-credo blockquote {
+.about-practice-intro p {
+  max-width: 39ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(14px, 1.18vw, 17px);
+  line-height: 1.55;
+}
+
+.about-practice-entries {
   position: relative;
-  z-index: 1;
-  grid-column: 2;
-  max-width: 16ch;
+}
+
+.about-practice-entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(15rem, 0.65fr);
+  align-items: end;
+  column-gap: clamp(2rem, 8vw, 10rem);
+  min-height: clamp(15rem, 25vw, 23rem);
+  padding: clamp(2rem, 4vw, 4.25rem) 0;
+  border-top: 1px solid var(--line);
+}
+
+.about-practice-entry h3 {
+  max-width: 10.5ch;
   margin: 0;
   color: var(--ink);
   font-family: "Literata", serif;
-  font-size: clamp(37px, 5.1vw, 78px);
+  font-size: clamp(40px, 5.15vw, 78px);
   font-weight: 400;
   line-height: 0.98;
-  letter-spacing: -0.058em;
+  letter-spacing: -0.06em;
 }
 
-.about-credo blockquote em {
+.about-practice-entry h3 em {
   color: var(--accent);
-  font-family: inherit;
   font-style: italic;
   font-weight: inherit;
 }
 
-.about-credo-ledger {
-  position: relative;
-  z-index: 1;
-  grid-column: 2;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0;
-  max-width: 52rem;
-  margin-top: clamp(3rem, 6vw, 6.5rem);
+.about-practice-entry > div {
+  max-width: 30rem;
+  padding-bottom: 0.45rem;
+}
+
+.about-practice-entry p {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(15px, 1.35vw, 19px);
+  line-height: 1.45;
+}
+
+.about-practice-entry span {
+  display: block;
+  margin-top: 1.65rem;
   color: var(--muted);
   font-family: "IBM Plex Mono", monospace;
   font-size: 10px;
-  line-height: 1.5;
+  line-height: 1.55;
   letter-spacing: 0.025em;
 }
 
-.about-credo-ledger span {
-  display: inline-flex;
-  align-items: center;
+.about-practice-entry-clarity {
+  grid-template-columns: minmax(15rem, 0.65fr) minmax(0, 1.25fr);
+  padding-left: clamp(0rem, 10vw, 12rem);
 }
 
-.about-credo-ledger span:not(:last-child)::after {
-  content: "·";
-  margin: 0 0.85rem;
-  color: var(--accent);
+.about-practice-entry-clarity h3 {
+  grid-column: 2;
+  grid-row: 1;
 }
 
-:root[data-theme="dark"] .about-credo {
+.about-practice-entry-clarity > div {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: end;
+}
+
+.about-practice-entry-experiment {
+  grid-template-columns: minmax(0, 1.1fr) minmax(15rem, 0.75fr);
+  padding-bottom: clamp(2.5rem, 5vw, 5.5rem);
+  border-bottom: 1px solid var(--line);
+}
+
+:root[data-theme="dark"] .about-practice,
+:root[data-theme="dark"] .about-practice-entry {
   border-color: rgba(110, 221, 212, 0.17);
-  background:
-    radial-gradient(ellipse 34% 78% at 100% 50%, rgba(110, 221, 212, 0.042), transparent 72%);
 }
 
-:root[data-theme="dark"] .about-credo::before {
-  border-color: rgba(110, 221, 212, 0.12);
-}
-
-:root[data-theme="dark"] .about-credo blockquote em,
-:root[data-theme="dark"] .about-credo-ledger span:not(:last-child)::after {
+:root[data-theme="dark"] .about-practice-entry h3 em {
   color: var(--night-cyan);
 }
 
 @media (min-width: 601px) and (max-width: 900px) {
-  .about-credo {
-    grid-template-columns: minmax(8rem, 0.3fr) minmax(0, 1fr);
+  .about-practice-intro {
+    grid-template-columns: minmax(7rem, 0.3fr) minmax(0, 1fr);
   }
 
-  .about-credo blockquote {
-    max-width: 18ch;
-    font-size: clamp(42px, 6vw, 62px);
+  .about-practice-entry {
+    grid-template-columns: minmax(0, 1fr) minmax(13rem, 0.7fr);
+    column-gap: 2.5rem;
+  }
+
+  .about-practice-entry-clarity {
+    grid-template-columns: minmax(13rem, 0.7fr) minmax(0, 1fr);
+    padding-left: 4rem;
   }
 }
 
@@ -123,53 +143,63 @@
     margin-right: 7px;
   }
 
-  .about-credo {
-    display: block;
+  .about-practice {
     margin-top: 4rem;
-    padding: 1.05rem 0 2.1rem;
   }
 
-  .about-credo::before {
-    right: -43%;
-    bottom: -43%;
-    width: 22rem;
-  }
-
-  .about-credo-label {
+  .about-practice-intro {
     display: block;
-    padding-top: 0;
+    padding: 1.05rem 0 3.5rem;
   }
 
-  .about-credo blockquote {
-    max-width: 11.5ch;
-    margin-top: 2.6rem;
-    font-size: clamp(36px, 11.5vw, 48px);
-    line-height: 0.99;
-    letter-spacing: -0.052em;
-  }
-
-  .about-credo-ledger {
+  .about-practice-intro > span {
     display: block;
-    max-width: 19rem;
-    margin-top: 3.4rem;
+  }
+
+  .about-practice-intro p {
+    max-width: 27ch;
+    margin-top: 1.45rem;
+    font-size: 14px;
+  }
+
+  .about-practice-entry,
+  .about-practice-entry-clarity,
+  .about-practice-entry-experiment {
+    display: block;
+    min-height: 0;
+    padding: 2.65rem 0 3rem;
+  }
+
+  .about-practice-entry-clarity {
+    padding-left: 0;
+  }
+
+  .about-practice-entry h3 {
+    max-width: 10ch;
+    font-size: clamp(38px, 11.2vw, 48px);
+    line-height: 1;
+    letter-spacing: -0.055em;
+  }
+
+  .about-practice-entry > div {
+    max-width: 31rem;
+    margin-top: 2.15rem;
+    padding: 0;
+  }
+
+  .about-practice-entry p {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .about-practice-entry span {
+    max-width: 31ch;
+    margin-top: 1.65rem;
     font-size: 9px;
     line-height: 1.7;
   }
 
-  .about-credo-ledger span {
-    display: block;
-  }
-
-  .about-credo-ledger span:not(:last-child)::after {
-    content: "";
-    display: block;
-    width: 22px;
-    height: 1px;
-    margin: 0.9rem 0;
-    background: var(--accent);
-  }
-
-  :root[data-theme="dark"] .about-credo-ledger span:not(:last-child)::after {
-    background: var(--night-cyan);
+  .about-practice-entry-experiment {
+    padding-bottom: 3.25rem;
   }
 }
