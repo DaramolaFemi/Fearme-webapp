@@ -9,131 +9,124 @@
   opacity: 0.58;
 }
 
-.about-practice {
+.about-manifest {
   margin-top: clamp(5rem, 10vw, 10rem);
+  padding-bottom: clamp(2.75rem, 5vw, 5rem);
   border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
-.about-practice-intro {
+.about-manifest-meta {
   display: grid;
-  grid-template-columns: minmax(9rem, 0.38fr) minmax(0, 1fr);
-  column-gap: clamp(2rem, 6vw, 7rem);
-  padding: clamp(1.15rem, 2.1vw, 2rem) 0 clamp(3rem, 5vw, 5.25rem);
+  grid-template-columns: minmax(10rem, 0.36fr) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 7rem);
+  padding: clamp(1.15rem, 2vw, 2rem) 0 clamp(3.75rem, 6.5vw, 7rem);
 }
 
-.about-practice-intro > span {
-  padding-top: 0.3rem;
+.about-manifest-meta > span {
+  padding-top: 0.25rem;
   color: var(--muted);
   font-family: "IBM Plex Mono", monospace;
   font-size: 10px;
   letter-spacing: 0.06em;
 }
 
-.about-practice-intro p {
-  max-width: 39ch;
+.about-manifest-meta p {
+  max-width: 32ch;
   margin: 0;
   color: var(--muted);
-  font-size: clamp(14px, 1.18vw, 17px);
+  font-size: clamp(14px, 1.14vw, 17px);
   line-height: 1.55;
 }
 
-.about-practice-entries {
-  position: relative;
-}
-
-.about-practice-entry {
+.about-manifest-lines {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(15rem, 0.65fr);
-  align-items: end;
-  column-gap: clamp(2rem, 8vw, 10rem);
-  min-height: clamp(15rem, 25vw, 23rem);
-  padding: clamp(2rem, 4vw, 4.25rem) 0;
-  border-top: 1px solid var(--line);
+  gap: clamp(0.25rem, 0.8vw, 0.75rem);
+  max-width: 18ch;
 }
 
-.about-practice-entry h3 {
-  max-width: 10.5ch;
+.about-manifest-lines p {
   margin: 0;
   color: var(--ink);
   font-family: "Literata", serif;
-  font-size: clamp(40px, 5.15vw, 78px);
+  font-size: clamp(40px, 5.55vw, 86px);
   font-weight: 400;
-  line-height: 0.98;
-  letter-spacing: -0.06em;
+  line-height: 0.95;
+  letter-spacing: -0.066em;
 }
 
-.about-practice-entry h3 em {
+.about-manifest-lines p:nth-child(2) {
+  margin-left: clamp(2.5rem, 12vw, 14rem);
+}
+
+.about-manifest-lines p:nth-child(3) {
+  margin-left: clamp(0.75rem, 5vw, 6rem);
+}
+
+.about-manifest-lines em {
   color: var(--accent);
   font-style: italic;
   font-weight: inherit;
 }
 
-.about-practice-entry > div {
-  max-width: 30rem;
-  padding-bottom: 0.45rem;
+.about-manifest-notes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3.5vw, 4rem);
+  margin-top: clamp(4.5rem, 9vw, 9rem);
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
 }
 
-.about-practice-entry p {
+.about-manifest-notes p {
   margin: 0;
   color: var(--ink);
-  font-size: clamp(15px, 1.35vw, 19px);
-  line-height: 1.45;
+  font-size: clamp(14px, 1.12vw, 16px);
+  line-height: 1.55;
 }
 
-.about-practice-entry span {
+.about-manifest-notes p:nth-child(2) {
+  margin-top: clamp(1.75rem, 4vw, 4rem);
+}
+
+.about-manifest-notes p:nth-child(3) {
+  margin-top: clamp(0.75rem, 1.8vw, 1.5rem);
+}
+
+.about-manifest-notes span {
   display: block;
-  margin-top: 1.65rem;
+  margin-top: 1.4rem;
   color: var(--muted);
   font-family: "IBM Plex Mono", monospace;
-  font-size: 10px;
-  line-height: 1.55;
+  font-size: 9px;
+  line-height: 1.6;
   letter-spacing: 0.025em;
 }
 
-.about-practice-entry-clarity {
-  grid-template-columns: minmax(15rem, 0.65fr) minmax(0, 1.25fr);
-  padding-left: clamp(0rem, 10vw, 12rem);
-}
-
-.about-practice-entry-clarity h3 {
-  grid-column: 2;
-  grid-row: 1;
-}
-
-.about-practice-entry-clarity > div {
-  grid-column: 1;
-  grid-row: 1;
-  align-self: end;
-}
-
-.about-practice-entry-experiment {
-  grid-template-columns: minmax(0, 1.1fr) minmax(15rem, 0.75fr);
-  padding-bottom: clamp(2.5rem, 5vw, 5.5rem);
-  border-bottom: 1px solid var(--line);
-}
-
-:root[data-theme="dark"] .about-practice,
-:root[data-theme="dark"] .about-practice-entry {
+:root[data-theme="dark"] .about-manifest,
+:root[data-theme="dark"] .about-manifest-notes {
   border-color: rgba(110, 221, 212, 0.17);
 }
 
-:root[data-theme="dark"] .about-practice-entry h3 em {
+:root[data-theme="dark"] .about-manifest-lines em {
   color: var(--night-cyan);
 }
 
 @media (min-width: 601px) and (max-width: 900px) {
-  .about-practice-intro {
-    grid-template-columns: minmax(7rem, 0.3fr) minmax(0, 1fr);
+  .about-manifest-meta {
+    grid-template-columns: minmax(8rem, 0.3fr) minmax(0, 1fr);
   }
 
-  .about-practice-entry {
-    grid-template-columns: minmax(0, 1fr) minmax(13rem, 0.7fr);
-    column-gap: 2.5rem;
+  .about-manifest-lines p:nth-child(2) {
+    margin-left: 7vw;
   }
 
-  .about-practice-entry-clarity {
-    grid-template-columns: minmax(13rem, 0.7fr) minmax(0, 1fr);
-    padding-left: 4rem;
+  .about-manifest-lines p:nth-child(3) {
+    margin-left: 3vw;
+  }
+
+  .about-manifest-notes {
+    gap: 1.5rem;
   }
 }
 
@@ -143,63 +136,76 @@
     margin-right: 7px;
   }
 
-  .about-practice {
+  .about-manifest {
     margin-top: 4rem;
+    padding-bottom: 3rem;
   }
 
-  .about-practice-intro {
+  .about-manifest-meta {
     display: block;
     padding: 1.05rem 0 3.5rem;
   }
 
-  .about-practice-intro > span {
+  .about-manifest-meta > span {
     display: block;
   }
 
-  .about-practice-intro p {
-    max-width: 27ch;
-    margin-top: 1.45rem;
+  .about-manifest-meta p {
+    max-width: 28ch;
+    margin-top: 1.4rem;
     font-size: 14px;
   }
 
-  .about-practice-entry,
-  .about-practice-entry-clarity,
-  .about-practice-entry-experiment {
+  .about-manifest-lines {
+    max-width: 10.75ch;
+    gap: 0.55rem;
+  }
+
+  .about-manifest-lines p {
+    font-size: clamp(39px, 11.3vw, 48px);
+    line-height: 0.98;
+    letter-spacing: -0.057em;
+  }
+
+  .about-manifest-lines p:nth-child(2) {
+    margin-left: 1.85rem;
+  }
+
+  .about-manifest-lines p:nth-child(3) {
+    margin-left: 0.55rem;
+  }
+
+  .about-manifest-notes {
     display: block;
-    min-height: 0;
-    padding: 2.65rem 0 3rem;
+    margin-top: 4.25rem;
+    padding-top: 0;
+    border-top: 0;
   }
 
-  .about-practice-entry-clarity {
-    padding-left: 0;
-  }
-
-  .about-practice-entry h3 {
-    max-width: 10ch;
-    font-size: clamp(38px, 11.2vw, 48px);
-    line-height: 1;
-    letter-spacing: -0.055em;
-  }
-
-  .about-practice-entry > div {
-    max-width: 31rem;
-    margin-top: 2.15rem;
-    padding: 0;
-  }
-
-  .about-practice-entry p {
+  .about-manifest-notes p {
+    padding: 1.55rem 0 2.1rem;
     font-size: 16px;
     line-height: 1.55;
+    border-top: 1px solid var(--line);
   }
 
-  .about-practice-entry span {
+  .about-manifest-notes p:nth-child(2),
+  .about-manifest-notes p:nth-child(3) {
+    margin-top: 0;
+  }
+
+  .about-manifest-notes p:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .about-manifest-notes span {
     max-width: 31ch;
-    margin-top: 1.65rem;
+    margin-top: 1.45rem;
     font-size: 9px;
     line-height: 1.7;
   }
 
-  .about-practice-entry-experiment {
-    padding-bottom: 3.25rem;
+  :root[data-theme="dark"] .about-manifest-notes p {
+    border-color: rgba(110, 221, 212, 0.17);
   }
 }
