@@ -48,14 +48,14 @@ for (const page of routes) {
     ["og:description", page.description],
     ["og:url", url],
   ]) {
-    const pattern = new RegExp(`<meta property="${key}" content="[^"]*" />`);
+    const pattern = new RegExp(`<meta[^>]+property="${key}"[^>]+content="[^"]*"[^>]*>`);
     html = replaceRequired(html, pattern, `<meta property="${key}" content="${escapeHtml(value)}" />`);
   }
   for (const [key, value] of [
     ["twitter:title", page.title],
     ["twitter:description", page.description],
   ]) {
-    const pattern = new RegExp(`<meta name="${key}" content="[^"]*" />`);
+    const pattern = new RegExp(`<meta[^>]+name="${key}"[^>]+content="[^"]*"[^>]*>`);
     html = replaceRequired(html, pattern, `<meta name="${key}" content="${escapeHtml(value)}" />`);
   }
   html = replaceRequired(
