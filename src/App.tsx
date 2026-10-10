@@ -646,46 +646,19 @@ export default function App() {
               </a>
             </ScrollReveal>
           </div>
-          <section className="practice" aria-label={translate("How I work")}>
-            <div className="practice-ledger">
-              {[
-                {
-                  label: translate("Frontend engineering"),
-                  title: translate("Interfaces that"),
-                  emphasis: translate("make sense."),
-                  text: translate("Responsive websites and applications, built around how people actually use them."),
-                  tools: "React / Next.js / TypeScript / Tailwind CSS",
-                },
-                {
-                  label: translate("Documentation"),
-                  title: translate("Clarity for"),
-                  emphasis: translate("developers."),
-                  text: translate("API references, technical guides, and documentation that help the next person find their way."),
-                  tools: "API design / Technical writing / Developer experience",
-                },
-                {
-                  label: translate("Research & play"),
-                  title: translate("Room to"),
-                  emphasis: translate("experiment."),
-                  text: translate("Browser games, Web3, and the ideas that teach you something by asking you to build them."),
-                  tools: "JavaScript / Solidity / Interaction design",
-                },
-              ].map((item, index) => (
-                <ScrollReveal
-                  key={item.label}
-                  delay={(index + 1) * 0.06}
-                  className="practice-entry"
-                >
-                  <span className="practice-entry-label">{item.label}</span>
-                  <h3>
-                    {item.title} <em>{item.emphasis}</em>
-                  </h3>
-                  <p>{item.text}</p>
-                  <span className="practice-entry-meta">{item.tools}</span>
-                </ScrollReveal>
-              ))}
+          <ScrollReveal className="about-credo">
+            <span className="about-credo-label">{translate("A working note")}</span>
+            <blockquote>
+              {translate("I build the things people")} <em>{translate("use")}</em>
+              {translate(", then write the way through them.")}
+            </blockquote>
+            <div className="about-credo-ledger" aria-label={translate("Areas of practice")}>
+              <span>{translate("Frontend engineering")}</span>
+              <span>{translate("API design")}</span>
+              <span>{translate("Developer documentation")}</span>
+              <span>{translate("Experimental builds")}</span>
             </div>
-          </section>
+          </ScrollReveal>
         </section>
         <PoetrySection />
         <div className="interlude" aria-hidden="true">
