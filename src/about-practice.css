@@ -9,147 +9,111 @@
   opacity: 0.58;
 }
 
-.practice {
+.about-credo {
   position: relative;
-  margin-top: clamp(4rem, 8vw, 8rem);
-  border-top: 1px solid var(--line);
-}
-
-.practice-ledger {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(9rem, 0.38fr) minmax(0, 1fr);
+  column-gap: clamp(2rem, 6vw, 7rem);
+  margin-top: clamp(4.75rem, 9vw, 9.5rem);
+  padding: clamp(1.25rem, 2.4vw, 2.5rem) 0 clamp(2rem, 4vw, 4.5rem);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
 }
 
-.practice-entry {
-  position: relative;
-  min-height: clamp(18rem, 27vw, 25rem);
-  padding: clamp(1.6rem, 3vw, 3rem) clamp(1.35rem, 2.5vw, 3.3rem) 2.25rem 0;
-}
-
-.practice-entry + .practice-entry {
-  padding-left: clamp(1.35rem, 2.5vw, 3.3rem);
-  border-left: 1px solid var(--line);
-}
-
-.practice-entry::before {
+.about-credo::before {
   content: "";
   position: absolute;
-  top: -1px;
-  left: 0;
-  width: 38px;
-  height: 1px;
-  background: var(--accent);
-  transition: width 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  right: -12%;
+  bottom: -58%;
+  width: min(48vw, 42rem);
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in srgb, var(--line) 64%, transparent);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
-.practice-entry:hover::before,
-.practice-entry:focus-within::before {
-  width: min(38%, 140px);
-}
-
-.practice-entry-label,
-.practice-entry-meta {
-  display: block;
+.about-credo-label {
+  position: relative;
+  z-index: 1;
+  padding-top: 0.45rem;
+  color: var(--muted);
   font-family: "IBM Plex Mono", monospace;
   font-size: 10px;
-  line-height: 1.5;
-  letter-spacing: 0.025em;
+  letter-spacing: 0.06em;
 }
 
-.practice-entry-label {
-  color: var(--muted);
-}
-
-.practice-entry h3 {
-  max-width: 12ch;
-  margin: clamp(2.9rem, 6vw, 6.4rem) 0 0;
+.about-credo blockquote {
+  position: relative;
+  z-index: 1;
+  grid-column: 2;
+  max-width: 16ch;
+  margin: 0;
   color: var(--ink);
   font-family: "Literata", serif;
-  font-size: clamp(25px, 2.4vw, 42px);
+  font-size: clamp(37px, 5.1vw, 78px);
   font-weight: 400;
-  line-height: 1.02;
-  letter-spacing: -0.045em;
+  line-height: 0.98;
+  letter-spacing: -0.058em;
 }
 
-.practice-entry h3 em {
+.about-credo blockquote em {
   color: var(--accent);
   font-family: inherit;
   font-style: italic;
   font-weight: inherit;
 }
 
-.practice-entry p {
-  max-width: 30ch;
-  margin: 1.25rem 0 0;
+.about-credo-ledger {
+  position: relative;
+  z-index: 1;
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  max-width: 52rem;
+  margin-top: clamp(3rem, 6vw, 6.5rem);
   color: var(--muted);
-  font-size: 13px;
-  line-height: 1.75;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: 0.025em;
 }
 
-.practice-entry-meta {
-  position: absolute;
-  right: clamp(1.35rem, 2.5vw, 3.3rem);
-  bottom: 2.25rem;
-  left: 0;
-  color: var(--ink);
+.about-credo-ledger span {
+  display: inline-flex;
+  align-items: center;
 }
 
-.practice-entry + .practice-entry .practice-entry-meta {
-  left: clamp(1.35rem, 2.5vw, 3.3rem);
+.about-credo-ledger span:not(:last-child)::after {
+  content: "·";
+  margin: 0 0.85rem;
+  color: var(--accent);
 }
 
-:root[data-theme="dark"] .practice,
-:root[data-theme="dark"] .practice-entry + .practice-entry {
-  border-color: rgba(110, 221, 212, 0.15);
-}
-
-:root[data-theme="dark"] .practice {
+:root[data-theme="dark"] .about-credo {
+  border-color: rgba(110, 221, 212, 0.17);
   background:
-    radial-gradient(ellipse 34% 62% at 2% 46%, rgba(110, 221, 212, 0.04), transparent 72%);
+    radial-gradient(ellipse 34% 78% at 100% 50%, rgba(110, 221, 212, 0.042), transparent 72%);
 }
 
-:root[data-theme="dark"] .practice-entry h3 em {
+:root[data-theme="dark"] .about-credo::before {
+  border-color: rgba(110, 221, 212, 0.12);
+}
+
+:root[data-theme="dark"] .about-credo blockquote em,
+:root[data-theme="dark"] .about-credo-ledger span:not(:last-child)::after {
   color: var(--night-cyan);
 }
 
-:root[data-theme="dark"] .practice-entry-meta {
-  color: color-mix(in srgb, var(--night-cyan) 60%, var(--muted));
-}
-
 @media (min-width: 601px) and (max-width: 900px) {
-  .practice-ledger {
-    grid-template-columns: 1fr;
+  .about-credo {
+    grid-template-columns: minmax(8rem, 0.3fr) minmax(0, 1fr);
   }
 
-  .practice-entry,
-  .practice-entry + .practice-entry {
-    min-height: 0;
-    padding: 2rem 0 2.25rem;
-    border-left: 0;
-    border-top: 1px solid var(--line);
-  }
-
-  .practice-entry:first-child {
-    border-top: 0;
-  }
-
-  .practice-entry h3 {
-    margin-top: 2.5rem;
+  .about-credo blockquote {
     max-width: 18ch;
-  }
-
-  .practice-entry p {
-    max-width: 52ch;
-  }
-
-  .practice-entry-meta,
-  .practice-entry + .practice-entry .practice-entry-meta {
-    position: static;
-    margin-top: 1.5rem;
-  }
-
-  :root[data-theme="dark"] .practice-entry + .practice-entry {
-    border-color: rgba(110, 221, 212, 0.15);
+    font-size: clamp(42px, 6vw, 62px);
   }
 }
 
@@ -159,55 +123,53 @@
     margin-right: 7px;
   }
 
-  .practice {
-    margin-top: 3.75rem;
-  }
-
-  .practice-ledger {
+  .about-credo {
     display: block;
+    margin-top: 4rem;
+    padding: 1.05rem 0 2.1rem;
   }
 
-  .practice-entry,
-  .practice-entry + .practice-entry {
-    min-height: 0;
-    padding: 1.5rem 0 2.2rem;
-    border-left: 0;
-    border-top: 1px solid var(--line);
+  .about-credo::before {
+    right: -43%;
+    bottom: -43%;
+    width: 22rem;
   }
 
-  .practice-entry:first-child {
-    border-top: 0;
+  .about-credo-label {
+    display: block;
+    padding-top: 0;
   }
 
-  .practice-entry h3 {
-    max-width: 12ch;
-    margin-top: 1.8rem;
-    font-size: clamp(29px, 9.3vw, 39px);
-    line-height: 1.03;
+  .about-credo blockquote {
+    max-width: 11.5ch;
+    margin-top: 2.6rem;
+    font-size: clamp(36px, 11.5vw, 48px);
+    line-height: 0.99;
+    letter-spacing: -0.052em;
   }
 
-  .practice-entry p {
-    max-width: 35ch;
-    margin-top: 1rem;
-    font-size: 13px;
-    line-height: 1.72;
-  }
-
-  .practice-entry-meta,
-  .practice-entry + .practice-entry .practice-entry-meta {
-    position: static;
-    margin-top: 1.3rem;
+  .about-credo-ledger {
+    display: block;
+    max-width: 19rem;
+    margin-top: 3.4rem;
     font-size: 9px;
     line-height: 1.7;
   }
 
-  :root[data-theme="dark"] .practice-entry + .practice-entry {
-    border-color: rgba(110, 221, 212, 0.15);
+  .about-credo-ledger span {
+    display: block;
   }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  .practice-entry::before {
-    transition: none;
+  .about-credo-ledger span:not(:last-child)::after {
+    content: "";
+    display: block;
+    width: 22px;
+    height: 1px;
+    margin: 0.9rem 0;
+    background: var(--accent);
+  }
+
+  :root[data-theme="dark"] .about-credo-ledger span:not(:last-child)::after {
+    background: var(--night-cyan);
   }
 }
