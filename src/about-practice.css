@@ -1,4 +1,4 @@
-/* The About section is a small editorial composition, not a capability-card grid. */
+/* The personal statement above carries the section. These are its supporting disciplines. */
 .about .section-kicker > span:first-child::before {
   content: "";
   display: inline-block;
@@ -12,198 +12,145 @@
 
 .practice {
   position: relative;
-  margin-top: clamp(4.5rem, 9vw, 9.5rem);
-  padding-top: 1px;
-}
-
-.practice::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: var(--line);
-}
-
-.practice-introduction {
-  display: grid;
-  grid-template-columns: minmax(120px, 0.55fr) minmax(0, 1fr);
-  align-items: baseline;
-  gap: clamp(1.5rem, 6vw, 6rem);
-  padding: 1.15rem 0 clamp(3.5rem, 7vw, 7rem);
-}
-
-.practice-eyebrow {
-  color: var(--muted);
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 10px;
-  letter-spacing: 0.07em;
-}
-
-.practice-introduction p {
-  max-width: 24ch;
-  margin: 0;
-  color: var(--ink);
-  font-family: "Literata", serif;
-  font-size: clamp(23px, 2.15vw, 34px);
-  line-height: 1.08;
-  letter-spacing: -0.034em;
-}
-
-.practice-list {
-  display: grid;
-}
-
-.practice-way {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(150px, 0.56fr) minmax(0, 1fr);
-  align-items: start;
-  column-gap: clamp(1.25rem, 7vw, 8.5rem);
-  min-height: clamp(11rem, 19vw, 17rem);
-  padding: clamp(1.25rem, 2.6vw, 2.6rem) 0 clamp(2.75rem, 5vw, 5.5rem);
+  margin-top: clamp(4rem, 8vw, 8rem);
   border-top: 1px solid var(--line);
 }
 
-.practice-way:last-child {
-  border-bottom: 1px solid var(--line);
+.practice-ledger {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.practice-way::after {
+.practice-entry {
+  position: relative;
+  min-height: clamp(18rem, 27vw, 25rem);
+  padding: clamp(1.6rem, 3vw, 3rem) clamp(1.35rem, 2.5vw, 3.3rem) 2.25rem 0;
+}
+
+.practice-entry + .practice-entry {
+  padding-left: clamp(1.35rem, 2.5vw, 3.3rem);
+  border-left: 1px solid var(--line);
+}
+
+.practice-entry::before {
   content: "";
   position: absolute;
   top: -1px;
   left: 0;
-  width: 0;
+  width: 38px;
   height: 1px;
   background: var(--accent);
-  transition: width 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: width 500ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.practice-way:hover::after,
-.practice-way:focus-within::after {
-  width: min(32%, 360px);
+.practice-entry:hover::before,
+.practice-entry:focus-within::before {
+  width: min(38%, 140px);
 }
 
-.practice-verb {
-  padding-top: 0.13em;
-  color: color-mix(in srgb, var(--muted) 34%, transparent);
-  font-family: "Literata", serif;
-  font-size: clamp(42px, 7.5vw, 116px);
-  font-style: italic;
-  line-height: 0.78;
-  letter-spacing: -0.075em;
-  user-select: none;
+.practice-entry-label,
+.practice-entry-meta {
+  display: block;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: 0.025em;
 }
 
-.practice-content {
-  max-width: 43rem;
+.practice-entry-label {
+  color: var(--muted);
 }
 
-.practice-content h3 {
-  max-width: 14ch;
-  margin: 0;
+.practice-entry h3 {
+  max-width: 12ch;
+  margin: clamp(2.9rem, 6vw, 6.4rem) 0 0;
   color: var(--ink);
   font-family: "Literata", serif;
-  font-size: clamp(28px, 3.35vw, 56px);
+  font-size: clamp(25px, 2.4vw, 42px);
   font-weight: 400;
-  line-height: 0.99;
+  line-height: 1.02;
   letter-spacing: -0.045em;
 }
 
-.practice-content h3 em {
+.practice-entry h3 em {
   color: var(--accent);
   font-family: inherit;
   font-style: italic;
   font-weight: inherit;
 }
 
-.practice-content p {
-  max-width: 44ch;
+.practice-entry p {
+  max-width: 30ch;
   margin: 1.25rem 0 0;
   color: var(--muted);
-  font-size: 14px;
-  line-height: 1.7;
+  font-size: 13px;
+  line-height: 1.75;
 }
 
-.practice-content .tool-list {
-  display: block;
-  margin-top: 1.6rem;
+.practice-entry-meta {
+  position: absolute;
+  right: clamp(1.35rem, 2.5vw, 3.3rem);
+  bottom: 2.25rem;
+  left: 0;
   color: var(--ink);
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 10px;
-  line-height: 1.6;
-  letter-spacing: 0.01em;
 }
 
-.practice-way-explain {
-  grid-template-columns: minmax(0, 1fr) minmax(150px, 0.56fr);
+.practice-entry + .practice-entry .practice-entry-meta {
+  left: clamp(1.35rem, 2.5vw, 3.3rem);
 }
 
-.practice-way-explain .practice-verb {
-  grid-column: 2;
-  grid-row: 1;
-  justify-self: end;
-}
-
-.practice-way-explain .practice-content {
-  grid-column: 1;
-  grid-row: 1;
-  justify-self: end;
-}
-
-.practice-way-explore .practice-content {
-  padding-top: clamp(0.25rem, 2vw, 1.75rem);
+:root[data-theme="dark"] .practice,
+:root[data-theme="dark"] .practice-entry + .practice-entry {
+  border-color: rgba(110, 221, 212, 0.15);
 }
 
 :root[data-theme="dark"] .practice {
-  background: radial-gradient(
-    ellipse 42% 43% at 5% 45%,
-    rgba(110, 221, 212, 0.045),
-    transparent 70%
-  );
+  background:
+    radial-gradient(ellipse 34% 62% at 2% 46%, rgba(110, 221, 212, 0.04), transparent 72%);
 }
 
-:root[data-theme="dark"] .practice::before,
-:root[data-theme="dark"] .practice-way,
-:root[data-theme="dark"] .practice-way:last-child {
-  border-color: rgba(110, 221, 212, 0.16);
-}
-
-:root[data-theme="dark"] .practice-eyebrow,
-:root[data-theme="dark"] .practice-content .tool-list {
-  color: color-mix(in srgb, var(--night-cyan) 64%, var(--muted));
-}
-
-:root[data-theme="dark"] .practice-verb {
-  color: rgba(110, 221, 212, 0.16);
-}
-
-:root[data-theme="dark"] .practice-content h3 em {
+:root[data-theme="dark"] .practice-entry h3 em {
   color: var(--night-cyan);
 }
 
+:root[data-theme="dark"] .practice-entry-meta {
+  color: color-mix(in srgb, var(--night-cyan) 60%, var(--muted));
+}
+
 @media (min-width: 601px) and (max-width: 900px) {
-  .practice-way,
-  .practice-way-explain {
-    grid-template-columns: minmax(130px, 0.42fr) minmax(0, 1fr);
-    column-gap: clamp(2rem, 10vw, 5rem);
+  .practice-ledger {
+    grid-template-columns: 1fr;
   }
 
-  .practice-way-explain .practice-verb,
-  .practice-way-explain .practice-content {
-    grid-column: auto;
-    grid-row: auto;
-    justify-self: auto;
+  .practice-entry,
+  .practice-entry + .practice-entry {
+    min-height: 0;
+    padding: 2rem 0 2.25rem;
+    border-left: 0;
+    border-top: 1px solid var(--line);
   }
 
-  .practice-way-explain .practice-verb {
-    grid-column: 1;
+  .practice-entry:first-child {
+    border-top: 0;
   }
 
-  .practice-way-explain .practice-content {
-    grid-column: 2;
+  .practice-entry h3 {
+    margin-top: 2.5rem;
+    max-width: 18ch;
+  }
+
+  .practice-entry p {
+    max-width: 52ch;
+  }
+
+  .practice-entry-meta,
+  .practice-entry + .practice-entry .practice-entry-meta {
+    position: static;
+    margin-top: 1.5rem;
+  }
+
+  :root[data-theme="dark"] .practice-entry + .practice-entry {
+    border-color: rgba(110, 221, 212, 0.15);
   }
 }
 
@@ -214,72 +161,54 @@
   }
 
   .practice {
-    margin-top: 4rem;
+    margin-top: 3.75rem;
   }
 
-  .practice-introduction {
-    display: none;
-  }
-
-  .practice-way,
-  .practice-way-explain {
+  .practice-ledger {
     display: block;
+  }
+
+  .practice-entry,
+  .practice-entry + .practice-entry {
     min-height: 0;
-    padding: 1.15rem 0 2.5rem;
+    padding: 1.5rem 0 2.2rem;
+    border-left: 0;
+    border-top: 1px solid var(--line);
   }
 
-  .practice-verb,
-  .practice-way-explain .practice-verb {
-    display: block;
-    padding: 0;
-    font-size: clamp(44px, 14vw, 62px);
-    line-height: 0.78;
-    text-align: left;
+  .practice-entry:first-child {
+    border-top: 0;
   }
 
-  .practice-content,
-  .practice-way-explain .practice-content {
-    display: block;
-    max-width: none;
-    margin-top: 1.2rem;
+  .practice-entry h3 {
+    max-width: 12ch;
+    margin-top: 1.8rem;
+    font-size: clamp(29px, 9.3vw, 39px);
+    line-height: 1.03;
   }
 
-  .practice-way-explore .practice-content {
-    padding-top: 0;
-  }
-
-  .practice-content h3 {
-    max-width: 11ch;
-    font-size: clamp(32px, 10.3vw, 45px);
-    line-height: 1.01;
-  }
-
-  .practice-content p {
-    margin-top: 1.05rem;
-    font-size: 14px;
+  .practice-entry p {
+    max-width: 35ch;
+    margin-top: 1rem;
+    font-size: 13px;
     line-height: 1.72;
   }
 
-  .practice-content .tool-list {
+  .practice-entry-meta,
+  .practice-entry + .practice-entry .practice-entry-meta {
+    position: static;
     margin-top: 1.3rem;
     font-size: 9px;
     line-height: 1.7;
   }
 
-  .practice-way:hover::after,
-  .practice-way:focus-within::after {
-    width: 42%;
-  }
-}
-
-@media (max-width: 600px) {
-  :root[data-theme="dark"] .practice-verb {
-    color: rgba(110, 221, 212, 0.1);
+  :root[data-theme="dark"] .practice-entry + .practice-entry {
+    border-color: rgba(110, 221, 212, 0.15);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .practice-way::after {
+  .practice-entry::before {
     transition: none;
   }
 }
