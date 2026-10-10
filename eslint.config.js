@@ -19,4 +19,8 @@ export default defineConfig([
       globals: globals.browser,
     },
   },
+  {
+    files: ["src/i18n.tsx"],
+    rules: { "react-refresh/only-export-components": "off" },
+  },
 ]);
