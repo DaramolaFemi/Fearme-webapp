@@ -1,4 +1,3 @@
-/* The personal statement above carries the section. These are its supporting disciplines. */
 .about .section-kicker > span:first-child::before {
   content: "";
   display: inline-block;
