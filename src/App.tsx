@@ -646,17 +646,41 @@ export default function App() {
               </a>
             </ScrollReveal>
           </div>
-          <ScrollReveal className="about-credo">
-            <span className="about-credo-label">{translate("A working note")}</span>
-            <blockquote>
-              {translate("I build the things people")} <em>{translate("use")}</em>
-              {translate(", then write the way through them.")}
-            </blockquote>
-            <div className="about-credo-ledger" aria-label={translate("Areas of practice")}>
-              <span>{translate("Frontend engineering")}</span>
-              <span>{translate("API design")}</span>
-              <span>{translate("Developer documentation")}</span>
-              <span>{translate("Experimental builds")}</span>
+          <ScrollReveal className="about-practice" delay={0.08}>
+            <div className="about-practice-intro">
+              <span>{translate("How the work takes shape")}</span>
+              <p>
+                {translate("Different expressions, held to the same standard: useful, considered, and clear.")}
+              </p>
+            </div>
+            <div className="about-practice-entries">
+              <article className="about-practice-entry about-practice-entry-interface">
+                <h3>
+                  {translate("Interfaces that")} <em>{translate("make sense.")}</em>
+                </h3>
+                <div>
+                  <p>{translate("Responsive websites and applications, built around how people actually use them.")}</p>
+                  <span>{translate("React / Next.js / TypeScript / Tailwind CSS")}</span>
+                </div>
+              </article>
+              <article className="about-practice-entry about-practice-entry-clarity">
+                <h3>
+                  {translate("Clarity for")} <em>{translate("developers.")}</em>
+                </h3>
+                <div>
+                  <p>{translate("API references, technical guides, and documentation that help the next person find their way.")}</p>
+                  <span>{translate("API design / Technical writing / Developer experience")}</span>
+                </div>
+              </article>
+              <article className="about-practice-entry about-practice-entry-experiment">
+                <h3>
+                  {translate("Room to")} <em>{translate("experiment.")}</em>
+                </h3>
+                <div>
+                  <p>{translate("Browser games, Web3, and the ideas that teach you something by asking you to build them.")}</p>
+                  <span>{translate("JavaScript / Solidity / Interaction design")}</span>
+                </div>
+              </article>
             </div>
           </ScrollReveal>
         </section>
