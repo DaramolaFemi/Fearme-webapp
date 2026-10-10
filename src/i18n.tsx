@@ -855,7 +855,7 @@ function readSuggestedLocale(): Locale | null {
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>(readStoredLocale);
-  const suggestedLocale = useMemo(readSuggestedLocale, []);
+  const suggestedLocale = useMemo(() => readSuggestedLocale(), []);
 
   const setLocale = useCallback((nextLocale: Locale) => {
     setLocaleState(nextLocale);
