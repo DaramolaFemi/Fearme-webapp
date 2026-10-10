@@ -647,54 +647,43 @@ export default function App() {
             </ScrollReveal>
           </div>
           <section className="practice" aria-label={translate("How I work")}>
-            <ScrollReveal className="practice-introduction">
-              <span className="practice-eyebrow">{translate("The practice")}</span>
-              <p>{translate("The work changes shape. The standard does not.")}</p>
-            </ScrollReveal>
-            <div className="practice-list">
-            {[
-              {
-                verb: translate("Build"),
-                title: translate("Interfaces that"),
-                emphasis: translate("make sense."),
-                text: translate("Responsive websites and applications, built around how people actually use them."),
-                tools: "React / Next.js / TypeScript / Tailwind CSS",
-                className: "practice-way-build",
-              },
-              {
-                verb: translate("Explain"),
-                title: translate("Clarity for"),
-                emphasis: translate("developers."),
-                text: translate("API references, technical guides, and documentation that help the next person find their way."),
-                tools: "API design / Technical writing / Developer experience",
-                className: "practice-way-explain",
-              },
-              {
-                verb: translate("Explore"),
-                title: translate("Room to"),
-                emphasis: translate("experiment."),
-                text: translate("Browser games, Web3, and the ideas that teach you something by asking you to build them."),
-                tools: "JavaScript / Solidity / Interaction design",
-                className: "practice-way-explore",
-              },
-            ].map((item, index) => (
-              <ScrollReveal
-                key={item.verb}
-                delay={(index + 1) * 0.06}
-                className={`practice-way ${item.className}`}
-              >
-                <span className="practice-verb" aria-hidden="true">
-                  {item.verb}
-                </span>
-                <div className="practice-content">
+            <div className="practice-ledger">
+              {[
+                {
+                  label: translate("Frontend engineering"),
+                  title: translate("Interfaces that"),
+                  emphasis: translate("make sense."),
+                  text: translate("Responsive websites and applications, built around how people actually use them."),
+                  tools: "React / Next.js / TypeScript / Tailwind CSS",
+                },
+                {
+                  label: translate("Documentation"),
+                  title: translate("Clarity for"),
+                  emphasis: translate("developers."),
+                  text: translate("API references, technical guides, and documentation that help the next person find their way."),
+                  tools: "API design / Technical writing / Developer experience",
+                },
+                {
+                  label: translate("Research & play"),
+                  title: translate("Room to"),
+                  emphasis: translate("experiment."),
+                  text: translate("Browser games, Web3, and the ideas that teach you something by asking you to build them."),
+                  tools: "JavaScript / Solidity / Interaction design",
+                },
+              ].map((item, index) => (
+                <ScrollReveal
+                  key={item.label}
+                  delay={(index + 1) * 0.06}
+                  className="practice-entry"
+                >
+                  <span className="practice-entry-label">{item.label}</span>
                   <h3>
                     {item.title} <em>{item.emphasis}</em>
                   </h3>
                   <p>{item.text}</p>
-                  <span className="tool-list">{item.tools}</span>
-                </div>
-              </ScrollReveal>
-            ))}
+                  <span className="practice-entry-meta">{item.tools}</span>
+                </ScrollReveal>
+              ))}
             </div>
           </section>
         </section>
