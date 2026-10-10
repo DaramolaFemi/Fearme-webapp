@@ -610,7 +610,7 @@ export default function App() {
         <DocumentationSection />
         <section id="about" className="about section-pad">
           <div className="section-kicker">
-            <span>{translate("The person behind the work")}</span>
+            <span>03 / {translate("The person behind the work")}</span>
             <span>{translate("Craft, with a point of view")}</span>
           </div>
           <div className="about-grid">
@@ -646,37 +646,40 @@ export default function App() {
               </a>
             </ScrollReveal>
           </div>
-          <ScrollReveal className="about-manifest" delay={0.08}>
-            <div className="about-manifest-meta">
-              <span>{translate("The work, in practice")}</span>
-              <p>{translate("Different forms of the same instinct: make the difficult feel considered.")}</p>
-            </div>
-            <div className="about-manifest-lines">
-              <p>
-                {translate("Interfaces that")} <em>{translate("make sense.")}</em>
-              </p>
-              <p>
-                {translate("Clarity for")} <em>{translate("developers.")}</em>
-              </p>
-              <p>
-                {translate("Room to")} <em>{translate("experiment.")}</em>
-              </p>
-            </div>
-            <div className="about-manifest-notes">
-              <p>
-                {translate("Responsive websites and applications, built around how people actually use them.")}
-                <span>{translate("React / Next.js / TypeScript / Tailwind CSS")}</span>
-              </p>
-              <p>
-                {translate("API references, technical guides, and documentation that help the next person find their way.")}
-                <span>{translate("API design / Technical writing / Developer experience")}</span>
-              </p>
-              <p>
-                {translate("Browser games, Web3, and the ideas that teach you something by asking you to build them.")}
-                <span>{translate("JavaScript / Solidity / Interaction design")}</span>
-              </p>
-            </div>
-          </ScrollReveal>
+          <div className="capabilities">
+            {[
+              {
+                n: "01",
+                title: translate("Interfaces that"),
+                emphasis: translate("make sense."),
+                text: translate("Responsive websites and applications, built around how people actually use them."),
+                tools: "React / Next.js / TypeScript / Tailwind CSS",
+              },
+              {
+                n: "02",
+                title: translate("Clarity for"),
+                emphasis: translate("developers."),
+                text: translate("API references, technical guides, and documentation that help the next person find their way."),
+                tools: "API design / Technical writing / Developer experience",
+              },
+              {
+                n: "03",
+                title: translate("Room to"),
+                emphasis: translate("experiment."),
+                text: translate("Browser games, Web3, and the ideas that teach you something by asking you to build them."),
+                tools: "JavaScript / Solidity / Interaction design",
+              },
+            ].map((item) => (
+              <ScrollReveal key={item.n} delay={Number(item.n) * 0.08}>
+                <span className="small-label">{item.n}</span>
+                <h3>
+                  {item.title} <em>{item.emphasis}</em>
+                </h3>
+                <p>{item.text}</p>
+                <span className="tool-list">{item.tools}</span>
+              </ScrollReveal>
+            ))}
+          </div>
         </section>
         <PoetrySection />
         <div className="interlude" aria-hidden="true">
