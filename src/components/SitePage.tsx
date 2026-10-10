@@ -14,7 +14,7 @@ function setMetaContent(selector: string, value: string) {
 }
 
 export default function SitePage() {
-  const pathname = window.location.pathname.replace(/\\/+$/, "") || "/";
+  const pathname = window.location.pathname.replace(/[/]+$/, "") || "/";
   const isPoetry = pathname === "/poetry" || pathname.startsWith("/poetry/");
   const isImmortalCaseStudy = pathname === "/work/immortal-craft";
   const poem = poems.find((entry) => pathname === `/poetry/${entry.slug}`);
