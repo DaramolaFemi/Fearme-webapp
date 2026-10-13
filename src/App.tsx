@@ -613,28 +613,6 @@ export default function App() {
             <span>{translate("The person behind the work")}</span>
             <span>{translate("Craft, with a point of view")}</span>
           </div>
-          <div className="about-portrait" aria-hidden="true">
-            <picture className="about-portrait-media about-portrait-media--dark">
-              <source
-                media="(max-width: 600px)"
-                srcSet="/images/about/femi-cyborg-dark-mobile.jpeg"
-              />
-              <img
-                src="/images/about/femi-cyborg-dark.jpeg"
-                alt=""
-                width={1536}
-                height={864}
-              />
-            </picture>
-            <picture className="about-portrait-media about-portrait-media--light">
-              <img
-                src="/images/about/femi-cyborg-light.jpeg"
-                alt=""
-                width={1536}
-                height={864}
-              />
-            </picture>
-          </div>
           <div className="about-grid">
             <div>
               <h2>
