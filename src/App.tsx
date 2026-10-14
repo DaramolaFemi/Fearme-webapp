@@ -628,7 +628,7 @@ export default function App() {
                 {translate("I care about what happens on both sides of an interface: the system that makes it work, and the person trying to use it.")}
               </p>
               <p>
-                {translate("My work moves between frontend engineering, API design, and technical documentation. I enjoy giving complex ideas a clear structure in a codebase, on a screen, or across a page.")}
+                {translate("Based in Nigeria, I build responsive websites and web applications with React, Next.js, and TypeScript. My work also moves between frontend engineering, API design, and technical documentation, giving complex ideas a clear structure in code and on screen.")}
               </p>
               <p>
                 {translate("I want the things I build to be useful long after the first impression. Thoughtful decisions. Clear language. Details that hold up in everyday use.")}
