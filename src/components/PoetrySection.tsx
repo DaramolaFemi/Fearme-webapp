@@ -29,7 +29,7 @@ export default function PoetrySection() {
         </ScrollReveal>
         <ScrollReveal className="poetry-copy" delay={0.1}>
           <p>
-            {translate("Seven poems, written between 2019 and 2026. A boy who writes, a husband in mourning, and lovers who ask more of death than silence.")}
+            {translate("Eight poems, written between 2019 and 2026. A boy who writes, a husband in mourning, and lovers who ask more of death than silence.")}
           </p>
         </ScrollReveal>
       </div>

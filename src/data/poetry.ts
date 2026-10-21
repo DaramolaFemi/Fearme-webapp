@@ -1,3 +1,4 @@
+import loveLettersToGrief from "../content/poetry/love-letters-to-grief";
 import poem0 from "../content/poetry/the-boy-who-writes";
 import poem1 from "../content/poetry/bones-and-flowers";
 import poem2 from "../content/poetry/dreams";
@@ -41,6 +42,14 @@ export const poems: Poem[] = [
   },
   {
     id: "02",
+    title: "Love Letters to Grief",
+    slug: "love-letters-to-grief",
+    year: 2026,
+    publication: { label: "October 2026." },
+    stanzas: loveLettersToGrief,
+  },
+  {
+    id: "03",
     title: "Bones and Flowers",
     slug: "bones-and-flowers",
     year: 2026,
@@ -53,9 +62,9 @@ export const poems: Poem[] = [
     },
     stanzas: poem1,
   },
-  { id: "03", title: "Dreams", slug: "dreams", year: 2023, stanzas: poem2 },
+  { id: "04", title: "Dreams", slug: "dreams", year: 2023, stanzas: poem2 },
   {
-    id: "04",
+    id: "05",
     title: "He Took the One I Wed",
     slug: "he-took-the-one-i-wed",
     year: 2019,
@@ -64,21 +73,21 @@ export const poems: Poem[] = [
     stanzas: poem3,
   },
   {
-    id: "05",
+    id: "06",
     title: "Good Mo(u)rning.",
     slug: "good-mourning",
     year: 2023,
     stanzas: poem4,
   },
   {
-    id: "06",
+    id: "07",
     title: "A Graveyard for Lovers",
     slug: "a-graveyard-for-lovers",
     year: 2026,
     stanzas: poem5,
   },
   {
-    id: "07",
+    id: "08",
     title: "A Minute's Silence",
     slug: "a-minutes-silence",
     year: 2024,

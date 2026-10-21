@@ -800,14 +800,15 @@ test("dark documentation uses authored cards and no generic arrows", async ({ pa
   ).not.toBe("rgba(0, 0, 0, 0)");
 });
 
-test("seven published poems link to reading pages", async ({ page }) => {
+test("eight published poems link to reading pages", async ({ page }) => {
   await page.goto("/");
-  await expect(page.locator("#poetry li")).toHaveCount(7);
-  await expect(page.locator("#poetry .poetry-thread")).toHaveCount(7);
+  await expect(page.locator("#poetry li")).toHaveCount(8);
+  await expect(page.locator("#poetry .poetry-thread")).toHaveCount(8);
   await expect(page.locator("#poetry svg.direction-arrow")).toHaveCount(0);
-  await expect(page.locator("#poetry a")).toHaveCount(7);
+  await expect(page.locator("#poetry a")).toHaveCount(8);
   await expect(page.locator("#poetry h3")).toHaveText([
     "The Boy Who Writes",
+    "Love Letters to Grief",
     "Bones and Flowers",
     "Dreams",
     "He Took the One I Wed",

@@ -12,6 +12,7 @@ const routes = [
   },
   ...[
     ["the-boy-who-writes", "The Boy Who Writes"],
+    ["love-letters-to-grief", "Love Letters to Grief"],
     ["bones-and-flowers", "Bones and Flowers"],
     ["dreams", "Dreams"],
     ["he-took-the-one-i-wed", "He Took the One I Wed"],
