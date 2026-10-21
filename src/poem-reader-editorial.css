@@ -14,6 +14,32 @@
   color-scheme: dark;
 }
 
+/* Keep the personal letters present throughout this poem's five sections. */
+.poem-page-love-letters.poem-page-moonlit > .poem-moonlit-scene img {
+  object-position: 70% center !important;
+  opacity: 1;
+}
+
+.poem-page-love-letters.poem-page-moonlit::before {
+  background: linear-gradient(
+    90deg,
+    rgba(3, 23, 25, 0.36) 0%,
+    rgba(3, 23, 25, 0.76) 35%,
+    rgba(3, 23, 25, 0.8) 64%,
+    rgba(3, 23, 25, 0.52) 100%
+  );
+}
+
+@media (max-width: 900px) {
+  .poem-page-love-letters.poem-page-moonlit > .poem-moonlit-scene img {
+    object-position: 78% center !important;
+  }
+
+  .poem-page-love-letters.poem-page-moonlit::before {
+    background: rgba(3, 23, 25, 0.78);
+  }
+}
+
 .poem-reader-shell ::selection {
   background: rgba(194, 24, 91, 0.48);
   color: #fff8f2;

@@ -46,14 +46,18 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
   const isGraveyard = poem?.slug === "a-graveyard-for-lovers";
   const isMinutesSilence = poem?.slug === "a-minutes-silence";
   const isWedMoonlit = poem?.slug === "he-took-the-one-i-wed";
+  const isLoveLetters = poem?.slug === "love-letters-to-grief";
   const hasEditorialScene =
     isMoonlit ||
     isDreams ||
     isGoodMourning ||
     isGraveyard ||
     isMinutesSilence ||
-    isWedMoonlit;
-  const editorialSceneDesktop = isMinutesSilence
+    isWedMoonlit ||
+    isLoveLetters;
+  const editorialSceneDesktop = isLoveLetters
+    ? "/Images/poetry/love-letters-to-grief.avif"
+    : isMinutesSilence
     ? "/Images/poetry/a-minutes-silence-desktop-v2.webp"
     : isGraveyard
       ? "/Images/poetry/graveyard-lovers-desktop-v3.avif"
@@ -64,7 +68,9 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
       : isWedMoonlit
         ? wedSceneDesktop
         : boySceneDesktop;
-  const editorialSceneMobile = isMinutesSilence
+  const editorialSceneMobile = isLoveLetters
+    ? "/Images/poetry/love-letters-to-grief.avif"
+    : isMinutesSilence
     ? "/Images/poetry/a-minutes-silence-mobile-v2.webp"
     : isGraveyard
       ? "/Images/poetry/graveyard-lovers-mobile-v3.avif"
@@ -135,7 +141,7 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
       </div>
       <main
         id="main"
-        className={`poem-page poem-page-editorial${hasEditorialScene ? " poem-page-moonlit" : ""}${isDreams ? " poem-page-dreams" : ""}${isGoodMourning ? " poem-page-good-mourning" : ""}${isGraveyard ? " poem-page-graveyard" : ""}${isMinutesSilence ? " poem-page-minutes-silence" : ""}${isWedMoonlit ? " poem-page-wed" : ""}`}
+        className={`poem-page poem-page-editorial${hasEditorialScene ? " poem-page-moonlit" : ""}${isDreams ? " poem-page-dreams" : ""}${isGoodMourning ? " poem-page-good-mourning" : ""}${isGraveyard ? " poem-page-graveyard" : ""}${isMinutesSilence ? " poem-page-minutes-silence" : ""}${isWedMoonlit ? " poem-page-wed" : ""}${isLoveLetters ? " poem-page-love-letters" : ""}`}
       >
         {hasEditorialScene && (
           <picture
