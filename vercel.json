@@ -4,6 +4,46 @@
   "outputDirectory": "dist",
   "rewrites": [
     {
+      "source": "/publications",
+      "destination": "/publications/index.html"
+    },
+    {
+      "source": "/work/immortal-craft",
+      "destination": "/work/immortal-craft/index.html"
+    },
+    {
+      "source": "/poetry/the-boy-who-writes",
+      "destination": "/poetry/the-boy-who-writes/index.html"
+    },
+    {
+      "source": "/poetry/love-letters-to-grief",
+      "destination": "/poetry/love-letters-to-grief/index.html"
+    },
+    {
+      "source": "/poetry/bones-and-flowers",
+      "destination": "/poetry/bones-and-flowers/index.html"
+    },
+    {
+      "source": "/poetry/dreams",
+      "destination": "/poetry/dreams/index.html"
+    },
+    {
+      "source": "/poetry/he-took-the-one-i-wed",
+      "destination": "/poetry/he-took-the-one-i-wed/index.html"
+    },
+    {
+      "source": "/poetry/good-mourning",
+      "destination": "/poetry/good-mourning/index.html"
+    },
+    {
+      "source": "/poetry/a-graveyard-for-lovers",
+      "destination": "/poetry/a-graveyard-for-lovers/index.html"
+    },
+    {
+      "source": "/poetry/a-minutes-silence",
+      "destination": "/poetry/a-minutes-silence/index.html"
+    },
+    {
       "source": "/poetry/:path*",
       "destination": "/index.html"
     },

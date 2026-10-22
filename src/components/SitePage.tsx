@@ -4,6 +4,7 @@ import ScrollPositionRestoration from "./ScrollPositionRestoration";
 import { poems } from "../data/poetry";
 
 const App = lazy(() => import("../App"));
+const PublicationsPage = lazy(() => import("./PublicationsPage"));
 const PoemPage = lazy(() => import("./PoemPage"));
 const ImmortalCraftCaseStudy = lazy(() => import("./ImmortalCraftCaseStudy"));
 
@@ -15,6 +16,7 @@ function setMetaContent(selector: string, value: string) {
 
 export default function SitePage() {
   const pathname = window.location.pathname.replace(/[/]+$/, "") || "/";
+  const isPublications = pathname === "/publications";
   const isPoetry = pathname === "/poetry" || pathname.startsWith("/poetry/");
   const isImmortalCaseStudy = pathname === "/work/immortal-craft";
   const poem = poems.find((entry) => pathname === `/poetry/${entry.slug}`);
@@ -22,7 +24,7 @@ export default function SitePage() {
   useEffect(() => {
     // Canonical URLs always point at the public domain, even when a visitor
     // arrives via Vercel's default deployment address.
-    const isKnownPage = pathname === "/" || isImmortalCaseStudy || Boolean(poem);
+    const isKnownPage = pathname === "/" || isPublications || isImmortalCaseStudy || Boolean(poem);
     const canonicalPath = isKnownPage ? pathname : "/";
     const canonicalUrl = `${SITE_ORIGIN}${canonicalPath}`;
     document.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.setAttribute("href", canonicalUrl);
@@ -34,12 +36,16 @@ export default function SitePage() {
     }
 
     setMetaContent('meta[name="robots"]', "index, follow, max-image-preview:large");
-    const title = poem
+    const title = isPublications
+      ? "Publications | Daramola Femi"
+      : poem
       ? `${poem.title} — Daramola Femi`
       : isImmortalCaseStudy
         ? "Immortal Craft Case Study — Daramola Femi"
         : "Daramola Femi: Code with intent. Words with weight.";
-    const description = poem
+    const description = isPublications
+      ? "Poetry publication credits for Daramola Femi, also published as Femi Daramola and Daramola O. Femi, in The Dark Sire, Writers Space Africa, and Delicacies."
+      : poem
       ? `${poem.title}, a poem by Daramola Femi.`
       : isImmortalCaseStudy
         ? "Immortal Craft: a barbershop website redesign case study by Daramola Femi."
@@ -49,7 +55,7 @@ export default function SitePage() {
     setMetaContent('meta[property="og:description"]', description);
     setMetaContent('meta[name="twitter:title"]', title);
     setMetaContent('meta[name="twitter:description"]', description);
-  }, [pathname, poem, isImmortalCaseStudy]);
+  }, [pathname, poem, isImmortalCaseStudy, isPublications]);
 
   return (
     <PageBoundary>
@@ -61,7 +67,9 @@ export default function SitePage() {
           </main>
         }
       >
-        {isImmortalCaseStudy ? (
+        {isPublications ? (
+          <PublicationsPage />
+        ) : isImmortalCaseStudy ? (
           <ImmortalCraftCaseStudy />
         ) : isPoetry ? (
           <PoemPage poem={poem} />

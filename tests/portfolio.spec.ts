@@ -805,7 +805,7 @@ test("eight published poems link to reading pages", async ({ page }) => {
   await expect(page.locator("#poetry li")).toHaveCount(8);
   await expect(page.locator("#poetry .poetry-thread")).toHaveCount(8);
   await expect(page.locator("#poetry svg.direction-arrow")).toHaveCount(0);
-  await expect(page.locator("#poetry a")).toHaveCount(8);
+  await expect(page.locator("#poetry .poetry-row")).toHaveCount(8);
   await expect(page.locator("#poetry h3")).toHaveText([
     "The Boy Who Writes",
     "Love Letters to Grief",
@@ -816,7 +816,7 @@ test("eight published poems link to reading pages", async ({ page }) => {
     "A Graveyard for Lovers",
     "A Minute's Silence",
   ]);
-  for (const link of await page.locator("#poetry a").all()) {
+  for (const link of await page.locator("#poetry .poetry-row").all()) {
     await expect(link).toHaveAttribute("href", /^\/poetry\//);
     await expect(link).not.toHaveAttribute("target", "_blank");
   }

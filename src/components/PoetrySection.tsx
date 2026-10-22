@@ -31,6 +31,9 @@ export default function PoetrySection() {
           <p>
             {translate("Eight poems, written between 2019 and 2026. A boy who writes, a husband in mourning, and lovers who ask more of death than silence.")}
           </p>
+          <a className="text-link" href="/publications">
+            Publications &amp; credits
+          </a>
         </ScrollReveal>
       </div>
 
