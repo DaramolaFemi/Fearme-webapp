@@ -69,7 +69,10 @@ export const poems: Poem[] = [
     slug: "he-took-the-one-i-wed",
     year: 2019,
     form: "Dirge",
-    publication: { label: "First published in WSA Magazine, November 2020." },
+    publication: {
+      label: "First published in WSA Magazine, November 2020.",
+      href: "https://www.writersspace.net/wp-content/uploads/2020/12/wsa-november-2020-edition.pdf#page=30",
+    },
     stanzas: poem3,
   },
   {

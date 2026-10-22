@@ -1,0 +1,57 @@
+.publications-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.publications-page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 72px 24px 80px;
+}
+.publications-page h1 {
+  font-family: "Instrument Serif", serif;
+  font-size: clamp(48px, 7vw, 84px);
+  font-weight: 400;
+  line-height: 1.08;
+  margin: 28px 0;
+}
+.publications-intro {
+  max-width: 64ch;
+  color: var(--muted);
+  line-height: 1.8;
+}
+.publications-list {
+  list-style: none;
+  margin: 48px 0;
+  padding: 0;
+}
+.publications-list > li {
+  border-top: 1px solid var(--line);
+  padding: 28px 0;
+}
+.publications-list h2 {
+  font-family: "Instrument Serif", serif;
+  font-size: clamp(30px, 4vw, 42px);
+  font-weight: 400;
+  line-height: 1.15;
+  margin: 10px 0 16px;
+}
+.publications-list p {
+  line-height: 1.7;
+}
+.publications-kind,
+.publications-byline {
+  color: var(--muted);
+  font-size: 13px;
+}
+.publications-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  margin-top: 18px;
+  font-size: 14px;
+}
+.publications-links a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
