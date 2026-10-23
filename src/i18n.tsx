@@ -816,6 +816,7 @@ type LanguageContextValue = {
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 function detectPreferredLocale(): Locale | null {
+  if (typeof window === "undefined") return null;
   const candidates = navigator.languages?.length
     ? navigator.languages
     : [navigator.language];
@@ -831,6 +832,7 @@ function detectPreferredLocale(): Locale | null {
 }
 
 function readStoredLocale(): Locale {
+  if (typeof window === "undefined") return "en";
   try {
     const hasManualPreference =
       window.localStorage.getItem(MANUAL_STORAGE_KEY) === "true";

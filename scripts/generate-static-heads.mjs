@@ -1,5 +1,6 @@
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
+import { renderPage } from "../.prerender/entry-prerender.js";
 
 const dist = new URL("../dist/", import.meta.url);
 const source = await readFile(new URL("index.html", dist), "utf8");
@@ -12,6 +13,11 @@ const publications = JSON.parse(
 );
 
 const routes = [
+  {
+    path: "/",
+    title: "Daramola Femi | React & Frontend Developer in Nigeria",
+    description: "Daramola Femi is a software engineer, technical writer, and poet based in Nigeria. Explore his software projects, documentation, and poetry.",
+  },
   {
     path: "/publications",
     title: "Publications | Daramola Femi",
@@ -144,17 +150,6 @@ for (const page of routes) {
         })),
       },
     });
-    // Include the publication record in the initial HTML, even before React runs.
-    const entries = publications
-      .map(
-        (entry) =>
-          `<li id="${entry.id}"><article><p class="publications-kind">${escapeHtml(entry.kind)}</p><h2>${escapeHtml(entry.title)}</h2><p>${escapeHtml(entry.publication)} · ${escapeHtml(entry.edition)}</p><p class="publications-byline">Published as ${escapeHtml(entry.byline)}</p><div class="publications-links"><a href="${escapeHtml(entry.url)}">${escapeHtml(entry.sourceLabel)}</a>${entry.editionUrl ? `<a href="${escapeHtml(entry.editionUrl)}">View issue listing</a>` : ""}${entry.poemPath ? `<a href="${entry.poemPath}">Read the poem in my archive</a>` : ""}</div></article></li>`,
-      )
-      .join("");
-    html = html.replace(
-      '<div id="root"></div>',
-      `<div id="root"><main id="main" class="publications-page" lang="en"><a href="/#poetry">Back to poetry</a><h1>Publications</h1><p class="publications-intro">I’m Daramola Femi, a software engineer, technical writer, and poet based in Nigeria. My poetry has also been published under the names Femi Daramola and Daramola O. Femi. These credits bring that work together in one place.</p><ol class="publications-list">${entries}</ol><a href="/">Explore my software and writing</a></main></div>`,
-    );
   } else if (page.path.startsWith("/poetry/")) {
     graph["@graph"].push({
       "@type": "CreativeWork",
@@ -177,6 +172,25 @@ for (const page of routes) {
     graphMatch[0],
     `<script type="application/ld+json">${JSON.stringify(graph).replaceAll("<", "\\u003c")}</script>`,
   );
+
+  // Replace the root contents only; preserve the existing SEO and security setup.
+  if (page.path === "/") html = source;
+  const rootStart = html.indexOf('<div id="root">');
+  const rootEnd = html.indexOf("<noscript", rootStart);
+  if (rootStart < 0 || rootEnd < 0) throw new Error("Missing application root template");
+  html = html.slice(0, rootStart)
+    + `<div id="root">${renderPage(page.path)}</div>\n    `
+    + html.slice(rootEnd);
+  html = html.replace(/<noscript[\s\S]*?<\/noscript\s*>/, "");
+  // Lazy route styles must also be present before JavaScript executes.
+  const stylePrefix = page.path === "/" ? "App-"
+    : page.path === "/work/immortal-craft" ? "ImmortalCraftCaseStudy-" : null;
+  if (stylePrefix) {
+    const stylesheet = (await readdir(new URL("assets/", dist)))
+      .find((file) => file.startsWith(stylePrefix) && file.endsWith(".css"));
+    if (!stylesheet) throw new Error(`Missing route stylesheet: ${page.path}`);
+    html = html.replace("</head>", `<link rel="stylesheet" href="/assets/${stylesheet}" /></head>`);
+  }
 
   const destination = join(dist.pathname, page.path, "index.html");
   await mkdir(join(dist.pathname, page.path), { recursive: true });
