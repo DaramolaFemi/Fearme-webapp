@@ -85,16 +85,16 @@ export const featuredProjects: Project[] = [
     name: "Immortal Craft",
     subtitle: "From brochure site to booking-led experience.",
     category: "Websites",
-    type: "Barbershop redesign",
+    type: "Client website",
     description:
-      "A ground-up redesign for a Las Vegas barbershop, rebuilding barber discovery, services, reviews, gallery, and the route from first impression to booking.",
-    href: "https://immortal-craft.vercel.app/",
+      "A live client website for Immortal Craft in Southwest Las Vegas. I designed and built the experience, wrote the UX copy, and connected eight barber profiles, service pricing, reviews, and galleries to SQUIRE booking.",
+    href: "https://www.immortalcraftbarbers.com/",
     caseStudyPath: "/work/immortal-craft",
     ctaLabel: "Study",
     image: "/Images/case-studies/immortal-after-hero.webp",
     imageSrcSet: "/Images/case-studies/immortal-after-hero.webp 2500w",
     theme: "immortal",
-    tags: ["Next.js", "Responsive redesign", "Booking UX"],
+    tags: ["Next.js", "Client project", "UX writing", "SQUIRE booking"],
   },
 ];
 

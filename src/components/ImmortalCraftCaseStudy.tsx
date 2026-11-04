@@ -4,8 +4,8 @@ import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
 import "./immortal-case-study.css";
 
-const liveUrl = "https://immortal-craft.vercel.app/";
-const originalUrl = "https://www.immortalcraftbarbers.com/";
+const liveUrl = "https://www.immortalcraftbarbers.com/";
+const barbersUrl = `${liveUrl}barbers`;
 
 const decisions = [
   {
@@ -36,7 +36,7 @@ export default function ImmortalCraftCaseStudy() {
     document.title = "Immortal Craft Case Study — Daramola Femi";
     description?.setAttribute(
       "content",
-      "Immortal Craft: a barbershop website redesign case study by Daramola Femi.",
+      "A live client website for Immortal Craft in Las Vegas: design, Next.js development, UX writing, and SQUIRE booking by Daramola Femi.",
     );
 
     return () => {
@@ -74,7 +74,7 @@ export default function ImmortalCraftCaseStudy() {
 
           <div className="case-hero-grid">
             <div className="case-hero-title">
-              <span className="case-eyebrow">Website redesign / Design + development</span>
+              <span className="case-eyebrow">Live client website / Design + development</span>
               <h1 id="case-title">
                 The craft was already there.
                 <em>
@@ -87,10 +87,10 @@ export default function ImmortalCraftCaseStudy() {
             <div className="case-hero-note">
               <p>
                 Immortal Craft already had the barbers, the reputation, and a way to book.
-                The redesign had one job: make the path to the right chair obvious.
+                I worked with the owners to turn the redesign into their live website, making the path to the right chair obvious.
               </p>
               <div className="case-proof-line">
-                <span>Not a reskin.</span>
+                <span>Live on the client’s domain.</span>
                 <span>A clearer way to choose and book.</span>
               </div>
             </div>
@@ -99,15 +99,15 @@ export default function ImmortalCraftCaseStudy() {
           <div className="case-meta" aria-label="Project details">
             <span>
               <small>Role</small>
-              Design and development
+              Design, development, and UX writing
             </span>
             <span>
               <small>Scope</small>
-              Information architecture, responsive UI, motion, booking path
+              Eight barber profiles, service pricing, reviews, galleries, booking
             </span>
             <span>
               <small>Stack</small>
-              Next.js, TypeScript, responsive interaction
+              Next.js, TypeScript, SQUIRE booking, Vercel
             </span>
           </div>
 
@@ -351,33 +351,34 @@ export default function ImmortalCraftCaseStudy() {
               <span className="case-result-index">05</span>
               <h2 id="result-title">The shop now reads like the experience it sells.</h2>
               <p>
-                The interface is darker, calmer, and more photographic, but the real
-                change is structural: understand the lounge, meet the barbers, see the
-                proof, choose with confidence, and book.
+                The finished website is live on Immortal Craft’s own domain. I delivered
+                the design, Next.js implementation, and UX writing, with eight individual
+                barber profiles, service prices and durations, reviews, and curated
+                photo and video galleries. Booking links take clients to SQUIRE.
               </p>
             </ScrollReveal>
 
             <div className="case-result-proof">
               <span>What changed</span>
               <ul>
-                <li>Barbers are easier to discover</li>
-                <li>Work, reviews, and services now support the choice</li>
-                <li>The path from interest to booking is obvious</li>
-                <li>Motion supports the experience without getting in the way</li>
+                <li>Eight barber profiles with individual booking links</li>
+                <li>Service prices, durations, reviews, and work in one journey</li>
+                <li>Responsive layouts for mobile, tablet, and desktop</li>
+                <li>Production deployment, custom domain, and search metadata</li>
               </ul>
             </div>
           </div>
 
           <div className="case-final-action">
-            <p>See the transformation yourself.</p>
+            <p>Explore the finished client website.</p>
             <div className="case-result-actions">
               <a href={liveUrl} target="_blank" rel="noopener noreferrer">
-                <span>Open the redesign</span>
-                <small>Live build</small>
+                <span>Visit the live website</span>
+                <small>Client website</small>
               </a>
-              <a href={originalUrl} target="_blank" rel="noopener noreferrer">
-                <span>View the original website</span>
-                <small>Before</small>
+              <a href={barbersUrl} target="_blank" rel="noopener noreferrer">
+                <span>Explore the barber profiles</span>
+                <small>Eight individual profiles</small>
               </a>
               <a href="/#work">
                 <span>Return to selected work</span>

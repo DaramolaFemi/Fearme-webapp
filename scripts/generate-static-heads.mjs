@@ -28,7 +28,7 @@ const routes = [
     path: "/work/immortal-craft",
     title: "Immortal Craft Case Study — Daramola Femi",
     description:
-      "Immortal Craft: a barbershop website redesign case study by Daramola Femi.",
+      "A live client website for Immortal Craft in Las Vegas: design, Next.js development, UX writing, and SQUIRE booking by Daramola Femi.",
   },
   ...[
     ["the-boy-who-writes", "The Boy Who Writes"],
