@@ -705,13 +705,11 @@
 
 /* Tighten the handoff from Project Lab to Documentation without changing card layout. */
 .work {
-  padding-bottom: 64px;
+  padding-bottom: 0;
 }
 
-@media (max-width: 600px) {
-  .work {
-    padding-bottom: 38px;
-  }
+.work + .documentation {
+  padding-top: 0;
 }
 
 .project.flux-form .project-visual {
