@@ -5,7 +5,7 @@ import ThemeToggle from "./ThemeToggle";
 import "./immortal-case-study.css";
 
 const liveUrl = "https://www.immortalcraftbarbers.com/";
-const barbersUrl = `${liveUrl}barbers`;
+const barbersUrl = `${liveUrl}#barbers`;
 
 const decisions = [
   {
