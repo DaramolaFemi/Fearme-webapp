@@ -11,7 +11,9 @@ const ImmortalCraftCaseStudy = lazy(() => import("./ImmortalCraftCaseStudy"));
 const SITE_ORIGIN = "https://fearme.xyz";
 
 function setMetaContent(selector: string, value: string) {
-  document.querySelector<HTMLMetaElement>(selector)?.setAttribute("content", value);
+  document
+    .querySelector<HTMLMetaElement>(selector)
+    ?.setAttribute("content", value);
 }
 
 export default function SitePage() {
@@ -24,10 +26,16 @@ export default function SitePage() {
   useEffect(() => {
     // Canonical URLs always point at the public domain, even when a visitor
     // arrives via Vercel's default deployment address.
-    const isKnownPage = pathname === "/" || isPublications || isImmortalCaseStudy || Boolean(poem);
+    const isKnownPage =
+      pathname === "/" ||
+      isPublications ||
+      isImmortalCaseStudy ||
+      Boolean(poem);
     const canonicalPath = isKnownPage ? pathname : "/";
     const canonicalUrl = `${SITE_ORIGIN}${canonicalPath}`;
-    document.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.setAttribute("href", canonicalUrl);
+    document
+      .querySelector<HTMLLinkElement>('link[rel="canonical"]')
+      ?.setAttribute("href", canonicalUrl);
     setMetaContent('meta[property="og:url"]', canonicalUrl);
 
     if (!isKnownPage) {
@@ -35,21 +43,24 @@ export default function SitePage() {
       return;
     }
 
-    setMetaContent('meta[name="robots"]', "index, follow, max-image-preview:large");
+    setMetaContent(
+      'meta[name="robots"]',
+      "index, follow, max-image-preview:large",
+    );
     const title = isPublications
       ? "Publications | Daramola Femi"
       : poem
-      ? `${poem.title} — Daramola Femi`
-      : isImmortalCaseStudy
-        ? "Immortal Craft Case Study — Daramola Femi"
-        : "Daramola Femi: Code with intent. Words with weight.";
+        ? `${poem.title} — Daramola Femi`
+        : isImmortalCaseStudy
+          ? "Immortal Craft Case Study — Daramola Femi"
+          : "Daramola Femi | Software Engineer, Technical Writer & Poet";
     const description = isPublications
       ? "Poetry publication credits for Daramola Femi, also published as Femi Daramola and Daramola O. Femi, in The Dark Sire, Writers Space Africa, and Delicacies."
       : poem
-      ? `${poem.title}, a poem by Daramola Femi.`
-      : isImmortalCaseStudy
-        ? "Immortal Craft: a barbershop website redesign case study by Daramola Femi."
-        : "Selected work in software engineering, interfaces, and technical documentation.";
+        ? poem.seoDescription
+        : isImmortalCaseStudy
+          ? "Immortal Craft: a barbershop website redesign case study by Daramola Femi."
+          : "Daramola Femi is a software engineer, technical writer, and poet based in Nigeria. Explore selected software projects, documentation, and poetry.";
 
     setMetaContent('meta[property="og:title"]', title);
     setMetaContent('meta[property="og:description"]', description);

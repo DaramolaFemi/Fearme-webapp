@@ -17,7 +17,7 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
     document.title = `${poem?.title ?? "Poem not found"} — Daramola Femi`;
     description?.setAttribute(
       "content",
-      poem ? `${poem.title}, a poem by Daramola Femi.` : "Poem not found.",
+      poem ? poem.seoDescription : "Poem not found.",
     );
     return () => {
       document.title = previousTitle;
@@ -58,29 +58,29 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
   const editorialSceneDesktop = isLoveLetters
     ? "/Images/poetry/love-letters-to-grief.avif"
     : isMinutesSilence
-    ? "/Images/poetry/a-minutes-silence-desktop-v2.webp"
-    : isGraveyard
-      ? "/Images/poetry/graveyard-lovers-desktop-v3.avif"
-      : isGoodMourning
-      ? "/Images/poetry/good-mourning-desktop-v3.avif"
-      : isDreams
-      ? "/Images/poetry/dreams-desktop-v3.avif"
-      : isWedMoonlit
-        ? wedSceneDesktop
-        : boySceneDesktop;
+      ? "/Images/poetry/a-minutes-silence-desktop-v2.webp"
+      : isGraveyard
+        ? "/Images/poetry/graveyard-lovers-desktop-v3.avif"
+        : isGoodMourning
+          ? "/Images/poetry/good-mourning-desktop-v3.avif"
+          : isDreams
+            ? "/Images/poetry/dreams-desktop-v3.avif"
+            : isWedMoonlit
+              ? wedSceneDesktop
+              : boySceneDesktop;
   const editorialSceneMobile = isLoveLetters
     ? "/Images/poetry/love-letters-to-grief.avif"
     : isMinutesSilence
-    ? "/Images/poetry/a-minutes-silence-mobile-v2.webp"
-    : isGraveyard
-      ? "/Images/poetry/graveyard-lovers-mobile-v3.avif"
-      : isGoodMourning
-      ? "/Images/poetry/good-mourning-mobile-v3.avif"
-      : isDreams
-      ? "/Images/poetry/dreams-mobile-v3.avif"
-      : isWedMoonlit
-        ? wedSceneMobile
-        : boySceneMobile;
+      ? "/Images/poetry/a-minutes-silence-mobile-v2.webp"
+      : isGraveyard
+        ? "/Images/poetry/graveyard-lovers-mobile-v3.avif"
+        : isGoodMourning
+          ? "/Images/poetry/good-mourning-mobile-v3.avif"
+          : isDreams
+            ? "/Images/poetry/dreams-mobile-v3.avif"
+            : isWedMoonlit
+              ? wedSceneMobile
+              : boySceneMobile;
 
   return (
     <div
@@ -97,7 +97,9 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
         <nav
           aria-label="Portfolio navigation"
           id="poetry-global-navigation"
-          className={menuOpen ? "nav poetry-global-nav open" : "nav poetry-global-nav"}
+          className={
+            menuOpen ? "nav poetry-global-nav open" : "nav poetry-global-nav"
+          }
         >
           {[
             ["Work", "/#work"],
@@ -182,8 +184,8 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
                       : isMinutesSilence
                         ? "poem-title-minutes-silence"
                         : isWedMoonlit
-                        ? "poem-title-wed"
-                        : undefined
+                          ? "poem-title-wed"
+                          : undefined
                 }
               >
                 {isMoonlit ? (
@@ -221,7 +223,9 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
 
             <aside className="poem-reading-aside">
               <footer className="poem-signature">
-                <span className="poem-side-label">{translate("Written by")}</span>
+                <span className="poem-side-label">
+                  {translate("Written by")}
+                </span>
                 <p className="poem-byline">Daramola Femi, {poem.year}</p>
                 {poem.publication && (
                   <p className="poem-publication">
@@ -237,7 +241,9 @@ export default function PoemPage({ poem }: { poem?: Poem }) {
               </footer>
 
               <nav className="poem-navigation" aria-label="Poem navigation">
-                <span className="poem-side-label">{translate("Poetry navigation")}</span>
+                <span className="poem-side-label">
+                  {translate("Poetry navigation")}
+                </span>
                 {previous ? (
                   <a href={`/poetry/${previous.slug}`} rel="prev">
                     {translate("Previous poem")}
