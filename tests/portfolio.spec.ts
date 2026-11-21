@@ -897,14 +897,11 @@ test("Immortal Craft case study preserves the portfolio identity and transformat
     "The craft was already there.",
   );
   await expect(page.getByText("Before / original homepage")).toBeVisible();
-  await expect(page.getByText("After / final hero experience")).toBeVisible();
-  await expect(page.getByRole("link", { name: "Open the redesign" })).toHaveAttribute(
-    "href",
-    "https://immortal-craft.vercel.app/",
+  await expect(page.getByRole("link", { name: "Visit the live website", exact: true })).toHaveAttribute(
+    "href", "https://www.immortalcraftbarbers.com/",
   );
-  await expect(
-    page.getByRole("link", { name: "View the original website" }),
-  ).toHaveAttribute("href", "https://www.immortalcraftbarbers.com/");
+  await expect(page.locator(".case-chapter")).toHaveCount(4);
+  await expect(page.locator("#management-title")).toBeAttached();
   await expect(
     page.locator('img[src="/Images/case-studies/immortal-before-hero.webp"]'),
   ).toBeVisible();
