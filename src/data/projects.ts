@@ -87,7 +87,7 @@ export const featuredProjects: Project[] = [
     category: "Websites",
     type: "Client website",
     description:
-      "A live client website for Immortal Craft in Southwest Las Vegas. I designed and built the experience, wrote the UX copy, and connected eight barber profiles, service pricing, reviews, and galleries to SQUIRE booking.",
+      "A full-stack website and custom CMS for Immortal Craft, a barbershop in Southwest Las Vegas. I built the frontend and backend, pairing SQUIRE booking with a content management system that lets the owners update the website without touching code.",
     href: "https://www.immortalcraftbarbers.com/",
     caseStudyPath: "/work/immortal-craft",
     ctaLabel: "Study",
