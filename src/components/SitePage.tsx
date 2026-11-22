@@ -8,6 +8,8 @@ const PublicationsPage = lazy(() => import("./PublicationsPage"));
 const PoemPage = lazy(() => import("./PoemPage"));
 const ImmortalCraftCaseStudy = lazy(() => import("./ImmortalCraftCaseStudy"));
 
+const UnionCaseStudy = lazy(() => import("./UnionCaseStudy"));
+
 const SITE_ORIGIN = "https://fearme.xyz";
 
 function setMetaContent(selector: string, value: string) {
@@ -21,6 +23,7 @@ export default function SitePage() {
   const isPublications = pathname === "/publications";
   const isPoetry = pathname === "/poetry" || pathname.startsWith("/poetry/");
   const isImmortalCaseStudy = pathname === "/work/immortal-craft";
+  const isUnionCaseStudy = pathname === "/work/union-barbershop";
   const poem = poems.find((entry) => pathname === `/poetry/${entry.slug}`);
 
   useEffect(() => {
@@ -30,6 +33,7 @@ export default function SitePage() {
       pathname === "/" ||
       isPublications ||
       isImmortalCaseStudy ||
+      isUnionCaseStudy ||
       Boolean(poem);
     const canonicalPath = isKnownPage ? pathname : "/";
     const canonicalUrl = `${SITE_ORIGIN}${canonicalPath}`;
@@ -51,22 +55,30 @@ export default function SitePage() {
       ? "Publications | Daramola Femi"
       : poem
         ? `${poem.title} — Daramola Femi`
-        : isImmortalCaseStudy
-          ? "Immortal Craft Case Study — Daramola Femi"
-          : "Daramola Femi | Software Engineer, Technical Writer & Poet";
+        : isUnionCaseStudy
+          ? "Union Barbershop Case Study — Daramola Femi"
+          : isImmortalCaseStudy
+            ? "Immortal Craft Case Study — Daramola Femi"
+            : "Daramola Femi | Software Engineer, Technical Writer & Poet";
     const description = isPublications
       ? "Poetry publication credits for Daramola Femi, also published as Femi Daramola and Daramola O. Femi, in The Dark Sire, Writers Space Africa, and Delicacies."
       : poem
         ? poem.seoDescription
-        : isImmortalCaseStudy
-          ? "Immortal Craft: a barbershop website redesign case study by Daramola Femi."
-          : "Daramola Femi is a software engineer, technical writer, and poet based in Nigeria. Explore selected software projects, documentation, and poetry.";
+        : isUnionCaseStudy
+          ? "Union Barbershop: an editorial Next.js redesign by Daramola Femi, with expressive typography, photographic layouts, scroll animation, review stickers, and SQUIRE booking."
+          : isImmortalCaseStudy
+            ? "Immortal Craft: a barbershop website redesign case study by Daramola Femi."
+            : "Daramola Femi is a software engineer, technical writer, and poet based in Nigeria. Explore selected software projects, documentation, and poetry.";
 
+    if (isUnionCaseStudy) {
+      document.title = title;
+      setMetaContent('meta[name="description"]', description);
+    }
     setMetaContent('meta[property="og:title"]', title);
     setMetaContent('meta[property="og:description"]', description);
     setMetaContent('meta[name="twitter:title"]', title);
     setMetaContent('meta[name="twitter:description"]', description);
-  }, [pathname, poem, isImmortalCaseStudy, isPublications]);
+  }, [pathname, poem, isImmortalCaseStudy, isPublications, isUnionCaseStudy]);
 
   return (
     <PageBoundary>
@@ -80,6 +92,8 @@ export default function SitePage() {
       >
         {isPublications ? (
           <PublicationsPage />
+        ) : isUnionCaseStudy ? (
+          <UnionCaseStudy />
         ) : isImmortalCaseStudy ? (
           <ImmortalCraftCaseStudy />
         ) : isPoetry ? (

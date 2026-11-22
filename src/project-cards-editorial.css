@@ -1157,3 +1157,8 @@
     font-size: 4px;
   }
 }
+
+/* Preserve the full Union recording, including falling review stickers. */
+.project.union .project-visual { aspect-ratio: 1904 / 978; background: #1d3c30; }
+.project.union .project-visual img,
+.project.union .gameplay-preview { object-fit: contain; object-position: center; }

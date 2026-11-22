@@ -130,7 +130,7 @@ function ProjectCard({ project, reduced, desktopMotion }: ProjectCardProps) {
           <span>{translate(project.type)}</span>
         </div>
         <p className="project-status">
-          {project.href ? translate("Live project") : translate("In development, not yet hosted")}
+          {translate(project.statusLabel || (project.href ? "Live project" : "In development, not yet hosted"))}
         </p>
         <h4>{translate(project.subtitle)}</h4>
         <p>{translate(project.description)}</p>

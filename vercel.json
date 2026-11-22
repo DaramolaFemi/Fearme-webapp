@@ -12,6 +12,10 @@
       "destination": "/work/immortal-craft/index.html"
     },
     {
+      "source": "/work/union-barbershop",
+      "destination": "/work/union-barbershop/index.html"
+    },
+    {
       "source": "/poetry/the-boy-who-writes",
       "destination": "/poetry/the-boy-who-writes/index.html"
     },

@@ -50,10 +50,7 @@ for (const viewport of [
     await page.reload();
 
     await expect
-      .poll(
-        () => page.evaluate(() => window.scrollY),
-        { timeout: 3000 },
-      )
+      .poll(() => page.evaluate(() => window.scrollY), { timeout: 3000 })
       .toBeGreaterThan(before - 80);
 
     const after = await page.evaluate(() => window.scrollY);
@@ -66,9 +63,13 @@ test("project filters and mobile keyboard menu", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: "Websites" }).click();
   await expect(page.locator(".project-grid > article")).toHaveCount(3);
-  await expect(page.getByRole("heading", { name: /Flux & Form/ })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: /Flux & Form/ }),
+  ).toBeVisible();
   await expect(page.getByRole("heading", { name: /Bouldwood/ })).toBeVisible();
-  await expect(page.getByRole("heading", { name: /Immortal Craft/ })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: /Immortal Craft/ }),
+  ).toBeVisible();
   await page.getByRole("button", { name: "All work" }).click();
   await expect(page.locator("article")).toHaveCount(5);
   await page.getByRole("button", { name: "Menu" }).click();
@@ -135,7 +136,9 @@ test("contact handles success and failure without sending messages", async ({
   );
 });
 
-test("contact and footer use the authored curve in both themes", async ({ page }) => {
+test("contact and footer use the authored curve in both themes", async ({
+  page,
+}) => {
   for (const viewport of [
     { width: 1440, height: 1000 },
     { width: 390, height: 844 },
@@ -151,10 +154,16 @@ test("contact and footer use the authored curve in both themes", async ({ page }
 
     await expect(curve).toBeVisible();
     await expect(path).toBeVisible();
-    expect(await form.evaluate((el) => getComputedStyle(el).borderTopStyle)).not.toBe("none");
-    expect(await footer.evaluate((el) => getComputedStyle(el).display)).toBe("grid");
+    expect(
+      await form.evaluate((el) => getComputedStyle(el).borderTopStyle),
+    ).not.toBe("none");
+    expect(await footer.evaluate((el) => getComputedStyle(el).display)).toBe(
+      "grid",
+    );
 
-    const lightStroke = await path.evaluate((el) => getComputedStyle(el).stroke);
+    const lightStroke = await path.evaluate(
+      (el) => getComputedStyle(el).stroke,
+    );
 
     const toggle = page.getByRole("switch", { name: "Dark mode" });
     await toggle.click();
@@ -171,7 +180,9 @@ test("contact and footer use the authored curve in both themes", async ({ page }
     }
 
     expect(
-      await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
     ).toBe(true);
   }
 });
@@ -265,9 +276,10 @@ for (const width of [390, 1440]) {
     await page.reload();
     await expect(toggle).toHaveAttribute("aria-checked", "true");
     expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
-    const projectCtaRadius = await page.locator(".project-open-icon").first().evaluate(
-      (el) => getComputedStyle(el).borderRadius,
-    );
+    const projectCtaRadius = await page
+      .locator(".project-open-icon")
+      .first()
+      .evaluate((el) => getComputedStyle(el).borderRadius);
     expect(projectCtaRadius).toBe("50%");
     expect(
       await page.evaluate(
@@ -311,7 +323,10 @@ test("featured Flux, Immortal case study, and lab Cedius have correct destinatio
 }) => {
   await page.goto("/");
   await expect(
-    page.locator(".project-grid > article").first().getByRole("heading", { level: 3 }),
+    page
+      .locator(".project-grid > article")
+      .first()
+      .getByRole("heading", { level: 3 }),
   ).toContainText("Flux & Form");
   await expect(
     page.getByRole("link", { name: "Visit Flux & Form (opens in a new tab)" }),
@@ -436,7 +451,9 @@ test("navigation is quiet and each project has exactly one CTA", async ({
     await project.scrollIntoViewIfNeeded();
     await expect(project.locator("a.project-open")).toBeVisible();
     await expect(project.locator(".project-cta-label-mobile")).toBeVisible();
-    await expect(project.locator(".project-open-icon svg.direction-arrow")).toBeHidden();
+    await expect(
+      project.locator(".project-open-icon svg.direction-arrow"),
+    ).toBeHidden();
   }
   const footer = page.locator(".footer-copyright");
   await footer.scrollIntoViewIfNeeded();
@@ -483,7 +500,9 @@ test("tablet actions show their labels and mobile footer keeps the reference rhy
   );
   await expect(footer.locator(".footer-socials a")).toHaveCount(4);
   expect(
-    await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
   ).toBe(true);
 });
 
@@ -498,10 +517,10 @@ test("selected work keeps the featured order and reveals the Project Lab", async
     "Flux & Form",
     "Bouldwood",
     "Tentio",
-    "Gleez",
+    "Union Barbershop",
     "Immortal Craft",
   ]);
-  const [lead, bouldwood, tentio, gleez, immortal] = await featured.evaluateAll(
+  const [lead, bouldwood, tentio, union, immortal] = await featured.evaluateAll(
     (cards) =>
       cards.map((card) => {
         const rect = card.getBoundingClientRect();
@@ -510,13 +529,14 @@ test("selected work keeps the featured order and reveals the Project Lab", async
   );
   expect(lead.width).toBeGreaterThan(bouldwood.width * 1.9);
   expect(bouldwood.y).toBe(tentio.y);
-  expect(gleez.y).toBe(immortal.y);
-  expect(gleez.y).toBeGreaterThan(bouldwood.y);
+  expect(union.y).toBe(immortal.y);
+  expect(union.y).toBeGreaterThan(bouldwood.y);
   await expect(page.locator("#project-weather")).toHaveCount(0);
   await expect(page.locator("#project-cedius")).toHaveCount(0);
   await expect(page.locator("#project-neon")).toHaveCount(0);
   await page.getByRole("button", { name: /Open the Project Lab/ }).click();
-  await expect(page.locator(".project-lab-grid > article")).toHaveCount(3);
+  await expect(page.locator(".project-lab-grid > article")).toHaveCount(4);
+  await expect(page.locator("#project-gleez")).toBeVisible();
   await expect(page.locator("#project-weather")).toBeVisible();
   await expect(page.locator("#project-cedius")).toBeVisible();
   await expect(page.locator("#project-neon")).toBeVisible();
@@ -576,11 +596,9 @@ test("documentation and poetry extend the editorial portfolio", async ({
     "Selected poetry",
     "05 / A conversation",
   ]);
-  await expect(page.locator("#documentation .documentation-number")).toHaveText([
-    "I",
-    "II",
-    "III",
-  ]);
+  await expect(page.locator("#documentation .documentation-number")).toHaveText(
+    ["I", "II", "III"],
+  );
   await expect(page.locator("#poetry .poetry-number")).toHaveCount(0);
 });
 
@@ -616,14 +634,14 @@ for (const width of [320, 390, 1440]) {
     expect(await page.locator(".poem-body p").first().textContent()).toBe(
       "I buried a boy beneath my keyboard,\nbut every night he returns smelling of moonlight.",
     );
-    const poemBodySize = await page.locator(".poem-body").evaluate((el) =>
-      Number.parseFloat(getComputedStyle(el).fontSize),
-    );
+    const poemBodySize = await page
+      .locator(".poem-body")
+      .evaluate((el) => Number.parseFloat(getComputedStyle(el).fontSize));
     expect(poemBodySize).toBeLessThanOrEqual(width <= 390 ? 17 : 19);
 
-    const poemTitleSize = await page.locator(".poem-page h1").evaluate((el) =>
-      Number.parseFloat(getComputedStyle(el).fontSize),
-    );
+    const poemTitleSize = await page
+      .locator(".poem-page h1")
+      .evaluate((el) => Number.parseFloat(getComputedStyle(el).fontSize));
     expect(poemTitleSize).toBeLessThanOrEqual(width <= 390 ? 44 : 68);
     for (const theme of ["light", "dark"]) {
       if (theme === "dark") await page.getByRole("switch").click();
@@ -656,7 +674,9 @@ for (const width of [320, 390, 1440]) {
   });
 }
 
-test("Bones and Flowers uses the reusable restrained poem atmosphere", async ({ page }) => {
+test("Bones and Flowers uses the reusable restrained poem atmosphere", async ({
+  page,
+}) => {
   for (const width of [390, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     await page.emulateMedia({ reducedMotion: "reduce", colorScheme: "dark" });
@@ -665,8 +685,12 @@ test("Bones and Flowers uses the reusable restrained poem atmosphere", async ({ 
     const atmosphere = page.locator(".poem-atmosphere-bone-botanical");
     await expect(atmosphere).toHaveCount(1);
     await expect(atmosphere.locator(".poem-atmosphere-scene")).toHaveCount(2);
-    await expect(atmosphere.locator(".poem-atmosphere-art-left")).toHaveAttribute("src", "/Images/poetry/bones-and-flowers-ribcage.png");
-    await expect(atmosphere.locator(".poem-atmosphere-art-right")).toHaveAttribute("src", "/Images/poetry/bones-and-flowers-hand.png");
+    await expect(
+      atmosphere.locator(".poem-atmosphere-art-left"),
+    ).toHaveAttribute("src", "/Images/poetry/bones-and-flowers-ribcage.png");
+    await expect(
+      atmosphere.locator(".poem-atmosphere-art-right"),
+    ).toHaveAttribute("src", "/Images/poetry/bones-and-flowers-hand.png");
     await expect(atmosphere.locator(".poem-petal")).toHaveCount(5);
     await expect(atmosphere.locator(".poem-petal").first()).toHaveCSS(
       "animation-name",
@@ -680,7 +704,9 @@ test("Bones and Flowers uses the reusable restrained poem atmosphere", async ({ 
       "My bones keep your name",
     );
     expect(
-      await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
     ).toBe(true);
   }
 
@@ -688,9 +714,14 @@ test("Bones and Flowers uses the reusable restrained poem atmosphere", async ({ 
   await expect(page.locator(".poem-atmosphere")).toHaveCount(0);
 });
 
-test("Bones and Flowers petal motion stays sparse when motion is allowed", async ({ page }) => {
+test("Bones and Flowers petal motion stays sparse when motion is allowed", async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.emulateMedia({ reducedMotion: "no-preference", colorScheme: "dark" });
+  await page.emulateMedia({
+    reducedMotion: "no-preference",
+    colorScheme: "dark",
+  });
   await page.goto("/poetry/bones-and-flowers");
 
   const petals = page.locator(".poem-petal");
@@ -720,7 +751,9 @@ test("poem metadata, final navigation, and missing poem", async ({ page }) => {
   await expect(page.locator("#poetry")).toBeVisible();
 });
 
-test("desktop CV action is text-led and intentionally compact", async ({ page }) => {
+test("desktop CV action is text-led and intentionally compact", async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.emulateMedia({ colorScheme: "light", reducedMotion: "reduce" });
   await page.goto("/#about");
@@ -735,7 +768,9 @@ test("desktop CV action is text-led and intentionally compact", async ({ page })
   expect(width).toBeLessThanOrEqual(350.5);
 });
 
-test("mobile dark documentation follows the reference card composition", async ({ page }) => {
+test("mobile dark documentation follows the reference card composition", async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ colorScheme: "light", reducedMotion: "reduce" });
   await page.goto("/#documentation");
@@ -777,19 +812,29 @@ test("mobile dark documentation follows the reference card composition", async (
   expect(artBox!.x).toBeGreaterThan(cardBox!.x + cardBox!.width * 0.5);
 
   expect(
-    await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
   ).toBe(true);
 });
 
-test("dark documentation uses authored cards and no generic arrows", async ({ page }) => {
+test("dark documentation uses authored cards and no generic arrows", async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 390, height: 900 });
   await page.emulateMedia({ colorScheme: "light", reducedMotion: "reduce" });
   await page.goto("/#documentation");
   await page.getByRole("switch", { name: "Dark mode" }).click();
 
-  await expect(page.locator("#documentation .documentation-entry")).toHaveCount(3);
-  await expect(page.locator("#documentation .documentation-orbit")).toHaveCount(3);
-  await expect(page.locator("#documentation .documentation-cta svg.direction-arrow")).toHaveCount(0);
+  await expect(page.locator("#documentation .documentation-entry")).toHaveCount(
+    3,
+  );
+  await expect(page.locator("#documentation .documentation-orbit")).toHaveCount(
+    3,
+  );
+  await expect(
+    page.locator("#documentation .documentation-cta svg.direction-arrow"),
+  ).toHaveCount(0);
 
   const firstCard = page.locator("#documentation .documentation-entry").first();
   expect(
@@ -886,7 +931,6 @@ test("poetry uses the authored thread on desktop and mobile", async ({
   }
 });
 
-
 test("Immortal Craft case study preserves the portfolio identity and transformation story", async ({
   page,
 }) => {
@@ -897,9 +941,9 @@ test("Immortal Craft case study preserves the portfolio identity and transformat
     "The craft was already there.",
   );
   await expect(page.getByText("Before / original homepage")).toBeVisible();
-  await expect(page.getByRole("link", { name: "Visit the live website", exact: true })).toHaveAttribute(
-    "href", "https://www.immortalcraftbarbers.com/",
-  );
+  await expect(
+    page.getByRole("link", { name: "Visit the live website", exact: true }),
+  ).toHaveAttribute("href", "https://www.immortalcraftbarbers.com/");
   await expect(page.locator(".case-chapter")).toHaveCount(4);
   await expect(page.locator("#management-title")).toBeAttached();
   await expect(
@@ -917,7 +961,9 @@ test("Immortal Craft case study preserves the portfolio identity and transformat
       .toBeGreaterThan(0);
   }
   expect(
-    await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
   ).toBe(true);
   await page.screenshot({
     path: "test-results/immortal-case-study-1440.png",
@@ -936,7 +982,9 @@ test("Immortal Craft case study preserves the portfolio identity and transformat
       .toBeGreaterThan(0);
   }
   expect(
-    await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
   ).toBe(true);
   await page.screenshot({
     path: "test-results/immortal-case-study-390.png",

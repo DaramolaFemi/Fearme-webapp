@@ -31,6 +31,12 @@ const routes = [
     description:
       "A live client website for Immortal Craft in Las Vegas: design, Next.js development, UX writing, and SQUIRE booking by Daramola Femi.",
   },
+  {
+    path: "/work/union-barbershop",
+    title: "Union Barbershop Case Study — Daramola Femi",
+    description:
+      "Union Barbershop: an editorial Next.js redesign by Daramola Femi, with expressive typography, photographic layouts, scroll animation, review stickers, and SQUIRE booking.",
+  },
   ...[
     {
       slug: "the-boy-who-writes",
@@ -233,18 +239,26 @@ for (const page of routes) {
           }
         : {}),
     });
-  } else if (page.path === "/work/immortal-craft") {
+  } else if (
+    page.path === "/work/immortal-craft" ||
+    page.path === "/work/union-barbershop"
+  ) {
+    const isUnion = page.path === "/work/union-barbershop";
     graph["@graph"].push({
       "@type": "Article",
       "@id": `${url}#case-study`,
       url,
-      headline: "Immortal Craft website case study",
+      headline: isUnion
+        ? "Union Barbershop redesign case study"
+        : "Immortal Craft website case study",
       description: page.description,
       author,
       about: {
         "@type": "WebSite",
-        name: "Immortal Craft Barber Lounge",
-        url: "https://www.immortalcraftbarbers.com/",
+        name: isUnion ? "Union Barbershop" : "Immortal Craft Barber Lounge",
+        url: isUnion
+          ? "https://unionbarbershopstl.com/"
+          : "https://www.immortalcraftbarbers.com/",
       },
       isPartOf: { "@id": "https://fearme.xyz/#website" },
       inLanguage: "en",
@@ -266,13 +280,15 @@ for (const page of routes) {
     html.slice(rootEnd);
   html = html.replace(/<noscript[\s\S]*?<\/noscript\s*>/, "");
   // Lazy route styles must also be present before JavaScript executes.
-  const stylePrefix =
+  const stylePrefixes =
     page.path === "/"
-      ? "App-"
-      : page.path === "/work/immortal-craft"
-        ? "ImmortalCraftCaseStudy-"
-        : null;
-  if (stylePrefix) {
+      ? ["App-"]
+      : page.path === "/work/union-barbershop"
+        ? ["immortal-case-study-", "UnionCaseStudy-"]
+        : page.path === "/work/immortal-craft"
+          ? ["immortal-case-study-"]
+          : [];
+  for (const stylePrefix of stylePrefixes) {
     const stylesheet = (await readdir(new URL("assets/", dist))).find(
       (file) => file.startsWith(stylePrefix) && file.endsWith(".css"),
     );

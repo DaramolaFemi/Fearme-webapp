@@ -1,0 +1,64 @@
+.union-reel {
+  width: 100%;
+}
+.union-reel video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1904 / 978;
+  background: #1d3c30;
+}
+.union-reel figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 0;
+  margin-top: 0;
+  border-bottom: 1px solid var(--line);
+}
+.union-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.union-comparison figure {
+  height: 100%;
+  padding: 16px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--ink) 4%, var(--paper));
+}
+.union-comparison img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1.46;
+  object-fit: contain;
+  object-position: top;
+  display: block;
+}
+.union-comparison figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.union-comparison figcaption strong {
+  font-weight: 500;
+  color: var(--ink);
+}
+.union-review-still img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.union-scope-note {
+  color: var(--muted);
+  margin-top: 28px !important;
+}
+@media (max-width: 760px) {
+  .union-comparison {
+    grid-template-columns: 1fr;
+  }
+  .union-reel figcaption {
+    flex-direction: column;
+    gap: 6px;
+  }
+}

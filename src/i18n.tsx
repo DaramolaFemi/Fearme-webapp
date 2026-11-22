@@ -30,6 +30,10 @@ const MANUAL_STORAGE_KEY = "fearme-language-manual";
 
 const translations: Record<Exclude<Locale, "en">, Record<string, string>> = {
   nl: {
+    "Barbershop redesign": "Herontwerp van een barbershop",
+    "Redesign preview": "Voorbeeld van het herontwerp",
+    "The shop’s character, brought online.": "Het karakter van de zaak, online gebracht.",
+    "A redesign for Union Barbershop in Soulard, St. Louis. I rebuilt the experience in Next.js, bringing its photographs, services, falling review stickers, and SQUIRE booking into one distinctive visual system.": "Een herontwerp voor Union Barbershop in Soulard, St. Louis. Ik bouwde de ervaring opnieuw in Next.js en bracht de foto’s, diensten, vallende reviewstickers en SQUIRE-boekingen samen in één eigenzinnig visueel systeem.",
     "Language": "Taal",
     "Choose language": "Kies taal",
     "Choose the language for the interface.": "Kies de taal voor de interface.",
@@ -185,6 +189,10 @@ const translations: Record<Exclude<Locale, "en">, Record<string, string>> = {
     "Poem not found": "Gedicht niet gevonden",
   },
   de: {
+    "Barbershop redesign": "Barbershop-Neugestaltung",
+    "Redesign preview": "Vorschau der Neugestaltung",
+    "The shop’s character, brought online.": "Der Charakter des Shops, online gebracht.",
+    "A redesign for Union Barbershop in Soulard, St. Louis. I rebuilt the experience in Next.js, bringing its photographs, services, falling review stickers, and SQUIRE booking into one distinctive visual system.": "Eine Neugestaltung für Union Barbershop in Soulard, St. Louis. Ich entwickelte das Erlebnis in Next.js neu und vereinte Fotos, Dienstleistungen, fallende Bewertungssticker und SQUIRE-Buchungen in einem eigenständigen visuellen System.",
     "Language": "Sprache",
     "Choose language": "Sprache wählen",
     "Choose the language for the interface.": "Sprache der Oberfläche wählen.",
@@ -340,6 +348,10 @@ const translations: Record<Exclude<Locale, "en">, Record<string, string>> = {
     "Poem not found": "Gedicht nicht gefunden",
   },
   fr: {
+    "Barbershop redesign": "Refonte de barbershop",
+    "Redesign preview": "Aperçu de la refonte",
+    "The shop’s character, brought online.": "Le caractère du salon, porté en ligne.",
+    "A redesign for Union Barbershop in Soulard, St. Louis. I rebuilt the experience in Next.js, bringing its photographs, services, falling review stickers, and SQUIRE booking into one distinctive visual system.": "Une refonte pour Union Barbershop à Soulard, St. Louis. J’ai reconstruit l’expérience avec Next.js, réunissant photographies, services, avis sous forme de stickers animés et réservation SQUIRE dans un univers visuel singulier.",
     "Language": "Langue",
     "Choose language": "Choisir la langue",
     "Choose the language for the interface.": "Choisissez la langue de l’interface.",
@@ -495,6 +507,10 @@ const translations: Record<Exclude<Locale, "en">, Record<string, string>> = {
     "Poem not found": "Poème introuvable",
   },
   es: {
+    "Barbershop redesign": "Rediseño de barbería",
+    "Redesign preview": "Vista previa del rediseño",
+    "The shop’s character, brought online.": "El carácter del local, llevado a la web.",
+    "A redesign for Union Barbershop in Soulard, St. Louis. I rebuilt the experience in Next.js, bringing its photographs, services, falling review stickers, and SQUIRE booking into one distinctive visual system.": "Un rediseño para Union Barbershop en Soulard, St. Louis. Reconstruí la experiencia con Next.js, reuniendo fotografías, servicios, reseñas con pegatinas animadas y reservas de SQUIRE en un sistema visual distintivo.",
     "Language": "Idioma",
     "Choose language": "Elegir idioma",
     "Choose the language for the interface.": "Elige el idioma de la interfaz.",
@@ -650,6 +666,10 @@ const translations: Record<Exclude<Locale, "en">, Record<string, string>> = {
     "Poem not found": "Poema no encontrado",
   },
   pt: {
+    "Barbershop redesign": "Redesign de barbearia",
+    "Redesign preview": "Prévia do redesign",
+    "The shop’s character, brought online.": "O caráter da barbearia, levado para a web.",
+    "A redesign for Union Barbershop in Soulard, St. Louis. I rebuilt the experience in Next.js, bringing its photographs, services, falling review stickers, and SQUIRE booking into one distinctive visual system.": "Um redesign para a Union Barbershop em Soulard, St. Louis. Reconstruí a experiência com Next.js, reunindo fotografias, serviços, adesivos animados com avaliações e reservas do SQUIRE num sistema visual próprio.",
     "Language": "Idioma",
     "Choose language": "Escolher idioma",
     "Choose the language for the interface.": "Escolha o idioma da interface.",

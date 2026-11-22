@@ -5,6 +5,7 @@ export type Project = {
   subtitle: string;
   category: string;
   type: string;
+  statusLabel?: string;
   description: string;
   href: string;
   image: string;
@@ -67,18 +68,22 @@ export const featuredProjects: Project[] = [
   },
   {
     id: "04",
-    name: "Gleez",
-    subtitle: "More than a cut. A standard.",
-    category: "Web applications",
-    type: "Barbershop landing page",
+    name: "Union Barbershop",
+    subtitle: "The shop’s character, brought online.",
+    category: "Websites",
+    type: "Barbershop redesign",
+    statusLabel: "Redesign preview",
     description:
-      "A premium barbershop experience brought online, with a refined visual system that guides clients from discovery to booking a chair.",
-    href: "https://gleets.vercel.app/",
-    image: "/Images/gleez-live-2026-v2-desktop.svg",
-    mobileImage: "/Images/gleez-live-2026-v2-mobile.svg",
-    imageSrcSet: "/Images/gleez-live-2026-v2-desktop.svg 1440w",
-    theme: "gleez",
-    tags: ["Next.js", "Booking experience", "Premium UI"],
+      "A redesign for Union Barbershop in Soulard, St. Louis. I rebuilt the experience in Next.js, bringing its photographs, services, falling review stickers, and SQUIRE booking into one distinctive visual system.",
+    href: "https://union-barbershop-iota.vercel.app/",
+    caseStudyPath: "/work/union-barbershop",
+    ctaLabel: "Study",
+    image: "/Images/case-studies/union-after-hero.webp",
+    imageSrcSet: "/Images/case-studies/union-after-hero.webp 1440w",
+    preview: "/Video/union-feature-loop.mp4",
+    previewAutoplay: true,
+    theme: "union",
+    tags: ["Next.js", "TypeScript", "Scroll animation", "UX design"],
   },
   {
     id: "05",
@@ -99,6 +104,22 @@ export const featuredProjects: Project[] = [
 ];
 
 export const projectLabProjects: Project[] = [
+  {
+    id: "09",
+    name: "Gleez",
+    subtitle: "More than a cut. A standard.",
+    category: "Web applications",
+    type: "Barbershop landing page",
+    description:
+      "A premium barbershop experience brought online, with a refined visual system that guides clients from discovery to booking a chair.",
+    href: "https://gleets.vercel.app/",
+    image: "/Images/gleez-live-2026-v2-desktop.svg",
+    mobileImage: "/Images/gleez-live-2026-v2-mobile.svg",
+    imageSrcSet: "/Images/gleez-live-2026-v2-desktop.svg 1440w",
+    theme: "gleez",
+    tags: ["Next.js", "Booking experience", "Premium UI"],
+  },
+
   {
     id: "06",
     name: "Cedius",
